@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, Header } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import RandomScale from './Screens/RandomScale';
@@ -14,9 +14,17 @@ import AdvancedScale from './Screens/AdvancedScale';
 import AdvancedArpeggio from './Screens/AdvancedArpeggio';
 import More from './Screens/More';
 
+import HeaderButton from './Components/HeaderButton';
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+
+/**
+ * @description The stack of screens for the Random Tab of the navigation.
+ * @author Alexander Burdiss
+ * @since 10/10/20
+ */
 const RandomStack = ({ navigation }) => {
   return (
     <Stack.Navigator>
@@ -25,11 +33,11 @@ const RandomStack = ({ navigation }) => {
         component={RandomScale}
         options={{
           headerRight: () => (
-            <Button
-              onPress={()=>{navigation.navigate("Random Arpeggio Practice")}}
-              title="Arpeggios"
-              color="purple" 
-            />
+            <HeaderButton 
+              handler={() => { navigation.navigate("Random Arpeggio Practice")}}
+            >
+              Arpeggios
+            </HeaderButton>
           ),
         }}
       />
@@ -38,11 +46,11 @@ const RandomStack = ({ navigation }) => {
         component={RandomArpeggio}
         options={{
           headerRight: () => (
-            <Button
-              onPress={()=>{navigation.navigate("Random Scale Practice")}}
-              title="Scales"
-              color="purple" 
-            />
+            <HeaderButton
+              handler={()=>{navigation.navigate("Random Scale Practice")}} 
+            >
+              Scales
+            </HeaderButton>
           ),
         }}
       />
@@ -51,6 +59,11 @@ const RandomStack = ({ navigation }) => {
 }
 
 
+/**
+ * @description The stack of screens for the resources tab of the navigation.
+ * @author Alexander Burdiss
+ * @since 10/10/20
+ */
 const ResourcesStack = ({ navigation }) => {
   return (
     <Stack.Navigator>
@@ -59,11 +72,11 @@ const ResourcesStack = ({ navigation }) => {
         component={ScaleResources}
         options={{
           headerRight: () => (
-            <Button
-              onPress={()=>{navigation.navigate("Arpeggio Resources")}}
-              title="Arpeggios"
-              color="purple" 
-            />
+            <HeaderButton
+              handler={()=>{navigation.navigate("Arpeggio Resources")}}
+            >
+              Arpeggios
+            </HeaderButton>
           ),
         }}
       />
@@ -72,11 +85,11 @@ const ResourcesStack = ({ navigation }) => {
         component={ArpeggioResources} 
         options={{
           headerRight: () => (
-            <Button
-              onPress={()=>{navigation.navigate("Scale Resources")}}
-              title="Scales"
-              color="purple" 
-            />
+            <HeaderButton
+              handler={()=>{navigation.navigate("Scale Resources")}}
+            >
+              Scales
+            </HeaderButton>
           ),
         }}
       />
@@ -85,6 +98,11 @@ const ResourcesStack = ({ navigation }) => {
 }
 
 
+/**
+ * @description The stack of screens for the Advanced tab of the navigation.
+ * @author Alexander Burdiss
+ * @since 10/10/20
+ */
 const AdvancedStack = ({ navigation }) => {
   return (
     <Stack.Navigator>
@@ -93,11 +111,11 @@ const AdvancedStack = ({ navigation }) => {
         component={AdvancedScale}
         options={{
           headerRight: () => (
-            <Button
-              onPress={()=>{navigation.navigate("Advanced Arpeggio Practice")}}
-              title="Arpeggios"
-              color="purple"
-            />
+            <HeaderButton
+              handler={()=>{navigation.navigate("Advanced Arpeggio Practice")}}
+            >
+              Arpeggios
+            </HeaderButton>
           ),
         }}
       />
@@ -106,11 +124,11 @@ const AdvancedStack = ({ navigation }) => {
         component={AdvancedArpeggio}
         options={{
           headerRight: () => (
-            <Button
-              onPress={()=>{navigation.navigate("Advanced Scale Practice")}}
-              title="Scales"
-              color="purple"
-            />
+            <HeaderButton
+              handler={()=>{navigation.navigate("Advanced Scale Practice")}}
+            >
+              Scales
+            </HeaderButton>
           ),
         }}
       />
@@ -119,6 +137,11 @@ const AdvancedStack = ({ navigation }) => {
 }
 
 
+/**
+ * @description The stack of screens for the More tab of the navigation.
+ * @author Alexander Burdiss
+ * @since 10/10/20
+ */
 const MoreStack = () => {
   return (
     <Stack.Navigator>
@@ -128,6 +151,11 @@ const MoreStack = () => {
 }
 
 
+/**
+ * @description The main tab navigation of the app.
+ * @author Alexander Burdiss
+ * @since 10/10/20
+ */
 const App = () => {
   return (
     <NavigationContainer>
