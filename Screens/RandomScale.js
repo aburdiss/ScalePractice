@@ -117,16 +117,16 @@ const RandomScale = () => {
    * @since 10/11/20
    */
   function generateScales () {
-    let majorLetterNames = ["C", "D♭", "D", "E♭", "E", "F", "F♯", "G♭", "G", "A♭", "A", "B♭", "B"];
-    let minorLetterNames = ["C", "C♯", "D", "D♯", "E♭", "E", "F", "F♯", "G", "G♯", "A", "B♭", "B"];
-    let indeterminantLetterNames = ["C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "A♭", "A", "B♭", "B"];
+    const majorLetterNames = ["C", "D♭", "D", "E♭", "E", "F", "F♯", "G♭", "G", "A♭", "A", "B♭", "B"];
+    const minorLetterNames = ["C", "C♯", "D", "D♯", "E♭", "E", "F", "F♯", "G", "G♯", "A", "B♭", "B"];
+    const indeterminantLetterNames = ["C", "C♯", "D", "E♭", "E", "F", "F♯", "G", "A♭", "A", "B♭", "B"];
 
-    let pentatonicScaleNames = ["Major Pentatonic", "Minor Pentatonic"];
-    let majorModeNames = ["Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian"];
-    let melodicMinorModeNames = ["Minor Major", "Dorian ♭2", "Lydian Augmented", "Lydian Dominant", "Mixolydian ♭6", "Locrian ♮2", "Altered Scale"];
-    let octatonicScaleNames = ["Whole-Half Octatonic", "Half-Whole Octatonic"];
+    const pentatonicScaleNames = ["Major Pentatonic", "Minor Pentatonic"];
+    const majorModeNames = ["Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian"];
+    const melodicMinorModeNames = ["Minor Major", "Dorian ♭2", "Lydian Augmented", "Lydian Dominant", "Mixolydian ♭6", "Locrian ♮2", "Altered Scale"];
+    const octatonicScaleNames = ["Whole-Half Octatonic", "Half-Whole Octatonic"];
           
-    var possibleScales = [];
+    let possibleScales = [];
 
     if (majorSwitch) {
       possibleScales.push(...createScaleArrayFromParts(majorLetterNames, ["Major"]));
@@ -196,7 +196,6 @@ const RandomScale = () => {
     let allLetterNamesOfScale = [];
     for (let letter of letterNames) {
       for (let scaleName of scaleNames) {
-        console.log(letter);
         allLetterNamesOfScale.push(`${letter} ${scaleName}`);
       }
     }
