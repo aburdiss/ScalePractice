@@ -13,6 +13,7 @@ import ArpeggioResources from './Screens/ArpeggioResources';
 import AdvancedScale from './Screens/AdvancedScale';
 import AdvancedArpeggio from './Screens/AdvancedArpeggio';
 import More from './Screens/More';
+import ScaleDetail from './Screens/ScaleDetail';
 
 import HeaderButton from './Components/HeaderButton';
 
@@ -92,6 +93,11 @@ const ResourcesStack = ({ navigation }) => {
             </HeaderButton>
           ),
         }}
+      />
+      <Stack.Screen
+        name="Scale Detail"
+        component={ScaleDetail}
+        options={({ route }) => ({ title: route.params.name })}
       />
     </Stack.Navigator>
   );

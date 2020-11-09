@@ -1,5 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
+
+import  ListItem  from '../Components/ListItem';
+
+import { scaleResourceData } from './Model';
 
 
 /**
@@ -11,7 +15,11 @@ import { View, Text } from 'react-native';
 const ScaleResources = () => {
   return (
     <View>
-      <Text>Scale Resources</Text>
+      <FlatList
+        data={scaleResourceData}
+        renderItem={({item}) => <ListItem data={item} />}
+        keyExtractor={item => item.id.toString()}
+        />
     </View>
   );
 };

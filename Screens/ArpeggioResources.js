@@ -1,5 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
+
+import  ListItem  from '../Components/ListItem';
+
+import { arpeggioResourceData } from './Model';
 
 
 /**
@@ -11,9 +15,15 @@ import { View, Text } from 'react-native';
 const ArpeggioResources = () => {
   return (
     <View>
-      <Text>Arpeggio Resources</Text>
+      <FlatList
+        data={arpeggioResourceData}
+        renderItem={({item}) => <ListItem data={item} />}
+        keyExtractor={item => item.id.toString()}
+        />
     </View>
   );
 };
 
 export default ArpeggioResources;
+
+
