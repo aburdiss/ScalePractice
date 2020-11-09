@@ -167,7 +167,6 @@ const RandomScale = () => {
         [
           {
             text: "Return",
-            onPress: () => console.log("Cancelled"),
             style: "cancel",
           },
         ],

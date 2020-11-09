@@ -7,12 +7,6 @@ import ScaleDisplay from '../Components/ScaleDisplay';
 import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 
-
-
-const generateScale = () => {
-
-}
-
 /**
  * @description A view that allows the user to randomize between a list of 
  * selected scales.
@@ -24,20 +18,66 @@ const AdvancedScale = () => {
   const scaleNames = ["Major", "Natural Minor", "Harmonic Minor", "Melodic Minor", "Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian", "Minor Major", "Dorian ♭2", "Lydian Augmented", "Lydian Dominant", "Mixolydian ♭6", "Locrian ♮2", "Altered Scale", "Blues", "Major Pentatonic", "Minor Pentatonic", "Whole-Half Octatonic", "Half-Whole Octatonic", "Whole Tone"];
 
   const [possibleScales, setPossibleScales] = useState([]);
+  const [currentScale, setCurrentScale] = useState("No Scale Selected");
 
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedScale, setSelectedScale] = useState('Major');
 
   const addToScaleList = () => {
     let scaleAlreadyInList = false;
-  
-    const newScale = `${selectedNote}, ${selectedScale}`;
+    const newScale = `${selectedNote} ${selectedScale}`;
+    if (possibleScales.includes(newScale)) {
+      scaleAlreadyInList = true;
+    }
+    if (!scaleAlreadyInList) {
+      setPossibleScales([newScale, ...possibleScales]);
+    } else {
+      Alert.alert(
+        "Scale Already in List",
+        "",
+        [
+          {
+            text: "Return",
+            style: "cancel",
+          },
+        ],
+        { cancelable: true }
+      );
+    }
     
+  }
+
+  const generateScale = () => {
+    if (possibleScales.length === 0) {
+      Alert.alert(
+        "No Scale Selected",
+        "Please select at least one scale",
+        [
+          {
+            text: "Return",
+            style: "cancel",
+          },
+        ],
+        { cancelable: true }
+      );
+    } else {
+      let newScale = possibleScales[Math.floor(Math.random() * possibleScales.length)];
+      if (possibleScales.length > 1) {
+        do {
+          newScale = possibleScales[Math.floor(Math.random() * possibleScales.length)];
+        } while (newScale === currentScale);
+      }
+      setCurrentScale(newScale ? newScale : "No Scale Selected");
+    }
+  }
+
+  const removeAllScales = () => {
+    setPossibleScales([]);
   }
 
   return (
     <View style={styles.container}>
-      <ScaleDisplay>Hello</ScaleDisplay>
+      <ScaleDisplay>{ currentScale }</ScaleDisplay>
       <View style={styles.pickerContainer}>
         <View style={styles.picker}>
           <Picker
@@ -67,7 +107,7 @@ const AdvancedScale = () => {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <ResetButton handler={generateScale} />
+        <ResetButton handler={removeAllScales} />
         <AddToListButton handler={addToScaleList} />
       </View>
       <FlatList
@@ -98,10 +138,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   listItemContainer: {
-
+    paddingLeft: 20,
+    backgroundColor: 'white',
   },
   listItemText: {
-
+    borderTopColor: 'gray',
+    borderTopWidth: 1,
+    paddingVertical: 15,
   },
   picker: {
     borderWidth: 1,
