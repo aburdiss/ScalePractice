@@ -1,11 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { Alert, View, Text, StyleSheet, FlatList } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { RectButton, Swipeable } from 'react-native-gesture-handler';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
+
+
+class SwipeableRow extends Component {
+  renderRightActions = (progress, dragX) => {
+    const scale = dragX.interpolate({
+      inputRange: [-80, 0],
+      outputRange: [1, 0],
+      extrapolate: 'clamp',
+    });
+    return (
+      <RectButton style={styles.rightAction} onPress={() => this.props.delete(this.props.item)}>
+        <Ionicons
+          name="trash"
+          size={20}
+          style={styles.trashIcon}
+          color="#fff"
+        />
+      </RectButton>
+    );
+  }
+  render() {
+    const { children } = this.props;
+    return (
+      <Swipeable
+        ref={this.updateRef}
+        friction={2}
+        leftThreshold={80}
+        rightThreshold={41}
+        renderRightActions={this.renderRightActions}>
+        {children}
+      </Swipeable>
+    );
+  }
+}
+
+
 
 /**
  * @description A view that allows the user to randomize between a list of 
@@ -75,6 +113,15 @@ const AdvancedScale = () => {
     setPossibleScales([]);
   }
 
+  const deleteElement = (element) => {
+    let temporaryScales = [...possibleScales];
+    let index = temporaryScales.indexOf(element);
+    if (index !== -1) {
+      temporaryScales.splice(index, 1);
+    }
+    setPossibleScales(temporaryScales);
+  }
+
   return (
     <View style={styles.container}>
       <ScaleDisplay>{ currentScale }</ScaleDisplay>
@@ -114,9 +161,11 @@ const AdvancedScale = () => {
         style={styles.list}
         data={possibleScales}
         renderItem={({ item }) => (
-          <View style={styles.listItemContainer}>
-            <Text style={styles.listItemText}>{item}</Text>
-          </View>
+          <SwipeableRow delete={deleteElement} item={item}>
+            <View style={styles.listItemContainer}>
+              <Text style={styles.listItemText}>{item}</Text>
+            </View>
+          </SwipeableRow>
         )}
         keyExtractor={item => item}
       />
@@ -155,6 +204,16 @@ const styles = StyleSheet.create({
   pickerContainer: {
     paddingHorizontal: 26,
   },
+  rightAction: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#dd2c00',
+    flex: 1,
+    justifyContent: 'flex-end'
+  },
+  trashIcon: {
+    paddingRight: 10,
+  }
 });
 
 export default AdvancedScale;
