@@ -17,6 +17,7 @@ const ScaleResources = () => {
     <View>
       <FlatList
         data={scaleResourceData}
+        initialNumToRender={15}
         renderItem={({item}) => <ListItem data={item} />}
         keyExtractor={item => item.id.toString()}
         />

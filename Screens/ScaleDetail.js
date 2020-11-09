@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import Image from 'react-native-scalable-image'
 
-const {width, height} = Dimensions.get("window");
+const {width} = Dimensions.get("window");
+
 
 
 const ScaleDetail = ({ route }) => {
@@ -123,8 +125,7 @@ const ScaleDetail = ({ route }) => {
       <View style={styles.imageContainer}>
         <Image
           source={path}
-          resizeMode={'stretch'}
-          style={styles.image}
+          width={width}
           />
       </View>
       <Text style={styles.construction}>{route.params.construction}</Text>
@@ -144,10 +145,16 @@ const styles = StyleSheet.create({
   },
   image: {
     resizeMode: 'contain',
-    maxWidth: width,
+    //maxWidth: width,
+    flex: 1,
   },
   imageContainer: {
-    height: 250,
+    //width: width,
+    //overflow: 'hidden',
+    //alignItems: 'center',
+    //backgroundColor: 'orange',
+    //position: 'relative',
+    //margin: 5,
   },
 });
 

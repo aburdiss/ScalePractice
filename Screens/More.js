@@ -28,7 +28,7 @@ const ABOUT = [
   {
     id: '3',
     type: 'text',
-    value: '© 2020 Alexander Burdiss',
+    value: `© ${new Date().getFullYear()} Alexander Burdiss`,
     link: null,
   },
   {
