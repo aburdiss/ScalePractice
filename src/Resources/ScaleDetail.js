@@ -11,110 +11,110 @@ const ScaleDetail = ({ route }) => {
   let path;
   switch(route.params.id) {
     case 0:
-      path = require('../img/scales/0.png');
+      path = require('../../img/scales/0.png');
       break;
     case 1:
-      path = require('../img/scales/1.png');
+      path = require('../../img/scales/1.png');
       break;
     case 2:
-      path = require('../img/scales/2.png');
+      path = require('../../img/scales/2.png');
       break;
     case 3:
-      path = require('../img/scales/3.png');
+      path = require('../../img/scales/3.png');
       break;
     case 4:
-      path = require('../img/scales/4.png');
+      path = require('../../img/scales/4.png');
       break;
     case 5:
-      path = require('../img/scales/5.png');
+      path = require('../../img/scales/5.png');
       break;
     case 6:
-      path = require('../img/scales/6.png');
+      path = require('../../img/scales/6.png');
       break;
     case 7:
-      path = require('../img/scales/7.png');
+      path = require('../../img/scales/7.png');
       break;
     case 8:
-      path = require('../img/scales/8.png');
+      path = require('../../img/scales/8.png');
       break;
     case 9:
-      path = require('../img/scales/9.png');
+      path = require('../../img/scales/9.png');
       break;
     case 10:
-      path = require('../img/scales/10.png');
+      path = require('../../img/scales/10.png');
       break;
     case 11:
-      path = require('../img/scales/11.png');
+      path = require('../../img/scales/11.png');
       break;
     case 12:
-      path = require('../img/scales/12.png');
+      path = require('../../img/scales/12.png');
       break;
     case 13:
-      path = require('../img/scales/13.png');
+      path = require('../../img/scales/13.png');
       break;
     case 14:
-      path = require('../img/scales/14.png');
+      path = require('../../img/scales/14.png');
       break;
     case 15:
-      path = require('../img/scales/15.png');
+      path = require('../../img/scales/15.png');
       break;
     case 16:
-      path = require('../img/scales/16.png');
+      path = require('../../img/scales/16.png');
       break;
     case 17:
-      path = require('../img/scales/17.png');
+      path = require('../../img/scales/17.png');
       break;
     case 18:
-      path = require('../img/scales/18.png');
+      path = require('../../img/scales/18.png');
       break;
     case 19:
-      path = require('../img/scales/19.png');
+      path = require('../../img/scales/19.png');
       break;
     case 20:
-      path = require('../img/scales/20.png');
+      path = require('../../img/scales/20.png');
       break;
     case 21:
-      path = require('../img/scales/21.png');
+      path = require('../../img/scales/21.png');
       break;
     case 22:
-      path = require('../img/scales/22.png');
+      path = require('../../img/scales/22.png');
       break;
     case 23:
-      path = require('../img/scales/23.png');
+      path = require('../../img/scales/23.png');
       break;
 
     case 24:
-      path = require('../img/arpeggios/24.png');
+      path = require('../../img/arpeggios/24.png');
       break;
     case 25:
-      path = require('../img/arpeggios/25.png');
+      path = require('../../img/arpeggios/25.png');
       break;
     case 26:
-      path = require('../img/arpeggios/26.png');
+      path = require('../../img/arpeggios/26.png');
       break;
     case 27:
-      path = require('../img/arpeggios/27.png');
+      path = require('../../img/arpeggios/27.png');
       break;
     case 28:
-      path = require('../img/arpeggios/28.png');
+      path = require('../../img/arpeggios/28.png');
       break;
     case 29:
-      path = require('../img/arpeggios/29.png');
+      path = require('../../img/arpeggios/29.png');
       break;
     case 30:
-      path = require('../img/arpeggios/30.png');
+      path = require('../../img/arpeggios/30.png');
       break;
     case 31:
-      path = require('../img/arpeggios/31.png');
+      path = require('../../img/arpeggios/31.png');
       break;
     case 32:
-      path = require('../img/arpeggios/32.png');
+      path = require('../../img/arpeggios/32.png');
       break;
     case 33:
-      path = require('../img/arpeggios/33.png');
+      path = require('../../img/arpeggios/33.png');
       break;
     case 34:
-      path = require('../img/arpeggios/34.png');
+      path = require('../../img/arpeggios/34.png');
       break;
     default:
       path = null;

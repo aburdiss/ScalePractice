@@ -5,16 +5,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator, Header } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import RandomScale from './Screens/RandomScale';
-import RandomArpeggio from './Screens/RandomArpeggio';
-import ScaleResources from './Screens/ScaleResources';
-import ArpeggioResources from './Screens/ArpeggioResources';
-import AdvancedScale from './Screens/AdvancedScale';
-import AdvancedArpeggio from './Screens/AdvancedArpeggio';
-import More from './Screens/More';
-import ScaleDetail from './Screens/ScaleDetail';
+import RandomScale from './src/Random/RandomScale';
+import RandomArpeggio from './src/Random/RandomArpeggio';
+import ScaleResources from './src/Resources/ScaleResources';
+import ArpeggioResources from './src/Resources/ArpeggioResources';
+import AdvancedScale from './src/Advanced/AdvancedScale';
+import AdvancedArpeggio from './src/Advanced/AdvancedArpeggio';
+import More from './src/More/More';
+import ScaleDetail from './src/Resources/ScaleDetail';
 
-import HeaderButton from './Components/HeaderButton';
+import HeaderButton from './src/Components/HeaderButton';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

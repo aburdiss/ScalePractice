@@ -3,20 +3,20 @@ import { View, Text, FlatList } from 'react-native';
 
 import  ListItem  from '../Components/ListItem';
 
-import { arpeggioResourceData } from './Model';
+import { scaleResourceData } from '../Model';
 
 
 /**
- * @description A view that allows the user to learn about all of the arpeggios
- * in the app. 
+ * @description A view that allows the user to learn more about each scale in
+ * the app.
  * @author Alexander Burdiss
  * @since 10/10/20
  */
-const ArpeggioResources = () => {
+const ScaleResources = () => {
   return (
     <View>
       <FlatList
-        data={arpeggioResourceData}
+        data={scaleResourceData}
         initialNumToRender={15}
         renderItem={({item}) => <ListItem data={item} />}
         keyExtractor={item => item.id.toString()}
@@ -25,6 +25,4 @@ const ArpeggioResources = () => {
   );
 };
 
-export default ArpeggioResources;
-
-
+export default ScaleResources;
