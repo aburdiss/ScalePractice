@@ -1,6 +1,5 @@
 import React, { useState, Component } from 'react';
-import { Alert, View, Text, StyleSheet, FlatList } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { Alert, View, Text, StyleSheet, FlatList, Platform } from 'react-native';
 import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -8,6 +7,7 @@ import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
+import ScalePickers from './ScalePickers';
 
 
 class SwipeableRow extends Component {
@@ -125,34 +125,14 @@ const AdvancedScale = () => {
   return (
     <View style={styles.container}>
       <ScaleDisplay>{ currentScale }</ScaleDisplay>
-      <View style={styles.pickerContainer}>
-        <View style={styles.picker}>
-          <Picker
-            selectedValue={selectedNote}
-            dropdownIconColor="#800080"
-            onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
-            >
-            {
-              noteNames.map(noteName => (
-                <Picker.Item label={noteName} value={noteName} key={noteName} />
-                ))
-              }
-          </Picker>
-        </View>
-        <View style={styles.picker}>
-          <Picker
-            selectedValue={selectedScale}
-            dropdownIconColor="#800080"
-            onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
-            >
-            {
-              scaleNames.map(scaleName => (
-                <Picker.Item label={scaleName} value={scaleName} key={scaleName} />
-                ))
-              }
-          </Picker>
-        </View>
-      </View>
+      <ScalePickers
+        selectedNote={selectedNote}
+        setSelectedNote={setSelectedNote}
+        noteNames={noteNames}
+        selectedScale={selectedScale}
+        setSelectedScale={setSelectedScale}
+        scaleNames={scaleNames}
+      />
       <View style={styles.buttonContainer}>
         <ResetButton handler={removeAllScales} />
         <AddToListButton handler={addToScaleList} />
@@ -194,15 +174,6 @@ const styles = StyleSheet.create({
     borderTopColor: 'gray',
     borderTopWidth: 1,
     paddingVertical: 15,
-  },
-  picker: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    margin: 4,
-    borderRadius: 8,
-  },
-  pickerContainer: {
-    paddingHorizontal: 26,
   },
   rightAction: {
     alignItems: 'center',
