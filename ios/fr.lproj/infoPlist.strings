@@ -1,0 +1,10 @@
+/* 
+  infoPlist.strings
+  ScalePractice
+
+  Created by Alexander Burdiss on 11/15/20.
+  
+*/
+
+"CFBundleDisplayName" = "Les gammes";
+"CFBundleName" = "Pratiquer les gammes";

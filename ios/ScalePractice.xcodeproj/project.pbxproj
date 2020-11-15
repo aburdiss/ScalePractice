@@ -18,8 +18,9 @@
 		2DCD954D1E0B4F2C00145EB5 /* ScalePracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ScalePracticeTests.m */; };
 		45210E5A996368BC7046B290 /* libPods-ScalePractice-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8258435284066F2223B1087 /* libPods-ScalePractice-tvOS.a */; };
 		6E8E3EF5D2CE54773D124051 /* libPods-ScalePractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A21582AFB0DE32FEB7B846C /* libPods-ScalePractice.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		899627C8ED62D05BCD1B9996 /* libPods-ScalePractice-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E996C8E709280383E7AB1180 /* libPods-ScalePractice-tvOSTests.a */; };
+		DDD848EA25619449006846A6 /* infoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDD848EC25619449006846A6 /* infoPlist.strings */; };
+		DDD848F125619474006846A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD848F325619474006846A6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,6 @@
 		6C913AF8912F4810993C51DF /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		71D930D861E840B79EDFB6ED /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		767DECBFEDCB0361CB2B5076 /* libPods-ScalePractice-ScalePracticeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScalePractice-ScalePracticeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ScalePractice/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84298DBA663D41A299261EB2 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		A307207B825201A4BC7A4223 /* Pods-ScalePractice-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalePractice-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ScalePractice-tvOS/Pods-ScalePractice-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		A40ADBC4570C4186AA5BEC88 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
@@ -77,6 +77,12 @@
 		C5C7DB270B554DF4924F1511 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		CC629CFE063AB7712250A366 /* Pods-ScalePractice-ScalePracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalePractice-ScalePracticeTests.debug.xcconfig"; path = "Target Support Files/Pods-ScalePractice-ScalePracticeTests/Pods-ScalePractice-ScalePracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D993EABCC6D9441D800E81DA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		DDD848EB25619449006846A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		DDD848F225619474006846A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DDD848F925619482006846A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/infoPlist.strings"; sourceTree = "<group>"; };
+		DDD848FB25619488006846A6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		DDD8490925619678006846A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		DDD8490B256196AA006846A6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E996C8E709280383E7AB1180 /* libPods-ScalePractice-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScalePractice-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -146,8 +152,9 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				DDD848F325619474006846A6 /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				DDD848EC25619449006846A6 /* infoPlist.strings */,
 			);
 			name = ScalePractice;
 			sourceTree = "<group>";
@@ -354,6 +361,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				fr,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -380,8 +389,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				DDD848F125619474006846A6 /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				DDD848EA25619449006846A6 /* infoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +718,30 @@
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DDD848EC25619449006846A6 /* infoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDD848EB25619449006846A6 /* en */,
+				DDD848F925619482006846A6 /* zh-Hans */,
+				DDD848FB25619488006846A6 /* fr */,
+			);
+			name = infoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DDD848F325619474006846A6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDD848F225619474006846A6 /* en */,
+				DDD8490925619678006846A6 /* zh-Hans */,
+				DDD8490B256196AA006846A6 /* fr */,
+			);
+			name = LaunchScreen.storyboard;
+			path = ScalePractice;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
