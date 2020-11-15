@@ -19,8 +19,8 @@
 		45210E5A996368BC7046B290 /* libPods-ScalePractice-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8258435284066F2223B1087 /* libPods-ScalePractice-tvOS.a */; };
 		6E8E3EF5D2CE54773D124051 /* libPods-ScalePractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A21582AFB0DE32FEB7B846C /* libPods-ScalePractice.a */; };
 		899627C8ED62D05BCD1B9996 /* libPods-ScalePractice-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E996C8E709280383E7AB1180 /* libPods-ScalePractice-tvOSTests.a */; };
-		DDD848EA25619449006846A6 /* infoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDD848EC25619449006846A6 /* infoPlist.strings */; };
-		DDD848F125619474006846A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD848F325619474006846A6 /* LaunchScreen.storyboard */; };
+		DDD848EA25619449006846A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDD848EC25619449006846A6 /* InfoPlist.strings */; };
+		DDD8492525619C8C006846A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD8492325619C8C006846A6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,12 +77,10 @@
 		C5C7DB270B554DF4924F1511 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		CC629CFE063AB7712250A366 /* Pods-ScalePractice-ScalePracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalePractice-ScalePracticeTests.debug.xcconfig"; path = "Target Support Files/Pods-ScalePractice-ScalePracticeTests/Pods-ScalePractice-ScalePracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D993EABCC6D9441D800E81DA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		DDD848EB25619449006846A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/infoPlist.strings; sourceTree = "<group>"; };
-		DDD848F225619474006846A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DDD848F925619482006846A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/infoPlist.strings"; sourceTree = "<group>"; };
-		DDD848FB25619488006846A6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/infoPlist.strings; sourceTree = "<group>"; };
-		DDD8490925619678006846A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		DDD8490B256196AA006846A6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		DDD848EB25619449006846A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DDD848F925619482006846A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DDD848FB25619488006846A6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DDD8492425619C8C006846A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = ScalePractice/en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E996C8E709280383E7AB1180 /* libPods-ScalePractice-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScalePractice-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -151,10 +149,10 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				13B07FB61A68108700A75B9A /* Info.plist */,
-				DDD848F325619474006846A6 /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				DDD848EC25619449006846A6 /* infoPlist.strings */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				DDD8492325619C8C006846A6 /* LaunchScreen.storyboard */,
+				DDD848EC25619449006846A6 /* InfoPlist.strings */,
 			);
 			name = ScalePractice;
 			sourceTree = "<group>";
@@ -389,9 +387,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDD848F125619474006846A6 /* LaunchScreen.storyboard in Resources */,
+				DDD8492525619C8C006846A6 /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				DDD848EA25619449006846A6 /* infoPlist.strings in Resources */,
+				DDD848EA25619449006846A6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,25 +718,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DDD848EC25619449006846A6 /* infoPlist.strings */ = {
+		DDD848EC25619449006846A6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DDD848EB25619449006846A6 /* en */,
 				DDD848F925619482006846A6 /* zh-Hans */,
 				DDD848FB25619488006846A6 /* fr */,
 			);
-			name = infoPlist.strings;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DDD848F325619474006846A6 /* LaunchScreen.storyboard */ = {
+		DDD8492325619C8C006846A6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DDD848F225619474006846A6 /* en */,
-				DDD8490925619678006846A6 /* zh-Hans */,
-				DDD8490B256196AA006846A6 /* fr */,
+				DDD8492425619C8C006846A6 /* en */,
 			);
 			name = LaunchScreen.storyboard;
-			path = ScalePractice;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -793,17 +788,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2.0.0;
 				DEVELOPMENT_TEAM = L4SN53B3F6;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ScalePractice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.ScalePractice;
 				PRODUCT_NAME = ScalePractice;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -817,16 +813,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2.0.0;
 				DEVELOPMENT_TEAM = L4SN53B3F6;
 				INFOPLIST_FILE = ScalePractice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.ScalePractice;
 				PRODUCT_NAME = ScalePractice;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
