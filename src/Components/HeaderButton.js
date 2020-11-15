@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, Pressable, StyleSheet } from 'react-native';
+import { Text, Pressable } from 'react-native';
+import { useDarkMode } from 'react-native-dynamic'
 
+import { colors } from '../Model';
 
 /**
  * @description A simple button to live on the header and provide additional 
@@ -9,15 +11,22 @@ import { Text, Pressable, StyleSheet } from 'react-native';
  * @since 10/11/20
  */
 const HeaderButton = ({ children, handler }) => {
+  const DARKMODE = useDarkMode();
   return (
     <Pressable
-      android_ripple={{color: 'purple'}}
+      android_ripple={{color: DARKMODE ? colors.purpleDark : colors.purpleLight }}
       onPress={ handler }
-      style={ styles.button }
+      style={{
+        padding: 8,
+        marginRight: 4,
+      }}
       >
         {({ pressed }) => (
           <Text
-          style={ styles.text }
+          style={{
+            color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+            fontSize: 16,
+          }}
           >
             { children }
           </Text>
@@ -25,15 +34,5 @@ const HeaderButton = ({ children, handler }) => {
       </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  button: {
-    padding: 8,
-    marginRight: 4,
-  },
-  text: {
-    color: 'purple',
-  },
-});
 
 export default HeaderButton;

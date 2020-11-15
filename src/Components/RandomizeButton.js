@@ -1,6 +1,9 @@
 import React from 'react';
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Pressable, Text } from 'react-native';
+import { DarkModeContext, useDarkMode } from 'react-native-dynamic';
+import { color } from 'react-native-reanimated';
 
+import { colors } from '../Model';
 
 /**
  * @description A purple button meant to trigger the randomize process of the
@@ -9,34 +12,36 @@ import { Pressable, Text, StyleSheet } from 'react-native';
  * @since 10/11/20
  */
 const RandomizeButton = ({ handler }) => {
+  const DARKMODE = useDarkMode();
   return (
     <Pressable
-      android_ripple={{color: 'purple'}}
+      android_ripple={{
+        color: DARKMODE ? colors.purpleDark : colors.purpleLight
+      }}
       onPress={ handler }
-      style={ styles.button }
+      style={({ pressed }) => ({
+        borderRadius: 8,
+        borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+        borderWidth: 1,
+        margin: 10,
+        padding: 10,
+        opacity: pressed ? 0.8 : 1,
+        overflow: "hidden",
+      })}
     >
       <Text
-        style={ styles.text }
+        style={{
+          textAlign: 'center',
+          color: DARKMODE
+            ? colors.purpleDark
+            : colors.purpleLight,
+          fontSize: 24,
+        }}
       >
         Randomize
       </Text>
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  button: {
-    borderRadius: 8,
-    borderColor: 'purple',
-    borderWidth: 1,
-    margin: 10,
-    padding: 10,
-  },
-  text: {
-    textAlign: 'center',
-    color: 'purple',
-    fontSize: 24,
-  },
-});
 
 export default RandomizeButton;

@@ -1,12 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import Image from 'react-native-scalable-image'
+import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic'
+
+import { colors } from '../Model';
 
 const {width} = Dimensions.get("window");
 
 
 
 const ScaleDetail = ({ route }) => {
+  const styles = useDynamicValue(dynamicStyles);
 
   let path;
   switch(route.params.id) {
@@ -121,7 +125,7 @@ const ScaleDetail = ({ route }) => {
   }
 
   return (
-    <View>
+    <View style={styles.viewContainer}>
       <View style={styles.imageContainer}>
         <Image
           source={path}
@@ -134,14 +138,16 @@ const ScaleDetail = ({ route }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const dynamicStyles = new DynamicStyleSheet({
   construction: {
     textAlign: 'center',
     padding: 10,
+    color: new DynamicValue(colors.black, colors.white),
   },
   description: {
     paddingTop: 10,
     paddingHorizontal: 20,
+    color: new DynamicValue(colors.black, colors.white),
   },
   image: {
     resizeMode: 'contain',
@@ -155,6 +161,10 @@ const styles = StyleSheet.create({
     //backgroundColor: 'orange',
     //position: 'relative',
     //margin: 5,
+  },
+  viewContainer: {
+    height: '100%',
+    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
 });
 

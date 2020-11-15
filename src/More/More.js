@@ -1,14 +1,23 @@
 import React from 'react';
-import { View, Text, SectionList, Linking, StyleSheet, Pressable } from 'react-native';
+import { View, Text, SectionList, Linking, Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import DeviceInfo from 'react-native-device-info';
+import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic'
 
+import { colors } from '../Model';
+
+const GOOGLE_PLAY_LINK = 'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
+const APPLE_STORE_LINK = 'https://apps.apple.com/us/developer/alexander-burdiss/id1496727055';
 
 const RESOURCES = [
   {
     id: '0',
     type: 'link',
     value: 'More Apps by Alexander Burdiss',
-    link: 'https://play.google.com/store/apps/developer?id=Alexander+Burdiss',
+    link:
+      DeviceInfo.getBrand() === 'Apple' 
+        ? APPLE_STORE_LINK 
+        : GOOGLE_PLAY_LINK,
   },
   {
     id: '1',
@@ -39,21 +48,31 @@ const ABOUT = [
   },
 ];
 
-const ItemSeparator = () => {
-  return (
-    <View style={styles.listItemSeparator} />
-  );
-}
 
+/**
+ * @description A rendered Text list item. 
+ * @author Alexander Burdiss
+ * @since 11/15/20
+ */
 const TextListItem = ({ item }) => {
+  const styles = useDynamicValue(dynamicStyles);
+
   return (
     <View style={styles.listRowContainer}>
-      <Text>{item.value}</Text>
+      <Text style={styles.listRowText}>{item.value}</Text>
     </View>
   );
 }
 
+
+/**
+ * @description A rendered Link list item with a chevron and purple text
+ * @author Alexander Burdiss
+ * @since 11/15/20
+ */
 const LinkListItem = ({ item }) => {
+  const styles = useDynamicValue(dynamicStyles);
+
   return (
     <Pressable
       onPress={() => {
@@ -62,7 +81,7 @@ const LinkListItem = ({ item }) => {
     >
       <View style={styles.listRowContainer}>
         <Text style={styles.linkText}>{item.value}</Text>
-        <Ionicons name={'chevron-forward-outline'} size={30} color={'purple'} />
+        <Ionicons name={'chevron-forward-outline'} size={25} color={styles.linkText.color} />
       </View>
     </Pressable>
   )
@@ -76,6 +95,8 @@ const LinkListItem = ({ item }) => {
  * @since 10/10/20
  */
 const More = () => {
+  const styles = useDynamicValue(dynamicStyles);
+
   return (
     <View>
       <SectionList
@@ -92,37 +113,47 @@ const More = () => {
         renderSectionHeader={({section: {title}}) => (
           <Text style={styles.listHeader}>{title}</Text>
         )}
+        style={styles.sectionList}
+        stickySectionHeadersEnabled={false}
       />
     </View>
   );
 };
 
-export default More;
-
-const styles = StyleSheet.create({
+const dynamicStyles = new DynamicStyleSheet({
   listItemSeparator: {
     height: 0.5,
     width: '100%',
-    backgroundColor: '#C8C8C8',
+    backgroundColor: new DynamicValue(colors.systemGray3Light, colors.systemGray3Dark),
   },
   listHeader: {
     textTransform: 'uppercase',
-    paddingLeft: 15,
+    paddingLeft: 20,
     paddingTop: 30,
-    paddingBottom: 5,
+    paddingBottom: 10,
+    color: new DynamicValue(colors.systemGray, colors.systemGray),
   },
   listRowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'white',
+    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
     paddingVertical: 8,
     height: 45,
-    paddingHorizontal: 15,
-    borderTopWidth: 1,
-    borderTopColor: 'gray',
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: new DynamicValue(colors.systemGray5Light, colors.systemGray5Dark),
+  },
+  listRowText: {
+    color: new DynamicValue(colors.black, colors.white),
   },
   linkText: {
-    color: 'purple',
+    color: new DynamicValue(colors.purpleLight, colors.purpleDark),
+  },
+  sectionList: {
+    height: '100%',
+    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   }
 });
+
+export default More;

@@ -18,6 +18,7 @@
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-device-info": "^7.0.2",
+    "react-native-dynamic": "^1.0.0",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-localization": "^2.1.6",
     "react-native-reanimated": "^1.13.1",

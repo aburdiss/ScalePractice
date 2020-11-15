@@ -1,3 +1,8 @@
+/**
+ * Model.js
+ * The data used throughout Scale Practice
+ * Created by Alexander Burdiss
+ */
 const MajorScaleDescription = "The Major scale is the most common scale in western music.";
 const NaturalMinorScaleDescription = "The Natural Minor scale is built by starting on the sixth scale degree of the Major scale.";
 const HarmonicMinorScaleDescription = "The Harmonic Minor scale shares all of the same notes with the Natural Minor scale, except its raised seventh scale degree. This scale is called the \"Harmonic Minor\" scale because it is the foundation of many harmonies in the minor mode.";
@@ -80,4 +85,23 @@ export const arpeggioResourceData = [
 export default {
   scaleResourceData,
   arpeggioResourceData,
+}
+
+export const colors = {
+  white: '#FFFFFF',
+  systemGray6Light: 'rgb(242, 242, 247)',
+  systemGray5Light: 'rgb(229, 229, 234)',
+  systemGray4Light: 'rgb(209, 209, 214)',
+  systemGray3Light: 'rgb(199, 199, 204)',
+  systemGray2Light: 'rgb(174, 174, 178)',
+  systemGray: 'rgb(142, 142, 147)',
+  systemGray2Dark: 'rgb(99, 99, 102)',
+  systemGray3Dark: 'rgb(72, 72, 74)',
+  systemGray4Dark: 'rgb(58, 58, 60)',
+  systemGray5Dark: 'rgb(44, 44, 46)',
+  systemGray6Dark: 'rgb(28, 28, 30)',
+  black: '#000000',
+
+  purpleLight: 'rgb(175, 82, 222)',
+  purpleDark: 'rgb(191, 90, 242)',
 }

@@ -1,32 +1,50 @@
 import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useDarkMode } from 'react-native-dynamic';
 
+import { colors } from '../Model';
+
+
+/**
+ * @description Used as a render item in the ScaleDescription scroll view.
+ * @author Alexander Burdiss
+ * @since 11/15/20
+ */
 const ListItem = ({ data }) => {
   const navigation = useNavigation();
+  const DARKMODE = useDarkMode();
+
   return (
     <Pressable
-      android_ripple={{color: 'purple'}}
+      android_ripple={{
+        color: DARKMODE ? colors.purpleDark : colors.purpleLight
+      }}
       onPress={() => {
         navigation.navigate("Scale Detail", data);
       }}
-      style={styles.button}
+      style={{
+        paddingLeft: 20,
+        backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      }}
     >
-      <Text style={styles.text}>{ data.name }</Text>
+      <View 
+        style={{
+          borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+          borderBottomWidth: 1,
+          paddingVertical: 15,
+        }}
+      >
+        <Text
+          style={{
+            color: DARKMODE ? colors.white : colors.black,
+          }}
+        >
+          { data.name }
+        </Text>
+      </View>
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  button: {
-    paddingLeft: 20,
-    backgroundColor: 'white',
-  },
-  text: {
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
-    paddingVertical: 15,
-  },
-})
 
 export default ListItem;

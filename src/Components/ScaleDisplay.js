@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: 'gray',
+    overflow: 'hidden',
     textAlign: 'center',
     width: '100%',
     padding: 16,
