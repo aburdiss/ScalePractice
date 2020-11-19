@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Pressable, Text } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 const AddToListButton = ({ handler }) => {
   const DARKMODE = useDarkMode();

@@ -3,7 +3,7 @@ import { View, Text, Dimensions } from 'react-native';
 import Image from 'react-native-scalable-image'
 import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic'
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 const { width } = Dimensions.get("window");
 

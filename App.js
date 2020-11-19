@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -17,7 +17,35 @@ import ScaleDetail from './src/Resources/ScaleDetail';
 
 import HeaderButton from './src/Components/HeaderButton';
 
-import { colors } from './src/Model';
+import { colors } from './src/Model/Model';
+
+import * as RNLocalize from 'react-native-localize';
+import i18n from 'i18n-js';
+import memoize from 'lodash.memoize';
+
+const translationGetters = {
+  en: () => require('./src/Translations/en.json'),
+  zh: () => require('./src/Translations/zh.json'),
+  fr: () => require('./src/Translations/fr.json'),
+};
+
+const translate = memoize(
+  (key, config) => i18n.t(key, config),
+  (key, config) => (config ? key + JSON.stringify(config) : key)
+);
+
+const setI18nConfig = () => {
+  const fallback = { languageTag: 'en' }
+  const { languageTag } =
+    RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
+    fallback
+
+  translate.cache.clear()
+
+  i18n.translations = { [languageTag]: translationGetters[languageTag]() }
+  i18n.locale = languageTag
+}
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -42,7 +70,8 @@ const RandomStack = ({ navigation }) => {
           borderBottomWidth: 1,
           borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
           shadowColor: 'transparent',
-        }
+        },
+        headerBackTitle: translate("Back"),
       }}
     >
       <Stack.Screen 
@@ -53,14 +82,18 @@ const RandomStack = ({ navigation }) => {
             <HeaderButton 
               handler={() => { navigation.navigate("Random Arpeggio Practice")}}
             >
-              Arpeggios
+              {translate("Arpeggios")}
             </HeaderButton>
           ),
+          title: translate("Random Scale Practice")
         }}
       />
       <Stack.Screen 
         name="Random Arpeggio Practice" 
         component={RandomArpeggio}
+        options={{
+          title: translate("Random Arpeggio Practice"),
+        }}
       />
     </Stack.Navigator>
   )
@@ -86,7 +119,8 @@ const ResourcesStack = ({ navigation }) => {
           borderBottomWidth: 1,
           borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
           shadowColor: 'transparent',
-        }
+        },
+        headerBackTitle: translate("Back"),
       }}
     >
       <Stack.Screen 
@@ -97,21 +131,24 @@ const ResourcesStack = ({ navigation }) => {
             <HeaderButton
               handler={()=>{navigation.navigate("Arpeggio Resources")}}
             >
-              Arpeggios
+              {translate("Arpeggios")}
             </HeaderButton>
           ),
-         
+          title: translate("Scale Resources"),
         }}
       />
       <Stack.Screen 
         name="Arpeggio Resources" 
         component={ArpeggioResources} 
+        options={{
+          title: translate("Arpeggio Resources"),
+        }}
       />
       <Stack.Screen
         name="Scale Detail"
         component={ScaleDetail}
         options={({ route }) => ({ 
-          title: route.params.name,
+          title: translate(route.params.name),
         })}
       />
     </Stack.Navigator>
@@ -138,7 +175,8 @@ const AdvancedStack = ({ navigation }) => {
           borderBottomWidth: 1,
           borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
           shadowColor: 'transparent',
-        }
+        },
+        headerBackTitle: translate("Back"),
       }}
     >
       <Stack.Screen 
@@ -149,14 +187,18 @@ const AdvancedStack = ({ navigation }) => {
             <HeaderButton
               handler={()=>{navigation.navigate("Advanced Arpeggio Practice")}}
             >
-              Arpeggios
+              {translate("Arpeggios")}
             </HeaderButton>
           ),
+          title: translate("Advanced Scale Practice"),
         }}
       />
       <Stack.Screen 
         name="Advanced Arpeggio Practice" 
         component={AdvancedArpeggio}
+        options={{
+          title: translate("Advanced Arpeggio Practice"),
+        }}
       />
     </Stack.Navigator>
   );
@@ -182,18 +224,22 @@ const MoreStack = () => {
           borderBottomWidth: 1,
           borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
           shadowColor: 'transparent',
-        }
+        },
+        headerBackTitle: translate("Back"),
       }}
     >
       <Stack.Screen
         name="More"
         component={More}
+        options={{
+          title: translate("More"),
+        }}
       />
     </Stack.Navigator>
   )
 }
 
-
+setI18nConfig();
 /**
  * @description The main tab navigation of the app.
  * @author Alexander Burdiss
@@ -201,6 +247,22 @@ const MoreStack = () => {
  */
 const App = () => {
   const DARKMODE = useDarkMode();
+
+  useEffect(() => {
+    RNLocalize.addEventListener('change', handleLocalizationChange);
+    return (() => {
+      RNLocalize.removeEventListener('change', handleLocalizationChange);
+    });
+  }, []);
+
+  const handleLocalizationChange = () => {
+    setI18nConfig()
+    .then(() => this.forceUpdate())
+    .catch(error => {
+    console.error(error)
+    })
+  };
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -230,23 +292,23 @@ const App = () => {
         <Tab.Screen
           name="Random"
           component={RandomStack}
-          options={{title: 'Random'}}
-        />
+          options={{title: translate('Random')}}
+          />
         <Tab.Screen
           name="Resources"
           component={ResourcesStack}
-          options={{title: 'Resources'}}
-        />
+          options={{title: translate('Resources')}}
+          />
         <Tab.Screen
           name="Advanced"
           component={AdvancedStack}
-          options={{title: 'Advanced'}}
-        />
+          options={{title: translate('Advanced')}}
+          />
         <Tab.Screen 
           name="More"
           component={MoreStack} 
-          options={{title: 'More'}} 
-        />
+          options={{title: translate('More')}} 
+          />
       </Tab.Navigator>
     </NavigationContainer>
   );

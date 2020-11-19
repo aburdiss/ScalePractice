@@ -4,7 +4,7 @@ import { useDarkMode } from 'react-native-dynamic'
 
 import  ListItem  from '../Components/ListItem';
 
-import { scaleResourceData, colors } from '../Model';
+import { scaleResourceData, colors } from '../Model/Model';
 
 
 /**

@@ -4,7 +4,7 @@ import { useDarkMode } from 'react-native-dynamic'
 
 import  ListItem  from '../Components/ListItem';
 
-import { arpeggioResourceData, colors } from '../Model';
+import { arpeggioResourceData, colors } from '../Model/Model';
 
 
 /**

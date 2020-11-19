@@ -6,7 +6,7 @@ import ScaleDisplay from '../Components/ScaleDisplay';
 import AllScalesButton from '../Components/AllScalesButton';
 import RandomzieButton from '../Components/RandomizeButton';
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 /**
  * @description A styled text box that shows the currently selected scale

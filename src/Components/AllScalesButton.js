@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 /**
  * @description A gray button that is meant to trigger all switches on a page. 

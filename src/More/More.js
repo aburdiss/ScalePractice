@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import DeviceInfo from 'react-native-device-info';
 import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic'
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 const GOOGLE_PLAY_LINK = 'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
 const APPLE_STORE_LINK = 'https://apps.apple.com/us/developer/alexander-burdiss/id1496727055';

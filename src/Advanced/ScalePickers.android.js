@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useDarkMode } from 'react-native-dynamic';
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 const ScalePickers = ({ 
   selectedNote, 

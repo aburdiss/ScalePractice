@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Pressable } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic'
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 /**
  * @description A simple button to live on the header and provide additional 

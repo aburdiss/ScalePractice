@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 /**
  * @description A purple button meant to trigger the randomize process of the

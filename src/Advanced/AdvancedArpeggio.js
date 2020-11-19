@@ -10,7 +10,7 @@ import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
 
-import { colors } from '../Model';
+import { colors } from '../Model/Model';
 
 class SwipeableRow extends Component {
   renderRightActions = (progress, dragX) => {
