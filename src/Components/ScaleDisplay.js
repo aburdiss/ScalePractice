@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
+import { useDarkMode } from 'react-native-dynamic';
+
+import { colors } from '../Model';
 
 /**
  * @description A styled text box that shows the currently selected scale
@@ -7,30 +10,31 @@ import { View, Text, StyleSheet } from 'react-native';
  * @since 10/11/20
  */
 const ScaleDisplay = ({ children }) => {
+  const DARKMODE = useDarkMode();
   return (
     <View
-      style={ styles.view }
+      style={{
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        padding: 10,
+      }}
     >
-      <Text style={ styles.text }>{ children }</Text>
+      <Text
+        style={{
+          backgroundColor: DARKMODE ? colors.systemGray2Dark : colors.systemGray2Light,
+          color: DARKMODE ? colors.white : colors.black,
+          overflow: 'hidden',
+          textAlign: 'center',
+          width: '100%',
+          padding: 16,
+          fontSize: 18,
+          borderRadius: 8,
+        }}
+      >
+        { children }
+      </Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  view: {
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: 10,
-  },
-  text: {
-    backgroundColor: 'gray',
-    overflow: 'hidden',
-    textAlign: 'center',
-    width: '100%',
-    padding: 16,
-    fontSize: 16,
-    borderRadius: 8,
-  },
-});
 
 export default ScaleDisplay;

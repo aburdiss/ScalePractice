@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Alert, View, Text, Switch, StyleSheet } from 'react-native';
+import { Alert, View, Text, Switch } from 'react-native';
+import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic';
 
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AllScalesButton from '../Components/AllScalesButton';
 import RandomzieButton from '../Components/RandomizeButton';
 
+import { colors } from '../Model';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -13,6 +15,7 @@ import RandomzieButton from '../Components/RandomizeButton';
  * @since 10/10/20
  */
 const RandomScale = () => {
+  const styles = useDynamicValue(dynamicStyles);
 
   const [currentScale, setCurrentScale] = useState("No Scale Selected");
 
@@ -210,7 +213,11 @@ const RandomScale = () => {
         <View style={ styles.switchesContainer }>
 
           <View style={ styles.switchRow }>
-            <Text>Major</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Major
+            </Text>
             <Switch
               onValueChange={ toggleMajorSwitch }
               value={ majorSwitch }
@@ -218,7 +225,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Natural Minor</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Natural Minor
+            </Text>
             <Switch
               onValueChange={ toggleNaturalMinorSwitch }
               value={ naturalMinorSwitch }
@@ -226,7 +237,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Harmonic Minor</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Harmonic Minor
+            </Text>
             <Switch
               onValueChange={ toggleHarmonicMinorSwitch }
               value={ harmonicMinorSwitch }
@@ -234,7 +249,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Melodic Minor</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Melodic Minor
+            </Text>
             <Switch
               onValueChange={ toggleMelodicMinorSwitch }
               value={ melodicMinorSwitch }
@@ -242,7 +261,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Major Modes</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Major Modes
+            </Text>
             <Switch
               onValueChange={ toggleMajorModesSwitch }
               value={ majorModesSwitch }
@@ -250,7 +273,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Melodic Minor Modes</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Melodic Minor Modes
+            </Text>
             <Switch
               onValueChange={ toggleMelodicMinorModesSwitch }
               value={ melodicMinorModesSwitch }
@@ -258,7 +285,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Blues</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Blues
+            </Text>
             <Switch
               onValueChange={ toggleBluesSwitch }
               value={ bluesSwitch }
@@ -266,7 +297,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Pentatonic</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Pentatonic
+            </Text>
             <Switch
               onValueChange={ togglePentatonicSwitch }
               value={ pentatonicSwitch }
@@ -274,7 +309,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Octatonic</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Octatonic
+            </Text>
             <Switch
               onValueChange={ toggleOctatonicSwitch }
               value={ octatonicSwtich }
@@ -282,7 +321,11 @@ const RandomScale = () => {
           </View>
 
           <View style={ styles.switchRow }>
-            <Text>Whole Tone</Text>
+            <Text
+              style={ styles.switchText }
+            >
+              Whole Tone
+            </Text>
             <Switch
               onValueChange={ toggleWholeToneSwitch }
               value={ wholeToneSwitch }
@@ -304,10 +347,11 @@ const RandomScale = () => {
 /**
  * @description Styles for RandomScale component.
  */
-const styles = StyleSheet.create({
+const dynamicStyles = new DynamicStyleSheet({
   container: {
     flex: 1,
     justifyContent: 'space-between',
+    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
   switchesContainer: {
     width: '70%',
@@ -317,8 +361,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: 4,
-  }
+  },
+  switchText: {
+    color: new DynamicValue(colors.black, colors.white),
+  },
 });
-
 
 export default RandomScale;

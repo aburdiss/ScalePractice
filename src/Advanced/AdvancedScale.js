@@ -1,7 +1,8 @@
 import React, { useState, Component } from 'react';
-import { Alert, View, Text, StyleSheet, FlatList, Platform } from 'react-native';
+import { Alert, View, Text, FlatList } from 'react-native';
 import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic';
 
 import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
@@ -9,6 +10,7 @@ import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
 
+import { colors } from '../Model';
 
 class SwipeableRow extends Component {
   renderRightActions = (progress, dragX) => {
@@ -18,12 +20,12 @@ class SwipeableRow extends Component {
       extrapolate: 'clamp',
     });
     return (
-      <RectButton style={styles.rightAction} onPress={() => this.props.delete(this.props.item)}>
+      <RectButton style={this.props.styles.rightAction} onPress={() => this.props.delete(this.props.item)}>
         <Ionicons
           name="trash"
           size={20}
-          style={styles.trashIcon}
-          color="#fff"
+          style={this.props.styles.trashIcon}
+          color={colors.white}
         />
       </RectButton>
     );
@@ -52,6 +54,8 @@ class SwipeableRow extends Component {
  * @since 10/10/20
  */
 const AdvancedScale = () => {
+  const styles = useDynamicValue(dynamicStyles);
+
   const noteNames = ["C", "C♯", "D♭", "D", "D♯", "E♭", "E", "F", "F♯", "G♭", "G", "G♯", "A♭", "A", "A♯", "B♭", "B"];
   const scaleNames = ["Major", "Natural Minor", "Harmonic Minor", "Melodic Minor", "Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian", "Minor Major", "Dorian ♭2", "Lydian Augmented", "Lydian Dominant", "Mixolydian ♭6", "Locrian ♮2", "Altered Scale", "Blues", "Major Pentatonic", "Minor Pentatonic", "Whole-Half Octatonic", "Half-Whole Octatonic", "Whole Tone"];
 
@@ -141,9 +145,11 @@ const AdvancedScale = () => {
         style={styles.list}
         data={possibleScales}
         renderItem={({ item }) => (
-          <SwipeableRow delete={deleteElement} item={item}>
+          <SwipeableRow styles={styles} delete={deleteElement} item={item}>
             <View style={styles.listItemContainer}>
-              <Text style={styles.listItemText}>{item}</Text>
+              <View style={styles.listItemTextContainer}>
+                <Text style={styles.listItemText}>{item}</Text>
+              </View>
             </View>
           </SwipeableRow>
         )}
@@ -154,7 +160,8 @@ const AdvancedScale = () => {
   );
 };
 
-const styles = StyleSheet.create({
+
+const dynamicStyles = new DynamicStyleSheet({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -162,23 +169,27 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
   list: {
     flex: 1,
   },
   listItemContainer: {
     paddingLeft: 20,
-    backgroundColor: 'white',
+    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
   },
   listItemText: {
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
     paddingVertical: 15,
+    color: new DynamicValue(colors.black, colors.white),
+  },
+  listItemTextContainer: {
+    borderBottomColor: new DynamicValue(colors.systemGray5Light, colors.systemGray5Dark),
+    borderBottomWidth: 1,
   },
   rightAction: {
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#dd2c00',
+    backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
     flex: 1,
     justifyContent: 'flex-end'
   },

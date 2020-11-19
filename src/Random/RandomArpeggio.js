@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Alert, View, Text, Switch, StyleSheet } from 'react-native';
+import { Alert, View, Text, Switch } from 'react-native';
+import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic';
 
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AllScalesButton from '../Components/AllScalesButton';
 import RandomzieButton from '../Components/RandomizeButton';
 
+import { colors } from '../Model';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios
@@ -13,6 +15,7 @@ import RandomzieButton from '../Components/RandomizeButton';
  * @since 10/10/20  
  */
 const RandomArpeggio = () => {
+  const styles = useDynamicValue(dynamicStyles);
 
   const [currentArpeggio, setCurrentArpeggio] = useState("No Arpeggio Selected");
 
@@ -224,7 +227,11 @@ const RandomArpeggio = () => {
           <View style={ styles.switchesContainer }>
 
             <View style={ styles.switchRow }>
-              <Text>Major</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Major
+              </Text>
               <Switch
                 onValueChange={ toggleMajorSwitch }
                 value={ majorSwitch }
@@ -232,7 +239,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Minor</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Minor
+              </Text>
               <Switch
                 onValueChange={ toggleMinorSwitch }
                 value={ minorSwitch }
@@ -240,7 +251,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Augmented</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Augmented
+              </Text>
               <Switch
                 onValueChange={ toggleAugmentedSwitch }
                 value={ augmentedSwitch }
@@ -248,7 +263,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Diminished</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Diminished
+              </Text>
               <Switch
                 onValueChange={ toggleDiminishedSwitch }
                 value={ diminishedSwitch }
@@ -256,7 +275,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Dominant Seventh</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Dominant Seventh
+              </Text>
               <Switch
                 onValueChange={ toggleDominantSeventhSwitch }
                 value={ dominantSeventhSwitch }
@@ -264,7 +287,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Major Seventh</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Major Seventh
+              </Text>
               <Switch
                 onValueChange={ toggleMajorSeventhSwitch }
                 value={ majorSeventhSwitch }
@@ -272,7 +299,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Minor Seventh</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Minor Seventh
+              </Text>
               <Switch
                 onValueChange={ toggleMinorSeventhSwitch }
                 value={ minorSeventhSwitch }
@@ -280,7 +311,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Minor Major Seventh</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Minor Major Seventh
+              </Text>
               <Switch
                 onValueChange={ toggleMinorMajorSeventhSwitch }
                 value={ minorMajorSeventhSwitch }
@@ -288,7 +323,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Augmented Seventh</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Augmented Seventh
+              </Text>
               <Switch
                 onValueChange={ toggleAugmentedSeventhSwitch }
                 value={ augmentedSeventhSwitch }
@@ -296,7 +335,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Half-Diminished Seventh</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Half-Diminished Seventh
+              </Text>
               <Switch
                 onValueChange={ toggleHalfDiminishedSeventhSwitch }
                 value={ halfDiminishedSeventhSwitch }
@@ -304,7 +347,11 @@ const RandomArpeggio = () => {
             </View>
 
             <View style={ styles.switchRow }>
-              <Text>Diminished Seventh</Text>
+              <Text
+                style={ styles.switchText }
+              >
+                Diminished Seventh
+              </Text>
               <Switch
                 onValueChange={ toggleDiminishedSeventhSwitch }
                 value={ diminishedSeventhSwitch }
@@ -327,10 +374,11 @@ const RandomArpeggio = () => {
 /**
  * @description Styles for RandomScale component.
  */
-const styles = StyleSheet.create({
+const dynamicStyles = new DynamicStyleSheet({
   container: {
     flex: 1,
     justifyContent: 'space-between',
+    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
   switchesContainer: {
     width: '70%',
@@ -340,8 +388,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: 4,
-  }
+  },
+  switchText: {
+    color: new DynamicValue(colors.black, colors.white),
+  },
 });
-
 
 export default RandomArpeggio;

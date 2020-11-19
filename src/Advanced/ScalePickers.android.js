@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { useDarkMode } from 'react-native-dynamic';
 
+import { colors } from '../Model';
 
 const ScalePickers = ({ 
   selectedNote, 
@@ -11,12 +13,24 @@ const ScalePickers = ({
   setSelectedScale, 
   scaleNames 
 }) => {
+  const DARKMODE = useDarkMode();
   return (
-    <View style={styles.pickerContainer}>
-      <View style={styles.picker}>
+    <View
+      style={{
+        paddingHorizontal: 26,
+      }}
+    >
+      <View
+        style={{
+          borderWidth: 1,
+          borderColor: DARKMODE ? colors.systemGray2Dark : colors.systemGray2Light,
+          margin: 4,
+          borderRadius: 8,
+        }}
+      >
         <Picker
           selectedValue={selectedNote}
-          dropdownIconColor="#800080"
+          dropdownIconColor={DARKMODE ? colors.purpleDark : colors.purpleLight}
           onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
         >
           {
@@ -26,10 +40,17 @@ const ScalePickers = ({
           }
         </Picker>
       </View>
-      <View style={styles.picker}>
+      <View
+        style={{
+          borderWidth: 1,
+          borderColor: 'gray',
+          margin: 4,
+          borderRadius: 8,
+        }}
+      >
         <Picker
           selectedValue={selectedScale}
-          dropdownIconColor="#800080"
+          dropdownIconColor={DARKMODE ? colors.purpleDark : colors.purpleDark}
           onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
         >
           {
@@ -42,17 +63,5 @@ const ScalePickers = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  picker: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    margin: 4,
-    borderRadius: 8,
-  },
-  pickerContainer: {
-    paddingHorizontal: 26,
-  },
-});
 
 export default ScalePickers;

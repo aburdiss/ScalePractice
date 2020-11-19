@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator, Header } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useDarkMode } from 'react-native-dynamic'
 
@@ -19,7 +19,6 @@ import HeaderButton from './src/Components/HeaderButton';
 
 import { colors } from './src/Model';
 
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -32,7 +31,20 @@ const Stack = createStackNavigator();
 const RandomStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+        headerTitleStyle: {
+          color: DARKMODE ? colors.white : colors.black,
+        },
+        headerStyle: {
+          backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+          borderBottomWidth: 1,
+          borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+          shadowColor: 'transparent',
+        }
+      }}
+    >
       <Stack.Screen 
         name="Random Scale Practice" 
         component={RandomScale}
@@ -44,30 +56,11 @@ const RandomStack = ({ navigation }) => {
               Arpeggios
             </HeaderButton>
           ),
-          headerTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
-          headerTitleStyle: {
-            color: DARKMODE ? colors.white : colors.black,
-          },
-          headerStyle: {
-            backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-            borderBottomWidth: 1,
-          borderBottomColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
-          shadowColor: 'transparent',
-          }
         }}
       />
       <Stack.Screen 
         name="Random Arpeggio Practice" 
         component={RandomArpeggio}
-        options={{
-          headerTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
-          headerTitleStyle: {
-            color: DARKMODE ? colors.white : colors.black,
-          },
-          headerStyle: {
-            backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-          }
-        }}
       />
     </Stack.Navigator>
   )

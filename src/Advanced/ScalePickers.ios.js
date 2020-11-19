@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { useDarkMode } from 'react-native-dynamic';
 
+import { colors } from '../Model';
 
 const ScalePickers = ({ 
   selectedNote, 
@@ -11,17 +13,22 @@ const ScalePickers = ({
   setSelectedScale, 
   scaleNames 
 }) => {
+  const DARKMODE = useDarkMode();
   return (
-    <View style={styles.pickerContainer}>
-      <View style={[
-        {
+    <View style={{
+      flexDirection: 'row',
+    }}>
+      <View
+        style={{
           width: '25%',
-        },
-        styles.picker
-      ]}>
+        }}
+      >
         <Picker
           selectedValue={selectedNote}
           onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
+          itemStyle={{
+            color: DARKMODE ? colors.white : colors.black,
+          }}
         >
           {
             noteNames.map(noteName => (
@@ -30,15 +37,17 @@ const ScalePickers = ({
           }
         </Picker>
       </View>
-      <View style={[
-        {
+      <View
+        style={{
           width: '75%',
-        },
-        styles.picker
-      ]}>
+        }}
+      >
         <Picker
           selectedValue={selectedScale}
           onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
+          itemStyle={{
+            color: DARKMODE ? colors.white : colors.black,
+          }}
         >
           {
             scaleNames.map(scaleName => (
@@ -50,13 +59,5 @@ const ScalePickers = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  picker: {
-  },
-  pickerContainer: {
-    flexDirection: 'row',
-  },
-});
 
 export default ScalePickers;

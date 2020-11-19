@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import Image from 'react-native-scalable-image'
 import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic'
 
 import { colors } from '../Model';
 
-const {width} = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 
 

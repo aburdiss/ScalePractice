@@ -1,6 +1,8 @@
 import React from 'react';
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Pressable, Text } from 'react-native';
+import { useDarkMode } from 'react-native-dynamic';
 
+import { colors } from '../Model';
 
 /**
  * @description A gray button that is meant to trigger all switches on a page. 
@@ -9,34 +11,35 @@ import { Pressable, Text, StyleSheet } from 'react-native';
  * @since 10/12/20
  */
 const AllScalesButton = ({ children, handler }) => {
+  const DARKMODE = useDarkMode();
+
   return (
     <Pressable
-      android_ripple={{color: 'gray'}}
+      android_ripple={{
+        color: DARKMODE ? colors.systemGray : colors.systemGray,
+      }}
       onPress={ handler }
-      style={ styles.button }
+      style={({ pressed }) => ({
+        borderRadius: 8,
+        borderColor: DARKMODE ? colors.systemGray : colors.systemGray,
+        borderWidth: 1,
+        margin: 10,
+        padding: 10,
+        opacity: pressed ? 0.8 : 1,
+        overflow: 'hidden',
+      })}
     >
       <Text
-        style={ styles.text }
+        style={{
+          textAlign: 'center',
+          color: DARKMODE ? colors.systemGray: colors.systemGray,
+          fontSize: 16,
+        }}
       >
         { children }
       </Text>
     </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  button: {
-    borderRadius: 8,
-    borderColor: 'gray',
-    borderWidth: 1,
-    margin: 10,
-    padding: 10,
-  },
-  text: {
-    textAlign: 'center',
-    color: 'gray',
-    fontSize: 16,
-  },
-});
 
 export default AllScalesButton;

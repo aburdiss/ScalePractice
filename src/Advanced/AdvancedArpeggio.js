@@ -1,14 +1,16 @@
 import React, { useState, Component } from 'react';
-import { Alert, View, Text, StyleSheet, FlatList } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { Alert, View, Text, FlatList } from 'react-native';
 import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic';
 
 import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
+import ScalePickers from './ScalePickers';
 
+import { colors } from '../Model';
 
 class SwipeableRow extends Component {
   renderRightActions = (progress, dragX) => {
@@ -18,12 +20,12 @@ class SwipeableRow extends Component {
       extrapolate: 'clamp',
     });
     return (
-      <RectButton style={styles.rightAction} onPress={() => this.props.delete(this.props.item)}>
+      <RectButton style={this.props.styles.rightAction} onPress={() => this.props.delete(this.props.item)}>
         <Ionicons
           name="trash"
           size={20}
-          style={styles.trashIcon}
-          color="#fff"
+          style={this.props.styles.trashIcon}
+          color={colors.white}
         />
       </RectButton>
     );
@@ -52,6 +54,8 @@ class SwipeableRow extends Component {
  * @since 10/10/20
  */
 const AdvancedArpeggio = () => {
+  const styles = useDynamicValue(dynamicStyles);
+
   const noteNames = ["C", "C♯", "D♭", "D", "D♯", "E♭", "E", "F", "F♯", "G♭", "G", "G♯", "A♭", "A", "A♯", "B♭", "B"];
   const arpeggioNames = ["Major", "Minor", "Augmented", "Diminished", "Dominant Seventh", "Major Seventh", "Minor Seventh", "Minor Major Seventh", "Augmented Minor Seventh", "Half Diminished Seventh", "Diminished Seventh"];
 
@@ -125,34 +129,14 @@ const AdvancedArpeggio = () => {
   return (
     <View style={styles.container}>
       <ScaleDisplay>{ currentScale }</ScaleDisplay>
-      <View style={styles.pickerContainer}>
-        <View style={styles.picker}>
-          <Picker
-            selectedValue={selectedNote}
-            dropdownIconColor="#800080"
-            onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
-            >
-            {
-              noteNames.map(noteName => (
-                <Picker.Item label={noteName} value={noteName} key={noteName} />
-                ))
-              }
-          </Picker>
-        </View>
-        <View style={styles.picker}>
-          <Picker
-            selectedValue={selectedArpeggio}
-            dropdownIconColor="#800080"
-            onValueChange={(itemValue, itemIndex) => setSelectedArpeggio(itemValue)}
-            >
-            {
-              arpeggioNames.map(arpeggioName => (
-                <Picker.Item label={arpeggioName} value={arpeggioName} key={arpeggioName} />
-                ))
-              }
-          </Picker>
-        </View>
-      </View>
+      <ScalePickers
+        selectedNote={selectedNote}
+        setSelectedNote={setSelectedNote}
+        noteNames={noteNames}
+        selectedScale={selectedArpeggio}
+        setSelectedScale={setSelectedArpeggio}
+        scaleNames={arpeggioNames}
+      />
       <View style={styles.buttonContainer}>
         <ResetButton handler={removeAllScales} />
         <AddToListButton handler={addToArpeggioList} />
@@ -161,9 +145,11 @@ const AdvancedArpeggio = () => {
         style={styles.list}
         data={possibleArpeggios}
         renderItem={({ item }) => (
-          <SwipeableRow delete={deleteElement} item={item}>
+          <SwipeableRow styles={styles} delete={deleteElement} item={item}>
             <View style={styles.listItemContainer}>
-              <Text style={styles.listItemText}>{item}</Text>
+              <View style={styles.listItemTextContainer}>
+                <Text style={styles.listItemText}>{item}</Text>
+              </View>
             </View>
           </SwipeableRow>
         )}
@@ -174,7 +160,7 @@ const AdvancedArpeggio = () => {
   );
 };
 
-const styles = StyleSheet.create({
+const dynamicStyles = new DynamicStyleSheet({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -182,32 +168,27 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
   list: {
     flex: 1,
   },
   listItemContainer: {
     paddingLeft: 20,
-    backgroundColor: 'white',
+    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
   },
   listItemText: {
-    borderTopColor: 'gray',
-    borderTopWidth: 1,
     paddingVertical: 15,
+    color: new DynamicValue(colors.black, colors.white),
   },
-  picker: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    margin: 4,
-    borderRadius: 8,
-  },
-  pickerContainer: {
-    paddingHorizontal: 26,
+  listItemTextContainer: {
+    borderBottomColor: new DynamicValue(colors.systemGray5Light, colors.systemGray5Dark),
+    borderBottomWidth: 1,
   },
   rightAction: {
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#dd2c00',
+    backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
     flex: 1,
     justifyContent: 'flex-end'
   },

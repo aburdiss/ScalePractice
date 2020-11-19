@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pressable, Text } from 'react-native';
-import { DarkModeContext, useDarkMode } from 'react-native-dynamic';
-import { color } from 'react-native-reanimated';
+import { useDarkMode } from 'react-native-dynamic';
 
 import { colors } from '../Model';
 
