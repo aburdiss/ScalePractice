@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useDarkMode } from 'react-native-dynamic';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 
 /**
@@ -40,7 +41,7 @@ const ListItem = ({ data }) => {
             color: DARKMODE ? colors.white : colors.black,
           }}
         >
-          { data.name }
+          { translate(data.name) }
         </Text>
       </View>
     </Pressable>

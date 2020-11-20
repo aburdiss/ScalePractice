@@ -11,6 +11,7 @@ import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 class SwipeableRow extends Component {
   renderRightActions = (progress, dragX) => {
@@ -20,7 +21,11 @@ class SwipeableRow extends Component {
       extrapolate: 'clamp',
     });
     return (
-      <RectButton style={this.props.styles.rightAction} onPress={() => this.props.delete(this.props.item)}>
+      <RectButton
+        style={this.props.styles.rightAction}
+        onPress={() => this.props.delete(this.props.item)}
+        // TODO: Add Accessibility Label and translate
+      >
         <Ionicons
           name="trash"
           size={20}
@@ -60,10 +65,10 @@ const AdvancedArpeggio = () => {
   const arpeggioNames = ["Major", "Minor", "Augmented", "Diminished", "Dominant Seventh", "Major Seventh", "Minor Seventh", "Minor Major Seventh", "Augmented Minor Seventh", "Half Diminished Seventh", "Diminished Seventh"];
 
   const [possibleArpeggios, setpossibleArpeggios] = useState([]);
-  const [currentScale, setCurrentScale] = useState("No Arpeggio Selected");
+  const [currentArpeggio, setCurrentArpeggio] = useState(translate("No Arpeggio Selected"));
 
   const [selectedNote, setSelectedNote] = useState('C');
-  const [selectedArpeggio, setSelectedArpeggio] = useState('Major');
+  const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
 
   const addToArpeggioList = () => {
     let arpeggioAlreadyInList = false;
@@ -75,11 +80,11 @@ const AdvancedArpeggio = () => {
       setpossibleArpeggios([newArpeggio, ...possibleArpeggios]);
     } else {
       Alert.alert(
-        "Arpeggio Already in List",
+        translate("Arpeggio Already Selected"),
         "",
         [
           {
-            text: "Return",
+            text: translate("Dismiss"),
             style: "cancel",
           },
         ],
@@ -92,11 +97,11 @@ const AdvancedArpeggio = () => {
   const generateArpeggio = () => {
     if (possibleArpeggios.length === 0) {
       Alert.alert(
-        "No Arpeggio Selected",
-        "Please select at least one arpeggio",
+        translate("No Arpeggio Selected"),
+        translate("Please select at least one arpeggio"),
         [
           {
-            text: "Return",
+            text: translate("Dismiss"),
             style: "cancel",
           },
         ],
@@ -107,9 +112,9 @@ const AdvancedArpeggio = () => {
       if (possibleArpeggios.length > 1) {
         do {
           newArpeggio = possibleArpeggios[Math.floor(Math.random() * possibleArpeggios.length)];
-        } while (newArpeggio === currentScale);
+        } while (newArpeggio === currentArpeggio);
       }
-      setCurrentScale(newArpeggio ? newArpeggio : "No Arpeggio Selected");
+      setCurrentArpeggio(newArpeggio ? newArpeggio : translate("No Arpeggio Selected"));
     }
   }
 
@@ -128,7 +133,7 @@ const AdvancedArpeggio = () => {
 
   return (
     <View style={styles.container}>
-      <ScaleDisplay>{ currentScale }</ScaleDisplay>
+      <ScaleDisplay>{ currentArpeggio }</ScaleDisplay>
       <ScalePickers
         selectedNote={selectedNote}
         setSelectedNote={setSelectedNote}
@@ -155,7 +160,10 @@ const AdvancedArpeggio = () => {
         )}
         keyExtractor={item => item}
       />
-      <RandomizeButton handler={generateArpeggio} />
+      <RandomizeButton
+        handler={generateArpeggio}
+        accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+      />
     </View>
   );
 };

@@ -3,6 +3,7 @@ import { Pressable, Text } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 /**
  * @description A purple button meant to trigger the randomize process of the
@@ -37,7 +38,7 @@ const RandomizeButton = ({ handler }) => {
           fontSize: 24,
         }}
       >
-        Randomize
+        { translate("Randomize") }
       </Text>
     </Pressable>
   );

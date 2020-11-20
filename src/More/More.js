@@ -5,6 +5,7 @@ import DeviceInfo from 'react-native-device-info';
 import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic'
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 const GOOGLE_PLAY_LINK = 'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
 const APPLE_STORE_LINK = 'https://apps.apple.com/us/developer/alexander-burdiss/id1496727055';
@@ -37,7 +38,7 @@ const ABOUT = [
   {
     id: '3',
     type: 'text',
-    value: `© ${new Date().getFullYear()} Alexander Burdiss`,
+    value: `© ${new Date().getFullYear()} ` + "Alexander Burdiss",
     link: null,
   },
   {
@@ -59,7 +60,9 @@ const TextListItem = ({ item }) => {
 
   return (
     <View style={styles.listRowContainer}>
-      <Text style={styles.listRowText}>{item.value}</Text>
+      <Text style={styles.listRowText}>
+        { translate(item.value) }
+      </Text>
     </View>
   );
 }
@@ -80,7 +83,9 @@ const LinkListItem = ({ item }) => {
       }}
     >
       <View style={styles.listRowContainer}>
-        <Text style={styles.linkText}>{item.value}</Text>
+        <Text style={styles.linkText}>
+          {translate(item.value)}
+        </Text>
         <Ionicons name={'chevron-forward-outline'} size={25} color={styles.linkText.color} />
       </View>
     </Pressable>
@@ -101,8 +106,8 @@ const More = () => {
     <View>
       <SectionList
         sections={[
-          {title: "Resources", data: RESOURCES},
-          {title: "About", data: ABOUT},
+          {title: translate("Resources"), data: RESOURCES},
+          {title: translate("About"), data: ABOUT},
         ]}
         keyExtractor={(item, index) => index}
         renderItem={({ item }) => (

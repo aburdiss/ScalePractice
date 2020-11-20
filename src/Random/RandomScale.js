@@ -7,6 +7,7 @@ import AllScalesButton from '../Components/AllScalesButton';
 import RandomzieButton from '../Components/RandomizeButton';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
@@ -17,7 +18,7 @@ import { colors } from '../Model/Model';
 const RandomScale = () => {
   const styles = useDynamicValue(dynamicStyles);
 
-  const [currentScale, setCurrentScale] = useState("No Scale Selected");
+  const [currentScale, setCurrentScale] = useState(translate("No Scale Selected"));
 
   const [majorSwitch, setMajorSwitch] = useState(true);
   const toggleMajorSwitch = () => setMajorSwitch(previousState => !previousState);
@@ -165,11 +166,11 @@ const RandomScale = () => {
     // Ensuring that the new scale is different from the old one
     if (possibleScales.length === 0) {
       Alert.alert(
-        "No Scale Selected",
-        "Please select at least one category",
+        translate("No Scale Selected"),
+        translate("Please select at least one category"),
         [
           {
-            text: "Return",
+            text: translate("Dismiss"),
             style: "cancel",
           },
         ],
@@ -180,7 +181,7 @@ const RandomScale = () => {
       do {
         newScale = possibleScales[Math.floor(Math.random() * possibleScales.length)];
       } while (newScale == currentScale);
-      setCurrentScale(newScale ? newScale : "No Scale Selected");
+      setCurrentScale(newScale ? newScale : translate("No Scale Selected"));
     }
   }
 
@@ -198,7 +199,7 @@ const RandomScale = () => {
     let allLetterNamesOfScale = [];
     for (let letter of letterNames) {
       for (let scaleName of scaleNames) {
-        allLetterNamesOfScale.push(`${letter} ${scaleName}`);
+        allLetterNamesOfScale.push(`${letter} ${translate(scaleName)}`);
       }
     }
     return allLetterNamesOfScale;
@@ -216,7 +217,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Major
+              { translate("Major") }
             </Text>
             <Switch
               onValueChange={ toggleMajorSwitch }
@@ -228,7 +229,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Natural Minor
+              { translate("Natural Minor") }
             </Text>
             <Switch
               onValueChange={ toggleNaturalMinorSwitch }
@@ -240,7 +241,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Harmonic Minor
+              { translate("Harmonic Minor") }
             </Text>
             <Switch
               onValueChange={ toggleHarmonicMinorSwitch }
@@ -252,7 +253,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Melodic Minor
+              { translate("Melodic Minor") }
             </Text>
             <Switch
               onValueChange={ toggleMelodicMinorSwitch }
@@ -264,7 +265,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Major Modes
+              { translate("Major Modes") }
             </Text>
             <Switch
               onValueChange={ toggleMajorModesSwitch }
@@ -276,7 +277,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Melodic Minor Modes
+              { translate("Melodic Minor Modes") }
             </Text>
             <Switch
               onValueChange={ toggleMelodicMinorModesSwitch }
@@ -288,7 +289,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Blues
+              { translate("Blues") }
             </Text>
             <Switch
               onValueChange={ toggleBluesSwitch }
@@ -300,7 +301,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Pentatonic
+              { translate("Pentatonic") }
             </Text>
             <Switch
               onValueChange={ togglePentatonicSwitch }
@@ -312,7 +313,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Octatonic
+              { translate("Octatonic") }
             </Text>
             <Switch
               onValueChange={ toggleOctatonicSwitch }
@@ -324,7 +325,7 @@ const RandomScale = () => {
             <Text
               style={ styles.switchText }
             >
-              Whole Tone
+              { translate("Whole Tone") }
             </Text>
             <Switch
               onValueChange={ toggleWholeToneSwitch }
@@ -332,12 +333,15 @@ const RandomScale = () => {
             />
           </View>
 
-          <AllScalesButton handler={ selectAllScales }>All Scales</AllScalesButton>
+          <AllScalesButton handler={ selectAllScales }>{ translate("All Scales") }</AllScalesButton>
 
         </View>
       </View>
       <View>
-        <RandomzieButton handler={ generateScales } />
+        <RandomzieButton
+          handler={ generateScales }
+          accessibilityValue={{text: `${translate(currentScale)}`}}
+        />
       </View>
     </View>
   );

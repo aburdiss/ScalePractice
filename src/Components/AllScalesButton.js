@@ -23,7 +23,7 @@ const AllScalesButton = ({ children, handler }) => {
         borderRadius: 8,
         borderColor: DARKMODE ? colors.systemGray : colors.systemGray,
         borderWidth: 1,
-        margin: 10,
+        marginVertical: 10,
         padding: 10,
         opacity: pressed ? 0.8 : 1,
         overflow: 'hidden',

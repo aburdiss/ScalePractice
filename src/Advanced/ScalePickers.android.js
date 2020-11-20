@@ -55,7 +55,7 @@ const ScalePickers = ({
         >
           {
             scaleNames.map(scaleName => (
-              <Picker.Item label={scaleName} value={scaleName} key={scaleName} />
+              <Picker.Item label={translate(scaleName)} value={translate(scaleName)} key={scaleName} />
             ))
           }
         </Picker>

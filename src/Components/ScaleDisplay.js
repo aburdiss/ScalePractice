@@ -21,7 +21,9 @@ const ScaleDisplay = ({ children }) => {
     >
       <Text
         style={{
-          backgroundColor: DARKMODE ? colors.systemGray2Dark : colors.systemGray2Light,
+          backgroundColor: DARKMODE
+            ? colors.systemGray2Dark
+            : colors.systemGray2Light,
           color: DARKMODE ? colors.white : colors.black,
           overflow: 'hidden',
           textAlign: 'center',

@@ -4,9 +4,9 @@ import Image from 'react-native-scalable-image'
 import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic'
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 const { width } = Dimensions.get("window");
-
 
 
 const ScaleDetail = ({ route }) => {
@@ -132,8 +132,12 @@ const ScaleDetail = ({ route }) => {
           width={width}
           />
       </View>
-      <Text style={styles.construction}>{route.params.construction}</Text>
-      <Text style={styles.description}>{route.params.description}</Text>
+      <Text style={styles.construction}>
+        {translate(route.params.construction)}
+      </Text>
+      <Text style={styles.description}>
+        {translate(route.params.description)}
+      </Text>
     </View>
   );
 };

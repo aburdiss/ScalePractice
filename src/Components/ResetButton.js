@@ -3,6 +3,7 @@ import { View, Pressable, Text } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 const ResetButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
@@ -29,7 +30,7 @@ const ResetButton = ({ handler }) => {
             color: DARKMODE ? colors.redDark : colors.redLight,
           }}
         >
-          Reset
+          { translate("Reset") }
         </Text>
       </Pressable>
     </View>

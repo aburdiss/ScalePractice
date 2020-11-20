@@ -3,6 +3,7 @@ import { View, Pressable, Text } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 const AddToListButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
@@ -30,7 +31,7 @@ const AddToListButton = ({ handler }) => {
             color: DARKMODE ? colors.greenDark : colors.greenLight,
           }}
         >
-          Add to List
+          { translate("Add To List") }
         </Text>
       </Pressable>
     </View>

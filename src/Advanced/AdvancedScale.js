@@ -11,6 +11,7 @@ import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 class SwipeableRow extends Component {
   renderRightActions = (progress, dragX) => {
@@ -20,7 +21,12 @@ class SwipeableRow extends Component {
       extrapolate: 'clamp',
     });
     return (
-      <RectButton style={this.props.styles.rightAction} onPress={() => this.props.delete(this.props.item)}>
+      <RectButton
+        style={this.props.styles.rightAction}
+        onPress={() => this.props.delete(this.props.item)}
+        // TODO: Add Accessibility Label and translate
+
+      >
         <Ionicons
           name="trash"
           size={20}
@@ -60,10 +66,10 @@ const AdvancedScale = () => {
   const scaleNames = ["Major", "Natural Minor", "Harmonic Minor", "Melodic Minor", "Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian", "Minor Major", "Dorian ♭2", "Lydian Augmented", "Lydian Dominant", "Mixolydian ♭6", "Locrian ♮2", "Altered Scale", "Blues", "Major Pentatonic", "Minor Pentatonic", "Whole-Half Octatonic", "Half-Whole Octatonic", "Whole Tone"];
 
   const [possibleScales, setPossibleScales] = useState([]);
-  const [currentScale, setCurrentScale] = useState("No Scale Selected");
+  const [currentScale, setCurrentScale] = useState(translate("No Scale Selected"));
 
   const [selectedNote, setSelectedNote] = useState('C');
-  const [selectedScale, setSelectedScale] = useState('Major');
+  const [selectedScale, setSelectedScale] = useState(translate('Major'));
 
   const addToScaleList = () => {
     let scaleAlreadyInList = false;
@@ -75,11 +81,11 @@ const AdvancedScale = () => {
       setPossibleScales([newScale, ...possibleScales]);
     } else {
       Alert.alert(
-        "Scale Already in List",
+        translate("Scale Already Selected"),
         "",
         [
           {
-            text: "Return",
+            text: translate("Dismiss"),
             style: "cancel",
           },
         ],
@@ -92,11 +98,11 @@ const AdvancedScale = () => {
   const generateScale = () => {
     if (possibleScales.length === 0) {
       Alert.alert(
-        "No Scale Selected",
-        "Please select at least one scale",
+        translate("No Scale Selected"),
+        translate("Please select at least one scale"),
         [
           {
-            text: "Return",
+            text: translate("Dismiss"),
             style: "cancel",
           },
         ],
@@ -155,7 +161,10 @@ const AdvancedScale = () => {
         )}
         keyExtractor={item => item}
       />
-      <RandomizeButton handler={generateScale} />
+      <RandomizeButton
+        handler={generateScale}
+        accessibilityValue={{text: `${currentScale}`}}
+      />
     </View>
   );
 };

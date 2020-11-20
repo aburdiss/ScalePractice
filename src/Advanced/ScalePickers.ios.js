@@ -4,6 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import { useDarkMode } from 'react-native-dynamic';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 const ScalePickers = ({ 
   selectedNote, 
@@ -51,7 +52,7 @@ const ScalePickers = ({
         >
           {
             scaleNames.map(scaleName => (
-              <Picker.Item label={scaleName} value={scaleName} key={scaleName} />
+              <Picker.Item label={translate(scaleName)} value={translate(scaleName)} key={scaleName} />
             ))
           }
         </Picker>

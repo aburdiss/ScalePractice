@@ -7,6 +7,7 @@ import AllScalesButton from '../Components/AllScalesButton';
 import RandomzieButton from '../Components/RandomizeButton';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios
@@ -17,7 +18,7 @@ import { colors } from '../Model/Model';
 const RandomArpeggio = () => {
   const styles = useDynamicValue(dynamicStyles);
 
-  const [currentArpeggio, setCurrentArpeggio] = useState("No Arpeggio Selected");
+  const [currentArpeggio, setCurrentArpeggio] = useState(translate("No Arpeggio Selected"));
 
   const [majorSwitch, setMajorSwitch] = useState(true);
   const toggleMajorSwitch = () => setMajorSwitch(previousState => !previousState);
@@ -177,12 +178,11 @@ const RandomArpeggio = () => {
     // Ensuring that the new arpeggio is different from the old one.
     if (possibleArpeggios.length === 0) {
       Alert.alert(
-        "No Arpeggio Selected",
-        "Please select at least one category",
+        translate("No Arpeggio Selected"),
+        translate("Please select at least one category"),
         [
           {
-            text: "Return",
-            onPress: () => {},
+            text: translate("Dismiss"),
             style: "cancel",
           },
         ],
@@ -193,7 +193,7 @@ const RandomArpeggio = () => {
       do {
         newArpeggio = possibleArpeggios[Math.floor(Math.random() * possibleArpeggios.length)];
       } while (newArpeggio === currentArpeggio);
-      setCurrentArpeggio(newArpeggio ? newArpeggio : "No Arpeggio Selected");
+      setCurrentArpeggio(newArpeggio ? newArpeggio : translate("No Arpeggio Selected"));
     }
     
   }
@@ -212,7 +212,7 @@ const RandomArpeggio = () => {
 
     let allLetterNamesOfScale = [];
     for (let letter of letterNames) {
-      allLetterNamesOfScale.push(`${letter} ${scaleName}`);
+      allLetterNamesOfScale.push(`${letter} ${translate(scaleName)}`);
     }
     return allLetterNamesOfScale;
   }
@@ -230,7 +230,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Major
+                { translate("Major") }
               </Text>
               <Switch
                 onValueChange={ toggleMajorSwitch }
@@ -242,7 +242,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Minor
+                { translate("Minor") }
               </Text>
               <Switch
                 onValueChange={ toggleMinorSwitch }
@@ -254,7 +254,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Augmented
+                { translate("Augmented") }
               </Text>
               <Switch
                 onValueChange={ toggleAugmentedSwitch }
@@ -266,7 +266,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Diminished
+                { translate("Diminished") }
               </Text>
               <Switch
                 onValueChange={ toggleDiminishedSwitch }
@@ -278,7 +278,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Dominant Seventh
+                { translate("Dominant Seventh") }
               </Text>
               <Switch
                 onValueChange={ toggleDominantSeventhSwitch }
@@ -290,7 +290,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Major Seventh
+                { translate("Major Seventh") }
               </Text>
               <Switch
                 onValueChange={ toggleMajorSeventhSwitch }
@@ -302,7 +302,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Minor Seventh
+                { translate("Minor Seventh") }
               </Text>
               <Switch
                 onValueChange={ toggleMinorSeventhSwitch }
@@ -314,7 +314,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Minor Major Seventh
+                { translate("Minor Major Seventh") }
               </Text>
               <Switch
                 onValueChange={ toggleMinorMajorSeventhSwitch }
@@ -326,7 +326,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Augmented Seventh
+                { translate("Augmented Minor Seventh") }
               </Text>
               <Switch
                 onValueChange={ toggleAugmentedSeventhSwitch }
@@ -338,7 +338,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Half-Diminished Seventh
+                { translate("Half Diminished Seventh") }
               </Text>
               <Switch
                 onValueChange={ toggleHalfDiminishedSeventhSwitch }
@@ -350,7 +350,7 @@ const RandomArpeggio = () => {
               <Text
                 style={ styles.switchText }
               >
-                Diminished Seventh
+                { translate("Diminished Seventh") }
               </Text>
               <Switch
                 onValueChange={ toggleDiminishedSeventhSwitch }
@@ -358,13 +358,18 @@ const RandomArpeggio = () => {
               />
             </View>
 
-            <AllScalesButton handler={ selectAllArpeggios }>All Arpeggios</AllScalesButton>
+            <AllScalesButton handler={ selectAllArpeggios }>
+              { translate("All Arpeggios") }
+            </AllScalesButton>
 
           </View>
         </View>
       </View>
       <View>
-        <RandomzieButton handler={ generateArpeggios } />
+        <RandomzieButton
+          handler={ generateArpeggios }
+          accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+        />
       </View>
     </View>
   );

@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useDarkMode } from 'react-native-dynamic'
+import * as RNLocalize from 'react-native-localize';
+
 
 import RandomScale from './src/Random/RandomScale';
 import RandomArpeggio from './src/Random/RandomArpeggio';
@@ -17,34 +19,8 @@ import ScaleDetail from './src/Resources/ScaleDetail';
 
 import HeaderButton from './src/Components/HeaderButton';
 
+import { setI18nConfig, translate } from './src/Translations/TranslationModel';
 import { colors } from './src/Model/Model';
-
-import * as RNLocalize from 'react-native-localize';
-import i18n from 'i18n-js';
-import memoize from 'lodash.memoize';
-
-const translationGetters = {
-  en: () => require('./src/Translations/en.json'),
-  zh: () => require('./src/Translations/zh.json'),
-  fr: () => require('./src/Translations/fr.json'),
-};
-
-const translate = memoize(
-  (key, config) => i18n.t(key, config),
-  (key, config) => (config ? key + JSON.stringify(config) : key)
-);
-
-const setI18nConfig = () => {
-  const fallback = { languageTag: 'en' }
-  const { languageTag } =
-    RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
-    fallback
-
-  translate.cache.clear()
-
-  i18n.translations = { [languageTag]: translationGetters[languageTag]() }
-  i18n.locale = languageTag
-}
 
 
 const Tab = createBottomTabNavigator();
