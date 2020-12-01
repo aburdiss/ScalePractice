@@ -3,9 +3,21 @@
     {
       "idiom" : "watch",
       "scale" : "2x",
+      "screen-width" : "<=145"
+    },
+    {
+      "filename" : "output-onlinepngtools.png",
+      "idiom" : "watch",
+      "scale" : "2x",
       "screen-width" : ">161"
     },
     {
+      "idiom" : "watch",
+      "scale" : "2x",
+      "screen-width" : ">145"
+    },
+    {
+      "filename" : "output-onlinepngtools-2.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">183"
