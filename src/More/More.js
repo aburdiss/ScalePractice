@@ -45,7 +45,7 @@ const ABOUT = [
     id: '4',
     type: 'link',
     value: 'Send Feedback',
-    link: 'mailto:aburdiss@gmail.com',
+    link: 'mailto:aburdiss@icloud.com',
   },
 ];
 
