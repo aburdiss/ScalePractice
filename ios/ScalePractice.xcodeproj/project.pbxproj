@@ -19,6 +19,16 @@
 		45210E5A996368BC7046B290 /* libPods-ScalePractice-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8258435284066F2223B1087 /* libPods-ScalePractice-tvOS.a */; };
 		6E8E3EF5D2CE54773D124051 /* libPods-ScalePractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A21582AFB0DE32FEB7B846C /* libPods-ScalePractice.a */; };
 		899627C8ED62D05BCD1B9996 /* libPods-ScalePractice-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E996C8E709280383E7AB1180 /* libPods-ScalePractice-tvOSTests.a */; };
+		DD0F29F9257704B20075DF87 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0F29F7257704B20075DF87 /* Interface.storyboard */; };
+		DD0F29FB257704B70075DF87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0F29FA257704B70075DF87 /* Assets.xcassets */; };
+		DD0F2A02257704B70075DF87 /* ScalePracticeWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DD0F2A01257704B70075DF87 /* ScalePracticeWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DD0F2A07257704B70075DF87 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F2A06257704B70075DF87 /* HostingController.swift */; };
+		DD0F2A09257704B70075DF87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F2A08257704B70075DF87 /* ContentView.swift */; };
+		DD0F2A0B257704B70075DF87 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F2A0A257704B70075DF87 /* ExtensionDelegate.swift */; };
+		DD0F2A0D257704B70075DF87 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0F2A0C257704B70075DF87 /* ComplicationController.swift */; };
+		DD0F2A0F257704B80075DF87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0F2A0E257704B80075DF87 /* Assets.xcassets */; };
+		DD0F2A12257704B80075DF87 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0F2A11257704B80075DF87 /* Preview Assets.xcassets */; };
+		DD0F2A16257704B80075DF87 /* ScalePracticeWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DD0F29F5257704B20075DF87 /* ScalePracticeWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DDD848EA25619449006846A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDD848EC25619449006846A6 /* InfoPlist.strings */; };
 		DDD8492525619C8C006846A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD8492325619C8C006846A6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -38,7 +48,46 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "ScalePractice-tvOS";
 		};
+		DD0F2A03257704B70075DF87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD0F2A00257704B70075DF87;
+			remoteInfo = "ScalePracticeWatch Extension";
+		};
+		DD0F2A14257704B80075DF87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD0F29F4257704B20075DF87;
+			remoteInfo = ScalePracticeWatch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD0F2A17257704B80075DF87 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DD0F2A16257704B80075DF87 /* ScalePracticeWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD0F2A1A257704B80075DF87 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DD0F2A02257704B70075DF87 /* ScalePracticeWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -77,6 +126,18 @@
 		C5C7DB270B554DF4924F1511 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		CC629CFE063AB7712250A366 /* Pods-ScalePractice-ScalePracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScalePractice-ScalePracticeTests.debug.xcconfig"; path = "Target Support Files/Pods-ScalePractice-ScalePracticeTests/Pods-ScalePractice-ScalePracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D993EABCC6D9441D800E81DA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		DD0F29F5257704B20075DF87 /* ScalePracticeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScalePracticeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD0F29F8257704B20075DF87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		DD0F29FA257704B70075DF87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD0F29FC257704B70075DF87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD0F2A01257704B70075DF87 /* ScalePracticeWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ScalePracticeWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD0F2A06257704B70075DF87 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		DD0F2A08257704B70075DF87 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DD0F2A0A257704B70075DF87 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		DD0F2A0C257704B70075DF87 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		DD0F2A0E257704B80075DF87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DD0F2A11257704B80075DF87 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DD0F2A13257704B80075DF87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDD848EB25619449006846A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDD848F925619482006846A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DDD848FB25619488006846A6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -119,6 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				899627C8ED62D05BCD1B9996 /* libPods-ScalePractice-tvOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD0F29FE257704B70075DF87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +266,8 @@
 				13B07FAE1A68108700A75B9A /* ScalePractice */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ScalePracticeTests */,
+				DD0F29F6257704B20075DF87 /* ScalePracticeWatch */,
+				DD0F2A05257704B70075DF87 /* ScalePracticeWatch Extension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				9DA89366A96043E8817952DE /* Resources */,
@@ -215,6 +285,8 @@
 				00E356EE1AD99517003FC87E /* ScalePracticeTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* ScalePractice-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* ScalePractice-tvOSTests.xctest */,
+				DD0F29F5257704B20075DF87 /* ScalePracticeWatch.app */,
+				DD0F2A01257704B70075DF87 /* ScalePracticeWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,6 +312,38 @@
 				02802572EC214F369B16AD88 /* Zocial.ttf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		DD0F29F6257704B20075DF87 /* ScalePracticeWatch */ = {
+			isa = PBXGroup;
+			children = (
+				DD0F29F7257704B20075DF87 /* Interface.storyboard */,
+				DD0F29FA257704B70075DF87 /* Assets.xcassets */,
+				DD0F29FC257704B70075DF87 /* Info.plist */,
+			);
+			path = ScalePracticeWatch;
+			sourceTree = "<group>";
+		};
+		DD0F2A05257704B70075DF87 /* ScalePracticeWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DD0F2A06257704B70075DF87 /* HostingController.swift */,
+				DD0F2A08257704B70075DF87 /* ContentView.swift */,
+				DD0F2A0A257704B70075DF87 /* ExtensionDelegate.swift */,
+				DD0F2A0C257704B70075DF87 /* ComplicationController.swift */,
+				DD0F2A0E257704B80075DF87 /* Assets.xcassets */,
+				DD0F2A13257704B80075DF87 /* Info.plist */,
+				DD0F2A10257704B80075DF87 /* Preview Content */,
+			);
+			path = "ScalePracticeWatch Extension";
+			sourceTree = "<group>";
+		};
+		DD0F2A10257704B80075DF87 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DD0F2A11257704B80075DF87 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +380,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				8F7DB85719C1C0DAE06AF597 /* [CP] Copy Pods Resources */,
+				DD0F2A17257704B80075DF87 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DD0F2A15257704B80075DF87 /* PBXTargetDependency */,
 			);
 			name = ScalePractice;
 			productName = ScalePractice;
@@ -325,12 +431,47 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* ScalePractice-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DD0F29F4257704B20075DF87 /* ScalePracticeWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD0F2A1E257704B80075DF87 /* Build configuration list for PBXNativeTarget "ScalePracticeWatch" */;
+			buildPhases = (
+				DD0F29F3257704B20075DF87 /* Resources */,
+				DD0F2A1A257704B80075DF87 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD0F2A04257704B70075DF87 /* PBXTargetDependency */,
+			);
+			name = ScalePracticeWatch;
+			productName = ScalePracticeWatch;
+			productReference = DD0F29F5257704B20075DF87 /* ScalePracticeWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		DD0F2A00257704B70075DF87 /* ScalePracticeWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD0F2A1D257704B80075DF87 /* Build configuration list for PBXNativeTarget "ScalePracticeWatch Extension" */;
+			buildPhases = (
+				DD0F29FD257704B70075DF87 /* Sources */,
+				DD0F29FE257704B70075DF87 /* Frameworks */,
+				DD0F29FF257704B70075DF87 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ScalePracticeWatch Extension";
+			productName = "ScalePracticeWatch Extension";
+			productReference = DD0F2A01257704B70075DF87 /* ScalePracticeWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -349,6 +490,16 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					DD0F29F4257704B20075DF87 = {
+						CreatedOnToolsVersion = 12.2;
+						DevelopmentTeam = L4SN53B3F6;
+						ProvisioningStyle = Automatic;
+					};
+					DD0F2A00257704B70075DF87 = {
+						CreatedOnToolsVersion = 12.2;
+						DevelopmentTeam = L4SN53B3F6;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -371,6 +522,8 @@
 				00E356ED1AD99517003FC87E /* ScalePracticeTests */,
 				2D02E47A1E0B4A5D006451C7 /* ScalePractice-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* ScalePractice-tvOSTests */,
+				DD0F29F4257704B20075DF87 /* ScalePracticeWatch */,
+				DD0F2A00257704B70075DF87 /* ScalePracticeWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -405,6 +558,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD0F29F3257704B20075DF87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD0F29FB257704B70075DF87 /* Assets.xcassets in Resources */,
+				DD0F29F9257704B20075DF87 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD0F29FF257704B70075DF87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD0F2A12257704B80075DF87 /* Preview Assets.xcassets in Resources */,
+				DD0F2A0F257704B80075DF87 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +873,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD0F29FD257704B70075DF87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD0F2A09257704B70075DF87 /* ContentView.swift in Sources */,
+				DD0F2A0D257704B70075DF87 /* ComplicationController.swift in Sources */,
+				DD0F2A07257704B70075DF87 /* HostingController.swift in Sources */,
+				DD0F2A0B257704B70075DF87 /* ExtensionDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -715,9 +897,27 @@
 			target = 2D02E47A1E0B4A5D006451C7 /* ScalePractice-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
+		DD0F2A04257704B70075DF87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD0F2A00257704B70075DF87 /* ScalePracticeWatch Extension */;
+			targetProxy = DD0F2A03257704B70075DF87 /* PBXContainerItemProxy */;
+		};
+		DD0F2A15257704B80075DF87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD0F29F4257704B20075DF87 /* ScalePracticeWatch */;
+			targetProxy = DD0F2A14257704B80075DF87 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DD0F29F7257704B20075DF87 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD0F29F8257704B20075DF87 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		DDD848EC25619449006846A6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1055,6 +1255,146 @@
 			};
 			name = Release;
 		};
+		DD0F2A18257704B80075DF87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = L4SN53B3F6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = ScalePracticeWatch_Extension;
+				INFOPLIST_FILE = ScalePracticeWatch/Info.plist;
+				MARKETING_VERSION = 2.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.ScalePractice.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Debug;
+		};
+		DD0F2A19257704B80075DF87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L4SN53B3F6;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = ScalePracticeWatch_Extension;
+				INFOPLIST_FILE = ScalePracticeWatch/Info.plist;
+				MARKETING_VERSION = 2.0.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.ScalePractice.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Release;
+		};
+		DD0F2A1B257704B80075DF87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"ScalePracticeWatch Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = L4SN53B3F6;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "ScalePracticeWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"";
+				MARKETING_VERSION = 2.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.ScalePractice.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Debug;
+		};
+		DD0F2A1C257704B80075DF87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2.0.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"ScalePracticeWatch Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = L4SN53B3F6;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "ScalePracticeWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"";
+				MARKETING_VERSION = 2.0.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderBurdiss.ScalePractice.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1099,6 +1439,24 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD0F2A1D257704B80075DF87 /* Build configuration list for PBXNativeTarget "ScalePracticeWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD0F2A1B257704B80075DF87 /* Debug */,
+				DD0F2A1C257704B80075DF87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD0F2A1E257704B80075DF87 /* Build configuration list for PBXNativeTarget "ScalePracticeWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD0F2A18257704B80075DF87 /* Debug */,
+				DD0F2A19257704B80075DF87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
