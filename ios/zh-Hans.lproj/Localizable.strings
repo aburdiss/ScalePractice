@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  ScalePractice
+
+  Created by Alexander Burdiss on 12/1/20.
+  
+*/
+
+// Watch App Translations
+"Scale Practice" = "音阶练习";
+"Randomize" = "开始";
+"All Scales Practiced" = "每个音阶练习了";
+"Keep Practicing" = "保持练习";
