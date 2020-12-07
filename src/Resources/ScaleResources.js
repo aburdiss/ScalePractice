@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
-import { useDarkMode } from 'react-native-dynamic'
+import {View, FlatList} from 'react-native';
+import {useDarkMode} from 'react-native-dynamic';
 
-import  ListItem  from '../Components/ListItem';
+import ListItem from '../Components/ListItem';
 
-import { scaleResourceData, colors } from '../Model/Model';
-
+import {scaleResourceData, colors} from '../Model/Model';
 
 /**
  * @description A view that allows the user to learn more about each scale in
@@ -22,12 +21,12 @@ const ScaleResources = () => {
         data={scaleResourceData}
         initialNumToRender={15}
         renderItem={({item}) => <ListItem data={item} />}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         style={{
           height: '100%',
           backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
         }}
-        />
+      />
     </View>
   );
 };

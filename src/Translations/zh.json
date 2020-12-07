@@ -112,7 +112,7 @@
   "WholeHalfOctatonicScaleConstruction": "W H W H W H W H",
   "HalfWholeOctatonicScaleConstruction": "H W H W H W H W",
   "WholeToneScaleConstruction": "W W W W W W",
-  "MajorArpeggioConstruction": "M3 m3", 
+  "MajorArpeggioConstruction": "M3 m3",
   "MinorArpeggioConstruction": "m3 M3",
   "AugmentedArpeggioConstruction": "M3 M3",
   "DiminishedArpeggioConstruction": "m3 m3",

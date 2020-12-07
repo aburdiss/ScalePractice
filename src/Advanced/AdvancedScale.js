@@ -1,8 +1,12 @@
-import React, { useState, Component } from 'react';
-import { Alert, View, Text, FlatList } from 'react-native';
-import { RectButton, Swipeable } from 'react-native-gesture-handler';
+import React, {useState, Component} from 'react';
+import {Alert, View, Text, FlatList} from 'react-native';
+import {RectButton, Swipeable} from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic';
+import {
+  DynamicStyleSheet,
+  DynamicValue,
+  useDynamicValue,
+} from 'react-native-dynamic';
 
 import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
@@ -10,8 +14,8 @@ import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
 
-import { colors } from '../Model/Model';
-import { translate } from '../Translations/TranslationModel';
+import {colors} from '../Model/Model';
+import {translate} from '../Translations/TranslationModel';
 
 class SwipeableRow extends Component {
   renderRightActions = (progress, dragX) => {
@@ -25,7 +29,6 @@ class SwipeableRow extends Component {
         style={this.props.styles.rightAction}
         onPress={() => this.props.delete(this.props.item)}
         // TODO: Add Accessibility Label and translate
-
       >
         <Ionicons
           name="trash"
@@ -35,9 +38,9 @@ class SwipeableRow extends Component {
         />
       </RectButton>
     );
-  }
+  };
   render() {
-    const { children } = this.props;
+    const {children} = this.props;
     return (
       <Swipeable
         ref={this.updateRef}
@@ -51,10 +54,8 @@ class SwipeableRow extends Component {
   }
 }
 
-
-
 /**
- * @description A view that allows the user to randomize between a list of 
+ * @description A view that allows the user to randomize between a list of
  * selected scales.
  * @author Alexander Burdiss
  * @since 10/10/20
@@ -62,11 +63,56 @@ class SwipeableRow extends Component {
 const AdvancedScale = () => {
   const styles = useDynamicValue(dynamicStyles);
 
-  const noteNames = ["C", "C♯", "D♭", "D", "D♯", "E♭", "E", "F", "F♯", "G♭", "G", "G♯", "A♭", "A", "A♯", "B♭", "B"];
-  const scaleNames = ["Major", "Natural Minor", "Harmonic Minor", "Melodic Minor", "Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian", "Minor Major", "Dorian ♭2", "Lydian Augmented", "Lydian Dominant", "Mixolydian ♭6", "Locrian ♮2", "Altered Scale", "Blues", "Major Pentatonic", "Minor Pentatonic", "Whole-Half Octatonic", "Half-Whole Octatonic", "Whole Tone"];
+  const noteNames = [
+    'C',
+    'C♯',
+    'D♭',
+    'D',
+    'D♯',
+    'E♭',
+    'E',
+    'F',
+    'F♯',
+    'G♭',
+    'G',
+    'G♯',
+    'A♭',
+    'A',
+    'A♯',
+    'B♭',
+    'B',
+  ];
+  const scaleNames = [
+    'Major',
+    'Natural Minor',
+    'Harmonic Minor',
+    'Melodic Minor',
+    'Ionian',
+    'Dorian',
+    'Phrygian',
+    'Lydian',
+    'Mixolydian',
+    'Aeolian',
+    'Locrian',
+    'Minor Major',
+    'Dorian ♭2',
+    'Lydian Augmented',
+    'Lydian Dominant',
+    'Mixolydian ♭6',
+    'Locrian ♮2',
+    'Altered Scale',
+    'Blues',
+    'Major Pentatonic',
+    'Minor Pentatonic',
+    'Whole-Half Octatonic',
+    'Half-Whole Octatonic',
+    'Whole Tone',
+  ];
 
   const [possibleScales, setPossibleScales] = useState([]);
-  const [currentScale, setCurrentScale] = useState(translate("No Scale Selected"));
+  const [currentScale, setCurrentScale] = useState(
+    translate('No Scale Selected'),
+  );
 
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedScale, setSelectedScale] = useState(translate('Major'));
@@ -81,47 +127,48 @@ const AdvancedScale = () => {
       setPossibleScales([newScale, ...possibleScales]);
     } else {
       Alert.alert(
-        translate("Scale Already Selected"),
-        "",
+        translate('Scale Already Selected'),
+        '',
         [
           {
-            text: translate("Dismiss"),
-            style: "cancel",
+            text: translate('Dismiss'),
+            style: 'cancel',
           },
         ],
-        { cancelable: true }
+        {cancelable: true},
       );
     }
-    
-  }
+  };
 
   const generateScale = () => {
     if (possibleScales.length === 0) {
       Alert.alert(
-        translate("No Scale Selected"),
-        translate("Please select at least one scale"),
+        translate('No Scale Selected'),
+        translate('Please select at least one scale'),
         [
           {
-            text: translate("Dismiss"),
-            style: "cancel",
+            text: translate('Dismiss'),
+            style: 'cancel',
           },
         ],
-        { cancelable: true }
+        {cancelable: true},
       );
     } else {
-      let newScale = possibleScales[Math.floor(Math.random() * possibleScales.length)];
+      let newScale =
+        possibleScales[Math.floor(Math.random() * possibleScales.length)];
       if (possibleScales.length > 1) {
         do {
-          newScale = possibleScales[Math.floor(Math.random() * possibleScales.length)];
+          newScale =
+            possibleScales[Math.floor(Math.random() * possibleScales.length)];
         } while (newScale === currentScale);
       }
-      setCurrentScale(newScale ? newScale : "No Scale Selected");
+      setCurrentScale(newScale ? newScale : 'No Scale Selected');
     }
-  }
+  };
 
   const removeAllScales = () => {
     setPossibleScales([]);
-  }
+  };
 
   const deleteElement = (element) => {
     let temporaryScales = [...possibleScales];
@@ -130,11 +177,11 @@ const AdvancedScale = () => {
       temporaryScales.splice(index, 1);
     }
     setPossibleScales(temporaryScales);
-  }
+  };
 
   return (
     <View style={styles.container}>
-      <ScaleDisplay>{ currentScale }</ScaleDisplay>
+      <ScaleDisplay>{currentScale}</ScaleDisplay>
       <ScalePickers
         selectedNote={selectedNote}
         setSelectedNote={setSelectedNote}
@@ -150,7 +197,7 @@ const AdvancedScale = () => {
       <FlatList
         style={styles.list}
         data={possibleScales}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <SwipeableRow styles={styles} delete={deleteElement} item={item}>
             <View style={styles.listItemContainer}>
               <View style={styles.listItemTextContainer}>
@@ -159,7 +206,7 @@ const AdvancedScale = () => {
             </View>
           </SwipeableRow>
         )}
-        keyExtractor={item => item}
+        keyExtractor={(item) => item}
       />
       <RandomizeButton
         handler={generateScale}
@@ -169,12 +216,11 @@ const AdvancedScale = () => {
   );
 };
 
-
 const dynamicStyles = new DynamicStyleSheet({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 20
+    marginHorizontal: 20,
   },
   container: {
     flex: 1,
@@ -192,7 +238,10 @@ const dynamicStyles = new DynamicStyleSheet({
     color: new DynamicValue(colors.black, colors.white),
   },
   listItemTextContainer: {
-    borderBottomColor: new DynamicValue(colors.systemGray5Light, colors.systemGray5Dark),
+    borderBottomColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
     borderBottomWidth: 1,
   },
   rightAction: {
@@ -200,11 +249,11 @@ const dynamicStyles = new DynamicStyleSheet({
     flexDirection: 'row',
     backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   trashIcon: {
     paddingRight: 10,
-  }
+  },
 });
 
 export default AdvancedScale;

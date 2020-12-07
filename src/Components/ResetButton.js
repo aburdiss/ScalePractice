@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Pressable, Text } from 'react-native';
-import { useDarkMode } from 'react-native-dynamic';
+import {View, Pressable, Text} from 'react-native';
+import {useDarkMode} from 'react-native-dynamic';
 
-import { colors } from '../Model/Model';
-import { translate } from '../Translations/TranslationModel';
+import {colors} from '../Model/Model';
+import {translate} from '../Translations/TranslationModel';
 
-const ResetButton = ({ handler }) => {
+const ResetButton = ({handler}) => {
   const DARKMODE = useDarkMode();
   return (
     <View>
@@ -13,24 +13,22 @@ const ResetButton = ({ handler }) => {
         android_ripple={{
           color: DARKMODE ? colors.redDark : colors.redLight,
         }}
-        style={({ pressed }) => ({
+        style={({pressed}) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.redDark : colors.redLight,
           opacity: pressed ? 0.8 : 1,
           borderWidth: 1,
           margin: 10,
           padding: 14,
-          overflow: "hidden",
+          overflow: 'hidden',
         })}
-        onPress={handler}
-      >
+        onPress={handler}>
         <Text
           style={{
             textAlign: 'center',
             color: DARKMODE ? colors.redDark : colors.redLight,
-          }}
-        >
-          { translate("Reset") }
+          }}>
+          {translate('Reset')}
         </Text>
       </Pressable>
     </View>

@@ -1,8 +1,12 @@
-import React, { useState, Component } from 'react';
-import { Alert, View, Text, FlatList } from 'react-native';
-import { RectButton, Swipeable } from 'react-native-gesture-handler';
+import React, {useState, Component} from 'react';
+import {Alert, View, Text, FlatList} from 'react-native';
+import {RectButton, Swipeable} from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic';
+import {
+  DynamicStyleSheet,
+  DynamicValue,
+  useDynamicValue,
+} from 'react-native-dynamic';
 
 import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
@@ -10,8 +14,8 @@ import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
 
-import { colors } from '../Model/Model';
-import { translate } from '../Translations/TranslationModel';
+import {colors} from '../Model/Model';
+import {translate} from '../Translations/TranslationModel';
 
 class SwipeableRow extends Component {
   renderRightActions = (progress, dragX) => {
@@ -34,9 +38,9 @@ class SwipeableRow extends Component {
         />
       </RectButton>
     );
-  }
+  };
   render() {
-    const { children } = this.props;
+    const {children} = this.props;
     return (
       <Swipeable
         ref={this.updateRef}
@@ -50,10 +54,8 @@ class SwipeableRow extends Component {
   }
 }
 
-
-
 /**
- * @description A view that allows the user to randomize between a list of 
+ * @description A view that allows the user to randomize between a list of
  * selected scales.
  * @author Alexander Burdiss
  * @since 10/10/20
@@ -61,11 +63,43 @@ class SwipeableRow extends Component {
 const AdvancedArpeggio = () => {
   const styles = useDynamicValue(dynamicStyles);
 
-  const noteNames = ["C", "C♯", "D♭", "D", "D♯", "E♭", "E", "F", "F♯", "G♭", "G", "G♯", "A♭", "A", "A♯", "B♭", "B"];
-  const arpeggioNames = ["Major", "Minor", "Augmented", "Diminished", "Dominant Seventh", "Major Seventh", "Minor Seventh", "Minor Major Seventh", "Augmented Minor Seventh", "Half Diminished Seventh", "Diminished Seventh"];
+  const noteNames = [
+    'C',
+    'C♯',
+    'D♭',
+    'D',
+    'D♯',
+    'E♭',
+    'E',
+    'F',
+    'F♯',
+    'G♭',
+    'G',
+    'G♯',
+    'A♭',
+    'A',
+    'A♯',
+    'B♭',
+    'B',
+  ];
+  const arpeggioNames = [
+    'Major',
+    'Minor',
+    'Augmented',
+    'Diminished',
+    'Dominant Seventh',
+    'Major Seventh',
+    'Minor Seventh',
+    'Minor Major Seventh',
+    'Augmented Minor Seventh',
+    'Half Diminished Seventh',
+    'Diminished Seventh',
+  ];
 
   const [possibleArpeggios, setpossibleArpeggios] = useState([]);
-  const [currentArpeggio, setCurrentArpeggio] = useState(translate("No Arpeggio Selected"));
+  const [currentArpeggio, setCurrentArpeggio] = useState(
+    translate('No Arpeggio Selected'),
+  );
 
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
@@ -80,47 +114,52 @@ const AdvancedArpeggio = () => {
       setpossibleArpeggios([newArpeggio, ...possibleArpeggios]);
     } else {
       Alert.alert(
-        translate("Arpeggio Already Selected"),
-        "",
+        translate('Arpeggio Already Selected'),
+        '',
         [
           {
-            text: translate("Dismiss"),
-            style: "cancel",
+            text: translate('Dismiss'),
+            style: 'cancel',
           },
         ],
-        { cancelable: true }
+        {cancelable: true},
       );
     }
-    
-  }
+  };
 
   const generateArpeggio = () => {
     if (possibleArpeggios.length === 0) {
       Alert.alert(
-        translate("No Arpeggio Selected"),
-        translate("Please select at least one arpeggio"),
+        translate('No Arpeggio Selected'),
+        translate('Please select at least one arpeggio'),
         [
           {
-            text: translate("Dismiss"),
-            style: "cancel",
+            text: translate('Dismiss'),
+            style: 'cancel',
           },
         ],
-        { cancelable: true }
+        {cancelable: true},
       );
     } else {
-      let newArpeggio = possibleArpeggios[Math.floor(Math.random() * possibleArpeggios.length)];
+      let newArpeggio =
+        possibleArpeggios[Math.floor(Math.random() * possibleArpeggios.length)];
       if (possibleArpeggios.length > 1) {
         do {
-          newArpeggio = possibleArpeggios[Math.floor(Math.random() * possibleArpeggios.length)];
+          newArpeggio =
+            possibleArpeggios[
+              Math.floor(Math.random() * possibleArpeggios.length)
+            ];
         } while (newArpeggio === currentArpeggio);
       }
-      setCurrentArpeggio(newArpeggio ? newArpeggio : translate("No Arpeggio Selected"));
+      setCurrentArpeggio(
+        newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
+      );
     }
-  }
+  };
 
   const removeAllScales = () => {
     setpossibleArpeggios([]);
-  }
+  };
 
   const deleteElement = (element) => {
     let temporaryArpeggios = [...possibleArpeggios];
@@ -129,11 +168,11 @@ const AdvancedArpeggio = () => {
       temporaryArpeggios.splice(index, 1);
     }
     setpossibleArpeggios(temporaryArpeggios);
-  }
+  };
 
   return (
     <View style={styles.container}>
-      <ScaleDisplay>{ currentArpeggio }</ScaleDisplay>
+      <ScaleDisplay>{currentArpeggio}</ScaleDisplay>
       <ScalePickers
         selectedNote={selectedNote}
         setSelectedNote={setSelectedNote}
@@ -149,7 +188,7 @@ const AdvancedArpeggio = () => {
       <FlatList
         style={styles.list}
         data={possibleArpeggios}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <SwipeableRow styles={styles} delete={deleteElement} item={item}>
             <View style={styles.listItemContainer}>
               <View style={styles.listItemTextContainer}>
@@ -158,7 +197,7 @@ const AdvancedArpeggio = () => {
             </View>
           </SwipeableRow>
         )}
-        keyExtractor={item => item}
+        keyExtractor={(item) => item}
       />
       <RandomizeButton
         handler={generateArpeggio}
@@ -172,7 +211,7 @@ const dynamicStyles = new DynamicStyleSheet({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 20
+    marginHorizontal: 20,
   },
   container: {
     flex: 1,
@@ -190,7 +229,10 @@ const dynamicStyles = new DynamicStyleSheet({
     color: new DynamicValue(colors.black, colors.white),
   },
   listItemTextContainer: {
-    borderBottomColor: new DynamicValue(colors.systemGray5Light, colors.systemGray5Dark),
+    borderBottomColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
     borderBottomWidth: 1,
   },
   rightAction: {
@@ -198,11 +240,11 @@ const dynamicStyles = new DynamicStyleSheet({
     flexDirection: 'row',
     backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   trashIcon: {
     paddingRight: 10,
-  }
+  },
 });
 
 export default AdvancedArpeggio;

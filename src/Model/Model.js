@@ -5,50 +5,225 @@
  */
 
 export const scaleResourceData = [
-  {id: 0, name: "Major", construction: "MajorScaleConstruction", description: "MajorScaleDescription"},
-  {id: 1, name: "Natural Minor", construction: "NaturalMinorScaleConstruction", description: "NaturalMinorScaleDescription"},
-  {id: 2, name: "Harmonic Minor", construction: "HarmonicMinorScaleConstruction", description: "HarmonicMinorScaleDescription"},
-  {id: 3, name: "Melodic Minor", construction: "MelodicMinorScaleConstruction", description: "MelodicMinorScaleDescription"},
-  {id: 4, name: "Ionian", construction: "IonianScaleConstruction", description: "IonianScaleDescription"},
-  {id: 5, name: "Dorian", construction: "DorianScaleConstruction", description: "DorianScaleDescription"},
-  {id: 6, name: "Phrygian", construction: "PhrygianScaleConstruction", description: "PhrygianScaleDescription"},
-  {id: 7, name: "Lydian", construction: "LydianScaleConstruction", description: "LydianScaleDescription"},
-  {id: 8, name: "Mixolydian", construction: "MixolydianScaleConstruction", description: "MixolydianScaleDescription"},
-  {id: 9, name: "Aeolian", construction: "AeolianScaleConstruction", description: "AeolianScaleDescription"},
-  {id: 10, name: "Locrian", construction: "LocrianScaleConstruction", description: "LocrianScaleDescription"},
-  {id: 11, name: "Minor Major", construction: "MinorMajorScaleConstruction", description: "MinorMajorScaleDescription"},
-  {id: 12, name: "Dorian ♭2", construction: "DorianFlat2ScaleConstruction", description: "DorianFlat2ScaleDescription"},
-  {id: 13, name: "Lydian Augmented", construction: "LydianAugmentedScaleConstruction", description: "LydianAugmentedScaleDescription"},
-  {id: 14, name: "Lydian Dominant", construction: "LydianDominantScaleConstruction", description: "LydianDominantScaleDescription"},
-  {id: 15, name: "Mixolydian ♭6", construction: "MixolydianFlat6ScaleConstruction", description: "MixolydianFlatSixScaleDescription"},
-  {id: 16, name: "Locrian ♮2", construction: "LocrianNatural2ScaleConstruction", description: "LocrianNaturalTwoScaleDescription"},
-  {id: 17, name: "Altered Scale", construction: "AlteredScaleConstruction", description: "AlteredScaleDescription"},
-  {id: 18, name: "Blues", construction: "BluesScaleConstruction", description: "BluesScaleDescription"},
-  {id: 19, name: "Major Pentatonic", construction: "MajorPentatonicScaleConstruction", description: "MajorPentatonicScaleDescription"},
-  {id: 20, name: "Minor Pentatonic", construction: "MinorPentatonicScaleConstruction", description: "MinorPentatonicScaleDescription"},
-  {id: 21, name: "Whole-Half Octatonic", construction: "WholeHalfOctatonicScaleConstruction", description: "WholeHalfOctatonicScaleDescription"},
-  {id: 22, name: "Half-Whole Octatonic", construction: "HalfWholeOctatonicScaleConstruction", description: "HalfWholeOctatonicScaleDescription"},
-  {id: 23, name: "Whole Tone", construction: "WholeToneScaleConstruction", description: "WholeToneScaleDescription"},
+  {
+    id: 0,
+    name: 'Major',
+    construction: 'MajorScaleConstruction',
+    description: 'MajorScaleDescription',
+  },
+  {
+    id: 1,
+    name: 'Natural Minor',
+    construction: 'NaturalMinorScaleConstruction',
+    description: 'NaturalMinorScaleDescription',
+  },
+  {
+    id: 2,
+    name: 'Harmonic Minor',
+    construction: 'HarmonicMinorScaleConstruction',
+    description: 'HarmonicMinorScaleDescription',
+  },
+  {
+    id: 3,
+    name: 'Melodic Minor',
+    construction: 'MelodicMinorScaleConstruction',
+    description: 'MelodicMinorScaleDescription',
+  },
+  {
+    id: 4,
+    name: 'Ionian',
+    construction: 'IonianScaleConstruction',
+    description: 'IonianScaleDescription',
+  },
+  {
+    id: 5,
+    name: 'Dorian',
+    construction: 'DorianScaleConstruction',
+    description: 'DorianScaleDescription',
+  },
+  {
+    id: 6,
+    name: 'Phrygian',
+    construction: 'PhrygianScaleConstruction',
+    description: 'PhrygianScaleDescription',
+  },
+  {
+    id: 7,
+    name: 'Lydian',
+    construction: 'LydianScaleConstruction',
+    description: 'LydianScaleDescription',
+  },
+  {
+    id: 8,
+    name: 'Mixolydian',
+    construction: 'MixolydianScaleConstruction',
+    description: 'MixolydianScaleDescription',
+  },
+  {
+    id: 9,
+    name: 'Aeolian',
+    construction: 'AeolianScaleConstruction',
+    description: 'AeolianScaleDescription',
+  },
+  {
+    id: 10,
+    name: 'Locrian',
+    construction: 'LocrianScaleConstruction',
+    description: 'LocrianScaleDescription',
+  },
+  {
+    id: 11,
+    name: 'Minor Major',
+    construction: 'MinorMajorScaleConstruction',
+    description: 'MinorMajorScaleDescription',
+  },
+  {
+    id: 12,
+    name: 'Dorian ♭2',
+    construction: 'DorianFlat2ScaleConstruction',
+    description: 'DorianFlat2ScaleDescription',
+  },
+  {
+    id: 13,
+    name: 'Lydian Augmented',
+    construction: 'LydianAugmentedScaleConstruction',
+    description: 'LydianAugmentedScaleDescription',
+  },
+  {
+    id: 14,
+    name: 'Lydian Dominant',
+    construction: 'LydianDominantScaleConstruction',
+    description: 'LydianDominantScaleDescription',
+  },
+  {
+    id: 15,
+    name: 'Mixolydian ♭6',
+    construction: 'MixolydianFlat6ScaleConstruction',
+    description: 'MixolydianFlatSixScaleDescription',
+  },
+  {
+    id: 16,
+    name: 'Locrian ♮2',
+    construction: 'LocrianNatural2ScaleConstruction',
+    description: 'LocrianNaturalTwoScaleDescription',
+  },
+  {
+    id: 17,
+    name: 'Altered Scale',
+    construction: 'AlteredScaleConstruction',
+    description: 'AlteredScaleDescription',
+  },
+  {
+    id: 18,
+    name: 'Blues',
+    construction: 'BluesScaleConstruction',
+    description: 'BluesScaleDescription',
+  },
+  {
+    id: 19,
+    name: 'Major Pentatonic',
+    construction: 'MajorPentatonicScaleConstruction',
+    description: 'MajorPentatonicScaleDescription',
+  },
+  {
+    id: 20,
+    name: 'Minor Pentatonic',
+    construction: 'MinorPentatonicScaleConstruction',
+    description: 'MinorPentatonicScaleDescription',
+  },
+  {
+    id: 21,
+    name: 'Whole-Half Octatonic',
+    construction: 'WholeHalfOctatonicScaleConstruction',
+    description: 'WholeHalfOctatonicScaleDescription',
+  },
+  {
+    id: 22,
+    name: 'Half-Whole Octatonic',
+    construction: 'HalfWholeOctatonicScaleConstruction',
+    description: 'HalfWholeOctatonicScaleDescription',
+  },
+  {
+    id: 23,
+    name: 'Whole Tone',
+    construction: 'WholeToneScaleConstruction',
+    description: 'WholeToneScaleDescription',
+  },
 ];
 
 export const arpeggioResourceData = [
-  {id: 24, name: "Major", construction: "MajorArpeggioConstruction", description: "MajorArpeggioDescription"},
-  {id: 25, name: "Minor", construction: "MinorArpeggioConstruction", description: "MinorArpeggioDescription"},
-  {id: 26, name: "Augmented", construction: "AugmentedArpeggioConstruction", description: "AugmentedArpeggioDescription"},
-  {id: 27, name: "Diminished", construction: "DiminishedArpeggioConstruction", description: "DiminishedArpeggioDescription"},
-  {id: 28, name: "Dominant Seventh", construction: "DominantSeventhArpeggioConstruction", description: "DominantSeventhArpeggioDescription"},
-  {id: 29, name: "Major Seventh", construction: "MajorSeventhArpeggioConstruction", description: "MajorSeventhArpeggioDescription"},
-  {id: 30, name: "Minor Seventh", construction: "MinorSeventhArpeggioConstruction", description: "MinorSeventhArpeggioDescription"},
-  {id: 31, name: "Minor Major Seventh", construction: "MinorMajorSeventhArpeggioConstruction", description: "MinorMajorSeventhArpeggioDescription"},
-  {id: 32, name: "Augmented Minor Seventh", construction: "AugmentedMinorSeventhArpeggioConstruction", description: "AugmentedSeventhArpeggioDescription"},
-  {id: 33, name: "Half Diminished Seventh", construction: "HalfDiminishedSeventhArpeggioConstruction", description: "HalfDiminishedSeventhArpeggioDescription"},
-  {id: 34, name: "Diminished Seventh", construction: "DiminishedSeventhArpeggioConstruction", description: "DiminishedSeventhArpeggioDescription"},
+  {
+    id: 24,
+    name: 'Major',
+    construction: 'MajorArpeggioConstruction',
+    description: 'MajorArpeggioDescription',
+  },
+  {
+    id: 25,
+    name: 'Minor',
+    construction: 'MinorArpeggioConstruction',
+    description: 'MinorArpeggioDescription',
+  },
+  {
+    id: 26,
+    name: 'Augmented',
+    construction: 'AugmentedArpeggioConstruction',
+    description: 'AugmentedArpeggioDescription',
+  },
+  {
+    id: 27,
+    name: 'Diminished',
+    construction: 'DiminishedArpeggioConstruction',
+    description: 'DiminishedArpeggioDescription',
+  },
+  {
+    id: 28,
+    name: 'Dominant Seventh',
+    construction: 'DominantSeventhArpeggioConstruction',
+    description: 'DominantSeventhArpeggioDescription',
+  },
+  {
+    id: 29,
+    name: 'Major Seventh',
+    construction: 'MajorSeventhArpeggioConstruction',
+    description: 'MajorSeventhArpeggioDescription',
+  },
+  {
+    id: 30,
+    name: 'Minor Seventh',
+    construction: 'MinorSeventhArpeggioConstruction',
+    description: 'MinorSeventhArpeggioDescription',
+  },
+  {
+    id: 31,
+    name: 'Minor Major Seventh',
+    construction: 'MinorMajorSeventhArpeggioConstruction',
+    description: 'MinorMajorSeventhArpeggioDescription',
+  },
+  {
+    id: 32,
+    name: 'Augmented Minor Seventh',
+    construction: 'AugmentedMinorSeventhArpeggioConstruction',
+    description: 'AugmentedSeventhArpeggioDescription',
+  },
+  {
+    id: 33,
+    name: 'Half Diminished Seventh',
+    construction: 'HalfDiminishedSeventhArpeggioConstruction',
+    description: 'HalfDiminishedSeventhArpeggioDescription',
+  },
+  {
+    id: 34,
+    name: 'Diminished Seventh',
+    construction: 'DiminishedSeventhArpeggioConstruction',
+    description: 'DiminishedSeventhArpeggioDescription',
+  },
 ];
 
 export default {
   scaleResourceData,
   arpeggioResourceData,
-}
+};
 
 // iOS System Colors
 export const colors = {
@@ -87,9 +262,9 @@ export const colors = {
   indigoLight: 'rgb(88, 86, 214)',
   indigoDark: 'rgb(94, 92, 230)',
 
-  purpleLight: 'rgb(175, 82, 222)',  //af52de
-  purpleDark: 'rgb(191, 90, 242)',   //bf5af2
+  purpleLight: 'rgb(175, 82, 222)', //af52de
+  purpleDark: 'rgb(191, 90, 242)', //bf5af2
 
   pinkLight: 'rgb(255, 45, 85)',
   pinkDark: 'rgb(255, 55, 98)',
-}
+};

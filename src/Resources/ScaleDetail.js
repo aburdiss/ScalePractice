@@ -1,19 +1,22 @@
 import React from 'react';
-import { View, Text, Dimensions } from 'react-native';
-import Image from 'react-native-scalable-image'
-import { DynamicStyleSheet, DynamicValue, useDynamicValue } from 'react-native-dynamic'
+import {View, Text, Dimensions} from 'react-native';
+import Image from 'react-native-scalable-image';
+import {
+  DynamicStyleSheet,
+  DynamicValue,
+  useDynamicValue,
+} from 'react-native-dynamic';
 
-import { colors } from '../Model/Model';
-import { translate } from '../Translations/TranslationModel';
+import {colors} from '../Model/Model';
+import {translate} from '../Translations/TranslationModel';
 
-const { width } = Dimensions.get("window");
+const {width} = Dimensions.get('window');
 
-
-const ScaleDetail = ({ route }) => {
+const ScaleDetail = ({route}) => {
   const styles = useDynamicValue(dynamicStyles);
 
   let path;
-  switch(route.params.id) {
+  switch (route.params.id) {
     case 0:
       path = require('../../img/scales/0.png');
       break;
@@ -127,10 +130,7 @@ const ScaleDetail = ({ route }) => {
   return (
     <View style={styles.viewContainer}>
       <View style={styles.imageContainer}>
-        <Image
-          source={path}
-          width={width}
-          />
+        <Image source={path} width={width} />
       </View>
       <Text style={styles.construction}>
         {translate(route.params.construction)}
