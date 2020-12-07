@@ -4,6 +4,8 @@ import { Picker } from '@react-native-picker/picker';
 import { useDarkMode } from 'react-native-dynamic';
 
 import { colors } from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
+import { color } from 'react-native-reanimated';
 
 const ScalePickers = ({ 
   selectedNote, 
@@ -23,19 +25,19 @@ const ScalePickers = ({
       <View
         style={{
           borderWidth: 1,
-          borderColor: DARKMODE ? colors.systemGray2Dark : colors.systemGray2Light,
+          borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
           margin: 4,
           borderRadius: 8,
         }}
       >
         <Picker
           selectedValue={selectedNote}
-          dropdownIconColor={DARKMODE ? colors.purpleDark : colors.purpleLight}
+          dropdownIconColor={DARKMODE ? '#bf5af2' : '#af52de'}
           onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
         >
           {
             noteNames.map(noteName => (
-              <Picker.Item label={noteName} value={noteName} key={noteName} />
+              <Picker.Item label={noteName} value={noteName} key={noteName} color={DARKMODE ? colors.purpleDark : colors.purpleLight} />
             ))
           }
         </Picker>
@@ -43,19 +45,19 @@ const ScalePickers = ({
       <View
         style={{
           borderWidth: 1,
-          borderColor: 'gray',
+          borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
           margin: 4,
           borderRadius: 8,
         }}
       >
         <Picker
           selectedValue={selectedScale}
-          dropdownIconColor={DARKMODE ? colors.purpleDark : colors.purpleDark}
+          dropdownIconColor={DARKMODE ? '#bf5af2' : '#af52de'}
           onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
         >
           {
             scaleNames.map(scaleName => (
-              <Picker.Item label={translate(scaleName)} value={translate(scaleName)} key={scaleName} />
+              <Picker.Item label={translate(scaleName)} value={translate(scaleName)} key={scaleName} color={DARKMODE ? colors.purpleDark : colors.purpleLight} />
             ))
           }
         </Picker>

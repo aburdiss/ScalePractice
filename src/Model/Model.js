@@ -87,8 +87,8 @@ export const colors = {
   indigoLight: 'rgb(88, 86, 214)',
   indigoDark: 'rgb(94, 92, 230)',
 
-  purpleLight: 'rgb(175, 82, 222)',
-  purpleDark: 'rgb(191, 90, 242)',
+  purpleLight: 'rgb(175, 82, 222)',  //af52de
+  purpleDark: 'rgb(191, 90, 242)',   //bf5af2
 
   pinkLight: 'rgb(255, 45, 85)',
   pinkDark: 'rgb(255, 55, 98)',
