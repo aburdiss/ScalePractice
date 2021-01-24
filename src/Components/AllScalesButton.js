@@ -25,7 +25,7 @@ const AllScalesButton = ({children, handler}) => {
         borderWidth: 1,
         marginVertical: 10,
         padding: 10,
-        opacity: pressed ? 0.8 : 1,
+        opacity: pressed ? 0.7 : 1,
         overflow: 'hidden',
       })}>
       <Text

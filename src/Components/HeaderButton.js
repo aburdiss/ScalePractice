@@ -9,28 +9,37 @@ import {colors} from '../Model/Model';
  * navigation options in the app.
  * @author Alexander Burdiss
  * @since 10/11/20
+ * @version 1.1.0
+ * 
+ * @component
+ * @example
+ * ```jsx
+<HeaderButton handler={handler}>
+  Hello, World!
+</HeaderButton>
+```
  */
 const HeaderButton = ({children, handler}) => {
   const DARKMODE = useDarkMode();
+
   return (
     <Pressable
       android_ripple={{
         color: DARKMODE ? colors.purpleDark : colors.purpleLight,
       }}
       onPress={handler}
-      style={{
+      style={({pressed}) => ({
         padding: 8,
         marginRight: 4,
-      }}>
-      {({pressed}) => (
-        <Text
-          style={{
-            color: DARKMODE ? colors.purpleDark : colors.purpleLight,
-            fontSize: 16,
-          }}>
-          {children}
-        </Text>
-      )}
+        opacity: pressed ? 0.7 : 1,
+      })}>
+      <Text
+        style={{
+          color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+          fontSize: 16,
+        }}>
+        {children}
+      </Text>
     </Pressable>
   );
 };

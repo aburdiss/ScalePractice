@@ -23,10 +23,11 @@ const ListItem = ({data}) => {
       onPress={() => {
         navigation.navigate('Scale Detail', data);
       }}
-      style={{
+      style={({pressed}) => ({
         paddingLeft: 20,
         backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-      }}>
+        opacity: pressed ? 0.7 : 1,
+      })}>
       <View
         style={{
           borderBottomColor: DARKMODE

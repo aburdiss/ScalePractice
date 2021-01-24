@@ -25,7 +25,7 @@ const RandomizeButton = ({handler}) => {
         borderWidth: 1,
         margin: 10,
         padding: 10,
-        opacity: pressed ? 0.8 : 1,
+        opacity: pressed ? 0.7 : 1,
         overflow: 'hidden',
       })}>
       <Text

@@ -16,7 +16,7 @@ const ResetButton = ({handler}) => {
         style={({pressed}) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.redDark : colors.redLight,
-          opacity: pressed ? 0.8 : 1,
+          opacity: pressed ? 0.7 : 1,
           borderWidth: 1,
           margin: 10,
           padding: 14,
