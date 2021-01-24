@@ -1,7 +1,5 @@
-import React, {useState, Component} from 'react';
+import React, {useState} from 'react';
 import {Alert, View, Text, FlatList} from 'react-native';
-import {RectButton, Swipeable} from 'react-native-gesture-handler';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -10,6 +8,7 @@ import {
 
 import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
+import SwipeableRow from '../Components/SwipeableRow';
 import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
@@ -17,51 +16,27 @@ import ScalePickers from './ScalePickers';
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
 
-class SwipeableRow extends Component {
-  renderRightActions = (progress, dragX) => {
-    const scale = dragX.interpolate({
-      inputRange: [-80, 0],
-      outputRange: [1, 0],
-      extrapolate: 'clamp',
-    });
-    return (
-      <RectButton
-        style={this.props.styles.rightAction}
-        onPress={() => this.props.delete(this.props.item)}
-        // TODO: Add Accessibility Label and translate
-      >
-        <Ionicons
-          name="trash"
-          size={20}
-          style={this.props.styles.trashIcon}
-          color={colors.white}
-        />
-      </RectButton>
-    );
-  };
-  render() {
-    const {children} = this.props;
-    return (
-      <Swipeable
-        ref={this.updateRef}
-        friction={2}
-        leftThreshold={80}
-        rightThreshold={41}
-        renderRightActions={this.renderRightActions}>
-        {children}
-      </Swipeable>
-    );
-  }
-}
-
 /**
  * @description A view that allows the user to randomize between a list of
  * selected scales.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.1.0
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Advanced Scale />
+```
  */
 const AdvancedScale = () => {
   const styles = useDynamicValue(dynamicStyles);
+  const [possibleScales, setPossibleScales] = useState([]);
+  const [currentScale, setCurrentScale] = useState(
+    translate('No Scale Selected'),
+  );
+  const [selectedNote, setSelectedNote] = useState('C');
+  const [selectedScale, setSelectedScale] = useState(translate('Major'));
 
   const noteNames = [
     'C',
@@ -109,14 +84,14 @@ const AdvancedScale = () => {
     'Whole Tone',
   ];
 
-  const [possibleScales, setPossibleScales] = useState([]);
-  const [currentScale, setCurrentScale] = useState(
-    translate('No Scale Selected'),
-  );
-
-  const [selectedNote, setSelectedNote] = useState('C');
-  const [selectedScale, setSelectedScale] = useState(translate('Major'));
-
+  /**
+   * @function AdvancedScale~addToScaleList
+   * @description Adds the currently selected scale from the pickers to the
+   * list of scales. Alerts the user if the scale is already in the list.
+   * @author Alexander Burdiss
+   * @since 11/9/20
+   * @version 1.0.1
+   */
   const addToScaleList = () => {
     let scaleAlreadyInList = false;
     const newScale = `${selectedNote} ${selectedScale}`;
@@ -126,32 +101,23 @@ const AdvancedScale = () => {
     if (!scaleAlreadyInList) {
       setPossibleScales([newScale, ...possibleScales]);
     } else {
-      Alert.alert(
-        translate('Scale Already Selected'),
-        '',
-        [
-          {
-            text: translate('Dismiss'),
-            style: 'cancel',
-          },
-        ],
-        {cancelable: true},
-      );
+      Alert.alert(translate('Scale Already Selected'));
     }
   };
 
+  /**
+   * @function AdvancedScale~generateScale
+   * @description Generates a random scale from the user selected list of
+   * scales.
+   * @author Alexander Burdiss
+   * @since 11/9/20
+   * @version 1.0.1
+   */
   const generateScale = () => {
     if (possibleScales.length === 0) {
       Alert.alert(
         translate('No Scale Selected'),
         translate('Please select at least one scale'),
-        [
-          {
-            text: translate('Dismiss'),
-            style: 'cancel',
-          },
-        ],
-        {cancelable: true},
       );
     } else {
       let newScale =
@@ -166,10 +132,26 @@ const AdvancedScale = () => {
     }
   };
 
+  /**
+   * @function AdvancedScale~removeAllScales
+   * @description Removes all scales from the user created list of scales.
+   * @author Alexander Burdiss
+   * @since 11/9/20
+   * @version 1.0.1
+   */
   const removeAllScales = () => {
     setPossibleScales([]);
   };
 
+  /**
+   * @function AdvancedScale~deleteElement
+   * @description Removes the inputted element from the current user selected
+   * list of scales.
+   * @author Alexander Burdiss
+   * @since 11/9/20
+   * @version 1.0.1
+   * @param {string} element
+   */
   const deleteElement = (element) => {
     let temporaryScales = [...possibleScales];
     let index = temporaryScales.indexOf(element);

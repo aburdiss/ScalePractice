@@ -1,7 +1,5 @@
-import React, {useState, Component} from 'react';
+import React, {useState} from 'react';
 import {Alert, View, Text, FlatList} from 'react-native';
-import {RectButton, Swipeable} from 'react-native-gesture-handler';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -12,56 +10,32 @@ import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
+import SwipeableRow from '../Components/SwipeableRow';
 import ScalePickers from './ScalePickers';
-
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
-
-class SwipeableRow extends Component {
-  renderRightActions = (progress, dragX) => {
-    const scale = dragX.interpolate({
-      inputRange: [-80, 0],
-      outputRange: [1, 0],
-      extrapolate: 'clamp',
-    });
-    return (
-      <RectButton
-        style={this.props.styles.rightAction}
-        onPress={() => this.props.delete(this.props.item)}
-        // TODO: Add Accessibility Label and translate
-      >
-        <Ionicons
-          name="trash"
-          size={20}
-          style={this.props.styles.trashIcon}
-          color={colors.white}
-        />
-      </RectButton>
-    );
-  };
-  render() {
-    const {children} = this.props;
-    return (
-      <Swipeable
-        ref={this.updateRef}
-        friction={2}
-        leftThreshold={80}
-        rightThreshold={41}
-        renderRightActions={this.renderRightActions}>
-        {children}
-      </Swipeable>
-    );
-  }
-}
 
 /**
  * @description A view that allows the user to randomize between a list of
  * selected scales.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.1.0
+ * 
+ * @component
+ * @example
+ * ```jsx
+<AdvancedArpeggio />
+```
  */
 const AdvancedArpeggio = () => {
   const styles = useDynamicValue(dynamicStyles);
+  const [possibleArpeggios, setpossibleArpeggios] = useState([]);
+  const [currentArpeggio, setCurrentArpeggio] = useState(
+    translate('No Arpeggio Selected'),
+  );
+  const [selectedNote, setSelectedNote] = useState('C');
+  const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
 
   const noteNames = [
     'C',
@@ -96,14 +70,13 @@ const AdvancedArpeggio = () => {
     'Diminished Seventh',
   ];
 
-  const [possibleArpeggios, setpossibleArpeggios] = useState([]);
-  const [currentArpeggio, setCurrentArpeggio] = useState(
-    translate('No Arpeggio Selected'),
-  );
-
-  const [selectedNote, setSelectedNote] = useState('C');
-  const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
-
+  /**
+   * @function AdvancedArpeggio~addToArpeggioList
+   * @description Adds the currently selected arpeggio to the list.
+   * @author Alexander Burdiss
+   * @since 11/9/20
+   * @version 1.0.1
+   */
   const addToArpeggioList = () => {
     let arpeggioAlreadyInList = false;
     const newArpeggio = `${selectedNote} ${selectedArpeggio}`;
@@ -113,32 +86,23 @@ const AdvancedArpeggio = () => {
     if (!arpeggioAlreadyInList) {
       setpossibleArpeggios([newArpeggio, ...possibleArpeggios]);
     } else {
-      Alert.alert(
-        translate('Arpeggio Already Selected'),
-        '',
-        [
-          {
-            text: translate('Dismiss'),
-            style: 'cancel',
-          },
-        ],
-        {cancelable: true},
-      );
+      Alert.alert(translate('Arpeggio Already Selected'));
     }
   };
 
+  /**
+   * @function AdvancedArpeggio~generateArpeggio
+   * @description Checks the current list of scales, and picks a random
+   * selection from the list.
+   * @author Alexander Burdiss
+   * @since 11/9/20
+   * @version 1.0.1
+   */
   const generateArpeggio = () => {
     if (possibleArpeggios.length === 0) {
       Alert.alert(
         translate('No Arpeggio Selected'),
         translate('Please select at least one arpeggio'),
-        [
-          {
-            text: translate('Dismiss'),
-            style: 'cancel',
-          },
-        ],
-        {cancelable: true},
       );
     } else {
       let newArpeggio =
@@ -157,10 +121,26 @@ const AdvancedArpeggio = () => {
     }
   };
 
+  /**
+   * @function AdvancedArpeggio~removeAllScales
+   * @description Removes all scales from the current user selected list.
+   * @author Alexander Burdiss
+   * @since 11/9/20
+   * @version 1.0.1
+   */
   const removeAllScales = () => {
     setpossibleArpeggios([]);
   };
 
+  /**
+   * @function AdvancedArpeggio~deleteElement
+   * @description Removes the inputted element from the list of elements
+   * currently in state.
+   * @author Alexander Burdiss
+   * @since 11/9/20
+   * @version 1.0.1
+   * @param {string} element The element to remove from the list.
+   */
   const deleteElement = (element) => {
     let temporaryArpeggios = [...possibleArpeggios];
     let index = temporaryArpeggios.indexOf(element);
