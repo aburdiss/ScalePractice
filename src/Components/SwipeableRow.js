@@ -5,6 +5,20 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
 
+/**
+ * @description A swipeable row with a right action.
+ * @author Alexander Burdiss
+ * @since 11/7/2020
+ * @version 1.0.1
+ * 
+ * @component
+ * @example
+ * ```jsx
+<SwipeableRow styles={styles} delete={deleteElement} item={item}>
+  {..}
+</SwipeableRow>
+```
+ */
 class SwipeableRow extends Component {
   renderRightActions = (progress, dragX) => {
     const scale = dragX.interpolate({

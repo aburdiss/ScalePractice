@@ -9,7 +9,9 @@ import {colors} from '../Model/Model';
  * navigation options in the app.
  * @author Alexander Burdiss
  * @since 10/11/20
- * @version 1.1.0
+ * @version 1.1.1
+ * @param {string} props.children The text to render inside this button.
+ * @param {Function} props.handler The function to call when this button is pressed.
  * 
  * @component
  * @example

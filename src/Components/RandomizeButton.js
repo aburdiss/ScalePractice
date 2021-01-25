@@ -10,9 +10,19 @@ import {translate} from '../Translations/TranslationModel';
  * app. Basic styles are already applied.
  * @author Alexander Burdiss
  * @since 10/11/20
+ * @version 1.0.1
+ * @param {Function} props.handler The function to call when this component is
+ * pressed
+ * 
+ * @component
+ * @example
+ * ```jsx
+<RandomizeButton handler={handler} />
+```
  */
 const RandomizeButton = ({handler}) => {
   const DARKMODE = useDarkMode();
+  
   return (
     <Pressable
       android_ripple={{

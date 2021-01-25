@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, SectionList} from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -17,6 +16,13 @@ import {translate} from '../Translations/TranslationModel';
  * app.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.1
+ * 
+ * @component
+ * @example
+ * ```jsx
+<More />
+```
  */
 const More = () => {
   const styles = useDynamicValue(dynamicStyles);

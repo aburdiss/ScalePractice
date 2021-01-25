@@ -12,6 +12,20 @@ import {translate} from '../Translations/TranslationModel';
 
 const {width} = Dimensions.get('window');
 
+/**
+ * @description A component that renders a detailed image, based on the id
+ * given when calling navigation.navigate().
+ * @author Alexandder Burdiss
+ * @since 12/15/20
+ * @version 1.0.1
+ * @param {Object} props.route The Route object provided by React Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<ScaleDetail route={route} />
+```
+ */
 const ScaleDetail = ({route}) => {
   const styles = useDynamicValue(dynamicStyles);
 

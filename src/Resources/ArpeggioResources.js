@@ -3,7 +3,6 @@ import {View, FlatList} from 'react-native';
 import {useDarkMode} from 'react-native-dynamic';
 
 import ListItem from '../Components/ListItem';
-
 import {arpeggioResourceData, colors} from '../Model/Model';
 
 /**
@@ -11,6 +10,13 @@ import {arpeggioResourceData, colors} from '../Model/Model';
  * in the app.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.1
+ * 
+ * @component
+ * @example
+ * ```jsx
+<ArpeggioResources />
+```
  */
 const ArpeggioResources = () => {
   const DARKMODE = useDarkMode();

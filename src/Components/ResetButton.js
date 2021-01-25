@@ -5,8 +5,24 @@ import {useDarkMode} from 'react-native-dynamic';
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
 
+/**
+ * @description A button that is styled to look like a reset button, with a red
+ * outline and the text "Reset".
+ * @author Alexander Burdiss
+ * @since 11/18/20
+ * @version 1.0.1
+ * @param {Function} props.handler The function to call when this component
+ * is pressed.
+ * 
+ * @component
+ * @example
+ * ```jsx
+<ResetButton handler={handler} />
+```
+ */
 const ResetButton = ({handler}) => {
   const DARKMODE = useDarkMode();
+  
   return (
     <View>
       <Pressable

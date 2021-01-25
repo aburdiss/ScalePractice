@@ -9,6 +9,18 @@ import {colors} from '../Model/Model';
  * Basic styles are already applied.
  * @author Alexander Burdiss
  * @since 10/12/20
+ * @version 1.0.1
+ * @param {string} props.children The text to render in the button
+ * @param {Function} props.handler The function to call when the button is
+ * pressed
+ * 
+ * @component
+ * @example
+ * ```jsx
+<AllScalesButton handler={handler}>
+  Hello, World!
+</AllScalesButton>
+```
  */
 const AllScalesButton = ({children, handler}) => {
   const DARKMODE = useDarkMode();
