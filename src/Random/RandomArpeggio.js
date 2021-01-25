@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Alert, View, Text, Switch} from 'react-native';
+import React, {useState, useCallback} from 'react';
+import {Alert, View, ScrollView} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -8,16 +8,23 @@ import {
 
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AllScalesButton from '../Components/AllScalesButton';
-import RandomzieButton from '../Components/RandomizeButton';
+import RandomizeButton from '../Components/RandomizeButton';
+import SwitchRow from '../Components/SwitchRow';
 
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
+import {debounce, random} from 'underscore';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios
  * in a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.0
+ *
+ * @component
+ * @example
+ *   <RandomArpeggio />
  */
 const RandomArpeggio = () => {
   const styles = useDynamicValue(dynamicStyles);
@@ -74,9 +81,12 @@ const RandomArpeggio = () => {
     setDiminishedSeventhSwitch((previousState) => !previousState);
 
   /**
+   * @function ArpeggioPractice~selectAllArpeggios
    * @description A function that toggles all arpeggio switches to true. If all
    * are currently selected, toggles all off except major.
+   * @author Alexander Burdiss
    * @since 10/14/20
+   * @version 1.0.1
    */
   function selectAllArpeggios() {
     let allOn = true;
@@ -151,9 +161,12 @@ const RandomArpeggio = () => {
   }
 
   /**
+   * @function ArpeggioPractice~generateArpeggios
    * @description A function that parses what switches are turned on, and
    * generates a random arpeggio based on the user preferences.
+   * @author Alexander Burdiss
    * @since 10/13/20
+   * @version 1.0.1
    */
   function generateArpeggios() {
     let possibleArpeggios = [];
@@ -207,21 +220,11 @@ const RandomArpeggio = () => {
       Alert.alert(
         translate('No Arpeggio Selected'),
         translate('Please select at least one category'),
-        [
-          {
-            text: translate('Dismiss'),
-            style: 'cancel',
-          },
-        ],
-        {cancelable: true},
       );
     } else {
       let newArpeggio;
       do {
-        newArpeggio =
-          possibleArpeggios[
-            Math.floor(Math.random() * possibleArpeggios.length)
-          ];
+        newArpeggio = possibleArpeggios[random(possibleArpeggios.length - 1)];
       } while (newArpeggio === currentArpeggio);
       setCurrentArpeggio(
         newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
@@ -230,13 +233,14 @@ const RandomArpeggio = () => {
   }
 
   /**
-   * @description Constructs the scale name and scale note together to form one
-   * string to display on the screen.
+   * @function ArpeggioPractice~createArpeggioArrayFromParts
+   * @description Constructs the arpeggio name and arpeggio note together to
+   * form one string to display on the screen.
+   * @author Alexander Burdiss
    * @since 10/12/20
+   * @version 1.0.2
    *
-   * @param {[String]} letterNames
-   * @param {[String]} scaleNames
-   * @returns [String] array of all transpositions of a scale
+   * @returns {[String]} array of all transpositions of a scale
    */
   function createArpeggioArrayFromParts(scaleName) {
     const letterNames = [
@@ -261,144 +265,142 @@ const RandomArpeggio = () => {
     return allLetterNamesOfScale;
   }
 
+  /**
+   * @function ArpeggioPractice~debouncedGenerateArpeggios
+   * @description Prevents the user from clicking the generate button within
+   * 150 ms of another click.
+   * @author Alexander Burdiss
+   * @since 1/13/21
+   * @version 1.0.0
+   */
+  const debouncedGenerateArpeggios = useCallback(
+    debounce(generateArpeggios, 150, true),
+    [
+      majorSwitch,
+      minorSwitch,
+      augmentedSwitch,
+      diminishedSwitch,
+      dominantSeventhSwitch,
+      majorSeventhSwitch,
+      minorSeventhSwitch,
+      minorMajorSeventhSwitch,
+      augmentedSeventhSwitch,
+      halfDiminishedSeventhSwitch,
+      diminishedSeventhSwitch,
+    ],
+  );
+
   return (
     <View style={styles.container}>
-      <View>
-        <ScaleDisplay>{currentArpeggio}</ScaleDisplay>
-        <View>
-          <View style={styles.switchesContainer}>
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>{translate('Major')}</Text>
-              <Switch onValueChange={toggleMajorSwitch} value={majorSwitch} />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>{translate('Minor')}</Text>
-              <Switch onValueChange={toggleMinorSwitch} value={minorSwitch} />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>{translate('Augmented')}</Text>
-              <Switch
-                onValueChange={toggleAugmentedSwitch}
-                value={augmentedSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>{translate('Diminished')}</Text>
-              <Switch
-                onValueChange={toggleDiminishedSwitch}
-                value={diminishedSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Dominant Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleDominantSeventhSwitch}
-                value={dominantSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Major Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleMajorSeventhSwitch}
-                value={majorSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Minor Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleMinorSeventhSwitch}
-                value={minorSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Minor Major Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleMinorMajorSeventhSwitch}
-                value={minorMajorSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Augmented Minor Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleAugmentedSeventhSwitch}
-                value={augmentedSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Half Diminished Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleHalfDiminishedSeventhSwitch}
-                value={halfDiminishedSeventhSwitch}
-              />
-            </View>
-
-            <View style={styles.switchRow}>
-              <Text style={styles.switchText}>
-                {translate('Diminished Seventh')}
-              </Text>
-              <Switch
-                onValueChange={toggleDiminishedSeventhSwitch}
-                value={diminishedSeventhSwitch}
-              />
-            </View>
-
-            <AllScalesButton handler={selectAllArpeggios}>
+      <View style={styles.scaleDisplay}>
+        <ScaleDisplay accessibilityLiveRegion="assertive">
+          {currentArpeggio}
+        </ScaleDisplay>
+      </View>
+      <View style={styles.switchesContainer}>
+        <ScrollView>
+          <SwitchRow
+            onValueChange={toggleMajorSwitch}
+            value={majorSwitch}
+            text={translate('Major')}
+          />
+          <SwitchRow
+            onValueChange={toggleMinorSwitch}
+            value={minorSwitch}
+            text={translate('Minor')}
+          />
+          <SwitchRow
+            onValueChange={toggleAugmentedSwitch}
+            value={augmentedSwitch}
+            text={translate('Augmented')}
+          />
+          <SwitchRow
+            onValueChange={toggleDiminishedSwitch}
+            value={diminishedSwitch}
+            text={translate('Diminished')}
+          />
+          <SwitchRow
+            onValueChange={toggleDominantSeventhSwitch}
+            value={dominantSeventhSwitch}
+            text={translate('Dominant Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleMajorSeventhSwitch}
+            value={majorSeventhSwitch}
+            text={translate('Major Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleMinorSeventhSwitch}
+            value={minorSeventhSwitch}
+            text={translate('Minor Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleMinorMajorSeventhSwitch}
+            value={minorMajorSeventhSwitch}
+            text={translate('Minor Major Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleAugmentedSeventhSwitch}
+            value={augmentedSeventhSwitch}
+            text={translate('Augmented Minor Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleHalfDiminishedSeventhSwitch}
+            value={halfDiminishedSeventhSwitch}
+            text={translate('Half Diminished Seventh')}
+          />
+          <SwitchRow
+            onValueChange={toggleDiminishedSeventhSwitch}
+            value={diminishedSeventhSwitch}
+            text={translate('Diminished Seventh')}
+          />
+          <View style={styles.allScaleButton}>
+            <AllScalesButton
+              handler={selectAllArpeggios}
+              accessibilityHint={translate('Toggles All Arpeggios')}>
               {translate('All Arpeggios')}
             </AllScalesButton>
           </View>
-        </View>
+        </ScrollView>
       </View>
-      <View>
-        <RandomzieButton
-          handler={generateArpeggios}
+      <View style={styles.mainActionButton}>
+        <RandomizeButton
+          handler={debouncedGenerateArpeggios}
           accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+          accessibilityHint={translate('Randomizes a new arpeggio')}
         />
       </View>
     </View>
   );
 };
 
-/**
- * @description Styles for RandomScale component.
- */
 const dynamicStyles = new DynamicStyleSheet({
+  allScaleButton: {
+    paddingHorizontal: 10,
+  },
   container: {
     flex: 1,
-    justifyContent: 'space-between',
     backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
   },
+  mainActionButton: {
+    borderColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
+  },
+  scaleDisplay: {
+    borderBottomWidth: 1,
+    borderColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+  },
   switchesContainer: {
-    width: '70%',
+    flex: 1,
     alignSelf: 'center',
-  },
-  switchRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 4,
-  },
-  switchText: {
-    color: new DynamicValue(colors.black, colors.white),
+    width: '100%',
+    marginHorizontal: 10,
   },
 });
 
