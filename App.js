@@ -15,9 +15,7 @@ import AdvancedScale from './src/Advanced/AdvancedScale';
 import AdvancedArpeggio from './src/Advanced/AdvancedArpeggio';
 import More from './src/More/More';
 import ScaleDetail from './src/Resources/ScaleDetail';
-
 import HeaderButton from './src/Components/HeaderButton';
-
 import {setI18nConfig, translate} from './src/Translations/TranslationModel';
 import {colors} from './src/Model/Model';
 
@@ -28,9 +26,23 @@ const Stack = createStackNavigator();
  * @description The stack of screens for the Random Tab of the navigation.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.1
+ * @param {Object} props.navigation The navigation object provided by React
+ * Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+  name="Random"
+  component={RandomStack}
+  options={{title: translate('Random')}}
+/>
+```
  */
 const RandomStack = ({navigation}) => {
   const DARKMODE = useDarkMode();
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -78,9 +90,23 @@ const RandomStack = ({navigation}) => {
  * @description The stack of screens for the resources tab of the navigation.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.1
+ * @param {Object} props.navigation The navigation object provided by React
+ * Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+  name="Resources"
+  component={ResourcesStack}
+  options={{title: translate('Resources')}}
+/>
+```
  */
 const ResourcesStack = ({navigation}) => {
   const DARKMODE = useDarkMode();
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -135,9 +161,23 @@ const ResourcesStack = ({navigation}) => {
  * @description The stack of screens for the Advanced tab of the navigation.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.1
+ * @param {Object} props.navigation The navigation object provided by React
+ * Navigation
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+  name="Advanced"
+  component={AdvancedStack}
+  options={{title: translate('Advanced')}}
+/>
+```
  */
 const AdvancedStack = ({navigation}) => {
   const DARKMODE = useDarkMode();
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -185,9 +225,21 @@ const AdvancedStack = ({navigation}) => {
  * @description The stack of screens for the More tab of the navigation.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.1
+ * 
+ * @component
+ * @example
+ * ```jsx
+<Tab.Screen
+  name="More"
+  component={MoreStack}
+  options={{title: translate('More')}}
+/>
+```
  */
 const MoreStack = () => {
   const DARKMODE = useDarkMode();
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -221,6 +273,13 @@ setI18nConfig();
  * @description The main tab navigation of the app.
  * @author Alexander Burdiss
  * @since 10/10/20
+ * @version 1.0.1
+ * 
+ * @component
+ * @example
+ * ```jsx
+<App />
+```
  */
 const App = () => {
   const DARKMODE = useDarkMode();
