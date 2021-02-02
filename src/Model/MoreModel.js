@@ -5,6 +5,15 @@ const GOOGLE_PLAY_LINK =
 const APPLE_STORE_LINK =
   'https://apps.apple.com/us/developer/alexander-burdiss/id1496727055';
 
+export const SETTINGS = [
+  {
+    id: '0',
+    type: 'switch',
+    value: 'Repeat Scales',
+    setting: 'repeat',
+  },
+];
+
 export const RESOURCES = [
   {
     id: '0',

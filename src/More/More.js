@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, SectionList} from 'react-native';
 import {
   DynamicStyleSheet,
@@ -6,10 +6,16 @@ import {
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import {InternalListItem, LinkListItem, TextListItem} from './MoreListItems';
+import {
+  InternalListItem,
+  LinkListItem,
+  TextListItem,
+  SwitchListItem,
+} from './MoreListItems';
 import {colors} from '../Model/Model';
-import {RESOURCES, ABOUT} from '../Model/MoreModel';
+import {RESOURCES, ABOUT, SETTINGS} from '../Model/MoreModel';
 import {translate} from '../Translations/TranslationModel';
+import {PreferencesContext} from '../Model/Preferences';
 
 /**
  * @description A view with links to additional resources and settings for the
@@ -26,11 +32,13 @@ import {translate} from '../Translations/TranslationModel';
  */
 const More = () => {
   const styles = useDynamicValue(dynamicStyles);
+  const {state, dispatch} = useContext(PreferencesContext);
 
   return (
     <View>
       <SectionList
         sections={[
+          {title: translate('Saved Settings'), data: SETTINGS},
           {title: translate('Resources'), data: RESOURCES},
           {title: translate('About'), data: ABOUT},
         ]}
@@ -43,6 +51,10 @@ const More = () => {
               return <TextListItem item={item} />;
             case 'navigate':
               return <InternalListItem item={item} />;
+            case 'switch':
+              return (
+                <SwitchListItem item={item} state={state} dispatch={dispatch} />
+              );
           }
         }}
         renderSectionHeader={({section: {title}}) => (

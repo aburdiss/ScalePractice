@@ -1,4 +1,11 @@
 export default {
+  '@react-native-async-storage/async-storage@1.13.4': {
+    licenses: 'MIT',
+    repository: 'https://github.com/react-native-async-storage/async-storage',
+    licenseUrl:
+      'https://github.com/react-native-async-storage/async-storage/raw/master/LICENSE',
+    parents: 'ScalePractice',
+  },
   '@react-native-community/masked-view@0.1.10': {
     licenses: 'MIT',
     repository:

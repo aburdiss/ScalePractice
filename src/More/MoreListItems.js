@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Linking, Pressable} from 'react-native';
+import {View, Text, Linking, Pressable, Switch} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   DynamicStyleSheet,
@@ -116,6 +116,54 @@ export const InternalListItem = ({item}) => {
           color={styles.linkText.color}
         />
       </View>
+    </Pressable>
+  );
+};
+
+/**
+ * @description A rendered Switch list item that updates saved preferences.
+ * @author Alexander Burdiss
+ * @since 1/5/21
+ * @version 1.0.2
+ * @param {Object} props.item The data to be rendered in this component.
+ * @param {Object} props.state The current state of the app, including user
+ * preferences.
+ * @param {Function} props.dispatch A function to make a reducer call to update
+ * state.
+ * 
+ * @component
+ * @example
+ * ```jsx
+<SwitchListItem
+  item={item}
+  state={state}
+  dispatch={dispatch}
+/>
+```
+ */
+export const SwitchListItem = ({item, state, dispatch}) => {
+  console.log(state);
+  const styles = useDynamicValue(dynamicStyles);
+  function updateValue() {
+    let updatedState = !state[item.setting];
+    let newSetting = {[item.setting]: updatedState};
+    dispatch({type: 'SET_SETTING', payload: newSetting});
+  }
+  return (
+    <Pressable
+      style={styles.listRowContainer}
+      onPress={updateValue}
+      accessible={true}
+      accessibilityLabel={translate(item.value)}
+      accessibilityState={{checked: state[item.setting]}}
+      accessibilityRole="switch"
+      accessibilityHint={
+        translate('Toggles setting') + ' ' + translate(item.value)
+      }>
+      <Text maxFontSizeMultiplier={1.8} style={styles.listRowText}>
+        {translate(item.value)}
+      </Text>
+      <Switch value={state[item.setting]} onValueChange={updateValue} />
     </Pressable>
   );
 };
