@@ -5,6 +5,7 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {
   InternalListItem,
@@ -62,6 +63,31 @@ const More = () => {
         )}
         style={styles.sectionList}
         stickySectionHeadersEnabled={false}
+        ListFooterComponent={
+          <View
+            style={styles.footerContainer}
+            importantForAccessibility={false}>
+            <View style={styles.iconContainer}>
+              <Ionicons
+                accessibilityLabel={translate('React Native Icon')}
+                style={styles.icon}
+                name="logo-react"
+                size={24}
+                color={colors.systemGray}
+              />
+              <Ionicons
+                accessibilityLabel={translate('JavaScript Icon')}
+                style={styles.icon}
+                name="logo-javascript"
+                size={24}
+                color={colors.systemGray}
+              />
+            </View>
+            <Text style={styles.footerText}>
+              {translate('Made with ❤️ in Dayton, Ohio')}
+            </Text>
+          </View>
+        }
       />
     </View>
   );
@@ -86,6 +112,21 @@ const dynamicStyles = new DynamicStyleSheet({
   sectionList: {
     height: '100%',
     backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
+  },
+  iconContainer: {
+    flexDirection: 'row',
+  },
+  icon: {
+    paddingHorizontal: 5,
+  },
+  footerContainer: {
+    paddingTop: 30,
+    alignItems: 'center',
+  },
+  footerText: {
+    color: colors.systemGray,
+    paddingTop: 10,
+    paddingBottom: 30,
   },
 });
 
