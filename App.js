@@ -14,6 +14,7 @@ import ArpeggioResources from './src/Resources/ArpeggioResources';
 import AdvancedScale from './src/Advanced/AdvancedScale';
 import AdvancedArpeggio from './src/Advanced/AdvancedArpeggio';
 import More from './src/More/More';
+import Licenses from './src/More/Licenses';
 import ScaleDetail from './src/Resources/ScaleDetail';
 import HeaderButton from './src/Components/HeaderButton';
 import {setI18nConfig, translate} from './src/Translations/TranslationModel';
@@ -262,6 +263,13 @@ const MoreStack = () => {
         component={More}
         options={{
           title: translate('More'),
+        }}
+      />
+      <Stack.Screen
+        name="Licenses"
+        component={Licenses}
+        options={{
+          title: translate('Licenses'),
         }}
       />
     </Stack.Navigator>

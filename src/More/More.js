@@ -6,7 +6,7 @@ import {
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import {LinkListItem, TextListItem} from './MoreListItems';
+import {InternalListItem, LinkListItem, TextListItem} from './MoreListItems';
 import {colors} from '../Model/Model';
 import {RESOURCES, ABOUT} from '../Model/MoreModel';
 import {translate} from '../Translations/TranslationModel';
@@ -35,13 +35,16 @@ const More = () => {
           {title: translate('About'), data: ABOUT},
         ]}
         keyExtractor={(item, index) => index}
-        renderItem={({item}) =>
-          item.type === 'link' ? (
-            <LinkListItem item={item} />
-          ) : (
-            <TextListItem item={item} />
-          )
-        }
+        renderItem={({item}) => {
+          switch (item.type) {
+            case 'link':
+              return <LinkListItem item={item} />;
+            case 'text':
+              return <TextListItem item={item} />;
+            case 'navigate':
+              return <InternalListItem item={item} />;
+          }
+        }}
         renderSectionHeader={({section: {title}}) => (
           <Text style={styles.listHeader}>{title}</Text>
         )}

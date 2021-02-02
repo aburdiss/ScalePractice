@@ -6,6 +6,7 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import {useNavigation} from '@react-navigation/native';
 
 import {colors} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
@@ -74,6 +75,51 @@ export const LinkListItem = ({item}) => {
   );
 };
 
+/**
+ * @description A rendered link list item that opens a page inside the app on
+ * the current stack. This is rendered the same as a LinkListItem, and performs
+ * a similar function.
+ * @author Alexander Burdiss
+ * @since 12/17/20
+ * @version 1.0.2
+ * @param {Object} props.item The Internal list item to be rendered containing
+ * a Component name to render to, and the text to be rendered.
+ * 
+ * @component
+ * @example
+ * ```jsx
+<InternalListItem item={item} />
+```
+ */
+export const InternalListItem = ({item}) => {
+  const styles = useDynamicValue(dynamicStyles);
+  const navigation = useNavigation();
+
+  return (
+    <Pressable
+      style={({pressed}) => ({
+        opacity: pressed ? 0.7 : 1,
+      })}
+      accessible={true}
+      accessibilityLabel={translate(item.value)}
+      accessibilityRole="link"
+      onPress={() => {
+        navigation.navigate(item.component);
+      }}>
+      <View style={styles.listRowContainer}>
+        <Text maxFontSizeMultiplier={1.8} style={styles.linkText}>
+          {translate(item.value)}
+        </Text>
+        <Ionicons
+          name={'chevron-forward-outline'}
+          size={25}
+          color={styles.linkText.color}
+        />
+      </View>
+    </Pressable>
+  );
+};
+
 const dynamicStyles = new DynamicStyleSheet({
   listRowContainer: {
     flexDirection: 'row',
@@ -94,5 +140,6 @@ const dynamicStyles = new DynamicStyleSheet({
   },
   linkText: {
     color: new DynamicValue(colors.purpleLight, colors.purpleDark),
+    paddingRight: 5,
   },
 });

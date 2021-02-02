@@ -39,6 +39,12 @@ export const ABOUT = [
     value: 'Special Thanks to Qian Yu',
   },
   {
+    id: '15',
+    type: 'navigate',
+    value: 'Licenses',
+    component: 'Licenses',
+  },
+  {
     id: '5',
     type: 'link',
     value: 'Send Feedback',
