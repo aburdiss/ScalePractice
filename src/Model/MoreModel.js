@@ -43,9 +43,10 @@ export const ABOUT = [
     value: `© ${new Date().getFullYear()} ` + 'Alexander Burdiss',
   },
   {
-    id: '4',
-    type: 'text',
-    value: 'Special Thanks to Qian Yu',
+    id: '16',
+    type: 'navigate',
+    value: 'Acknowledgements',
+    component: 'Acknowledgements',
   },
   {
     id: '15',

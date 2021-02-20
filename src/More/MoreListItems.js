@@ -175,7 +175,6 @@ const dynamicStyles = new DynamicStyleSheet({
     justifyContent: 'space-between',
     backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
     paddingVertical: 8,
-    height: 45,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: new DynamicValue(
@@ -185,6 +184,7 @@ const dynamicStyles = new DynamicStyleSheet({
   },
   listRowText: {
     color: new DynamicValue(colors.black, colors.white),
+    paddingVertical: 5,
   },
   linkText: {
     color: new DynamicValue(colors.purpleLight, colors.purpleDark),

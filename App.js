@@ -21,6 +21,7 @@ import HeaderButton from './src/Components/HeaderButton';
 import {setI18nConfig, translate} from './src/Translations/TranslationModel';
 import {colors} from './src/Model/Model';
 import {PreferencesProvider} from './src/Model/Preferences';
+import Acknowledgements from './src/More/Acknowledgements';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -272,6 +273,13 @@ const MoreStack = () => {
         component={Licenses}
         options={{
           title: translate('Licenses'),
+        }}
+      />
+      <Stack.Screen
+        name="Acknowledgements"
+        component={Acknowledgements}
+        options={{
+          title: translate('Acknowledgements'),
         }}
       />
     </Stack.Navigator>
