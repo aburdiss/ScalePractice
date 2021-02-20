@@ -30,6 +30,7 @@ const AllScalesButton = ({children, handler}) => {
       android_ripple={{
         color: DARKMODE ? colors.systemGray : colors.systemGray,
       }}
+      accessibilityRole="button"
       onPress={handler}
       style={({pressed}) => ({
         borderRadius: 8,

@@ -12,6 +12,12 @@
   "Randomize": "开始",
   "Reset": "重置",
   "Add To List": "加入列表",
+  "Adds the selected exercise to the list": "将选定的运动添加到列表中",
+  "Toggles Switch": "切换开关",
+  "Toggles All Scales": "切换所有音阶",
+  "Toggles All Arpeggios": "切换所有琶音",
+  "Randomizes a new scale": "随机化一个新的音阶",
+  "Randomizes a new arpeggio": "随机化一个新的琶音",
 
   "Note": "音符",
   "Scale": "音阶",

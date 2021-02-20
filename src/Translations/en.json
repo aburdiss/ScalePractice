@@ -12,6 +12,12 @@
   "Randomize": "Randomize",
   "Reset": "Reset",
   "Add To List": "Add to List",
+  "Adds the selected exercise to the list": "Adds the selected exercise to the list",
+  "Toggles Switch": "Toggles Switch",
+  "Toggles All Scales": "Toggles All Scales",
+  "Toggles All Arpeggios": "Toggles All Arpeggios",
+  "Randomizes a new scale": "Randomizes a new scale",
+  "Randomizes a new arpeggio": "Randomizes a new arpeggio",
 
   "Note": "Note",
   "Scale": "Scale",

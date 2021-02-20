@@ -12,6 +12,12 @@
   "Randomize": "Randomiser",
   "Reset": "Réinitialiser",
   "Add To List": "Ajouter à la liste",
+  "Adds the selected exercise to the list": "Ajoute l'exercice sélectionné à la liste",
+  "Toggles Switch": "Bascule le commutateur",
+  "Toggles All Scales": "Bascule toutes les échelles",
+  "Toggles All Arpeggios": "Bascule tous les arpèges",
+  "Randomizes a new scale": "Randomise une nouvelle échelle",
+  "Randomizes a new arpeggio": "Randomise un nouvel arpège",
 
   "Note": "Note",
   "Scale": "Gamme",

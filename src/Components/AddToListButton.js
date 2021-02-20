@@ -10,7 +10,7 @@ import {translate} from '../Translations/TranslationModel';
  * function is passed in. 
  * @author Alexander Burdiss
  * @since 12/7/20
- * @version 1.0.1
+ * @version 1.0.2
  * @param {Function} props.handler The function to call when this component
  * is pressed 
  * 
@@ -29,6 +29,8 @@ const AddToListButton = ({handler}) => {
         android_ripple={{
           color: DARKMODE ? colors.greenDark : colors.greenLight,
         }}
+        accessibilityRole="button"
+        accessibilityHint={translate('Adds the selected exercise to the list')}
         style={({pressed}) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.greenDark : colors.greenLight,
