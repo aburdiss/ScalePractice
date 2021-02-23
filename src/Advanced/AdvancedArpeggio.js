@@ -169,7 +169,7 @@ const AdvancedArpeggio = () => {
         style={styles.list}
         data={possibleArpeggios}
         renderItem={({item}) => (
-          <SwipeableRow styles={styles} delete={deleteElement} item={item}>
+          <SwipeableRow styles={styles} deleteItem={deleteElement} item={item}>
             <View style={styles.listItemContainer}>
               <View style={styles.listItemTextContainer}>
                 <Text style={styles.listItemText}>{item}</Text>

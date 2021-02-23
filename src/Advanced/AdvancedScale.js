@@ -180,7 +180,7 @@ const AdvancedScale = () => {
         style={styles.list}
         data={possibleScales}
         renderItem={({item}) => (
-          <SwipeableRow styles={styles} delete={deleteElement} item={item}>
+          <SwipeableRow styles={styles} deleteItem={deleteElement} item={item}>
             <View style={styles.listItemContainer}>
               <View style={styles.listItemTextContainer}>
                 <Text style={styles.listItemText}>{item}</Text>
