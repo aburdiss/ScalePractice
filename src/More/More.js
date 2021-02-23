@@ -64,9 +64,7 @@ const More = () => {
         style={styles.sectionList}
         stickySectionHeadersEnabled={false}
         ListFooterComponent={
-          <View
-            style={styles.footerContainer}
-            importantForAccessibility={false}>
+          <View style={styles.footerContainer} importantForAccessibility={'no'}>
             <View style={styles.iconContainer}>
               <Ionicons
                 accessibilityLabel={translate('React Native Icon')}

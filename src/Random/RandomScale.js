@@ -339,9 +339,7 @@ const RandomScale = () => {
   return (
     <View style={styles.container}>
       <View style={styles.scaleDisplay}>
-        <ScaleDisplay accessibilityLiveRegion="assertive">
-          {currentScale}
-        </ScaleDisplay>
+        <ScaleDisplay>{currentScale}</ScaleDisplay>
       </View>
       <View style={styles.switchesContainer}>
         <ScrollView>
@@ -409,6 +407,7 @@ const RandomScale = () => {
           handler={debouncedGenerateScales}
           accessibilityValue={{text: `${translate(currentScale)}`}}
           accessibilityHint={translate('Randomizes a new scale')}
+          accessible={true}
         />
       </View>
     </View>

@@ -293,9 +293,7 @@ const RandomArpeggio = () => {
   return (
     <View style={styles.container}>
       <View style={styles.scaleDisplay}>
-        <ScaleDisplay accessibilityLiveRegion="assertive">
-          {currentArpeggio}
-        </ScaleDisplay>
+        <ScaleDisplay>{currentArpeggio}</ScaleDisplay>
       </View>
       <View style={styles.switchesContainer}>
         <ScrollView>
@@ -368,6 +366,7 @@ const RandomArpeggio = () => {
           handler={debouncedGenerateArpeggios}
           accessibilityValue={{text: `${translate(currentArpeggio)}`}}
           accessibilityHint={translate('Randomizes a new arpeggio')}
+          accessibilityRole="button"
         />
       </View>
     </View>

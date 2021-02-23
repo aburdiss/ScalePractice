@@ -10,7 +10,7 @@ import {translate} from '../Translations/TranslationModel';
  * outline and the text "Reset".
  * @author Alexander Burdiss
  * @since 11/18/20
- * @version 1.0.1
+ * @version 1.0.2
  * @param {Function} props.handler The function to call when this component
  * is pressed.
  * 
@@ -22,13 +22,16 @@ import {translate} from '../Translations/TranslationModel';
  */
 const ResetButton = ({handler}) => {
   const DARKMODE = useDarkMode();
-  
+
   return (
     <View>
       <Pressable
         android_ripple={{
           color: DARKMODE ? colors.redDark : colors.redLight,
         }}
+        accessibilityRole="button"
+        accessibilityLabel={translate('Reset')}
+        accessibilityHint="Resets List"
         style={({pressed}) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.redDark : colors.redLight,

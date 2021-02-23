@@ -10,7 +10,7 @@ import {translate} from '../Translations/TranslationModel';
  * @description Used as a render item in the ScaleDescription scroll view.
  * @author Alexander Burdiss
  * @since 11/15/20
- * @version 1.0.1
+ * @version 1.0.2
  * @param {Object} props.data The data to display in this list item.
  * 
  * @component
@@ -28,6 +28,9 @@ const ListItem = ({data}) => {
       android_ripple={{
         color: DARKMODE ? colors.purpleDark : colors.purpleLight,
       }}
+      accessibilityRole="button"
+      accessibile={true}
+      accessibilityLabel={translate(data.name)}
       onPress={() => {
         navigation.navigate('Scale Detail', data);
       }}

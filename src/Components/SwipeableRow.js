@@ -9,7 +9,7 @@ import {translate} from '../Translations/TranslationModel';
  * @description A swipeable row with a right action.
  * @author Alexander Burdiss
  * @since 11/7/2020
- * @version 1.0.1
+ * @version 1.0.2
  * 
  * @component
  * @example
@@ -30,8 +30,8 @@ class SwipeableRow extends Component {
       <RectButton
         style={this.props.styles.rightAction}
         onPress={() => this.props.delete(this.props.item)}
-        // TODO: Add Accessibility Label and translate
-      >
+        accessibilityRole="button"
+        accessibilityLabel={translate('Delete')}>
         <Ionicons
           name="trash"
           size={20}
