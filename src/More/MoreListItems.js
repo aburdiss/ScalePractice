@@ -16,7 +16,7 @@ import {translate} from '../Translations/TranslationModel';
  * used to display copyright information, so it is not being translated.
  * @author Alexander Burdiss
  * @since 11/15/20
- * @version 1.1.0
+ * @version 1.1.1
  * @param {Object} props.item The item to be rendered.
  * 
  * @component
@@ -30,11 +30,14 @@ export const TextListItem = ({item}) => {
 
   return (
     <View style={styles.listRowContainer}>
-      {item.value.charAt(0) == '©' ? (
-        <Text style={styles.listRowText}>{item.value}</Text>
-      ) : (
-        <Text style={styles.listRowText}>{translate(item.value)}</Text>
-      )}
+      <Text
+        maxFontSizeMultiplier={1.8}
+        style={styles.listRowText}
+        accessibilityRole="text">
+        {item.value.includes('Alexander Burdiss')
+          ? item.value
+          : translate(item.value)}
+      </Text>
     </View>
   );
 };
@@ -60,6 +63,9 @@ export const LinkListItem = ({item}) => {
       style={({pressed}) => ({
         opacity: pressed ? 0.7 : 1,
       })}
+      accessible={true}
+      accessibilityLabel={translate(item.value)}
+      accessibilityRole="link"
       onPress={() => {
         Linking.openURL(item.link);
       }}>
