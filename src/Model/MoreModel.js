@@ -4,6 +4,8 @@ const GOOGLE_PLAY_LINK =
   'https://play.google.com/store/apps/developer?id=Alexander+Burdiss';
 const APPLE_STORE_LINK =
   'https://apps.apple.com/us/developer/alexander-burdiss/id1496727055';
+const AMAZON_STORE_LINK =
+  'https://www.amazon.com/s?i=mobile-apps&rh=p_4%3AAlexander+Burdiss';
 
 export const SETTINGS = [
   {
@@ -20,7 +22,11 @@ export const RESOURCES = [
     type: 'link',
     value: 'More Apps by Alexander Burdiss',
     link:
-      DeviceInfo.getBrand() === 'Apple' ? APPLE_STORE_LINK : GOOGLE_PLAY_LINK,
+      DeviceInfo.getBrand() === 'Apple'
+        ? APPLE_STORE_LINK
+        : DeviceInfo.getBrand() === 'Amazon'
+        ? AMAZON_STORE_LINK
+        : GOOGLE_PLAY_LINK,
   },
   {
     id: '1',
