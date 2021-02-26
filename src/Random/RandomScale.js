@@ -1,37 +1,54 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {Alert, View, ScrollView} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import {debounce, random, shuffle} from 'underscore';
 
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AllScalesButton from '../Components/AllScalesButton';
 import RandomizeButton from '../Components/RandomizeButton';
 import SwitchRow from '../Components/SwitchRow';
 
-import {colors} from '../Model/Model';
+import {
+  colors,
+  majorLetterNames,
+  minorLetterNames,
+  indeterminantLetterNames,
+  pentatonicScaleNames,
+  majorModeNames,
+  melodicMinorModeNames,
+  octatonicScaleNames,
+} from '../Model/Model';
+import {PreferencesContext} from '../Model/Preferences';
 import {translate} from '../Translations/TranslationModel';
-import {debounce, random} from 'underscore';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
  * a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 1.1.0
+ * @version 2.0.0
  *
  * @component
  * @example
  *   <RandomScale />
+ *
+ * @todo Refactor this to be more functional
  */
 const RandomScale = () => {
   const styles = useDynamicValue(dynamicStyles);
 
+  const {state} = useContext(PreferencesContext);
+
   const [currentScale, setCurrentScale] = useState(
     translate('No Scale Selected'),
   );
+
+  const [scaleArrayIndex, setScaleArrayIndex] = useState(0);
+  const [scaleArray, setScaleArray] = useState([]);
 
   const [majorSwitch, setMajorSwitch] = useState(true);
   const toggleMajorSwitch = () =>
@@ -72,6 +89,19 @@ const RandomScale = () => {
   const [wholeToneSwitch, setWholeToneSwitch] = useState(false);
   const toggleWholeToneSwitch = () =>
     setWholeToneSwitch((previousState) => !previousState);
+
+  useEffect(generateScales, [
+    majorSwitch,
+    naturalMinorSwitch,
+    harmonicMinorSwitch,
+    melodicMinorSwitch,
+    majorModesSwitch,
+    melodicMinorModesSwitch,
+    bluesSwitch,
+    pentatonicSwitch,
+    octatonicSwtich,
+    wholeToneSwitch,
+  ]);
 
   /**
    * @function ScalePractice~selectAllScales
@@ -147,75 +177,6 @@ const RandomScale = () => {
    * @version 1.0.1
    */
   function generateScales() {
-    const majorLetterNames = [
-      'C',
-      'D♭',
-      'D',
-      'E♭',
-      'E',
-      'F',
-      'F♯',
-      'G♭',
-      'G',
-      'A♭',
-      'A',
-      'B♭',
-      'B',
-    ];
-    const minorLetterNames = [
-      'C',
-      'C♯',
-      'D',
-      'D♯',
-      'E♭',
-      'E',
-      'F',
-      'F♯',
-      'G',
-      'G♯',
-      'A',
-      'B♭',
-      'B',
-    ];
-    const indeterminantLetterNames = [
-      'C',
-      'C♯',
-      'D',
-      'E♭',
-      'E',
-      'F',
-      'F♯',
-      'G',
-      'A♭',
-      'A',
-      'B♭',
-      'B',
-    ];
-
-    const pentatonicScaleNames = ['Major Pentatonic', 'Minor Pentatonic'];
-    const majorModeNames = [
-      'Ionian',
-      'Dorian',
-      'Phrygian',
-      'Lydian',
-      'Mixolydian',
-      'Aeolian',
-      'Locrian',
-    ];
-    const melodicMinorModeNames = [
-      'Minor Major',
-      'Dorian ♭2',
-      'Lydian Augmented',
-      'Lydian Dominant',
-      'Mixolydian ♭6',
-      'Locrian ♮2',
-      'Altered Scale',
-    ];
-    const octatonicScaleNames = [
-      'Whole-Half Octatonic',
-      'Half-Whole Octatonic',
-    ];
-
     let possibleScales = [];
 
     if (majorSwitch) {
@@ -274,20 +235,8 @@ const RandomScale = () => {
         ...createScaleArrayFromParts(indeterminantLetterNames, ['Whole Tone']),
       );
     }
-
-    // Ensuring that the new scale is different from the old one
-    if (possibleScales.length === 0) {
-      Alert.alert(
-        translate('No Scale Selected'),
-        translate('Please select at least one category'),
-      );
-    } else {
-      let newScale;
-      do {
-        newScale = possibleScales[random(possibleScales.length - 1)];
-      } while (newScale == currentScale);
-      setCurrentScale(newScale ? newScale : translate('No Scale Selected'));
-    }
+    setScaleArray(shuffle(possibleScales));
+    setScaleArrayIndex(0);
   }
 
   /**
@@ -309,32 +258,76 @@ const RandomScale = () => {
         allLetterNamesOfScale.push(`${letter} ${translate(scaleName)}`);
       }
     }
+    allLetterNamesOfScale = shuffle(allLetterNamesOfScale);
     return allLetterNamesOfScale;
   }
 
   /**
-   * @function ScalePractice~debouncedGenerateScales
+   * @function RandomScale~getNewScale
+   * @description Checks whether the user has selected to repeat scales or not
+   * and displays the next scale on the screen.
+   * @author Alexander Burdiss
+   * @since 2/26/21
+   * @version 1.0.0
+   */
+  function getNewScale() {
+    if (state.repeat) {
+      // Ensuring that the new scale is at least different from the old one
+      if (scaleArray.length === 0) {
+        Alert.alert(
+          translate('No Scale Selected'),
+          translate('Please select at least one category'),
+        );
+      } else {
+        let newScale;
+        do {
+          newScale = scaleArray[random(scaleArray.length - 1)];
+        } while (newScale == currentScale);
+        setCurrentScale(newScale ? newScale : translate('No Scale Selected'));
+      }
+    } else {
+      // Do not repeat scales
+      if (scaleArrayIndex >= scaleArray.length) {
+        Alert.alert('All scaled practiced!', '', [
+          {
+            onPress: () => {
+              setScaleArrayIndex(1);
+              const newScaleArray = shuffle(scaleArray);
+              setScaleArray(newScaleArray);
+              setCurrentScale(newScaleArray[0]);
+            },
+          },
+        ]);
+      } else {
+        setCurrentScale(scaleArray[scaleArrayIndex]);
+        setScaleArrayIndex((previous) => previous + 1);
+      }
+    }
+  }
+
+  /**
+   * @function ScalePractice~debouncedGetNewScale
    * @description Prevents the user from clicking the generate button within
    * 150 ms of another press.
    * @author Alexander Burdiss
    * @since 1/5/21
    * @version 1.0.0
    */
-  const debouncedGenerateScales = useCallback(
-    debounce(generateScales, 150, true),
-    [
-      majorSwitch,
-      naturalMinorSwitch,
-      harmonicMinorSwitch,
-      melodicMinorSwitch,
-      majorModesSwitch,
-      melodicMinorModesSwitch,
-      bluesSwitch,
-      pentatonicSwitch,
-      octatonicSwtich,
-      wholeToneSwitch,
-    ],
-  );
+  const debouncedGetNewScale = useCallback(debounce(getNewScale, 150, true), [
+    state,
+    scaleArrayIndex,
+    scaleArray,
+    majorSwitch,
+    naturalMinorSwitch,
+    harmonicMinorSwitch,
+    melodicMinorSwitch,
+    majorModesSwitch,
+    melodicMinorModesSwitch,
+    bluesSwitch,
+    pentatonicSwitch,
+    octatonicSwtich,
+    wholeToneSwitch,
+  ]);
 
   return (
     <View style={styles.container}>
@@ -404,7 +397,7 @@ const RandomScale = () => {
       </View>
       <View style={styles.mainActionButton}>
         <RandomizeButton
-          handler={debouncedGenerateScales}
+          handler={debouncedGetNewScale}
           accessibilityValue={{text: `${translate(currentScale)}`}}
           accessibilityHint={translate('Randomizes a new scale')}
           accessible={true}

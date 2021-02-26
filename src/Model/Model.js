@@ -4,6 +4,74 @@
  * Created by Alexander Burdiss
  */
 
+export const majorLetterNames = [
+  'C',
+  'D♭',
+  'D',
+  'E♭',
+  'E',
+  'F',
+  // 'F♯',
+  'G♭',
+  'G',
+  'A♭',
+  'A',
+  'B♭',
+  'B',
+];
+export const minorLetterNames = [
+  'C',
+  'C♯',
+  'D',
+  // 'D♯',
+  'E♭',
+  'E',
+  'F',
+  'F♯',
+  'G',
+  'G♯',
+  'A',
+  'B♭',
+  'B',
+];
+export const indeterminantLetterNames = [
+  'C',
+  'C♯',
+  'D',
+  'E♭',
+  'E',
+  'F',
+  'F♯',
+  'G',
+  'A♭',
+  'A',
+  'B♭',
+  'B',
+];
+export const pentatonicScaleNames = ['Major Pentatonic', 'Minor Pentatonic'];
+export const majorModeNames = [
+  'Ionian',
+  'Dorian',
+  'Phrygian',
+  'Lydian',
+  'Mixolydian',
+  'Aeolian',
+  'Locrian',
+];
+export const melodicMinorModeNames = [
+  'Minor Major',
+  'Dorian ♭2',
+  'Lydian Augmented',
+  'Lydian Dominant',
+  'Mixolydian ♭6',
+  'Locrian ♮2',
+  'Altered Scale',
+];
+export const octatonicScaleNames = [
+  'Whole-Half Octatonic',
+  'Half-Whole Octatonic',
+];
+
 export const scaleResourceData = [
   {
     id: 0,
