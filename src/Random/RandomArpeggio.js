@@ -1,10 +1,11 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useContext, useEffect} from 'react';
 import {Alert, View, ScrollView} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import {debounce, random, shuffle} from 'underscore';
 
 import {createArpeggioArrayFromParts} from './RandomHelpers';
 import ScaleDisplay from '../Components/ScaleDisplay';
@@ -13,8 +14,8 @@ import RandomizeButton from '../Components/RandomizeButton';
 import SwitchRow from '../Components/SwitchRow';
 
 import {colors} from '../Model/Model';
+import {PreferencesContext} from '../Model/Preferences';
 import {translate} from '../Translations/TranslationModel';
-import {debounce, random} from 'underscore';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios
@@ -30,9 +31,14 @@ import {debounce, random} from 'underscore';
 const RandomArpeggio = () => {
   const styles = useDynamicValue(dynamicStyles);
 
+  const {state} = useContext(PreferencesContext);
+
   const [currentArpeggio, setCurrentArpeggio] = useState(
     translate('No Arpeggio Selected'),
   );
+
+  const [arpeggioArrayIndex, setArpeggioArrayIndex] = useState(0);
+  const [arpeggioArray, setArpeggioArray] = useState([]);
 
   const [majorSwitch, setMajorSwitch] = useState(true);
   const toggleMajorSwitch = () =>
@@ -80,6 +86,20 @@ const RandomArpeggio = () => {
   const [diminishedSeventhSwitch, setDiminishedSeventhSwitch] = useState(false);
   const toggleDiminishedSeventhSwitch = () =>
     setDiminishedSeventhSwitch((previousState) => !previousState);
+
+  useEffect(generateArpeggios, [
+    majorSwitch,
+    minorSwitch,
+    augmentedSwitch,
+    diminishedSwitch,
+    dominantSeventhSwitch,
+    majorSeventhSwitch,
+    minorSeventhSwitch,
+    minorMajorSeventhSwitch,
+    augmentedSeventhSwitch,
+    halfDiminishedSeventhSwitch,
+    diminishedSeventhSwitch,
+  ]);
 
   /**
    * @function ArpeggioPractice~selectAllArpeggios
@@ -216,20 +236,51 @@ const RandomArpeggio = () => {
       );
     }
 
-    // Ensuring that the new arpeggio is different from the old one.
-    if (possibleArpeggios.length === 0) {
-      Alert.alert(
-        translate('No Arpeggio Selected'),
-        translate('Please select at least one category'),
-      );
+    setArpeggioArray(shuffle(possibleArpeggios));
+    setArpeggioArrayIndex(0);
+  }
+
+  /**
+   * @function RandomArpeggio~getNewArpeggio
+   * @description Checks whether the user has selected repeat scales
+   * and displays the next scale on the screen
+   * @author Alexander Burdiss
+   * @since 2/26/21
+   * @version 1.0.0
+   */
+  function getNewArpeggio() {
+    if (state.repeat) {
+      // Ensuring that the new arpeggio is different from the old one.
+      if (possibleArpeggios.length === 0) {
+        Alert.alert(
+          translate('No Arpeggio Selected'),
+          translate('Please select at least one category'),
+        );
+      } else {
+        let newArpeggio;
+        do {
+          newArpeggio = possibleArpeggios[random(possibleArpeggios.length - 1)];
+        } while (newArpeggio === currentArpeggio);
+        setCurrentArpeggio(
+          newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
+        );
+      }
     } else {
-      let newArpeggio;
-      do {
-        newArpeggio = possibleArpeggios[random(possibleArpeggios.length - 1)];
-      } while (newArpeggio === currentArpeggio);
-      setCurrentArpeggio(
-        newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
-      );
+      if (arpeggioArrayIndex >= arpeggioArray.length) {
+        Alert.alert('All arpeggios practiced!', '', [
+          {
+            onPress: () => {
+              setArpeggioArrayIndex(1);
+              const newArpeggiosArray = shuffle(arpeggioArray);
+              setArpeggioArray(newArpeggiosArray);
+              setCurrentArpeggio(newArpeggiosArray[0]);
+            },
+          },
+        ]);
+      } else {
+        setCurrentArpeggio(arpeggioArray[arpeggioArrayIndex]);
+        setArpeggioArrayIndex((previous) => previous + 1);
+      }
     }
   }
 
@@ -241,9 +292,12 @@ const RandomArpeggio = () => {
    * @since 1/13/21
    * @version 1.0.0
    */
-  const debouncedGenerateArpeggios = useCallback(
-    debounce(generateArpeggios, 150, true),
+  const debouncedGetNewArpeggio = useCallback(
+    debounce(getNewArpeggio, 150, true),
     [
+      state,
+      arpeggioArrayIndex,
+      arpeggioArray,
       majorSwitch,
       minorSwitch,
       augmentedSwitch,
@@ -331,7 +385,7 @@ const RandomArpeggio = () => {
       </View>
       <View style={styles.mainActionButton}>
         <RandomizeButton
-          handler={debouncedGenerateArpeggios}
+          handler={debouncedGetNewArpeggio}
           accessibilityValue={{text: `${translate(currentArpeggio)}`}}
           accessibilityHint={translate('Randomizes a new arpeggio')}
           accessibilityRole="button"
