@@ -11,6 +11,7 @@ import ScaleDisplay from '../Components/ScaleDisplay';
 import AllScalesButton from '../Components/AllScalesButton';
 import RandomizeButton from '../Components/RandomizeButton';
 import SwitchRow from '../Components/SwitchRow';
+import {createScaleArrayFromParts} from './RandomHelpers';
 
 import {
   colors,
@@ -237,29 +238,6 @@ const RandomScale = () => {
     }
     setScaleArray(shuffle(possibleScales));
     setScaleArrayIndex(0);
-  }
-
-  /**
-   * @function ScalePractice~createScaleArrayFromParts
-   * @description Constructs the scale name and scale note together to form one
-   * string to display on the screen.
-   * @author Alexander Burdiss
-   * @since 10/12/20
-   * @version 1.0.2
-   *
-   * @param {[String]} letterNames
-   * @param {[String]} scaleNames
-   * @returns {[String]} array of all transpositions of a scale
-   */
-  function createScaleArrayFromParts(letterNames, scaleNames) {
-    let allLetterNamesOfScale = [];
-    for (let letter of letterNames) {
-      for (let scaleName of scaleNames) {
-        allLetterNamesOfScale.push(`${letter} ${translate(scaleName)}`);
-      }
-    }
-    allLetterNamesOfScale = shuffle(allLetterNamesOfScale);
-    return allLetterNamesOfScale;
   }
 
   /**
