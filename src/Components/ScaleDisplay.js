@@ -42,7 +42,7 @@ const ScaleDisplay = ({children}) => {
           overflow: 'hidden',
           textAlign: 'center',
           width: '100%',
-          padding: 16,
+          padding: 14,
           fontSize: 18,
           borderRadius: 8,
         }}>

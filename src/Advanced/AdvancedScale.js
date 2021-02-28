@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Alert, View, Text, FlatList} from 'react-native';
 import {
   DynamicStyleSheet,
@@ -15,6 +15,7 @@ import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
 import {colors, allScaleNames, allNoteNames} from '../Model/Model';
 import {PreferencesContext} from '../Model/Preferences';
+import {getIsSmallScreen} from '../Model/Utilities';
 import {translate} from '../Translations/TranslationModel';
 
 /**
@@ -40,8 +41,22 @@ const AdvancedScale = () => {
   );
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedScale, setSelectedScale] = useState(translate('Major'));
-
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const {state} = useContext(PreferencesContext);
+
+  useEffect(
+    /**
+     * @function AdvancedScale~useEffect~setupComponent
+     * @description Provides some inital state when the component first mounts
+     * @author Alexander Burdiss
+     * @since 2/28/21
+     * @version 1.0.0
+     */
+    function setupComponent() {
+      setIsSmallScreen(getIsSmallScreen());
+    },
+    [],
+  );
 
   /**
    * @function AdvancedScale~addToScaleList
@@ -154,10 +169,12 @@ const AdvancedScale = () => {
         setSelectedScale={setSelectedScale}
         scaleNames={allScaleNames}
       />
-      <View style={styles.buttonContainer}>
-        <ResetButton handler={removeAllScales} />
-        <AddToListButton handler={addToScaleList} />
-      </View>
+      {!isSmallScreen ? (
+        <View style={styles.buttonContainer}>
+          <ResetButton handler={removeAllScales} />
+          <AddToListButton handler={addToScaleList} />
+        </View>
+      ) : null}
       <FlatList
         style={styles.list}
         data={possibleScales}
@@ -172,10 +189,23 @@ const AdvancedScale = () => {
         )}
         keyExtractor={(item) => item}
       />
-      <RandomizeButton
-        handler={generateScale}
-        accessibilityValue={{text: `${currentScale}`}}
-      />
+      {isSmallScreen ? (
+        <View style={styles.smallScreenButtonContainer}>
+          <ResetButton handler={removeAllScales} />
+          <RandomizeButton
+            handler={generateScale}
+            accessibilityValue={{text: `${currentScale}`}}
+          />
+          <AddToListButton handler={addToScaleList} />
+        </View>
+      ) : (
+        <View style={styles.mainActionButton}>
+          <RandomizeButton
+            handler={generateScale}
+            accessibilityValue={{text: `${currentScale}`}}
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -184,7 +214,6 @@ const dynamicStyles = new DynamicStyleSheet({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 20,
   },
   container: {
     flex: 1,
@@ -192,6 +221,11 @@ const dynamicStyles = new DynamicStyleSheet({
   },
   list: {
     flex: 1,
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
   },
   listItemContainer: {
     paddingLeft: 20,
@@ -208,12 +242,28 @@ const dynamicStyles = new DynamicStyleSheet({
     ),
     borderBottomWidth: 1,
   },
+  mainActionButton: {
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
+  },
   rightAction: {
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
     flex: 1,
     justifyContent: 'flex-end',
+  },
+  smallScreenButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
   },
   trashIcon: {
     paddingRight: 10,

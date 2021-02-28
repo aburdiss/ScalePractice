@@ -22,7 +22,7 @@ import {translate} from '../Translations/TranslationModel';
  */
 const RandomizeButton = ({handler}) => {
   const DARKMODE = useDarkMode();
-  
+
   return (
     <Pressable
       android_ripple={{
@@ -34,7 +34,9 @@ const RandomizeButton = ({handler}) => {
         borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
         borderWidth: 1,
         margin: 10,
-        padding: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        justifyContent: 'center',
         opacity: pressed ? 0.7 : 1,
         overflow: 'hidden',
       })}>

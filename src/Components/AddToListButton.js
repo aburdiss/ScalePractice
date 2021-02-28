@@ -37,7 +37,7 @@ const AddToListButton = ({handler}) => {
           opacity: pressed ? 0.7 : 1,
           borderWidth: 1,
           margin: 10,
-          padding: 14,
+          padding: 12,
           overflow: 'hidden',
         })}
         onPress={handler}>
