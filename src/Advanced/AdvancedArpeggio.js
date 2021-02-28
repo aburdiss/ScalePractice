@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Alert, View, Text, FlatList} from 'react-native';
 import {
   DynamicStyleSheet,
@@ -15,6 +15,7 @@ import SwipeableRow from '../Components/SwipeableRow';
 import ScalePickers from './ScalePickers';
 import {colors, allNoteNames, allArpeggioNames} from '../Model/Model';
 import {PreferencesContext} from '../Model/Preferences';
+import {getIsSmallScreen} from '../Model/Utilities';
 import {translate} from '../Translations/TranslationModel';
 
 /**
@@ -40,8 +41,22 @@ const AdvancedArpeggio = () => {
   );
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
-
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const {state} = useContext(PreferencesContext);
+
+  useEffect(
+    /**
+     * @function AdvancedArpeggio~useEffect~setupComponent
+     * @description Provides some initial state when the component mounts
+     * @author Alexander Burdiss
+     * @since 2/28/21
+     * @version 1.0.0
+     */
+    function setupComponent() {
+      setIsSmallScreen(getIsSmallScreen());
+    },
+    [],
+  );
 
   /**
    * @function AdvancedArpeggio~addToArpeggioList
@@ -159,10 +174,12 @@ const AdvancedArpeggio = () => {
         setSelectedScale={setSelectedArpeggio}
         scaleNames={allArpeggioNames}
       />
-      <View style={styles.buttonContainer}>
-        <ResetButton handler={removeAllScales} />
-        <AddToListButton handler={addToArpeggioList} />
-      </View>
+      {!isSmallScreen ? (
+        <View style={styles.buttonContainer}>
+          <ResetButton handler={removeAllScales} />
+          <AddToListButton handler={addToArpeggioList} />
+        </View>
+      ) : null}
       <FlatList
         style={styles.list}
         data={possibleArpeggios}
@@ -177,10 +194,23 @@ const AdvancedArpeggio = () => {
         )}
         keyExtractor={(item) => item}
       />
-      <RandomizeButton
-        handler={generateArpeggio}
-        accessibilityValue={{text: `${translate(currentArpeggio)}`}}
-      />
+      {isSmallScreen ? (
+        <View style={styles.smallScreenButtonContainer}>
+          <ResetButton handler={removeAllScales} />
+          <RandomizeButton
+            handler={generateArpeggio}
+            accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+          />
+          <AddToListButton handler={addToArpeggioList} />
+        </View>
+      ) : (
+        <View style={styles.mainActionButton}>
+          <RandomizeButton
+            handler={generateArpeggio}
+            accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -189,7 +219,6 @@ const dynamicStyles = new DynamicStyleSheet({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 20,
   },
   container: {
     flex: 1,
@@ -197,6 +226,11 @@ const dynamicStyles = new DynamicStyleSheet({
   },
   list: {
     flex: 1,
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
   },
   listItemContainer: {
     paddingLeft: 20,
@@ -213,12 +247,28 @@ const dynamicStyles = new DynamicStyleSheet({
     ),
     borderBottomWidth: 1,
   },
+  mainActionButton: {
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
+  },
   rightAction: {
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
     flex: 1,
     justifyContent: 'flex-end',
+  },
+  smallScreenButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderTopColor: new DynamicValue(
+      colors.systemGray5Light,
+      colors.systemGray5Dark,
+    ),
+    borderTopWidth: 1,
   },
   trashIcon: {
     paddingRight: 10,
