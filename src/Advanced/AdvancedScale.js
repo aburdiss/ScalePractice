@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Alert, View, Text, FlatList} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import {shuffle} from 'underscore';
 
 import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
@@ -12,8 +13,8 @@ import SwipeableRow from '../Components/SwipeableRow';
 import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
-
 import {colors} from '../Model/Model';
+import {PreferencesContext} from '../Model/Preferences';
 import {translate} from '../Translations/TranslationModel';
 
 /**
@@ -32,11 +33,15 @@ import {translate} from '../Translations/TranslationModel';
 const AdvancedScale = () => {
   const styles = useDynamicValue(dynamicStyles);
   const [possibleScales, setPossibleScales] = useState([]);
+  const [scaleArrayIndex, setScaleArrayIndex] = useState(0);
+  const [randomScaleArray, setRandomScaleArray] = useState([]);
   const [currentScale, setCurrentScale] = useState(
     translate('No Scale Selected'),
   );
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedScale, setSelectedScale] = useState(translate('Major'));
+
+  const {state} = useContext(PreferencesContext);
 
   const noteNames = [
     'C',
@@ -100,6 +105,8 @@ const AdvancedScale = () => {
     }
     if (!scaleAlreadyInList) {
       setPossibleScales([newScale, ...possibleScales]);
+      setRandomScaleArray(shuffle([newScale, ...possibleScales]));
+      setScaleArrayIndex(0);
     } else {
       Alert.alert(translate('Scale Already Selected'));
     }
@@ -120,15 +127,34 @@ const AdvancedScale = () => {
         translate('Please select at least one scale'),
       );
     } else {
-      let newScale =
-        possibleScales[Math.floor(Math.random() * possibleScales.length)];
-      if (possibleScales.length > 1) {
-        do {
-          newScale =
-            possibleScales[Math.floor(Math.random() * possibleScales.length)];
-        } while (newScale === currentScale);
+      if (state.repeat) {
+        let newScale =
+          possibleScales[Math.floor(Math.random() * possibleScales.length)];
+        if (possibleScales.length > 1) {
+          do {
+            newScale =
+              possibleScales[Math.floor(Math.random() * possibleScales.length)];
+          } while (newScale === currentScale);
+        }
+        setCurrentScale(newScale ? newScale : 'No Scale Selected');
+      } else {
+        // Don't repeat scales
+        if (scaleArrayIndex >= possibleScales.length) {
+          Alert.alert('All scaled practiced!', '', [
+            {
+              onPress: () => {
+                setScaleArrayIndex(1);
+                const newScaleArray = shuffle(randomScaleArray);
+                setRandomScaleArray(newScaleArray);
+                setCurrentScale(newScaleArray[0]);
+              },
+            },
+          ]);
+        } else {
+          setCurrentScale(randomScaleArray[scaleArrayIndex]);
+          setScaleArrayIndex((previous) => previous + 1);
+        }
       }
-      setCurrentScale(newScale ? newScale : 'No Scale Selected');
     }
   };
 
@@ -159,6 +185,8 @@ const AdvancedScale = () => {
       temporaryScales.splice(index, 1);
     }
     setPossibleScales(temporaryScales);
+    setRandomScaleArray(shuffle(temporaryScales));
+    setScaleArrayIndex(0);
   };
 
   return (
