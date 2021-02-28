@@ -169,5 +169,7 @@
   "MinorMajorSeventhArpeggioDescription": "L'arpège mineur majeur septième est le même que l'arpège mineur avec un degré supplémentaire de septième gamme (à partir de la gamme harmonique mineure).",
   "AugmentedSeventhArpeggioDescription": "L'arpège augmenté septième est le même que l'arpège augmenté avec un degré de septième gamme abaissé supplémentaire (à partir de la gamme majeure).",
   "HalfDiminishedSeventhArpeggioDescription": "L'arpège semi-diminué septième est le même que l'arpège diminué avec un degré de septième gamme plus bas (à partir de la gamme Majeur).",
-  "DiminishedSeventhArpeggioDescription": "L'arpège diminué septième est le même que l'arpège diminué avec un degré de septième échelle doublement abaissé."
+  "DiminishedSeventhArpeggioDescription": "L'arpège diminué septième est le même que l'arpège diminué avec un degré de septième échelle doublement abaissé.",
+
+  "Open Source": "Open Source. N'hésitez pas à contribuer!"
 }

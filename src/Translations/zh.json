@@ -171,5 +171,7 @@
   "MinorMajorSeventhArpeggioDescription": "小大七和弦与被加上了第七音级的小大第七琶音相同",
   "AugmentedSeventhArpeggioDescription": "增强七琶音与被加上了降低的第七音级的增强琶音相同",
   "HalfDiminishedSeventhArpeggioDescription": "半减七琶音与被加上了降低的第七音级的减琶音相同",
-  "DiminishedSeventhArpeggioDescription": "减七琶音与被加上了降低的双次的第七音级的减琶音相同"
+  "DiminishedSeventhArpeggioDescription": "减七琶音与被加上了降低的双次的第七音级的减琶音相同",
+
+  "Open Source": "开源软件. 如果可以，请贡献!"
 }

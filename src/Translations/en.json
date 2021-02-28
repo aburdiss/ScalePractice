@@ -169,5 +169,7 @@
   "MinorMajorSeventhArpeggioDescription": "The Minor Major Seventh arpeggio is the same as the Minor arpeggio with an added seventh scale degree (from the Harmonic Minor scale).",
   "AugmentedSeventhArpeggioDescription": "The Augmented Seventh arpeggio is the same as the Augmented Arpeggio with an added lowered seventh scale degree (from the Major scale).",
   "HalfDiminishedSeventhArpeggioDescription": "The Half Diminished Seventh arpeggio is the same as the Diminished arpeggio with an added lowered seventh scale degree (from the Major scale).",
-  "DiminishedSeventhArpeggioDescription": "The Diminished Seventh arpeggio is the same as the Diminshed arpeggio with an added doubly lowered seventh scale degree (from the Major scale)."
+  "DiminishedSeventhArpeggioDescription": "The Diminished Seventh arpeggio is the same as the Diminshed arpeggio with an added doubly lowered seventh scale degree (from the Major scale).",
+
+  "Open Source": "Open Source. Feel free to contribute!"
 }

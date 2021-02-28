@@ -68,4 +68,10 @@ export const ABOUT = [
     value: 'Send Feedback',
     link: 'mailto:aburdiss@icloud.com',
   },
+  {
+    id: '6',
+    type: 'link',
+    value: 'Open Source',
+    link: 'https://github.com/aburdiss/ScalePractice',
+  },
 ];
