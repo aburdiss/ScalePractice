@@ -200,6 +200,7 @@ const dynamicStyles = new DynamicStyleSheet({
     width: 25,
     borderRadius: 4,
     marginRight: 5,
+    resizeMode: 'contain',
   },
   linkText: {
     color: new DynamicValue(colors.purpleLight, colors.purpleDark),

@@ -33,6 +33,7 @@ export const RESOURCES = [
     id: '1',
     type: 'link',
     value: 'Visit Ars Nova Publishing',
+    image: require('../../img/ANPLogo.png'),
     link: 'https://www.arsnovapublishing.com/',
   },
   {
