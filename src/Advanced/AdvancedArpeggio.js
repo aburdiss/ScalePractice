@@ -12,7 +12,7 @@ import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 import SwipeableRow from '../Components/SwipeableRow';
 import ScalePickers from './ScalePickers';
-import {colors} from '../Model/Model';
+import {colors, allNoteNames, allArpeggioNames} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
 
 /**
@@ -36,39 +36,6 @@ const AdvancedArpeggio = () => {
   );
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
-
-  const noteNames = [
-    'C',
-    'C♯',
-    'D♭',
-    'D',
-    'D♯',
-    'E♭',
-    'E',
-    'F',
-    'F♯',
-    'G♭',
-    'G',
-    'G♯',
-    'A♭',
-    'A',
-    'A♯',
-    'B♭',
-    'B',
-  ];
-  const arpeggioNames = [
-    'Major',
-    'Minor',
-    'Augmented',
-    'Diminished',
-    'Dominant Seventh',
-    'Major Seventh',
-    'Minor Seventh',
-    'Minor Major Seventh',
-    'Augmented Minor Seventh',
-    'Half Diminished Seventh',
-    'Diminished Seventh',
-  ];
 
   /**
    * @function AdvancedArpeggio~addToArpeggioList
@@ -156,10 +123,10 @@ const AdvancedArpeggio = () => {
       <ScalePickers
         selectedNote={selectedNote}
         setSelectedNote={setSelectedNote}
-        noteNames={noteNames}
+        noteNames={allNoteNames}
         selectedScale={selectedArpeggio}
         setSelectedScale={setSelectedArpeggio}
-        scaleNames={arpeggioNames}
+        scaleNames={allArpeggioNames}
       />
       <View style={styles.buttonContainer}>
         <ResetButton handler={removeAllScales} />

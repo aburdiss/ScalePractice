@@ -13,7 +13,7 @@ import SwipeableRow from '../Components/SwipeableRow';
 import AddToListButton from '../Components/AddToListButton';
 import ResetButton from '../Components/ResetButton';
 import ScalePickers from './ScalePickers';
-import {colors} from '../Model/Model';
+import {colors, allScaleNames, allNoteNames} from '../Model/Model';
 import {PreferencesContext} from '../Model/Preferences';
 import {translate} from '../Translations/TranslationModel';
 
@@ -42,52 +42,6 @@ const AdvancedScale = () => {
   const [selectedScale, setSelectedScale] = useState(translate('Major'));
 
   const {state} = useContext(PreferencesContext);
-
-  const noteNames = [
-    'C',
-    'C♯',
-    'D♭',
-    'D',
-    'D♯',
-    'E♭',
-    'E',
-    'F',
-    'F♯',
-    'G♭',
-    'G',
-    'G♯',
-    'A♭',
-    'A',
-    'A♯',
-    'B♭',
-    'B',
-  ];
-  const scaleNames = [
-    'Major',
-    'Natural Minor',
-    'Harmonic Minor',
-    'Melodic Minor',
-    'Ionian',
-    'Dorian',
-    'Phrygian',
-    'Lydian',
-    'Mixolydian',
-    'Aeolian',
-    'Locrian',
-    'Minor Major',
-    'Dorian ♭2',
-    'Lydian Augmented',
-    'Lydian Dominant',
-    'Mixolydian ♭6',
-    'Locrian ♮2',
-    'Altered Scale',
-    'Blues',
-    'Major Pentatonic',
-    'Minor Pentatonic',
-    'Whole-Half Octatonic',
-    'Half-Whole Octatonic',
-    'Whole Tone',
-  ];
 
   /**
    * @function AdvancedScale~addToScaleList
@@ -195,10 +149,10 @@ const AdvancedScale = () => {
       <ScalePickers
         selectedNote={selectedNote}
         setSelectedNote={setSelectedNote}
-        noteNames={noteNames}
+        noteNames={allNoteNames}
         selectedScale={selectedScale}
         setSelectedScale={setSelectedScale}
-        scaleNames={scaleNames}
+        scaleNames={allScaleNames}
       />
       <View style={styles.buttonContainer}>
         <ResetButton handler={removeAllScales} />
