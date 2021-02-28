@@ -39,7 +39,7 @@ const More = () => {
     <View>
       <SectionList
         sections={[
-          {title: translate('Saved Settings'), data: SETTINGS},
+          {title: translate('Settings'), data: SETTINGS},
           {title: translate('Resources'), data: RESOURCES},
           {title: translate('About'), data: ABOUT},
         ]}

@@ -265,7 +265,7 @@ const MoreStack = () => {
         name="More"
         component={More}
         options={{
-          title: translate('More'),
+          title: translate('Settings'),
         }}
       />
       <Stack.Screen
@@ -369,7 +369,7 @@ const App = () => {
             <Tab.Screen
               name="More"
               component={MoreStack}
-              options={{title: translate('More')}}
+              options={{title: translate('Settings')}}
             />
           </Tab.Navigator>
         </NavigationContainer>
