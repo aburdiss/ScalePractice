@@ -394,6 +394,9 @@ export const colors = {
 
   pinkLight: 'rgb(255, 45, 85)',
   pinkDark: 'rgb(255, 55, 98)',
+
+  reactColor: '#61dafb',
+  javascriptColor: '#fcdc00',
 };
 
 /**

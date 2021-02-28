@@ -71,15 +71,18 @@ const More = () => {
                 style={styles.icon}
                 name="logo-react"
                 size={24}
-                color={colors.systemGray}
+                color={colors.reactColor}
               />
-              <Ionicons
-                accessibilityLabel={translate('JavaScript Icon')}
-                style={styles.icon}
-                name="logo-javascript"
-                size={24}
-                color={colors.systemGray}
-              />
+              <View>
+                <View style={styles.javascriptBackground} />
+                <Ionicons
+                  accessibilityLabel={translate('JavaScript Icon')}
+                  style={styles.icon}
+                  name="logo-javascript"
+                  size={24}
+                  color={colors.javascriptColor}
+                />
+              </View>
             </View>
             <Text style={styles.footerText}>
               {translate('Made with ❤️ in Dayton, Ohio')}
@@ -92,6 +95,15 @@ const More = () => {
 };
 
 const dynamicStyles = new DynamicStyleSheet({
+  javascriptBackground: {
+    backgroundColor: colors.black,
+    height: 20,
+    width: 20,
+    marginLeft: 7,
+    marginTop: 3,
+    zIndex: -1,
+    position: 'absolute',
+  },
   listItemSeparator: {
     height: 0.5,
     width: '100%',
