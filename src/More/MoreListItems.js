@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Linking, Pressable, Switch} from 'react-native';
+import {View, Text, Linking, Pressable, Switch, Image} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   DynamicStyleSheet,
@@ -70,6 +70,9 @@ export const LinkListItem = ({item}) => {
         Linking.openURL(item.link);
       }}>
       <View style={styles.listRowContainer}>
+        {item.image ? (
+          <Image source={item.image} style={styles.linkImage} />
+        ) : null}
         <Text style={styles.linkText}>{translate(item.value)}</Text>
         <Ionicons
           name={'chevron-forward-outline'}
@@ -192,8 +195,15 @@ const dynamicStyles = new DynamicStyleSheet({
     color: new DynamicValue(colors.black, colors.white),
     paddingVertical: 5,
   },
+  linkImage: {
+    height: 25,
+    width: 25,
+    borderRadius: 4,
+    marginRight: 5,
+  },
   linkText: {
     color: new DynamicValue(colors.purpleLight, colors.purpleDark),
     paddingRight: 5,
+    flex: 1,
   },
 });

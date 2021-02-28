@@ -21,6 +21,7 @@ export const RESOURCES = [
     id: '0',
     type: 'link',
     value: 'More Apps by Alexander Burdiss',
+    image: require('../../img/BrassRoutinesIcon.png'),
     link:
       DeviceInfo.getBrand() === 'Apple'
         ? APPLE_STORE_LINK
