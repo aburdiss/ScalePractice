@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Alert, View, Text, FlatList} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
+import {shuffle} from 'underscore';
 
 import RandomizeButton from '../Components/RandomizeButton';
 import ScaleDisplay from '../Components/ScaleDisplay';
@@ -13,6 +14,7 @@ import ResetButton from '../Components/ResetButton';
 import SwipeableRow from '../Components/SwipeableRow';
 import ScalePickers from './ScalePickers';
 import {colors, allNoteNames, allArpeggioNames} from '../Model/Model';
+import {PreferencesContext} from '../Model/Preferences';
 import {translate} from '../Translations/TranslationModel';
 
 /**
@@ -20,7 +22,7 @@ import {translate} from '../Translations/TranslationModel';
  * selected scales.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 1.1.0
+ * @version 2.0.0
  * 
  * @component
  * @example
@@ -31,11 +33,15 @@ import {translate} from '../Translations/TranslationModel';
 const AdvancedArpeggio = () => {
   const styles = useDynamicValue(dynamicStyles);
   const [possibleArpeggios, setpossibleArpeggios] = useState([]);
+  const [arpeggioArrayIndex, setArpeggioArrayIndex] = useState(0);
+  const [randomArpeggioArray, setRandomArpeggioArray] = useState([]);
   const [currentArpeggio, setCurrentArpeggio] = useState(
     translate('No Arpeggio Selected'),
   );
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
+
+  const {state} = useContext(PreferencesContext);
 
   /**
    * @function AdvancedArpeggio~addToArpeggioList
@@ -52,6 +58,8 @@ const AdvancedArpeggio = () => {
     }
     if (!arpeggioAlreadyInList) {
       setpossibleArpeggios([newArpeggio, ...possibleArpeggios]);
+      setRandomArpeggioArray(shuffle([newArpeggio, ...possibleArpeggios]));
+      setArpeggioArrayIndex(0);
     } else {
       Alert.alert(translate('Arpeggio Already Selected'));
     }
@@ -72,19 +80,40 @@ const AdvancedArpeggio = () => {
         translate('Please select at least one arpeggio'),
       );
     } else {
-      let newArpeggio =
-        possibleArpeggios[Math.floor(Math.random() * possibleArpeggios.length)];
-      if (possibleArpeggios.length > 1) {
-        do {
-          newArpeggio =
-            possibleArpeggios[
-              Math.floor(Math.random() * possibleArpeggios.length)
-            ];
-        } while (newArpeggio === currentArpeggio);
+      if (state.repeat) {
+        let newArpeggio =
+          possibleArpeggios[
+            Math.floor(Math.random() * possibleArpeggios.length)
+          ];
+        if (possibleArpeggios.length > 1) {
+          do {
+            newArpeggio =
+              possibleArpeggios[
+                Math.floor(Math.random() * possibleArpeggios.length)
+              ];
+          } while (newArpeggio === currentArpeggio);
+        }
+        setCurrentArpeggio(
+          newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
+        );
+      } else {
+        // Don't repeat Arpeggios
+        if (arpeggioArrayIndex >= possibleArpeggios.length) {
+          Alert.alert('All arpeggios practiced!', '', [
+            {
+              onPress: () => {
+                setArpeggioArrayIndex(1);
+                const newArpeggioArray = shuffle(randomArpeggioArray);
+                setRandomArpeggioArray(newArpeggioArray);
+                setCurrentArpeggio(newArpeggioArray[0]);
+              },
+            },
+          ]);
+        } else {
+          setCurrentArpeggio(randomArpeggioArray[arpeggioArrayIndex]);
+          setArpeggioArrayIndex((previous) => previous + 1);
+        }
       }
-      setCurrentArpeggio(
-        newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
-      );
     }
   };
 
@@ -115,6 +144,8 @@ const AdvancedArpeggio = () => {
       temporaryArpeggios.splice(index, 1);
     }
     setpossibleArpeggios(temporaryArpeggios);
+    setRandomArpeggioArray(shuffle(temporaryArpeggios));
+    setArpeggioArrayIndex(0);
   };
 
   return (

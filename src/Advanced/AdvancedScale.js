@@ -22,7 +22,7 @@ import {translate} from '../Translations/TranslationModel';
  * selected scales.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 1.1.0
+ * @version 2.0.0
  * 
  * @component
  * @example
