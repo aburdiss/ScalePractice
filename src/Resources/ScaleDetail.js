@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Dimensions} from 'react-native';
+import {ScrollView, View, Text, Dimensions} from 'react-native';
 import Image from 'react-native-scalable-image';
 import {
   DynamicStyleSheet,
@@ -32,7 +32,7 @@ const ScaleDetail = ({route}) => {
   const path = getImagePath(route.params.id);
 
   return (
-    <View style={styles.viewContainer}>
+    <ScrollView style={styles.viewContainer}>
       <View style={styles.imageContainer}>
         <Image source={path} width={width} />
       </View>
@@ -42,7 +42,7 @@ const ScaleDetail = ({route}) => {
       <Text style={styles.description}>
         {translate(route.params.description)}
       </Text>
-    </View>
+    </ScrollView>
   );
 };
 

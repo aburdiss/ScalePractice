@@ -30,10 +30,7 @@ export const TextListItem = ({item}) => {
 
   return (
     <View style={styles.listRowContainer}>
-      <Text
-        maxFontSizeMultiplier={1.8}
-        style={styles.listRowText}
-        accessibilityRole="text">
+      <Text style={styles.listRowText} accessibilityRole="text">
         {item.value.includes('Alexander Burdiss')
           ? item.value
           : translate(item.value)}
@@ -116,9 +113,7 @@ export const InternalListItem = ({item}) => {
         navigation.navigate(item.component);
       }}>
       <View style={styles.listRowContainer}>
-        <Text maxFontSizeMultiplier={1.8} style={styles.linkText}>
-          {translate(item.value)}
-        </Text>
+        <Text style={styles.linkText}>{translate(item.value)}</Text>
         <Ionicons
           name={'chevron-forward-outline'}
           size={25}
@@ -169,9 +164,7 @@ export const SwitchListItem = ({item, state, dispatch}) => {
       accessibilityHint={
         translate('Toggles setting') + ' ' + translate(item.value)
       }>
-      <Text maxFontSizeMultiplier={1.8} style={styles.listRowText}>
-        {translate(item.value)}
-      </Text>
+      <Text style={styles.listRowText}>{translate(item.value)}</Text>
       <Switch value={state[item.setting]} onValueChange={updateValue} />
     </Pressable>
   );

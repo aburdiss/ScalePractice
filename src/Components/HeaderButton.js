@@ -41,6 +41,7 @@ const HeaderButton = ({children, handler}) => {
         opacity: pressed ? 0.7 : 1,
       })}>
       <Text
+        maxFontSizeMultiplier={1.5}
         style={{
           color: DARKMODE ? colors.purpleDark : colors.purpleLight,
           fontSize: 16,

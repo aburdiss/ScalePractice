@@ -34,6 +34,7 @@ const ScaleDisplay = ({children}) => {
         padding: 10,
       }}>
       <Text
+        maxFontSizeMultiplier={2}
         style={{
           backgroundColor: DARKMODE
             ? colors.systemGray2Dark

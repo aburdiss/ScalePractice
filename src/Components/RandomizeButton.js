@@ -41,6 +41,7 @@ const RandomizeButton = ({handler}) => {
         overflow: 'hidden',
       })}>
       <Text
+        maxFontSizeMultiplier={3}
         style={{
           textAlign: 'center',
           color: DARKMODE ? colors.purpleDark : colors.purpleLight,
