@@ -1,6 +1,5 @@
 import React from 'react';
-import {ScrollView, View, Text, Dimensions} from 'react-native';
-import Image from 'react-native-scalable-image';
+import {ScrollView, View, Text, Image} from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -10,14 +9,12 @@ import {
 import {colors, getImagePath} from '../Model/Model';
 import {translate} from '../Translations/TranslationModel';
 
-const {width} = Dimensions.get('window');
-
 /**
  * @description A component that renders a detailed image, based on the id
  * given when calling navigation.navigate().
  * @author Alexandder Burdiss
  * @since 12/15/20
- * @version 1.0.1
+ * @version 2.0.0
  * @param {Object} props.route The Route object provided by React Navigation
  * 
  * @component
@@ -34,7 +31,7 @@ const ScaleDetail = ({route}) => {
   return (
     <ScrollView style={styles.viewContainer}>
       <View style={styles.imageContainer}>
-        <Image source={path} width={width} />
+        <Image source={path} style={styles.image} />
       </View>
       <Text style={styles.construction}>
         {translate(route.params.construction)}
@@ -58,8 +55,12 @@ const dynamicStyles = new DynamicStyleSheet({
     color: new DynamicValue(colors.black, colors.white),
   },
   image: {
+    width: '100%',
     resizeMode: 'contain',
+  },
+  imageContainer: {
     flex: 1,
+    alignItems: 'center',
   },
   viewContainer: {
     height: '100%',

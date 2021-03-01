@@ -106,13 +106,6 @@ export default {
       'https://github.com/react-community/react-native-safe-area-view/raw/master/LICENSE',
     parents: 'ScalePractice',
   },
-  'react-native-scalable-image@1.0.0': {
-    licenses: 'MIT',
-    repository: 'https://github.com/ihor/react-native-scalable-image',
-    licenseUrl:
-      'https://github.com/ihor/react-native-scalable-image/raw/master/LICENSE',
-    parents: 'ScalePractice',
-  },
   'react-native-screens@2.11.0': {
     licenses: 'MIT',
     repository: 'https://github.com/kmagiera/react-native-screens',
