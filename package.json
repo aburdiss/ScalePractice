@@ -43,6 +43,21 @@
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1"
   },
+  "prettier": {
+    "bracketSpacing": false,
+    "jsxBracketSameLine": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "babel": {
+    "presets": [
+      "module:metro-react-native-babel-preset"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "@react-native-community"
+  },
   "jest": {
     "preset": "react-native",
     "moduleFileExtensions": [

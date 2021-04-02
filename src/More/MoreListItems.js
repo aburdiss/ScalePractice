@@ -146,7 +146,6 @@ export const InternalListItem = ({item}) => {
 ```
  */
 export const SwitchListItem = ({item, state, dispatch}) => {
-  console.log(state);
   const styles = useDynamicValue(dynamicStyles);
   function updateValue() {
     let updatedState = !state[item.setting];
