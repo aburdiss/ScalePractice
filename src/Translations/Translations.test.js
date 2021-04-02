@@ -1,10 +1,10 @@
 import 'react-native';
 import React from 'react';
 
-import englishTranslations from '../../src/Translations/en.json';
-import frenchTranslations from '../../src/Translations/fr.json';
+import englishTranslations from './en.json';
+import frenchTranslations from './fr.json';
 // import spanishTranslations from '../../src/Translations/es.json';
-import chineseTranslations from '../../src/Translations/zh.json';
+import chineseTranslations from './zh.json';
 // import japaneseTranslations from '../../src/Translations/ja.json';
 // import koreanTranslations from '../../src/Translations/ko.json';
 

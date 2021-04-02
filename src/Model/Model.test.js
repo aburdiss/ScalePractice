@@ -1,11 +1,7 @@
 import 'react-native';
 import React from 'react';
 
-import {
-  scaleResourceData,
-  arpeggioResourceData,
-  getImagePath,
-} from '../../src/Model/Model';
+import {scaleResourceData, arpeggioResourceData, getImagePath} from './Model';
 
 test.each(scaleResourceData)('all scale images exist', (item) => {
   expect(getImagePath(item.id)).not.toBe(null);
