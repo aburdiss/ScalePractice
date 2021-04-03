@@ -7,7 +7,7 @@ import {
 } from 'react-native-dynamic';
 import {debounce, random, shuffle} from 'underscore';
 
-import {createArpeggioArrayFromParts} from './RandomHelpers';
+import {createArpeggioArrayFromParts} from './RandomUtils';
 import ScaleDisplay from '../Components/ScaleDisplay';
 import AllScalesButton from '../Components/AllScalesButton';
 import RandomizeButton from '../Components/RandomizeButton';

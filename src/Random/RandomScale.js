@@ -11,7 +11,7 @@ import ScaleDisplay from '../Components/ScaleDisplay';
 import AllScalesButton from '../Components/AllScalesButton';
 import RandomizeButton from '../Components/RandomizeButton';
 import SwitchRow from '../Components/SwitchRow';
-import {createScaleArrayFromParts} from './RandomHelpers';
+import {createScaleArrayFromParts} from './RandomUtils';
 
 import {
   colors,
