@@ -15,7 +15,7 @@ A React Native app available on the <a href="https://apps.apple.com/tt/app/scale
 
 ## Contributing
 
-If you have feature requests or bug reports, feel free to help out by sending pull requests or by [creating new issues](https://github.com/aburdiss/ScalePractice/issues/new). 
+If you have feature requests or bug reports, feel free to help out by sending pull requests or by [creating new issues](https://github.com/aburdiss/ScalePractice/issues/new).
 
 ## License
 
