@@ -1,14 +1,19 @@
 import 'react-native';
 import React from 'react';
 import AddToListButton from './AddToListButton';
-import MockContext from '../../../jest/MockContext';
 
-import {render} from '@testing-library/react-native';
+import {fireEvent, render} from '@testing-library/react-native';
 
 test('AddToListButton renders correctly', () => {
-  render(
-    <MockContext>
-      <AddToListButton />
-    </MockContext>,
-  );
+  const {queryByText} = render(<AddToListButton handler={jest.fn()} />);
+  expect(queryByText(/Add/)).toBeTruthy();
+});
+
+test('AddToListButton handles click correctly', () => {
+  const buttonHandler = jest.fn();
+  const {getByText} = render(<AddToListButton handler={buttonHandler} />);
+  fireEvent.press(getByText(/Add/));
+  expect(buttonHandler).toHaveBeenCalledTimes(1);
+  fireEvent.press(getByText(/Add/));
+  expect(buttonHandler).toHaveBeenCalledTimes(2);
 });
