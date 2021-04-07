@@ -3,11 +3,11 @@ import {View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {useDarkMode} from 'react-native-dynamic';
 
-import {colors} from '../Model/Model';
-import {translate} from '../Translations/TranslationModel';
+import {colors} from '../../Model/Model';
+import {translate} from '../../Translations/TranslationModel';
 
 /**
- * @description Pickers used on android devices to select scales. Used on
+ * @description Pickers used on iOS devices to select scales. Used on
  * AdvancedScale and AdvancedArpeggio components.
  * @author Alexander Burdiss
  * @since 11/15/20
@@ -51,46 +51,38 @@ const ScalePickers = ({
   return (
     <View
       style={{
-        paddingHorizontal: 26,
+        flexDirection: 'row',
       }}>
       <View
         style={{
-          borderWidth: 1,
-          borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
-          margin: 4,
-          borderRadius: 8,
+          width: '25%',
         }}>
         <Picker
           selectedValue={selectedNote}
-          dropdownIconColor={DARKMODE ? '#bf5af2' : '#af52de'}
-          onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}>
+          onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
+          itemStyle={{
+            color: DARKMODE ? colors.white : colors.black,
+          }}>
           {noteNames.map((noteName) => (
-            <Picker.Item
-              label={noteName}
-              value={noteName}
-              key={noteName}
-              color={DARKMODE ? colors.purpleDark : colors.purpleLight}
-            />
+            <Picker.Item label={noteName} value={noteName} key={noteName} />
           ))}
         </Picker>
       </View>
       <View
         style={{
-          borderWidth: 1,
-          borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
-          margin: 4,
-          borderRadius: 8,
+          width: '75%',
         }}>
         <Picker
           selectedValue={selectedScale}
-          dropdownIconColor={DARKMODE ? '#bf5af2' : '#af52de'}
-          onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}>
+          onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
+          itemStyle={{
+            color: DARKMODE ? colors.white : colors.black,
+          }}>
           {scaleNames.map((scaleName) => (
             <Picker.Item
               label={translate(scaleName)}
               value={translate(scaleName)}
               key={scaleName}
-              color={DARKMODE ? colors.purpleDark : colors.purpleLight}
             />
           ))}
         </Picker>

@@ -3,8 +3,8 @@ import React from 'react';
 import {useDarkMode} from 'react-native-dynamic';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import AdvancedScale from '../Advanced/AdvancedScale';
-import AdvancedArpeggio from '../Advanced/AdvancedArpeggio';
+import AdvancedScale from './AdvancedScale/AdvancedScale';
+import AdvancedArpeggio from './AdvancedArpeggio/AdvancedArpeggio';
 import HeaderButton from '../Components/HeaderButton';
 import {translate} from '../Translations/TranslationModel';
 import {colors} from '../Model/Model';

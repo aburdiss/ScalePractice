@@ -3,11 +3,11 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useDarkMode} from 'react-native-dynamic';
 
-import More from '../More/More';
-import Licenses from '../More/Licenses';
+import More from './More';
+import Licenses from './Licenses';
 import {translate} from '../Translations/TranslationModel';
 import {colors} from '../Model/Model';
-import Acknowledgements from '../More/Acknowledgements';
+import Acknowledgements from './Acknowledgements';
 
 const Stack = createStackNavigator();
 

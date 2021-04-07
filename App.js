@@ -11,10 +11,10 @@ import {setI18nConfig, translate} from './src/Translations/TranslationModel';
 import {colors} from './src/Model/Model';
 import {PreferencesProvider} from './src/Model/Preferences';
 
-import RandomStack from './src/Navigation/RandomStack';
-import ResourcesStack from './src/Navigation/ResourcesStack';
-import AdvancedStack from './src/Navigation/AdvancedStack';
-import MoreStack from './src/Navigation/MoreStack';
+import RandomStack from './src/RandomStack/RandomStack';
+import ResourcesStack from './src/ResourcesStack/ResourcesStack';
+import AdvancedStack from './src/AdvancedStack/AdvancedStack';
+import MoreStack from './src/MoreStack/MoreStack';
 
 const Tab = createBottomTabNavigator();
 

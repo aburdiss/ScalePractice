@@ -7,16 +7,16 @@ import {
 } from 'react-native-dynamic';
 import {shuffle} from 'underscore';
 
-import RandomizeButton from '../Components/RandomizeButton';
-import ScaleDisplay from '../Components/ScaleDisplay';
-import AddToListButton from '../Components/AddToListButton';
-import ResetButton from '../Components/ResetButton';
-import SwipeableRow from '../Components/SwipeableRow';
-import ScalePickers from './ScalePickers';
-import {colors, allNoteNames, allArpeggioNames} from '../Model/Model';
-import {PreferencesContext} from '../Model/Preferences';
-import {getIsSmallScreen} from '../Model/Utilities';
-import {translate} from '../Translations/TranslationModel';
+import RandomizeButton from '../../Components/RandomizeButton';
+import ScaleDisplay from '../../Components/ScaleDisplay';
+import AddToListButton from '../../Components/AddToListButton';
+import ResetButton from '../../Components/ResetButton';
+import SwipeableRow from '../../Components/SwipeableRow';
+import ScalePickers from '../ScalePickers/ScalePickers';
+import {colors, allNoteNames, allArpeggioNames} from '../../Model/Model';
+import {PreferencesContext} from '../../Model/Preferences';
+import {getIsSmallScreen} from '../../Model/Utilities';
+import {translate} from '../../Translations/TranslationModel';
 
 /**
  * @description A view that allows the user to randomize between a list of

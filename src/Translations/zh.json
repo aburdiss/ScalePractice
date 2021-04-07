@@ -151,14 +151,12 @@
   "MixolydianFlatSixScaleDescription": "旋律小调音阶第五调式.",
   "LocrianNaturalTwoScaleDescription": "旋律小调音阶第六调式.",
   "AlteredScaleDescription": "旋律小调音阶第七调式.",
-
   "BluesScaleDescription": "这个音阶主要在蓝调与爵士音乐中被使用.",
   "MajorPentatonicScaleDescription": "省略四级音和七级音的自然大调.",
   "MinorPentatonicScaleDescription": "小调五声音阶与没有第二和第六音阶的自然小调音阶相同.",
   "WholeHalfOctatonicScaleDescription": "八音音阶是包含交替进行的整步和半步的对称音阶. 整半步音阶开始于整步.",
   "HalfWholeOctatonicScaleDescription": "八音音阶是包含交替进行的整步和半步的对称音阶. 半整步音阶开始于半步.",
   "WholeToneScaleDescription": "全音音阶是一个对称的音阶, 仅包含整步.",
-
   "MajorArpeggioDescription": "主琶音有大调音阶的第一, 第三, 和第五音级.",
   "MinorArpeggioDescription": "小琶音有自然小调音阶的第一, 第三, 和第五音级.",
   "AugmentedArpeggioDescription": "增强琶音与被调升了第五音级的主琶音相同.",

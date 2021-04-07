@@ -3,8 +3,8 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useDarkMode} from 'react-native-dynamic';
 
-import RandomScale from '../Random/RandomScale';
-import RandomArpeggio from '../Random/RandomArpeggio';
+import RandomScale from './RandomScale';
+import RandomArpeggio from './RandomArpeggio';
 import HeaderButton from '../Components/HeaderButton';
 import {translate} from '../Translations/TranslationModel';
 import {colors} from '../Model/Model';
