@@ -1,12 +1,11 @@
-import 'react-native-gesture-handler';
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useDarkMode} from 'react-native-dynamic';
 
-import ScaleResources from './ScaleResources';
-import ArpeggioResources from './ArpeggioResources';
-import ScaleDetail from './ScaleDetail';
-import HeaderButton from '../Components/HeaderButton';
+import ScaleResources from './ScaleResources/ScaleResources';
+import ArpeggioResources from './ArpeggioResources/ArpeggioResources';
+import ScaleDetail from './ScaleDetail/ScaleDetail';
+import HeaderButton from '../Components/HeaderButton/HeaderButton';
 import {translate} from '../Translations/TranslationModel';
 import {colors} from '../Model/Model';
 

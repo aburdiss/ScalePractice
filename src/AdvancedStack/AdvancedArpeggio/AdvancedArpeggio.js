@@ -7,11 +7,11 @@ import {
 } from 'react-native-dynamic';
 import {shuffle} from 'underscore';
 
-import RandomizeButton from '../../Components/RandomizeButton';
-import ScaleDisplay from '../../Components/ScaleDisplay';
-import AddToListButton from '../../Components/AddToListButton';
-import ResetButton from '../../Components/ResetButton';
-import SwipeableRow from '../../Components/SwipeableRow';
+import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
+import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
+import AddToListButton from '../../Components/AddToListButton/AddToListButton';
+import ResetButton from '../../Components/ResetButton/ResetButton';
+import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
 import ScalePickers from '../ScalePickers/ScalePickers';
 import {colors, allNoteNames, allArpeggioNames} from '../../Model/Model';
 import {PreferencesContext} from '../../Model/Preferences';

@@ -1,13 +1,12 @@
-import 'react-native-gesture-handler';
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {useDarkMode} from 'react-native-dynamic';
 
-import More from './More';
-import Licenses from './Licenses';
+import More from './More/More';
+import Licenses from './Licenses/Licenses';
 import {translate} from '../Translations/TranslationModel';
 import {colors} from '../Model/Model';
-import Acknowledgements from './Acknowledgements';
+import Acknowledgements from './Acknowledgements/Acknowledgements';
 
 const Stack = createStackNavigator();
 
