@@ -12,6 +12,7 @@ test('AddToListButton renders correctly', () => {
 test('AddToListButton handles click correctly', () => {
   const buttonHandler = jest.fn();
   const {getByText} = render(<AddToListButton handler={buttonHandler} />);
+  expect(buttonHandler).not.toHaveBeenCalled();
   fireEvent.press(getByText(/Add/));
   expect(buttonHandler).toHaveBeenCalledTimes(1);
   fireEvent.press(getByText(/Add/));
