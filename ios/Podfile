@@ -8,7 +8,9 @@ platform :ios, '10.0'
 target 'ScalePractice' do
   config = use_native_modules!
 
-  use_react_native!(:path => config["reactNativePath"])
+  use_react_native!(:path => config["reactNativePath"],
+    :hermes_enabled => true
+  )
 
   target 'ScalePracticeTests' do
     inherit! :complete
@@ -20,9 +22,9 @@ target 'ScalePractice' do
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
   
-#  use_flipper!
+  # use_flipper!
   post_install do |installer|
-#    flipper_post_install(installer)
+  # flipper_post_install(installer)
 
     installer.pods_project.targets.each do |target|
 
@@ -37,7 +39,6 @@ target 'ScalePractice' do
       if targets_to_ignore.include? target.name
         target.remove_from_project
       end
-
     end
   end
 end
