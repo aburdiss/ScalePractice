@@ -4,9 +4,7 @@ Download this lib: https://www.npmjs.com/package/npm-license-crawler
 I did it globally: `npm i npm-license-crawler -g`
 
 Run this command to get the data
-`npm-license-crawler --onlyDirectDependencies --json licenses.json`
-
-Paste that data into ./Licenses/data.js
+`npm-license-crawler --onlyDirectDependencies --json src/MoreStack/Licenses/licenses.json`
 
 */
 
@@ -16,7 +14,7 @@ import LicensesList from './LicensesList';
 import {useDarkMode} from 'react-native-dynamic';
 import {colors} from '../../Model/Model';
 
-import Data from './data';
+import Data from './licenses.json';
 import SafeAreaView from 'react-native-safe-area-view';
 import {capitalize} from 'underscore.string';
 
