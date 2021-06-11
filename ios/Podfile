@@ -9,7 +9,7 @@ target 'ScalePractice' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"],
-    :hermes_enabled => true
+    :hermes_enabled => false
   )
 
   target 'ScalePracticeTests' do

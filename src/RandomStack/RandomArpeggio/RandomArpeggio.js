@@ -251,7 +251,7 @@ const RandomArpeggio = () => {
   function getNewArpeggio() {
     if (state.repeat) {
       // Ensuring that the new arpeggio is different from the old one.
-      if (possibleArpeggios.length === 0) {
+      if (arpeggioArray.length === 0) {
         Alert.alert(
           translate('No Arpeggio Selected'),
           translate('Please select at least one category'),
@@ -259,7 +259,7 @@ const RandomArpeggio = () => {
       } else {
         let newArpeggio;
         do {
-          newArpeggio = possibleArpeggios[random(possibleArpeggios.length - 1)];
+          newArpeggio = arpeggioArray[random(arpeggioArray.length - 1)];
         } while (newArpeggio === currentArpeggio);
         setCurrentArpeggio(
           newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
