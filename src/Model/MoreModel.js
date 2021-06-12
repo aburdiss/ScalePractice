@@ -14,11 +14,17 @@ export const SETTINGS = [
     value: 'Repeat Scales',
     setting: 'repeat',
   },
+  {
+    id: '1',
+    type: 'switch',
+    value: 'Simple Random Display',
+    setting: 'simpleRandom',
+  },
 ];
 
 export const RESOURCES = [
   {
-    id: '0',
+    id: '2',
     type: 'link',
     value: 'More Apps by Alexander Burdiss',
     image: require('../../img/BrassRoutinesIcon.png'),
@@ -30,14 +36,14 @@ export const RESOURCES = [
         : GOOGLE_PLAY_LINK,
   },
   {
-    id: '1',
+    id: '3',
     type: 'link',
     value: 'Visit Ars Nova Publishing',
     image: require('../../img/ANPLogo.png'),
     link: 'https://www.arsnovapublishing.com/',
   },
   {
-    id: '2',
+    id: '4',
     type: 'link',
     value: 'Visit Band Room Online',
     link: 'https://www.bandroomonline.com/',
@@ -46,30 +52,30 @@ export const RESOURCES = [
 
 export const ABOUT = [
   {
-    id: '3',
+    id: '5',
     type: 'text',
     value: `© ${new Date().getFullYear()} ` + 'Alexander Burdiss',
   },
   {
-    id: '16',
+    id: '6',
     type: 'navigate',
     value: 'Acknowledgements',
     component: 'Acknowledgements',
   },
   {
-    id: '15',
+    id: '7',
     type: 'navigate',
     value: 'Licenses',
     component: 'Licenses',
   },
   {
-    id: '5',
+    id: '8',
     type: 'link',
     value: 'Send Feedback',
     link: 'mailto:aburdiss@icloud.com?subject=Scale%20Practice%20Feedback',
   },
   {
-    id: '6',
+    id: '9',
     type: 'link',
     value: 'Open Source',
     link: 'https://github.com/aburdiss/ScalePractice',
