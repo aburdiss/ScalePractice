@@ -17,6 +17,7 @@ import {debounce, random, shuffle} from 'underscore';
 import LargeScaleDisplay from '../../Components/LargeScaleDisplay/LargeScaleDisplay';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
 import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
+import RandomScaleSettings from './RandomScaleSettings/RandomScaleSettings';
 import {createScaleArrayFromParts} from '../utils/RandomUtils';
 
 import {
@@ -31,7 +32,6 @@ import {
 } from '../../Model/Model';
 import {PreferencesContext} from '../../Model/Preferences';
 import {translate} from '../../Translations/TranslationModel';
-import RandomScaleSettings from './RandomScaleSettings/RandomScaleSettings';
 
 /**
  * @description A View that allows the user to randomize all of the scales in

@@ -1,5 +1,12 @@
-import React, {useState, useCallback, useContext, useEffect} from 'react';
-import {Alert, View, ScrollView} from 'react-native';
+import React, {
+  useState,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
+import {Alert, View, ScrollView, Pressable, Text} from 'react-native';
+import Popover from 'react-native-popover-view';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -9,9 +16,9 @@ import {debounce, random, shuffle} from 'underscore';
 
 import {createArpeggioArrayFromParts} from '../utils/RandomUtils';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
-import AllScalesButton from '../../Components/AllScalesButton/AllScalesButton';
 import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
-import SwitchRow from '../../Components/SwitchRow/SwitchRow';
+import RandomArpeggioSettings from './RandomArpeggioSettings/RandomArpeggioSettings';
+import LargeScaleDisplay from '../../Components/LargeScaleDisplay/LargeScaleDisplay';
 
 import {colors} from '../../Model/Model';
 import {PreferencesContext} from '../../Model/Preferences';
@@ -22,7 +29,7 @@ import {translate} from '../../Translations/TranslationModel';
  * in a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 1.0.0
+ * @version 3.0.0
  *
  * @component
  * @example
@@ -30,6 +37,9 @@ import {translate} from '../../Translations/TranslationModel';
  */
 const RandomArpeggio = () => {
   const styles = useDynamicValue(dynamicStyles);
+
+  const selectionRef = useRef(null);
+  const [showSelectionPopover, setShowSelectionPopover] = useState(false);
 
   const {state} = useContext(PreferencesContext);
 
@@ -312,75 +322,68 @@ const RandomArpeggio = () => {
     ],
   );
 
-  return (
+  const ArpeggioSettings = () => {
+    return (
+      <RandomArpeggioSettings
+        toggleMajorSwitch={toggleMajorSwitch}
+        majorSwitch={majorSwitch}
+        toggleMinorSwitch={toggleMinorSwitch}
+        minorSwitch={minorSwitch}
+        toggleAugmentedSwitch={toggleAugmentedSwitch}
+        augmentedSwitch={augmentedSwitch}
+        toggleDiminishedSwitch={toggleDiminishedSwitch}
+        diminishedSwitch={diminishedSwitch}
+        toggleDominantSeventhSwitch={toggleDominantSeventhSwitch}
+        dominantSeventhSwitch={dominantSeventhSwitch}
+        toggleMajorSeventhSwitch={toggleMajorSeventhSwitch}
+        majorSeventhSwitch={majorSeventhSwitch}
+        toggleMinorSeventhSwitch={toggleMinorSeventhSwitch}
+        minorSeventhSwitch={minorSeventhSwitch}
+        toggleMinorMajorSeventhSwitch={toggleMinorMajorSeventhSwitch}
+        minorMajorSeventhSwitch={minorMajorSeventhSwitch}
+        toggleAugmentedSeventhSwitch={toggleAugmentedSeventhSwitch}
+        augmentedSeventhSwitch={augmentedSeventhSwitch}
+        toggleHalfDiminishedSeventhSwitch={toggleHalfDiminishedSeventhSwitch}
+        halfDiminishedSeventhSwitch={halfDiminishedSeventhSwitch}
+        toggleDiminishedSeventhSwitch={toggleDiminishedSeventhSwitch}
+        diminishedSeventhSwitch={diminishedSeventhSwitch}
+        selectAllArpeggios={selectAllArpeggios}
+      />
+    );
+  };
+
+  return state?.simpleRandom ? (
+    <View>
+      <Pressable onPress={debouncedGetNewArpeggio}>
+        <LargeScaleDisplay>{currentArpeggio}</LargeScaleDisplay>
+      </Pressable>
+      <Pressable
+        ref={selectionRef}
+        hitSlop={1}
+        onPress={() => setShowSelectionPopover(true)}
+        style={styles.selectionsButton}>
+        <Text style={styles.selectionsText}>
+          {translate('Arpeggio Selections')}
+        </Text>
+      </Pressable>
+      <Popover
+        arrowStyle={styles.popoverArrow}
+        from={selectionRef}
+        isVisible={showSelectionPopover}
+        onRequestClose={() => setShowSelectionPopover(false)}>
+        <ScrollView style={styles.popoverContainer}>
+          <ArpeggioSettings />
+        </ScrollView>
+      </Popover>
+    </View>
+  ) : (
     <View style={styles.container}>
       <View style={styles.scaleDisplay}>
         <ScaleDisplay>{currentArpeggio}</ScaleDisplay>
       </View>
       <View style={styles.switchesContainer}>
         <ScrollView>
-          <SwitchRow
-            onValueChange={toggleMajorSwitch}
-            value={majorSwitch}
-            text={translate('Major')}
-          />
-          <SwitchRow
-            onValueChange={toggleMinorSwitch}
-            value={minorSwitch}
-            text={translate('Minor')}
-          />
-          <SwitchRow
-            onValueChange={toggleAugmentedSwitch}
-            value={augmentedSwitch}
-            text={translate('Augmented')}
-          />
-          <SwitchRow
-            onValueChange={toggleDiminishedSwitch}
-            value={diminishedSwitch}
-            text={translate('Diminished')}
-          />
-          <SwitchRow
-            onValueChange={toggleDominantSeventhSwitch}
-            value={dominantSeventhSwitch}
-            text={translate('Dominant Seventh')}
-          />
-          <SwitchRow
-            onValueChange={toggleMajorSeventhSwitch}
-            value={majorSeventhSwitch}
-            text={translate('Major Seventh')}
-          />
-          <SwitchRow
-            onValueChange={toggleMinorSeventhSwitch}
-            value={minorSeventhSwitch}
-            text={translate('Minor Seventh')}
-          />
-          <SwitchRow
-            onValueChange={toggleMinorMajorSeventhSwitch}
-            value={minorMajorSeventhSwitch}
-            text={translate('Minor Major Seventh')}
-          />
-          <SwitchRow
-            onValueChange={toggleAugmentedSeventhSwitch}
-            value={augmentedSeventhSwitch}
-            text={translate('Augmented Minor Seventh')}
-          />
-          <SwitchRow
-            onValueChange={toggleHalfDiminishedSeventhSwitch}
-            value={halfDiminishedSeventhSwitch}
-            text={translate('Half Diminished Seventh')}
-          />
-          <SwitchRow
-            onValueChange={toggleDiminishedSeventhSwitch}
-            value={diminishedSeventhSwitch}
-            text={translate('Diminished Seventh')}
-          />
-          <View style={styles.allScaleButton}>
-            <AllScalesButton
-              handler={selectAllArpeggios}
-              accessibilityHint={translate('Toggles All Arpeggios')}>
-              {translate('All Arpeggios')}
-            </AllScalesButton>
-          </View>
+          <ArpeggioSettings />
         </ScrollView>
       </View>
       <View style={styles.mainActionButton}>
@@ -396,9 +399,6 @@ const RandomArpeggio = () => {
 };
 
 const dynamicStyles = new DynamicStyleSheet({
-  allScaleButton: {
-    paddingHorizontal: 10,
-  },
   container: {
     flex: 1,
     backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
@@ -410,12 +410,35 @@ const dynamicStyles = new DynamicStyleSheet({
     ),
     borderTopWidth: 1,
   },
+  popoverArrow: {
+    backgroundColor: new DynamicValue(
+      colors.systemGray6Light,
+      colors.systemGray6Dark,
+    ),
+  },
+  popoverContainer: {
+    width: 300,
+    backgroundColor: new DynamicValue(
+      colors.systemGray6Light,
+      colors.systemGray6Dark,
+    ),
+  },
   scaleDisplay: {
     borderBottomWidth: 1,
     borderColor: new DynamicValue(
       colors.systemGray5Light,
       colors.systemGray5Dark,
     ),
+  },
+  selectionsButton: {
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
+    height: 25,
+    zIndex: 2,
+  },
+  selectionsText: {
+    color: new DynamicValue(colors.black, colors.white),
   },
   switchesContainer: {
     flex: 1,
