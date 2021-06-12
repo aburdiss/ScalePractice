@@ -1,51 +1,56 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import {useDarkMode} from 'react-native-dynamic';
 
 import {colors} from '../../Model/Model';
 
 /**
+ * @function LargeScaleDisplay
  * @description A styled text box that shows the currently selected scale
  * @author Alexander Burdiss
- * @since 10/11/20
- * @version 1.0.2
+ * @since 6/11/21
+ * @version 1.0.0
  * @param {String} props.children The text to render inside this component
  *
  * @component
  * @example
  * ```jsx
- * <ScaleDisplay>Hello, World!</ScaleDisplay>
+ * <LargeScaleDisplay>Hello, World!</LargeScaleDisplay>
  * ```
  */
-const ScaleDisplay = ({children}) => {
+const LargeScaleDisplay = ({children}) => {
   const DARKMODE = useDarkMode();
 
   return (
-    <View
-      accessible={true}
-      accessibilityLiveRegion="assertive"
-      accessibilityLabel={children}
-      accessibilityRole="alert"
-      style={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100%',
-        backgroundColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
-      }}>
-      <Text
-        maxFontSizeMultiplier={2}
+    <LinearGradient
+      colors={DARKMODE ? ['#ce4bf6', '#763af6'] : ['#763af6', '#ce4bf6']}>
+      <View
+        accessible={true}
+        accessibilityLiveRegion="assertive"
+        accessibilityLabel={children}
+        accessibilityRole="alert"
         style={{
-          color: DARKMODE ? colors.white : colors.black,
-          overflow: 'hidden',
-          textAlign: 'center',
-          width: '100%',
-          paddingHorizontal: 14,
-          fontSize: 32,
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
         }}>
-        {children}
-      </Text>
-    </View>
+        <Text
+          maxFontSizeMultiplier={2}
+          style={{
+            color: DARKMODE ? colors.white : colors.black,
+            overflow: 'hidden',
+            textAlign: 'center',
+            width: '100%',
+            paddingHorizontal: 14,
+            fontSize: 32,
+            fontWeight: 'bold',
+          }}>
+          {children}
+        </Text>
+      </View>
+    </LinearGradient>
   );
 };
 
-export default ScaleDisplay;
+export default LargeScaleDisplay;

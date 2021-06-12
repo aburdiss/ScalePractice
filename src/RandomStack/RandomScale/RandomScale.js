@@ -1,5 +1,12 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
-import {Alert, View, ScrollView, Pressable} from 'react-native';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
+import {Alert, View, ScrollView, Pressable, Text} from 'react-native';
+import Popover from 'react-native-popover-view';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -31,7 +38,7 @@ import RandomScaleSettings from './RandomScaleSettings/RandomScaleSettings';
  * a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 2.0.0
+ * @version 3.0.0
  *
  * @component
  * @example
@@ -41,6 +48,9 @@ import RandomScaleSettings from './RandomScaleSettings/RandomScaleSettings';
  */
 const RandomScale = () => {
   const styles = useDynamicValue(dynamicStyles);
+
+  const selectionRef = useRef(null);
+  const [showSelectionPopover, setShowSelectionPopover] = useState(false);
 
   const {state} = useContext(PreferencesContext);
 
@@ -307,10 +317,58 @@ const RandomScale = () => {
     wholeToneSwitch,
   ]);
 
+  const ScaleSettings = () => {
+    return (
+      <RandomScaleSettings
+        toggleMajorSwitch={toggleMajorSwitch}
+        majorSwitch={majorSwitch}
+        toggleNaturalMinorSwitch={toggleNaturalMinorSwitch}
+        naturalMinorSwitch={naturalMinorSwitch}
+        toggleHarmonicMinorSwitch={toggleHarmonicMinorSwitch}
+        harmonicMinorSwitch={harmonicMinorSwitch}
+        toggleMelodicMinorSwitch={toggleMelodicMinorSwitch}
+        melodicMinorSwitch={melodicMinorSwitch}
+        toggleMajorModesSwitch={toggleMajorModesSwitch}
+        majorModesSwitch={majorModesSwitch}
+        toggleMelodicMinorModesSwitch={toggleMelodicMinorModesSwitch}
+        melodicMinorModesSwitch={melodicMinorModesSwitch}
+        toggleBluesSwitch={toggleBluesSwitch}
+        bluesSwitch={bluesSwitch}
+        togglePentatonicSwitch={togglePentatonicSwitch}
+        pentatonicSwitch={pentatonicSwitch}
+        toggleOctatonicSwitch={toggleOctatonicSwitch}
+        octatonicSwtich={octatonicSwtich}
+        toggleWholeToneSwitch={toggleWholeToneSwitch}
+        wholeToneSwitch={wholeToneSwitch}
+        selectAllScales={selectAllScales}
+      />
+    );
+  };
+
   return state?.simpleRandom ? (
-    <Pressable onPress={debouncedGetNewScale}>
-      <LargeScaleDisplay>{currentScale}</LargeScaleDisplay>
-    </Pressable>
+    <View>
+      <Pressable onPress={debouncedGetNewScale}>
+        <LargeScaleDisplay>{currentScale}</LargeScaleDisplay>
+      </Pressable>
+      <Pressable
+        ref={selectionRef}
+        hitSlop={1}
+        onPress={() => setShowSelectionPopover(true)}
+        style={styles.selectionsButton}>
+        <Text style={styles.selectionsText}>
+          {translate('Scale Selections')}
+        </Text>
+      </Pressable>
+      <Popover
+        arrowStyle={styles.popoverArrow}
+        from={selectionRef}
+        isVisible={showSelectionPopover}
+        onRequestClose={() => setShowSelectionPopover(false)}>
+        <ScrollView style={styles.popoverContainer}>
+          <ScaleSettings />
+        </ScrollView>
+      </Popover>
+    </View>
   ) : (
     <View style={styles.container}>
       <View style={styles.scaleDisplay}>
@@ -318,29 +376,7 @@ const RandomScale = () => {
       </View>
       <View style={styles.switchesContainer}>
         <ScrollView>
-          <RandomScaleSettings
-            toggleMajorSwitch={toggleMajorSwitch}
-            majorSwitch={majorSwitch}
-            toggleNaturalMinorSwitch={toggleNaturalMinorSwitch}
-            naturalMinorSwitch={naturalMinorSwitch}
-            toggleHarmonicMinorSwitch={toggleHarmonicMinorSwitch}
-            harmonicMinorSwitch={harmonicMinorSwitch}
-            toggleMelodicMinorSwitch={toggleMelodicMinorSwitch}
-            melodicMinorSwitch={melodicMinorSwitch}
-            toggleMajorModesSwitch={toggleMajorModesSwitch}
-            majorModesSwitch={majorModeNames}
-            toggleMelodicMinorModesSwitch={toggleMelodicMinorModesSwitch}
-            melodicMinorModesSwitch={melodicMinorModesSwitch}
-            toggleBluesSwitch={toggleBluesSwitch}
-            bluesSwitch={bluesSwitch}
-            togglePentatonicSwitch={togglePentatonicSwitch}
-            pentatonicSwitch={pentatonicSwitch}
-            toggleOctatonicSwitch={toggleOctatonicSwitch}
-            octatonicSwtich={octatonicSwtich}
-            toggleWholeToneSwitch={toggleWholeToneSwitch}
-            wholeToneSwitch={wholeToneSwitch}
-            selectAllScales={selectAllScales}
-          />
+          <ScaleSettings />
         </ScrollView>
       </View>
       <View style={styles.mainActionButton}>
@@ -367,12 +403,35 @@ const dynamicStyles = new DynamicStyleSheet({
     ),
     borderTopWidth: 1,
   },
+  popoverArrow: {
+    backgroundColor: new DynamicValue(
+      colors.systemGray6Light,
+      colors.systemGray6Dark,
+    ),
+  },
+  popoverContainer: {
+    width: 300,
+    backgroundColor: new DynamicValue(
+      colors.systemGray6Light,
+      colors.systemGray6Dark,
+    ),
+  },
   scaleDisplay: {
     borderBottomWidth: 1,
     borderColor: new DynamicValue(
       colors.systemGray5Light,
       colors.systemGray5Dark,
     ),
+  },
+  selectionsButton: {
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
+    height: 25,
+    zIndex: 2,
+  },
+  selectionsText: {
+    color: new DynamicValue(colors.black, colors.white),
   },
   switchesContainer: {
     flex: 1,

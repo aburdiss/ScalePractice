@@ -24,7 +24,9 @@
     "react-native-device-info": "^7.0.2",
     "react-native-dynamic": "^1.0.0",
     "react-native-gesture-handler": "^1.8.0",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-localize": "^2.0.0",
+    "react-native-popover-view": "^4.0.1",
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-safe-area-view": "^1.1.1",
@@ -40,6 +42,7 @@
     "@testing-library/react-native": "^7.2.0",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
+    "eslint-plugin-react": "^7.24.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
@@ -58,8 +61,31 @@
     ]
   },
   "eslintConfig": {
-    "root": true,
-    "extends": "@react-native-community"
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "@react-native-community"
+    ],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {}
   },
   "jest": {
     "preset": "react-native",
@@ -82,7 +108,7 @@
       "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(@react-native|react-native|react-native-animatable|react-native-scalable-image|react-native-modal|react-native-dynamic|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/segmented-control|react-native-picker-select|@react-native-picker/picker)/)"
+      "node_modules/(?!(@react-native|react-native|react-native-popover-view|react-native-linear-gradient|react-native-animatable|react-native-scalable-image|react-native-modal|react-native-dynamic|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/segmented-control|react-native-picker-select|@react-native-picker/picker)/)"
     ]
   }
 }

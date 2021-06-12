@@ -1,15 +1,35 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
+import {View} from 'react-native';
 import SwitchRow from '../../../Components/SwitchRow/SwitchRow';
 import AllScalesButton from '../../../Components/AllScalesButton/AllScalesButton';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
-import {colors} from '../../../Model/Model';
 import {translate} from '../../../Translations/TranslationModel';
 
+/**
+ * @function RandomScaleSettings
+ * @description Displays the settings for customizing a random scale selection
+ * @author Alexander Burdiss
+ * @since 6/11/21
+ * @version 1.0.0
+ * @param props The JSX props passed to this React component
+ * @param {Function} props.toggleMajorSwitch
+ * @param {Boolean} props.majorSwitch
+ * @param {Function} props.toggleNaturalMinorSwitch
+ * @param {Boolean} props.naturalMinorSwitch
+ * @param {Function} props.toggleHarmonicMinorSwitch
+ * @param {Boolean} props.harmonicMinorSwitch
+ * @param {Function} props.toggleMelodicMinorSwitch
+ * @param {Boolean} props.melodicMinorSwitch
+ * @param {Function} props.toggleBluesSwitch
+ * @param {Boolean} props.bluesSwitch
+ * @param {Function} props.togglePentatonicSwitch
+ * @param {Boolean} props.pentatonicSwitch
+ * @param {Function} props.toggleOctatonicSwitch
+ * @param {Boolean} props.octatonicSwtich
+ * @param {Function} props.toggleWholeToneSwitch
+ * @param {Boolean} props.wholeToneSwitch
+ * @param {Function} props.selectAllScales
+ * @component
+ */
 export default function RandomScaleSettings({
   toggleMajorSwitch,
   majorSwitch,
@@ -34,7 +54,7 @@ export default function RandomScaleSettings({
   selectAllScales,
 }) {
   return (
-    <>
+    <View style={styles.container}>
       <SwitchRow
         onValueChange={toggleMajorSwitch}
         value={majorSwitch}
@@ -92,12 +112,15 @@ export default function RandomScaleSettings({
           {translate('All Scales')}
         </AllScalesButton>
       </View>
-    </>
+    </View>
   );
 }
 
 const styles = {
   allScaleButton: {
     paddingHorizontal: 10,
+  },
+  container: {
+    paddingTop: 10,
   },
 };
