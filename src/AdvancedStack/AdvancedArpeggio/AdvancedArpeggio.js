@@ -1,11 +1,11 @@
-import React, {useState, useContext, useEffect} from 'react';
-import {Alert, View, Text, FlatList} from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { Alert, View, Text, FlatList } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import {shuffle} from 'underscore';
+import { shuffle } from 'underscore';
 
 import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
@@ -13,25 +13,28 @@ import AddToListButton from '../../Components/AddToListButton/AddToListButton';
 import ResetButton from '../../Components/ResetButton/ResetButton';
 import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
 import ScalePickers from '../ScalePickers/ScalePickers';
-import {colors, allNoteNames, allArpeggioNames} from '../../Model/Model';
-import {PreferencesContext} from '../../Model/Preferences';
-import {getIsSmallScreen} from '../../Model/Utilities';
-import {translate} from '../../Translations/TranslationModel';
+import { colors, allNoteNames, allArpeggioNames } from '../../Model/Model';
+import { PreferencesContext } from '../../Model/Preferences';
+import { getIsSmallScreen } from '../../Model/Utilities';
+import { translate } from '../../Translations/TranslationModel';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A view that allows the user to randomize between a list of
  * selected scales.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 2.0.0
- * 
+ * @version 2.1.0
+ *
  * @component
  * @example
  * ```jsx
-<AdvancedArpeggio />
-```
+ * <AdvancedArpeggio />
+ * ```
  */
 const AdvancedArpeggio = () => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
   const [possibleArpeggios, setpossibleArpeggios] = useState([]);
   const [arpeggioArrayIndex, setArpeggioArrayIndex] = useState(0);
@@ -42,7 +45,7 @@ const AdvancedArpeggio = () => {
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const {state} = useContext(PreferencesContext);
+  const { state } = useContext(PreferencesContext);
 
   useEffect(
     /**
@@ -183,7 +186,7 @@ const AdvancedArpeggio = () => {
       <FlatList
         style={styles.list}
         data={possibleArpeggios}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <SwipeableRow styles={styles} deleteItem={deleteElement} item={item}>
             <View style={styles.listItemContainer}>
               <View style={styles.listItemTextContainer}>
@@ -199,7 +202,7 @@ const AdvancedArpeggio = () => {
           <ResetButton handler={removeAllScales} />
           <RandomizeButton
             handler={generateArpeggio}
-            accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+            accessibilityValue={{ text: `${translate(currentArpeggio)}` }}
           />
           <AddToListButton handler={addToArpeggioList} />
         </View>
@@ -207,7 +210,7 @@ const AdvancedArpeggio = () => {
         <View style={styles.mainActionButton}>
           <RandomizeButton
             handler={generateArpeggio}
-            accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+            accessibilityValue={{ text: `${translate(currentArpeggio)}` }}
           />
         </View>
       )}

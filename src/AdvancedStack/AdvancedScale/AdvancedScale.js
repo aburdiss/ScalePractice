@@ -1,11 +1,11 @@
-import React, {useState, useContext, useEffect} from 'react';
-import {Alert, View, Text, FlatList} from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { Alert, View, Text, FlatList } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import {shuffle} from 'underscore';
+import { shuffle } from 'underscore';
 
 import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
@@ -13,25 +13,28 @@ import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
 import AddToListButton from '../../Components/AddToListButton/AddToListButton';
 import ResetButton from '../../Components/ResetButton/ResetButton';
 import ScalePickers from '../ScalePickers/ScalePickers';
-import {colors, allScaleNames, allNoteNames} from '../../Model/Model';
-import {PreferencesContext} from '../../Model/Preferences';
-import {getIsSmallScreen} from '../../Model/Utilities';
-import {translate} from '../../Translations/TranslationModel';
+import { colors, allScaleNames, allNoteNames } from '../../Model/Model';
+import { PreferencesContext } from '../../Model/Preferences';
+import { getIsSmallScreen } from '../../Model/Utilities';
+import { translate } from '../../Translations/TranslationModel';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A view that allows the user to randomize between a list of
  * selected scales.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 2.0.0
- * 
+ * @version 2.1.0
+ *
  * @component
  * @example
  * ```jsx
-<Advanced Scale />
-```
+ * <Advanced Scale />
+ * ```
  */
 const AdvancedScale = () => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
   const [possibleScales, setPossibleScales] = useState([]);
   const [scaleArrayIndex, setScaleArrayIndex] = useState(0);
@@ -42,7 +45,7 @@ const AdvancedScale = () => {
   const [selectedNote, setSelectedNote] = useState('C');
   const [selectedScale, setSelectedScale] = useState(translate('Major'));
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const {state} = useContext(PreferencesContext);
+  const { state } = useContext(PreferencesContext);
 
   useEffect(
     /**
@@ -178,7 +181,7 @@ const AdvancedScale = () => {
       <FlatList
         style={styles.list}
         data={possibleScales}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <SwipeableRow styles={styles} deleteItem={deleteElement} item={item}>
             <View style={styles.listItemContainer}>
               <View style={styles.listItemTextContainer}>
@@ -194,7 +197,7 @@ const AdvancedScale = () => {
           <ResetButton handler={removeAllScales} />
           <RandomizeButton
             handler={generateScale}
-            accessibilityValue={{text: `${currentScale}`}}
+            accessibilityValue={{ text: `${currentScale}` }}
           />
           <AddToListButton handler={addToScaleList} />
         </View>
@@ -202,7 +205,7 @@ const AdvancedScale = () => {
         <View style={styles.mainActionButton}>
           <RandomizeButton
             handler={generateScale}
-            accessibilityValue={{text: `${currentScale}`}}
+            accessibilityValue={{ text: `${currentScale}` }}
           />
         </View>
       )}

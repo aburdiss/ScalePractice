@@ -71,6 +71,8 @@ const preferencesReducer = (state, action) => {
 
 const initialPreferencesState = {
   repeat: true,
+  simpleRandom: false,
+  disableScreenSleep: false,
 };
 
 /**

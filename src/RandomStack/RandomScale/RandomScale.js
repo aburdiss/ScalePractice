@@ -5,20 +5,20 @@ import React, {
   useState,
   useRef,
 } from 'react';
-import {Alert, View, ScrollView, Pressable, Text} from 'react-native';
+import { Alert, View, ScrollView, Pressable, Text } from 'react-native';
 import Popover from 'react-native-popover-view';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import {debounce, random, shuffle} from 'underscore';
+import { debounce, random, shuffle } from 'underscore';
 
 import LargeScaleDisplay from '../../Components/LargeScaleDisplay/LargeScaleDisplay';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
 import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
 import RandomScaleSettings from './RandomScaleSettings/RandomScaleSettings';
-import {createScaleArrayFromParts} from '../utils/RandomUtils';
+import { createScaleArrayFromParts } from '../utils/RandomUtils';
 
 import {
   colors,
@@ -30,15 +30,16 @@ import {
   melodicMinorModeNames,
   octatonicScaleNames,
 } from '../../Model/Model';
-import {PreferencesContext} from '../../Model/Preferences';
-import {translate} from '../../Translations/TranslationModel';
+import { PreferencesContext } from '../../Model/Preferences';
+import { translate } from '../../Translations/TranslationModel';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A View that allows the user to randomize all of the scales in
  * a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 3.0.0
+ * @version 3.1.0
  *
  * @component
  * @example
@@ -47,12 +48,14 @@ import {translate} from '../../Translations/TranslationModel';
  * @todo Refactor this to be more functional
  */
 const RandomScale = () => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
+
+  const { state } = useContext(PreferencesContext);
 
   const selectionRef = useRef(null);
   const [showSelectionPopover, setShowSelectionPopover] = useState(false);
-
-  const {state} = useContext(PreferencesContext);
 
   const [currentScale, setCurrentScale] = useState(
     translate('No Scale Selected'),
@@ -354,7 +357,8 @@ const RandomScale = () => {
         ref={selectionRef}
         hitSlop={1}
         onPress={() => setShowSelectionPopover(true)}
-        style={styles.selectionsButton}>
+        style={styles.selectionsButton}
+      >
         <Text style={styles.selectionsText}>
           {translate('Scale Selections')}
         </Text>
@@ -363,7 +367,8 @@ const RandomScale = () => {
         arrowStyle={styles.popoverArrow}
         from={selectionRef}
         isVisible={showSelectionPopover}
-        onRequestClose={() => setShowSelectionPopover(false)}>
+        onRequestClose={() => setShowSelectionPopover(false)}
+      >
         <ScrollView style={styles.popoverContainer}>
           <ScaleSettings />
         </ScrollView>
@@ -382,7 +387,7 @@ const RandomScale = () => {
       <View style={styles.mainActionButton}>
         <RandomizeButton
           handler={debouncedGetNewScale}
-          accessibilityValue={{text: `${translate(currentScale)}`}}
+          accessibilityValue={{ text: `${translate(currentScale)}` }}
           accessibilityHint={translate('Randomizes a new scale')}
           accessible={true}
         />

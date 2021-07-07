@@ -20,6 +20,12 @@ export const SETTINGS = [
     value: 'Simple Random Display',
     setting: 'simpleRandom',
   },
+  {
+    id: '1A',
+    type: 'switch',
+    value: 'Keep Screen On',
+    setting: 'disableScreenSleep',
+  },
 ];
 
 export const RESOURCES = [

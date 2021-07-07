@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {View, Text, SectionList} from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, SectionList } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -13,18 +13,19 @@ import {
   TextListItem,
   SwitchListItem,
 } from './MoreListItems';
-import {colors} from '../../Model/Model';
-import {RESOURCES, ABOUT, SETTINGS} from '../../Model/MoreModel';
-import {translate} from '../../Translations/TranslationModel';
-import {PreferencesContext} from '../../Model/Preferences';
+import { colors } from '../../Model/Model';
+import { RESOURCES, ABOUT, SETTINGS } from '../../Model/MoreModel';
+import { translate } from '../../Translations/TranslationModel';
+import { PreferencesContext } from '../../Model/Preferences';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A view with links to additional resources and settings for the
  * app.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 1.0.1
- * 
+ * @version 1.1.0
+ *
  * @component
  * @example
  * ```jsx
@@ -32,19 +33,21 @@ import {PreferencesContext} from '../../Model/Preferences';
 ```
  */
 const More = () => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
-  const {state, dispatch} = useContext(PreferencesContext);
+  const { state, dispatch } = useContext(PreferencesContext);
 
   return (
     <View>
       <SectionList
         sections={[
-          {title: translate('Settings'), data: SETTINGS},
-          {title: translate('Resources'), data: RESOURCES},
-          {title: translate('About'), data: ABOUT},
+          { title: translate('Settings'), data: SETTINGS },
+          { title: translate('Resources'), data: RESOURCES },
+          { title: translate('About'), data: ABOUT },
         ]}
         keyExtractor={(item, index) => index}
-        renderItem={({item}) => {
+        renderItem={({ item }) => {
           switch (item.type) {
             case 'link':
               return <LinkListItem item={item} />;
@@ -58,7 +61,7 @@ const More = () => {
               );
           }
         }}
-        renderSectionHeader={({section: {title}}) => (
+        renderSectionHeader={({ section: { title } }) => (
           <Text style={styles.listHeader}>{title}</Text>
         )}
         style={styles.sectionList}

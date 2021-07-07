@@ -5,43 +5,46 @@ import React, {
   useEffect,
   useRef,
 } from 'react';
-import {Alert, View, ScrollView, Pressable, Text} from 'react-native';
+import { Alert, View, ScrollView, Pressable, Text } from 'react-native';
 import Popover from 'react-native-popover-view';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import {debounce, random, shuffle} from 'underscore';
+import { debounce, random, shuffle } from 'underscore';
 
-import {createArpeggioArrayFromParts} from '../utils/RandomUtils';
+import { createArpeggioArrayFromParts } from '../utils/RandomUtils';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
 import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
 import RandomArpeggioSettings from './RandomArpeggioSettings/RandomArpeggioSettings';
 import LargeScaleDisplay from '../../Components/LargeScaleDisplay/LargeScaleDisplay';
 
-import {colors} from '../../Model/Model';
-import {PreferencesContext} from '../../Model/Preferences';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { PreferencesContext } from '../../Model/Preferences';
+import { translate } from '../../Translations/TranslationModel';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios
  * in a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
- * @version 3.0.0
+ * @version 3.1.0
  *
  * @component
  * @example
  *   <RandomArpeggio />
  */
 const RandomArpeggio = () => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
 
   const selectionRef = useRef(null);
   const [showSelectionPopover, setShowSelectionPopover] = useState(false);
 
-  const {state} = useContext(PreferencesContext);
+  const { state } = useContext(PreferencesContext);
 
   const [currentArpeggio, setCurrentArpeggio] = useState(
     translate('No Arpeggio Selected'),
@@ -361,7 +364,8 @@ const RandomArpeggio = () => {
         ref={selectionRef}
         hitSlop={1}
         onPress={() => setShowSelectionPopover(true)}
-        style={styles.selectionsButton}>
+        style={styles.selectionsButton}
+      >
         <Text style={styles.selectionsText}>
           {translate('Arpeggio Selections')}
         </Text>
@@ -370,7 +374,8 @@ const RandomArpeggio = () => {
         arrowStyle={styles.popoverArrow}
         from={selectionRef}
         isVisible={showSelectionPopover}
-        onRequestClose={() => setShowSelectionPopover(false)}>
+        onRequestClose={() => setShowSelectionPopover(false)}
+      >
         <ScrollView style={styles.popoverContainer}>
           <ArpeggioSettings />
         </ScrollView>
@@ -389,7 +394,7 @@ const RandomArpeggio = () => {
       <View style={styles.mainActionButton}>
         <RandomizeButton
           handler={debouncedGetNewArpeggio}
-          accessibilityValue={{text: `${translate(currentArpeggio)}`}}
+          accessibilityValue={{ text: `${translate(currentArpeggio)}` }}
           accessibilityHint={translate('Randomizes a new arpeggio')}
           accessibilityRole="button"
         />

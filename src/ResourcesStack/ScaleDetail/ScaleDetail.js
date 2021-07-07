@@ -1,29 +1,32 @@
 import React from 'react';
-import {ScrollView, View, Text, Image} from 'react-native';
+import { ScrollView, View, Text, Image } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import {colors, getImagePath} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors, getImagePath } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @description A component that renders a detailed image, based on the id
  * given when calling navigation.navigate().
  * @author Alexandder Burdiss
  * @since 12/15/20
- * @version 2.0.0
+ * @version 2.1.0
  * @param {Object} props.route The Route object provided by React Navigation
- * 
+ *
  * @component
  * @example
  * ```jsx
-<ScaleDetail route={route} />
-```
+ * <ScaleDetail route={route} />
+ * ```
  */
-const ScaleDetail = ({route}) => {
+const ScaleDetail = ({ route }) => {
+  useIdleScreen();
+
   const styles = useDynamicValue(dynamicStyles);
 
   const path = getImagePath(route.params.id);
