@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  Pressable,
-  View,
-  Linking,
-  Image,
-  StyleSheet,
-} from 'react-native';
+import { Text, Pressable, View, Linking, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../Model/Model';
 import {
@@ -83,6 +76,7 @@ const LicensesListItem = ({
               ...styles.item,
             })}
           >
+            {/* eslint-disable-next-line react-native/no-inline-styles */}
             <View style={{ maxWidth: '90%' }}>
               <Text style={styles.name}>{title}</Text>
               <Link style={styles.text} url={licenseUrl}>
@@ -91,6 +85,7 @@ const LicensesListItem = ({
               <Link style={styles.text}>{version}</Link>
             </View>
             <Ionicons
+              // eslint-disable-next-line react-native/no-inline-styles
               style={{ alignSelf: 'center' }}
               color={DARKMODE ? colors.purpleDark : colors.purpleLight}
               size={24}
