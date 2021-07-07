@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import LicensesListItem from './LicensesListItem';
 
 /**
@@ -9,20 +9,20 @@ import LicensesListItem from './LicensesListItem';
  * @since 12/17/2020
  * @version 1.0.1
  * @param {Array} props.licenses The list of licenses that will be displayed.
- * 
+ *
  * @component
  * @example
  * ```jsx
 <LicensesList licenses={licenses} />
 ```
  */
-const LicensesList = ({licenses}) => {
+const LicensesList = ({ licenses }) => {
   return (
     <FlatList
       style={styles.list}
-      keyExtractor={({key}) => key}
+      keyExtractor={({ key }) => key}
       data={licenses}
-      renderItem={({item}) => <LicensesListItem {...item} />}
+      renderItem={({ item }) => <LicensesListItem {...item} />}
     />
   );
 };

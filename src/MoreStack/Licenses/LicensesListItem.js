@@ -1,7 +1,14 @@
 import React from 'react';
-import {Text, Pressable, View, Linking, Image, StyleSheet} from 'react-native';
+import {
+  Text,
+  Pressable,
+  View,
+  Linking,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {colors} from '../../Model/Model';
+import { colors } from '../../Model/Model';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -64,17 +71,19 @@ const LicensesListItem = ({
           {image && (
             <Pressable
               onPress={() => Linking.openURL(userUrl)}
-              style={({pressed}) => ({opacity: pressed ? 0.7 : 1})}>
-              <Image source={{uri: image}} style={styles.image} />
+              style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1 })}
+            >
+              <Image source={{ uri: image }} style={styles.image} />
             </Pressable>
           )}
           <Pressable
             onPress={() => Linking.openURL(repository)}
-            style={({pressed}) => ({
+            style={({ pressed }) => ({
               opacity: pressed ? 0.7 : 1,
               ...styles.item,
-            })}>
-            <View style={{maxWidth: '90%'}}>
+            })}
+          >
+            <View style={{ maxWidth: '90%' }}>
               <Text style={styles.name}>{title}</Text>
               <Link style={styles.text} url={licenseUrl}>
                 {licenses}
@@ -82,7 +91,7 @@ const LicensesListItem = ({
               <Link style={styles.text}>{version}</Link>
             </View>
             <Ionicons
-              style={{alignSelf: 'center'}}
+              style={{ alignSelf: 'center' }}
               color={DARKMODE ? colors.purpleDark : colors.purpleLight}
               size={24}
               name={'chevron-forward'}
@@ -113,11 +122,12 @@ const LicensesListItem = ({
 </Link>
 ```
  */
-const Link = ({url, style, children}) => (
+const Link = ({ url, style, children }) => (
   <Text
     style={style}
     numberOfLines={1}
-    onPress={() => url && Linking.openURL(url)}>
+    onPress={() => url && Linking.openURL(url)}
+  >
     {children}
   </Text>
 );

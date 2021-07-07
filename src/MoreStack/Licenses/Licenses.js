@@ -11,12 +11,13 @@ Run this command to get the data
 import React from 'react';
 
 import LicensesList from './LicensesList';
-import {useDarkMode} from 'react-native-dynamic';
-import {colors} from '../../Model/Model';
+import { useDarkMode } from 'react-native-dynamic';
+import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
 import SafeAreaView from 'react-native-safe-area-view';
-import {capitalize} from 'underscore.string';
+import { capitalize } from 'underscore.string';
+import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
  * @function extractNameFromGithubUrl
@@ -34,7 +35,8 @@ function extractNameFromGithubUrl(url) {
     return null;
   }
 
-  const reg = /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_]{1,15})(\/([-a-z]{1,20}))?/i;
+  const reg = /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_-]{1,30})(\/([-a-z]{1,40}))?/i;
+
   const components = reg.exec(url);
 
   if (components && components.length > 5) {
@@ -61,11 +63,16 @@ function sortDataByKey(data, key) {
   return data;
 }
 
-let licenses = Object.keys(Data).map((key) => {
-  let {licenses, ...license} = Data[key];
-  let [name, version] = key.split('@');
+let licenseData = Object.keys(Data).map((key) => {
+  let { licenses, ...license } = Data[key];
 
-  const reg = /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_]{1,15})(\/([-a-z]{1,20}))?/i;
+  let name, version;
+  if (key[0] == '@') {
+    [, name, version] = key.split('@');
+  } else {
+    [name, version] = key.split('@');
+  }
+
   let username =
     extractNameFromGithubUrl(license.repository) ||
     extractNameFromGithubUrl(license.licenseUrl);
@@ -90,7 +97,7 @@ let licenses = Object.keys(Data).map((key) => {
   };
 });
 
-sortDataByKey(licenses, 'username');
+sortDataByKey(licenseData, 'username');
 
 /**
  * @description A wrapper for the LicensesList component that processes the
@@ -98,8 +105,8 @@ sortDataByKey(licenses, 'username');
  * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
  * @author Alexander Burdiss
  * @since 12/17/20
- * @version 1.0.1
- * 
+ * @version 1.2.0
+ *
  * @component
  * @example
  * ```jsx
@@ -107,14 +114,19 @@ sortDataByKey(licenses, 'username');
 ```
  */
 const Licenses = () => {
+  useIdleScreen();
+
   const DARKMODE = useDarkMode();
+
   return (
     <SafeAreaView
+      // eslint-disable-next-line react-native/no-inline-styles
       style={{
         flex: 1,
         backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
-      }}>
-      <LicensesList licenses={licenses} />
+      }}
+    >
+      <LicensesList licenses={licenseData} />
     </SafeAreaView>
   );
 };
