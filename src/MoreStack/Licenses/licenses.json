@@ -65,6 +65,12 @@
         "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
         "parents": "scale-practice"
     },
+    "react-native-idle-timer@2.1.6": {
+        "licenses": "UNKNOWN",
+        "repository": "https://github.com/marcshilling/react-native-idle-timer",
+        "licenseUrl": "https://github.com/marcshilling/react-native-idle-timer/raw/master/LICENSE.md",
+        "parents": "scale-practice"
+    },
     "react-native-linear-gradient@2.5.6": {
         "licenses": "MIT",
         "repository": "https://github.com/react-native-community/react-native-linear-gradient",
