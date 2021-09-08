@@ -1,4 +1,4 @@
-# Releasing a new version
+# Releasing a new Andriod version
 
 - Update the version number in android/app/build.gradle
 - Test the version on a simulator
