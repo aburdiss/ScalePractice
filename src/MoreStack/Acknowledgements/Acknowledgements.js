@@ -9,7 +9,7 @@ import {
 
 import { colors } from '../../Model/Model';
 import { TRANSLATIONS } from '../../Model/AcknowledgementsModel';
-import { TextListItem } from '../More/MoreListItems';
+import TextListItem from '../../Components/ListItems/TextListItem/TextListItem';
 import { translate } from '../../Translations/TranslationModel';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
@@ -22,9 +22,7 @@ import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
  *
  * @component
  * @example
- * ```jsx
-<Acknowledgements />
-```
+ * <Acknowledgements />
  */
 const Acknowledgements = () => {
   useIdleScreen();

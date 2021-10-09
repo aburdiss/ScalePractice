@@ -7,12 +7,10 @@ import {
 } from 'react-native-dynamic';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {
-  InternalListItem,
-  LinkListItem,
-  TextListItem,
-  SwitchListItem,
-} from './MoreListItems';
+import SwitchListItem from '../../Components/ListItems/SwitchListItem/SwitchListItem';
+import LinkListItem from '../../Components/ListItems/LinkListItem/LinkListItem';
+import TextListItem from '../../Components/ListItems/TextListItem/TextListItem';
+import InternalListItem from '../../Components/ListItems/InternalListItem/InternalListItem';
 import { colors } from '../../Model/Model';
 import { RESOURCES, ABOUT, SETTINGS } from '../../Model/MoreModel';
 import { translate } from '../../Translations/TranslationModel';

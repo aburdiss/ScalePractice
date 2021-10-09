@@ -12,7 +12,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @since 11/15/20
  * @version 1.0.2
  * @param {Object} props.data The data to display in this list item.
- * 
+ *
  * @component
  * @example
  * ```jsx
