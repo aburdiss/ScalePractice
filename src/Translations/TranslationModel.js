@@ -6,6 +6,8 @@ const translationGetters = {
   en: () => require('./en.json'),
   zh: () => require('./zh.json'),
   fr: () => require('./fr.json'),
+  ja: () => require('./ja.json'),
+  ko: () => require('./ko.json'),
 };
 
 /**
@@ -34,13 +36,13 @@ export const translate = memoize(
  * @version 1.0.1
  */
 export const setI18nConfig = () => {
-  const fallback = {languageTag: 'en'};
-  const {languageTag} =
+  const fallback = { languageTag: 'en' };
+  const { languageTag } =
     RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
     fallback;
 
   translate.cache.clear();
 
-  i18n.translations = {[languageTag]: translationGetters[languageTag]()};
+  i18n.translations = { [languageTag]: translationGetters[languageTag]() };
   i18n.locale = languageTag;
 };
