@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, Pressable} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {useDarkMode} from 'react-native-dynamic';
+import { View, Text, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useDarkMode } from 'react-native-dynamic';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description Used as a render item in the ScaleDescription scroll view.
@@ -19,7 +19,7 @@ import {translate} from '../../Translations/TranslationModel';
 <ListItem data={data} />
 ```
  */
-const ListItem = ({data}) => {
+const ListItem = ({ data }) => {
   const navigation = useNavigation();
   const DARKMODE = useDarkMode();
 
@@ -34,11 +34,12 @@ const ListItem = ({data}) => {
       onPress={() => {
         navigation.navigate('Scale Detail', data);
       }}
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         paddingLeft: 20,
         backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
         opacity: pressed ? 0.7 : 1,
-      })}>
+      })}
+    >
       <View
         style={{
           borderBottomColor: DARKMODE
@@ -46,11 +47,13 @@ const ListItem = ({data}) => {
             : colors.systemGray5Light,
           borderBottomWidth: 1,
           paddingVertical: 15,
-        }}>
+        }}
+      >
         <Text
           style={{
             color: DARKMODE ? colors.white : colors.black,
-          }}>
+          }}
+        >
           {translate(data.name)}
         </Text>
       </View>

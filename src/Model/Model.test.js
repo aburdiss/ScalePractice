@@ -3,8 +3,8 @@ import React from 'react';
 
 const fetch = require('node-fetch');
 
-import {scaleResourceData, arpeggioResourceData, getImagePath} from './Model';
-import {RESOURCES, ABOUT} from './MoreModel';
+import { scaleResourceData, arpeggioResourceData, getImagePath } from './Model';
+import { RESOURCES, ABOUT } from './MoreModel';
 
 test.each(scaleResourceData)('all scale images exist', (item) => {
   expect(getImagePath(item.id)).not.toBe(null);

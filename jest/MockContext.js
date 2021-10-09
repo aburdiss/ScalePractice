@@ -1,8 +1,8 @@
 import React from 'react';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {PreferencesContext} from '../src/Model/Preferences';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { PreferencesContext } from '../src/Model/Preferences';
 
-const MockContext = ({children}) => {
+const MockContext = ({ children }) => {
   let state = {
     repeat: true,
   };
@@ -10,7 +10,7 @@ const MockContext = ({children}) => {
 
   return (
     <SafeAreaProvider>
-      <PreferencesContext.Provider value={{state, dispatch}}>
+      <PreferencesContext.Provider value={{ state, dispatch }}>
         {children}
       </PreferencesContext.Provider>
     </SafeAreaProvider>

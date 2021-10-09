@@ -1,8 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import SwitchRow from '../../../Components/SwitchRow/SwitchRow';
 import AllScalesButton from '../../../Components/AllScalesButton/AllScalesButton';
-import {translate} from '../../../Translations/TranslationModel';
+import { translate } from '../../../Translations/TranslationModel';
 
 /**
  * @function RandomScaleSettings
@@ -108,7 +108,8 @@ export default function RandomScaleSettings({
       <View style={styles.allScaleButton}>
         <AllScalesButton
           handler={selectAllScales}
-          accessibilityHint={translate('Toggles All Scales')}>
+          accessibilityHint={translate('Toggles All Scales')}
+        >
           {translate('All Scales')}
         </AllScalesButton>
       </View>

@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Pressable, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import { View, Pressable, Text } from 'react-native';
+import { useDarkMode } from 'react-native-dynamic';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A green button that says "Add To List", and calls whatever
@@ -20,7 +20,7 @@ import {translate} from '../../Translations/TranslationModel';
 <AddToListButton handler={handler} />
 ```
  */
-const AddToListButton = ({handler}) => {
+const AddToListButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -31,7 +31,7 @@ const AddToListButton = ({handler}) => {
         }}
         accessibilityRole="button"
         accessibilityHint={translate('Adds the selected exercise to the list')}
-        style={({pressed}) => ({
+        style={({ pressed }) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.greenDark : colors.greenLight,
           opacity: pressed ? 0.7 : 1,
@@ -40,12 +40,14 @@ const AddToListButton = ({handler}) => {
           padding: 12,
           overflow: 'hidden',
         })}
-        onPress={handler}>
+        onPress={handler}
+      >
         <Text
           style={{
             textAlign: 'center',
             color: DARKMODE ? colors.greenDark : colors.greenLight,
-          }}>
+          }}
+        >
           {translate('Add To List')}
         </Text>
       </Pressable>

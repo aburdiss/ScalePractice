@@ -1,13 +1,13 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {useDarkMode} from 'react-native-dynamic';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from 'react-native-dynamic';
 
 import ScaleResources from './ScaleResources/ScaleResources';
 import ArpeggioResources from './ArpeggioResources/ArpeggioResources';
 import ScaleDetail from './ScaleDetail/ScaleDetail';
 import HeaderButton from '../Components/HeaderButton/HeaderButton';
-import {translate} from '../Translations/TranslationModel';
-import {colors} from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
+import { colors } from '../Model/Model';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +29,7 @@ const Stack = createStackNavigator();
 />
 ```
  */
-const ResourcesStack = ({navigation}) => {
+const ResourcesStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -48,7 +48,8 @@ const ResourcesStack = ({navigation}) => {
           shadowColor: 'transparent',
         },
         headerBackTitle: translate('Back'),
-      }}>
+      }}
+    >
       <Stack.Screen
         name="Scale Resources"
         component={ScaleResources}
@@ -57,7 +58,8 @@ const ResourcesStack = ({navigation}) => {
             <HeaderButton
               handler={() => {
                 navigation.navigate('Arpeggio Resources');
-              }}>
+              }}
+            >
               {translate('Arpeggios')}
             </HeaderButton>
           ),
@@ -74,7 +76,7 @@ const ResourcesStack = ({navigation}) => {
       <Stack.Screen
         name="Scale Detail"
         component={ScaleDetail}
-        options={({route}) => ({
+        options={({ route }) => ({
           title: translate(route.params.name),
         })}
       />

@@ -1,8 +1,8 @@
 import React from 'react';
-import {Pressable, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import { Pressable, Text } from 'react-native';
+import { useDarkMode } from 'react-native-dynamic';
 
-import {colors} from '../../Model/Model';
+import { colors } from '../../Model/Model';
 
 /**
  * @description A gray button that is meant to trigger all switches on a page.
@@ -22,7 +22,7 @@ import {colors} from '../../Model/Model';
 </AllScalesButton>
 ```
  */
-const AllScalesButton = ({children, handler}) => {
+const AllScalesButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -32,7 +32,7 @@ const AllScalesButton = ({children, handler}) => {
       }}
       accessibilityRole="button"
       onPress={handler}
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         borderRadius: 8,
         borderColor: DARKMODE ? colors.systemGray : colors.systemGray,
         borderWidth: 1,
@@ -40,13 +40,15 @@ const AllScalesButton = ({children, handler}) => {
         padding: 10,
         opacity: pressed ? 0.7 : 1,
         overflow: 'hidden',
-      })}>
+      })}
+    >
       <Text
         style={{
           textAlign: 'center',
           color: DARKMODE ? colors.systemGray : colors.systemGray,
           fontSize: 16,
-        }}>
+        }}
+      >
         {children}
       </Text>
     </Pressable>

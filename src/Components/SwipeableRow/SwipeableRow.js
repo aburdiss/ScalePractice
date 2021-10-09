@@ -1,9 +1,9 @@
 import React from 'react';
-import {RectButton, Swipeable} from 'react-native-gesture-handler';
+import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A swipeable row with a right action.
@@ -19,7 +19,7 @@ import {translate} from '../../Translations/TranslationModel';
 </SwipeableRow>
 ```
  */
-const SwipeableRow = ({children, styles, deleteItem, item}) => {
+const SwipeableRow = ({ children, styles, deleteItem, item }) => {
   const renderRightActions = (progress, dragX) => {
     const scale = dragX.interpolate({
       inputRange: [-80, 0],
@@ -32,7 +32,8 @@ const SwipeableRow = ({children, styles, deleteItem, item}) => {
         style={styles.rightAction}
         onPress={() => deleteItem(item)}
         accessibilityRole="button"
-        accessibilityLabel={translate('Delete')}>
+        accessibilityLabel={translate('Delete')}
+      >
         <Ionicons
           name="trash"
           size={20}
@@ -48,7 +49,8 @@ const SwipeableRow = ({children, styles, deleteItem, item}) => {
       friction={2}
       leftThreshold={80}
       rightThreshold={41}
-      renderRightActions={renderRightActions}>
+      renderRightActions={renderRightActions}
+    >
       {children}
     </Swipeable>
   );

@@ -1,15 +1,15 @@
 import React from 'react';
-import {View, Text, Linking, Pressable, Switch, Image} from 'react-native';
+import { View, Text, Linking, Pressable, Switch, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A rendered Text list item. This is currently only being
@@ -18,14 +18,12 @@ import {translate} from '../../Translations/TranslationModel';
  * @since 11/15/20
  * @version 1.1.1
  * @param {Object} props.item The item to be rendered.
- * 
+ *
  * @component
  * @example
- * ```jsx
-<TextListItem item={item} />
-```
+ * <TextListItem item={item} />
  */
-export const TextListItem = ({item}) => {
+export const TextListItem = ({ item }) => {
   const styles = useDynamicValue(dynamicStyles);
 
   return (
@@ -45,19 +43,17 @@ export const TextListItem = ({item}) => {
  * @since 11/15/20
  * @version 1.1.0
  * @param {Object} props.item The item to be rendered.
- * 
+ *
  * @component
  * @example
- * ```jsx
-<LinkListItem item={item} />
-```
+ * <LinkListItem item={item} />
  */
-export const LinkListItem = ({item}) => {
+export const LinkListItem = ({ item }) => {
   const styles = useDynamicValue(dynamicStyles);
 
   return (
     <Pressable
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         opacity: pressed ? 0.7 : 1,
       })}
       accessible={true}
@@ -65,7 +61,8 @@ export const LinkListItem = ({item}) => {
       accessibilityRole="link"
       onPress={() => {
         Linking.openURL(item.link);
-      }}>
+      }}
+    >
       <View style={styles.listRowContainer}>
         {item.image ? (
           <Image source={item.image} style={styles.linkImage} />
@@ -90,20 +87,18 @@ export const LinkListItem = ({item}) => {
  * @version 1.0.2
  * @param {Object} props.item The Internal list item to be rendered containing
  * a Component name to render to, and the text to be rendered.
- * 
+ *
  * @component
  * @example
- * ```jsx
-<InternalListItem item={item} />
-```
+ * <InternalListItem item={item} />
  */
-export const InternalListItem = ({item}) => {
+export const InternalListItem = ({ item }) => {
   const styles = useDynamicValue(dynamicStyles);
   const navigation = useNavigation();
 
   return (
     <Pressable
-      style={({pressed}) => ({
+      style={({ pressed }) => ({
         opacity: pressed ? 0.7 : 1,
       })}
       accessible={true}
@@ -111,7 +106,8 @@ export const InternalListItem = ({item}) => {
       accessibilityRole="link"
       onPress={() => {
         navigation.navigate(item.component);
-      }}>
+      }}
+    >
       <View style={styles.listRowContainer}>
         <Text style={styles.linkText}>{translate(item.value)}</Text>
         <Ionicons
@@ -134,23 +130,21 @@ export const InternalListItem = ({item}) => {
  * preferences.
  * @param {Function} props.dispatch A function to make a reducer call to update
  * state.
- * 
+ *
  * @component
  * @example
- * ```jsx
-<SwitchListItem
-  item={item}
-  state={state}
-  dispatch={dispatch}
-/>
-```
+ * <SwitchListItem
+ *   item={item}
+ *   state={state}
+ *   dispatch={dispatch}
+ * />
  */
-export const SwitchListItem = ({item, state, dispatch}) => {
+export const SwitchListItem = ({ item, state, dispatch }) => {
   const styles = useDynamicValue(dynamicStyles);
   function updateValue() {
     let updatedState = !state[item.setting];
-    let newSetting = {[item.setting]: updatedState};
-    dispatch({type: 'SET_SETTING', payload: newSetting});
+    let newSetting = { [item.setting]: updatedState };
+    dispatch({ type: 'SET_SETTING', payload: newSetting });
   }
   return (
     <Pressable
@@ -158,11 +152,12 @@ export const SwitchListItem = ({item, state, dispatch}) => {
       onPress={updateValue}
       accessible={true}
       accessibilityLabel={translate(item.value)}
-      accessibilityState={{checked: state[item.setting]}}
+      accessibilityState={{ checked: state[item.setting] }}
       accessibilityRole="switch"
       accessibilityHint={
         translate('Toggles setting') + ' ' + translate(item.value)
-      }>
+      }
+    >
       <Text style={styles.listRowText}>{translate(item.value)}</Text>
       <Switch value={state[item.setting]} onValueChange={updateValue} />
     </Pressable>

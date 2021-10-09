@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import { View, Text } from 'react-native';
+import { useDarkMode } from 'react-native-dynamic';
 
-import {colors} from '../../Model/Model';
+import { colors } from '../../Model/Model';
 
 /**
  * @description A styled text box that shows the currently selected scale
@@ -19,7 +19,7 @@ import {colors} from '../../Model/Model';
 </ScaleDisplay>
 ```
  */
-const ScaleDisplay = ({children}) => {
+const ScaleDisplay = ({ children }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -32,7 +32,8 @@ const ScaleDisplay = ({children}) => {
         alignItems: 'center',
         justifyContent: 'flex-end',
         padding: 10,
-      }}>
+      }}
+    >
       <Text
         maxFontSizeMultiplier={2}
         style={{
@@ -46,7 +47,8 @@ const ScaleDisplay = ({children}) => {
           padding: 14,
           fontSize: 18,
           borderRadius: 8,
-        }}>
+        }}
+      >
         {children}
       </Text>
     </View>

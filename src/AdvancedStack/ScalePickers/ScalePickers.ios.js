@@ -1,10 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
-import {useDarkMode} from 'react-native-dynamic';
+import { View } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import { useDarkMode } from 'react-native-dynamic';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description Pickers used on iOS devices to select scales. Used on
@@ -52,17 +52,20 @@ const ScalePickers = ({
     <View
       style={{
         flexDirection: 'row',
-      }}>
+      }}
+    >
       <View
         style={{
           width: '25%',
-        }}>
+        }}
+      >
         <Picker
           selectedValue={selectedNote}
           onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
           itemStyle={{
             color: DARKMODE ? colors.white : colors.black,
-          }}>
+          }}
+        >
           {noteNames.map((noteName) => (
             <Picker.Item label={noteName} value={noteName} key={noteName} />
           ))}
@@ -71,13 +74,15 @@ const ScalePickers = ({
       <View
         style={{
           width: '75%',
-        }}>
+        }}
+      >
         <Picker
           selectedValue={selectedScale}
           onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
           itemStyle={{
             color: DARKMODE ? colors.white : colors.black,
-          }}>
+          }}
+        >
           {scaleNames.map((scaleName) => (
             <Picker.Item
               label={translate(scaleName)}

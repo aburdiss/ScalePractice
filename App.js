@@ -1,15 +1,15 @@
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React, { useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {useDarkMode} from 'react-native-dynamic';
+import { useDarkMode } from 'react-native-dynamic';
 import * as RNLocalize from 'react-native-localize';
-import {SafeAreaProvider} from 'react-native-safe-area-view';
+import { SafeAreaProvider } from 'react-native-safe-area-view';
 
-import {setI18nConfig, translate} from './src/Translations/TranslationModel';
-import {colors} from './src/Model/Model';
-import {PreferencesProvider} from './src/Model/Preferences';
+import { setI18nConfig, translate } from './src/Translations/TranslationModel';
+import { colors } from './src/Model/Model';
+import { PreferencesProvider } from './src/Model/Preferences';
 
 import RandomStack from './src/RandomStack/RandomStack';
 import ResourcesStack from './src/ResourcesStack/ResourcesStack';
@@ -54,8 +54,8 @@ const App = () => {
       <PreferencesProvider>
         <NavigationContainer>
           <Tab.Navigator
-            screenOptions={({route}) => ({
-              tabBarIcon: ({color, size}) => {
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, size }) => {
                 let iconName;
                 if (route.name === 'Random') {
                   iconName = 'md-cube';
@@ -82,26 +82,27 @@ const App = () => {
                   ? colors.systemGray5Dark
                   : colors.systemGray5Light,
               },
-            }}>
+            }}
+          >
             <Tab.Screen
               name="Random"
               component={RandomStack}
-              options={{title: translate('Random')}}
+              options={{ title: translate('Random') }}
             />
             <Tab.Screen
               name="Resources"
               component={ResourcesStack}
-              options={{title: translate('Resources')}}
+              options={{ title: translate('Resources') }}
             />
             <Tab.Screen
               name="Advanced"
               component={AdvancedStack}
-              options={{title: translate('Advanced')}}
+              options={{ title: translate('Advanced') }}
             />
             <Tab.Screen
               name="More"
               component={MoreStack}
-              options={{title: translate('Settings')}}
+              options={{ title: translate('Settings') }}
             />
           </Tab.Navigator>
         </NavigationContainer>

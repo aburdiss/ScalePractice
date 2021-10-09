@@ -1,8 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import SwitchRow from '../../../Components/SwitchRow/SwitchRow';
 import AllScalesButton from '../../../Components/AllScalesButton/AllScalesButton';
-import {translate} from '../../../Translations/TranslationModel';
+import { translate } from '../../../Translations/TranslationModel';
 
 /**
  * @function RandomArpeggioSettings
@@ -122,7 +122,8 @@ export default function RandomArpeggioSettings({
       <View style={styles.allScaleButton}>
         <AllScalesButton
           handler={selectAllArpeggios}
-          accessibilityHint={translate('Toggles All Arpeggios')}>
+          accessibilityHint={translate('Toggles All Arpeggios')}
+        >
           {translate('All Arpeggios')}
         </AllScalesButton>
       </View>

@@ -1,12 +1,12 @@
 import React from 'react';
-import {useDarkMode} from 'react-native-dynamic';
-import {createStackNavigator} from '@react-navigation/stack';
+import { useDarkMode } from 'react-native-dynamic';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import AdvancedScale from './AdvancedScale/AdvancedScale';
 import AdvancedArpeggio from './AdvancedArpeggio/AdvancedArpeggio';
 import HeaderButton from '../Components/HeaderButton/HeaderButton';
-import {translate} from '../Translations/TranslationModel';
-import {colors} from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
+import { colors } from '../Model/Model';
 
 const Stack = createStackNavigator();
 
@@ -28,7 +28,7 @@ const Stack = createStackNavigator();
 />
 ```
  */
-const AdvancedStack = ({navigation}) => {
+const AdvancedStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -47,7 +47,8 @@ const AdvancedStack = ({navigation}) => {
           shadowColor: 'transparent',
         },
         headerBackTitle: translate('Back'),
-      }}>
+      }}
+    >
       <Stack.Screen
         name="Advanced Scale Practice"
         component={AdvancedScale}
@@ -56,7 +57,8 @@ const AdvancedStack = ({navigation}) => {
             <HeaderButton
               handler={() => {
                 navigation.navigate('Advanced Arpeggio Practice');
-              }}>
+              }}
+            >
               {translate('Arpeggios')}
             </HeaderButton>
           ),

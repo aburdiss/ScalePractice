@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Pressable, Text} from 'react-native';
-import {useDarkMode} from 'react-native-dynamic';
+import { View, Pressable, Text } from 'react-native';
+import { useDarkMode } from 'react-native-dynamic';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A button that is styled to look like a reset button, with a red
@@ -20,7 +20,7 @@ import {translate} from '../../Translations/TranslationModel';
 <ResetButton handler={handler} />
 ```
  */
-const ResetButton = ({handler}) => {
+const ResetButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -32,7 +32,7 @@ const ResetButton = ({handler}) => {
         accessibilityRole="button"
         accessibilityLabel={translate('Reset')}
         accessibilityHint="Resets List"
-        style={({pressed}) => ({
+        style={({ pressed }) => ({
           borderRadius: 8,
           borderColor: DARKMODE ? colors.redDark : colors.redLight,
           opacity: pressed ? 0.7 : 1,
@@ -41,12 +41,14 @@ const ResetButton = ({handler}) => {
           padding: 12,
           overflow: 'hidden',
         })}
-        onPress={handler}>
+        onPress={handler}
+      >
         <Text
           style={{
             textAlign: 'center',
             color: DARKMODE ? colors.redDark : colors.redLight,
-          }}>
+          }}
+        >
           {translate('Reset')}
         </Text>
       </Pressable>

@@ -1,13 +1,13 @@
 import React from 'react';
-import {Text, Switch, Pressable} from 'react-native';
+import { Text, Switch, Pressable } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import {colors} from '../../Model/Model';
-import {translate} from '../../Translations/TranslationModel';
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description One Switch Row that is used on the Scale and Arpeggio Display
@@ -29,17 +29,18 @@ import {translate} from '../../Translations/TranslationModel';
  *     text="Hello, World!"
  *   />
  */
-const SwitchRow = ({value, onValueChange, text}) => {
+const SwitchRow = ({ value, onValueChange, text }) => {
   const styles = useDynamicValue(dynamicStyles);
 
   return (
     <Pressable
       style={styles.switchRow}
       accessible={true}
-      accessibilityState={{checked: value}}
+      accessibilityState={{ checked: value }}
       accessibilityRole="switch"
       accessibilityLabel={translate('Toggles Switch') + ' ' + text}
-      onPress={onValueChange}>
+      onPress={onValueChange}
+    >
       <Text style={styles.switchText}>{text}</Text>
       <Switch onValueChange={onValueChange} value={value} />
     </Pressable>

@@ -2,10 +2,10 @@ import 'react-native';
 import React from 'react';
 import HeaderButton from './HeaderButton';
 
-import {fireEvent, render} from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 
 test('HeaderButton renders correctly', () => {
-  const {queryByText} = render(
+  const { queryByText } = render(
     <HeaderButton handler={jest.fn()}>Scales</HeaderButton>,
   );
   expect(queryByText(/Scales/)).toBeTruthy();
@@ -13,7 +13,7 @@ test('HeaderButton renders correctly', () => {
 
 test('HeaderButton function calls correctly on press', () => {
   const buttonHandler = jest.fn();
-  const {getByText} = render(
+  const { getByText } = render(
     <HeaderButton handler={buttonHandler}>Arpeggios</HeaderButton>,
   );
   expect(buttonHandler).not.toHaveBeenCalled();

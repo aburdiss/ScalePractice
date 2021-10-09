@@ -1,4 +1,4 @@
-import React, {createContext, useReducer, useEffect} from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
@@ -54,10 +54,10 @@ const preferencesReducer = (state, action) => {
   let newState;
   switch (action.type) {
     case 'SET_ALL_PREFERENCES':
-      newState = {...state, ...action.payload};
+      newState = { ...state, ...action.payload };
       break;
     case 'SET_SETTING':
-      newState = {...state, ...action.payload};
+      newState = { ...state, ...action.payload };
       break;
     case 'RESET_PREFERENCES':
       newState = initialPreferencesState;
@@ -88,13 +88,13 @@ const initialPreferencesState = {
  *     {..}
  *   </PreferencesProvider>
  */
-const PreferencesProvider = ({children}) => {
+const PreferencesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(preferencesReducer);
 
   useEffect(() => {
     load().then((data) => {
       if (data !== null) {
-        dispatch({type: 'SET_ALL_PREFERENCES', payload: data});
+        dispatch({ type: 'SET_ALL_PREFERENCES', payload: data });
       } else {
         dispatch({
           type: 'SET_ALL_PREFERENCES',
@@ -105,10 +105,10 @@ const PreferencesProvider = ({children}) => {
   }, []);
 
   return (
-    <PreferencesContext.Provider value={{state, dispatch}}>
+    <PreferencesContext.Provider value={{ state, dispatch }}>
       {children}
     </PreferencesContext.Provider>
   );
 };
 
-export {PreferencesContext, PreferencesProvider};
+export { PreferencesContext, PreferencesProvider };

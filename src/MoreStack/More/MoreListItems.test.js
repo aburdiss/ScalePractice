@@ -8,7 +8,7 @@ import {
 } from './MoreListItems';
 import MockContext from '../../../jest/MockContext';
 
-import {render} from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 
 test('TextListItem renders correctly', () => {
   render(

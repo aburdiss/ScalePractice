@@ -1,12 +1,12 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {useDarkMode} from 'react-native-dynamic';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from 'react-native-dynamic';
 
 import RandomScale from './RandomScale/RandomScale';
 import RandomArpeggio from './RandomArpeggio/RandomArpeggio';
 import HeaderButton from '../Components/HeaderButton/HeaderButton';
-import {translate} from '../Translations/TranslationModel';
-import {colors} from '../Model/Model';
+import { translate } from '../Translations/TranslationModel';
+import { colors } from '../Model/Model';
 
 const Stack = createStackNavigator();
 
@@ -28,7 +28,7 @@ const Stack = createStackNavigator();
 />
 ```
  */
-const RandomStack = ({navigation}) => {
+const RandomStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
 
   return (
@@ -47,7 +47,8 @@ const RandomStack = ({navigation}) => {
           shadowColor: 'transparent',
         },
         headerBackTitle: translate('Back'),
-      }}>
+      }}
+    >
       <Stack.Screen
         name="Random Scale Practice"
         component={RandomScale}
@@ -56,7 +57,8 @@ const RandomStack = ({navigation}) => {
             <HeaderButton
               handler={() => {
                 navigation.navigate('Random Arpeggio Practice');
-              }}>
+              }}
+            >
               {translate('Arpeggios')}
             </HeaderButton>
           ),
