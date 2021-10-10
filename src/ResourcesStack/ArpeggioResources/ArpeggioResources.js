@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
-import ListItem from '../../Components/ListItem/ListItem';
+import FlatListItem from '../../Components/ListItems/FlatListItem/FlatListItem';
 import { arpeggioResourceData, colors } from '../../Model/Model';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
@@ -29,7 +29,7 @@ const ArpeggioResources = () => {
       <FlatList
         data={arpeggioResourceData}
         initialNumToRender={15}
-        renderItem={({ item }) => <ListItem data={item} />}
+        renderItem={({ item }) => <FlatListItem data={item} />}
         keyExtractor={(item) => item.id.toString()}
         // eslint-disable-next-line react-native/no-inline-styles
         style={{

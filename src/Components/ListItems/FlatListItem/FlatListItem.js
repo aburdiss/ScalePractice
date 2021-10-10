@@ -3,10 +3,12 @@ import { View, Text, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDarkMode } from 'react-native-dynamic';
 
-import { colors } from '../../Model/Model';
-import { translate } from '../../Translations/TranslationModel';
+import { colors } from '../../../Model/Model';
+import { translate } from '../../../Translations/TranslationModel';
 
 /**
+ * @namespace FlatListItem
+ * @function FlatListItem
  * @description Used as a render item in the ScaleDescription scroll view.
  * @author Alexander Burdiss
  * @since 11/15/20
@@ -15,11 +17,9 @@ import { translate } from '../../Translations/TranslationModel';
  *
  * @component
  * @example
- * ```jsx
-<ListItem data={data} />
-```
+ * <ListItem data={data} />
  */
-const ListItem = ({ data }) => {
+export default function FlatListItem({ data }) {
   const navigation = useNavigation();
   const DARKMODE = useDarkMode();
 
@@ -59,6 +59,4 @@ const ListItem = ({ data }) => {
       </View>
     </Pressable>
   );
-};
-
-export default ListItem;
+}

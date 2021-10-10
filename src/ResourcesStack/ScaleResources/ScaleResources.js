@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
-import ListItem from '../../Components/ListItem/ListItem';
+import FlatListItem from '../../Components/ListItems/FlatListItem/FlatListItem';
 import { scaleResourceData, colors } from '../../Model/Model';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
@@ -15,9 +15,7 @@ import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
  *
  * @component
  * @example
- * ```jsx
-<ScaleResources />
-```
+ * <ScaleResources />
  */
 const ScaleResources = () => {
   useIdleScreen();
@@ -29,7 +27,7 @@ const ScaleResources = () => {
       <FlatList
         data={scaleResourceData}
         initialNumToRender={15}
-        renderItem={({ item }) => <ListItem data={item} />}
+        renderItem={({ item }) => <FlatListItem data={item} />}
         keyExtractor={(item) => item.id.toString()}
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
