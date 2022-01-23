@@ -1,7 +1,9 @@
 import 'react-native';
 import React from 'react';
 
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
+import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 import { scaleResourceData, arpeggioResourceData, getImagePath } from './Model';
 import { RESOURCES, ABOUT } from './MoreModel';
