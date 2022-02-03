@@ -5,7 +5,6 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import { shuffle } from 'underscore';
 
 import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
@@ -13,10 +12,13 @@ import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
 import AddToListButton from '../../Components/AddToListButton/AddToListButton';
 import ResetButton from '../../Components/ResetButton/ResetButton';
 import ScalePickers from '../ScalePickers/ScalePickers';
+
 import { colors, allScaleNames, allNoteNames } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
 import { getIsSmallScreen } from '../../Model/Utilities';
 import { translate } from '../../Translations/TranslationModel';
+
+import { shuffle } from '../../utils/shuffle/shuffle';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**

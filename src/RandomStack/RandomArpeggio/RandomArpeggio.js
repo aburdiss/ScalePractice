@@ -12,7 +12,6 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import { debounce, random, shuffle } from 'underscore';
 
 import { createArpeggioArrayFromParts } from '../utils/RandomUtils';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
@@ -23,6 +22,10 @@ import LargeScaleDisplay from '../../Components/LargeScaleDisplay/LargeScaleDisp
 import { colors } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
+
+import { random } from '../../utils/random/random';
+import { shuffle } from '../../utils/shuffle/shuffle';
+import { debounce } from '../../utils/debounce/debounce';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**

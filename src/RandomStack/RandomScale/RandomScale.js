@@ -12,7 +12,6 @@ import {
   DynamicValue,
   useDynamicValue,
 } from 'react-native-dynamic';
-import { debounce, random, shuffle } from 'underscore';
 
 import LargeScaleDisplay from '../../Components/LargeScaleDisplay/LargeScaleDisplay';
 import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
@@ -32,6 +31,10 @@ import {
 } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
+
+import { random } from '../../utils/random/random';
+import { debounce } from '../../utils/debounce/debounce';
+import { shuffle } from '../../utils/shuffle/shuffle';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
