@@ -16,7 +16,7 @@ import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
 import SafeAreaView from 'react-native-safe-area-view';
-import { capitalize } from 'underscore.string';
+import { capitalize } from '../../utils/capitalize/capitalize';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
 /**
