@@ -17,19 +17,19 @@
         "licenseUrl": "https://github.com/react-native-picker/picker/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "@react-navigation/bottom-tabs@5.11.10": {
+    "@react-navigation/bottom-tabs@6.2.0": {
         "licenses": "MIT",
         "repository": "https://github.com/react-navigation/react-navigation",
         "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "@react-navigation/native@5.9.4": {
+    "@react-navigation/native@6.0.8": {
         "licenses": "MIT",
         "repository": "https://github.com/react-navigation/react-navigation",
         "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "@react-navigation/stack@5.14.4": {
+    "@react-navigation/stack@6.1.1": {
         "licenses": "MIT",
         "repository": "https://github.com/react-navigation/react-navigation",
         "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
@@ -89,7 +89,7 @@
         "licenseUrl": "https://github.com/steffeydev/react-native-popover-view/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native-reanimated@1.13.3": {
+    "react-native-reanimated@2.3.1": {
         "licenses": "MIT",
         "repository": "https://github.com/software-mansion/react-native-reanimated",
         "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
@@ -101,10 +101,10 @@
         "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native-screens@2.18.1": {
+    "react-native-screens@3.10.2": {
         "licenses": "MIT",
-        "repository": "https://github.com/kmagiera/react-native-screens",
-        "licenseUrl": "https://github.com/kmagiera/react-native-screens/raw/master/LICENSE",
+        "repository": "https://github.com/software-mansion/react-native-screens",
+        "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",
         "parents": "scale-practice"
     },
     "react-native-vector-icons@9.0.0": {

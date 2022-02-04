@@ -64,17 +64,18 @@ const App = () => {
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-          })}
-          tabBarOptions={{
-            activeTintColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
-            inactiveTintColor: colors.systemGray,
-            style: {
+            tabBarActiveTintColor: DARKMODE
+              ? colors.purpleDark
+              : colors.purpleLight,
+            tabBarInactiveTintColor: colors.systemGray,
+            tabBarStyle: {
               backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
               borderTopColor: DARKMODE
                 ? colors.systemGray5Dark
                 : colors.systemGray5Light,
             },
-          }}
+            headerShown: false,
+          })}
         >
           <Tab.Screen
             name="Random"
