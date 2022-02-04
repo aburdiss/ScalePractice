@@ -1,6 +1,5 @@
 import React from 'react';
-import { SectionList, Text } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { SectionList, Text, View } from 'react-native';
 import {
   DynamicStyleSheet,
   DynamicValue,
@@ -30,7 +29,7 @@ const Acknowledgements = () => {
   const styles = useDynamicValue(dynamicStyles);
 
   return (
-    <SafeAreaView style={styles.sectionList}>
+    <View style={styles.sectionList}>
       <SectionList
         sections={[{ title: translate('Translations'), data: TRANSLATIONS }]}
         keyExtractor={(item, index) => index}
@@ -40,7 +39,7 @@ const Acknowledgements = () => {
         )}
         stickySectionHeadersEnabled={false}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

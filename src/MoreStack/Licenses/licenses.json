@@ -47,7 +47,7 @@
         "licenseUrl": "https://github.com/lodash/lodash/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native-device-info@7.4.0": {
+    "react-native-device-info@8.4.8": {
         "licenses": "MIT",
         "repository": "https://github.com/react-native-device-info/react-native-device-info",
         "licenseUrl": "https://github.com/react-native-device-info/react-native-device-info/raw/master/LICENSE",
@@ -65,8 +65,8 @@
         "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native-idle-timer@2.1.6": {
-        "licenses": "UNKNOWN",
+    "react-native-idle-timer@2.1.7": {
+        "licenses": "MIT",
         "repository": "https://github.com/marcshilling/react-native-idle-timer",
         "licenseUrl": "https://github.com/marcshilling/react-native-idle-timer/raw/master/LICENSE.md",
         "parents": "scale-practice"
@@ -77,13 +77,13 @@
         "licenseUrl": "https://github.com/react-native-community/react-native-linear-gradient/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native-localize@2.0.3": {
+    "react-native-localize@2.1.9": {
         "licenses": "MIT",
         "repository": "https://github.com/zoontek/react-native-localize",
         "licenseUrl": "https://github.com/zoontek/react-native-localize/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native-popover-view@4.0.1": {
+    "react-native-popover-view@4.1.0": {
         "licenses": "MIT",
         "repository": "https://github.com/steffeydev/react-native-popover-view",
         "licenseUrl": "https://github.com/steffeydev/react-native-popover-view/raw/master/LICENSE",
@@ -95,16 +95,10 @@
         "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native-safe-area-context@3.2.0": {
+    "react-native-safe-area-context@3.3.2": {
         "licenses": "MIT",
         "repository": "https://github.com/th3rdwave/react-native-safe-area-context",
         "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
-        "parents": "scale-practice"
-    },
-    "react-native-safe-area-view@1.1.1": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-community/react-native-safe-area-view",
-        "licenseUrl": "https://github.com/react-community/react-native-safe-area-view/raw/master/LICENSE",
         "parents": "scale-practice"
     },
     "react-native-screens@2.18.1": {
@@ -113,19 +107,19 @@
         "licenseUrl": "https://github.com/kmagiera/react-native-screens/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native-vector-icons@7.1.0": {
+    "react-native-vector-icons@9.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/oblador/react-native-vector-icons",
         "licenseUrl": "https://github.com/oblador/react-native-vector-icons/raw/master/LICENSE",
         "parents": "scale-practice"
     },
-    "react-native@0.64.2": {
+    "react-native@0.67.2": {
         "licenses": "MIT",
         "repository": "github:facebook/react-native",
         "licenseUrl": "github:facebook/react-native",
         "parents": "scale-practice"
     },
-    "react@17.0.1": {
+    "react@17.0.2": {
         "licenses": "MIT",
         "repository": "https://github.com/facebook/react",
         "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",

@@ -9,13 +9,13 @@ Run this command to get the data
 */
 
 import React from 'react';
+import { View } from 'react-native';
 
 import LicensesList from './LicensesList';
 import { useDarkMode } from 'react-native-dynamic';
 import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
-import SafeAreaView from 'react-native-safe-area-view';
 import { capitalize } from '../../utils/capitalize/capitalize';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 
@@ -119,7 +119,7 @@ const Licenses = () => {
   const DARKMODE = useDarkMode();
 
   return (
-    <SafeAreaView
+    <View
       // eslint-disable-next-line react-native/no-inline-styles
       style={{
         flex: 1,
@@ -127,7 +127,7 @@ const Licenses = () => {
       }}
     >
       <LicensesList licenses={licenseData} />
-    </SafeAreaView>
+    </View>
   );
 };
 
