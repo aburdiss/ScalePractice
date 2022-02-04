@@ -53,13 +53,13 @@ const App = () => {
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color, size }) => {
               let iconName;
-              if (route.name === 'Random') {
+              if (route.name === 'RandomStack') {
                 iconName = 'md-cube';
-              } else if (route.name === 'Resources') {
+              } else if (route.name === 'ResourcesStack') {
                 iconName = 'md-book';
-              } else if (route.name === 'Advanced') {
+              } else if (route.name === 'AdvancedStack') {
                 iconName = 'md-create';
-              } else if (route.name === 'More') {
+              } else if (route.name === 'MoreStack') {
                 iconName = 'md-settings';
               }
               return <Ionicons name={iconName} size={size} color={color} />;
@@ -78,22 +78,22 @@ const App = () => {
           })}
         >
           <Tab.Screen
-            name="Random"
+            name="RandomStack"
             component={RandomStack}
             options={{ title: translate('Random') }}
           />
           <Tab.Screen
-            name="Resources"
+            name="ResourcesStack"
             component={ResourcesStack}
             options={{ title: translate('Resources') }}
           />
           <Tab.Screen
-            name="Advanced"
+            name="AdvancedStack"
             component={AdvancedStack}
             options={{ title: translate('Advanced') }}
           />
           <Tab.Screen
-            name="More"
+            name="MoreStack"
             component={MoreStack}
             options={{ title: translate('Settings') }}
           />
