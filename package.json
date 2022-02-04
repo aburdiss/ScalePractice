@@ -20,8 +20,8 @@
     "@react-navigation/stack": "^5.12.8",
     "i18n-js": "^3.8.0",
     "lodash.memoize": "^4.1.2",
-    "react": "17.0.1",
-    "react-native": "0.64.2",
+    "react": "17.0.2",
+    "react-native": "0.67.2",
     "react-native-device-info": "^7.0.2",
     "react-native-dynamic": "^1.0.0",
     "react-native-gesture-handler": "^1.8.0",
@@ -45,10 +45,10 @@
     "eslint-plugin-react": "^7.24.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
-    "metro-react-native-babel-preset": "^0.59.0",
+    "metro-react-native-babel-preset": "^0.66.2",
     "node-fetch": "^2.6.7",
     "npm-license-crawler": "^0.2.1",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "17.0.2"
   },
   "prettier": {
     "singleQuote": true,
