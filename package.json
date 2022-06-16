@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "licenses": "npm-license-crawler --onlyDirectDependencies --json src/MoreStack/Licenses/licenses.json",
     "reset": "./scripts/reset.sh",
-    "gen": "./scripts/generateComponent.sh"
+    "gen": "./scripts/generateComponent.sh",
+    "check-packages": "node ./scripts/checkForMaliciousPackages.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.17",
@@ -41,6 +42,7 @@
     "@react-native-community/eslint-config": "^3.0.1",
     "@testing-library/react-native": "^9.0.0",
     "babel-jest": "^27.4.6",
+    "colors": "^1.1.2",
     "eslint": "^8.8.0",
     "eslint-plugin-react": "^7.28.0",
     "identity-obj-proxy": "^3.0.0",
@@ -48,7 +50,8 @@
     "metro-react-native-babel-preset": "^0.66.2",
     "node-fetch": "^2.6.7",
     "npm-license-crawler": "^0.2.1",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "17.0.2",
+    "semver": "^7.3.7"
   },
   "prettier": {
     "singleQuote": true,
