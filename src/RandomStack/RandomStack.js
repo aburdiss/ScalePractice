@@ -4,7 +4,7 @@ import { useDarkMode } from 'react-native-dynamic';
 
 import RandomScale from './RandomScale/RandomScale';
 import RandomArpeggio from './RandomArpeggio/RandomArpeggio';
-import HeaderButton from '../Components/HeaderButton/HeaderButton';
+import { HeaderButton } from '../Components';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 

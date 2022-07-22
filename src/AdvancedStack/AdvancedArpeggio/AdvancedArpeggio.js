@@ -6,12 +6,14 @@ import {
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
-import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
-import AddToListButton from '../../Components/AddToListButton/AddToListButton';
-import ResetButton from '../../Components/ResetButton/ResetButton';
-import SwipeableRow from '../../Components/SwipeableRow/SwipeableRow';
-import ScalePickers from '../ScalePickers/ScalePickers';
+import {
+  AddToListButton,
+  RandomizeButton,
+  ResetButton,
+  ScaleDisplay,
+  ScalePickers,
+  SwipeableRow,
+} from '../../Components';
 
 import { colors, allNoteNames, allArpeggioNames } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';

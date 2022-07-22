@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import SwitchRow from '../../../Components/SwitchRow/SwitchRow';
-import AllScalesButton from '../../../Components/AllScalesButton/AllScalesButton';
+import { SwitchRow, AllScalesButton } from '../../../Components';
 import { translate } from '../../../Translations/TranslationModel';
 
 /**

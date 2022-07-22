@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList } from 'react-native';
 import { useDarkMode } from 'react-native-dynamic';
 
-import FlatListItem from '../../Components/ListItems/FlatListItem/FlatListItem';
+import { FlatListItem } from '../../Components';
 import { arpeggioResourceData, colors } from '../../Model/Model';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 

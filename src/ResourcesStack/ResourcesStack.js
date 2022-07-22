@@ -5,7 +5,7 @@ import { useDarkMode } from 'react-native-dynamic';
 import ScaleResources from './ScaleResources/ScaleResources';
 import ArpeggioResources from './ArpeggioResources/ArpeggioResources';
 import ScaleDetail from './ScaleDetail/ScaleDetail';
-import HeaderButton from '../Components/HeaderButton/HeaderButton';
+import { HeaderButton } from '../Components';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 

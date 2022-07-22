@@ -10,9 +10,9 @@ Run this command to get the data
 
 import React from 'react';
 import { View } from 'react-native';
+import { useDarkMode } from 'react-native-dynamic';
 
 import LicensesList from './LicensesList';
-import { useDarkMode } from 'react-native-dynamic';
 import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
@@ -35,7 +35,8 @@ function extractNameFromGithubUrl(url) {
     return null;
   }
 
-  const reg = /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_-]{1,30})(\/([-a-z]{1,40}))?/i;
+  const reg =
+    /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_-]{1,30})(\/([-a-z]{1,40}))?/i;
 
   const components = reg.exec(url);
 

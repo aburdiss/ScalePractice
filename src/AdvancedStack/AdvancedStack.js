@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import AdvancedScale from './AdvancedScale/AdvancedScale';
 import AdvancedArpeggio from './AdvancedArpeggio/AdvancedArpeggio';
-import HeaderButton from '../Components/HeaderButton/HeaderButton';
+import { HeaderButton } from '../Components';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 

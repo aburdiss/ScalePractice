@@ -13,9 +13,11 @@ import {
   useDynamicValue,
 } from 'react-native-dynamic';
 
-import LargeScaleDisplay from '../../Components/LargeScaleDisplay/LargeScaleDisplay';
-import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
-import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
+import {
+  RandomizeButton,
+  LargeScaleDisplay,
+  ScaleDisplay,
+} from '../../Components';
 import RandomScaleSettings from './RandomScaleSettings/RandomScaleSettings';
 import { createScaleArrayFromParts } from '../utils/RandomUtils';
 

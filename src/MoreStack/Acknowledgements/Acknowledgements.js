@@ -6,9 +6,10 @@ import {
   useDynamicValue,
 } from 'react-native-dynamic';
 
+import { TextListItem } from '../../Components';
+
 import { colors } from '../../Model/Model';
 import { TRANSLATIONS } from '../../Model/AcknowledgementsModel';
-import TextListItem from '../../Components/ListItems/TextListItem/TextListItem';
 import { translate } from '../../Translations/TranslationModel';
 import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
 

@@ -14,10 +14,12 @@ import {
 } from 'react-native-dynamic';
 
 import { createArpeggioArrayFromParts } from '../utils/RandomUtils';
-import ScaleDisplay from '../../Components/ScaleDisplay/ScaleDisplay';
-import RandomizeButton from '../../Components/RandomizeButton/RandomizeButton';
+import {
+  LargeScaleDisplay,
+  ScaleDisplay,
+  RandomizeButton,
+} from '../../Components';
 import RandomArpeggioSettings from './RandomArpeggioSettings/RandomArpeggioSettings';
-import LargeScaleDisplay from '../../Components/LargeScaleDisplay/LargeScaleDisplay';
 
 import { colors } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
@@ -92,10 +94,8 @@ const RandomArpeggio = () => {
   const toggleAugmentedSeventhSwitch = () =>
     setAugmentedSeventhSwitch((previousState) => !previousState);
 
-  const [
-    halfDiminishedSeventhSwitch,
-    setHalfDiminishedSeventhSwitch,
-  ] = useState(false);
+  const [halfDiminishedSeventhSwitch, setHalfDiminishedSeventhSwitch] =
+    useState(false);
   const toggleHalfDiminishedSeventhSwitch = () =>
     setHalfDiminishedSeventhSwitch((previousState) => !previousState);
 
