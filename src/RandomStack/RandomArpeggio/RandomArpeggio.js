@@ -25,10 +25,7 @@ import { colors } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 
-import { random } from '../../utils/random/random';
-import { shuffle } from '../../utils/shuffle/shuffle';
-import { debounce } from '../../utils/debounce/debounce';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { random, shuffle, debounce, useIdleScreen } from '../../utils';
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios

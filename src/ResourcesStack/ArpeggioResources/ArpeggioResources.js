@@ -4,7 +4,7 @@ import { useDarkMode } from 'react-native-dynamic';
 
 import { FlatListItem } from '../../Components';
 import { arpeggioResourceData, colors } from '../../Model/Model';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { useIdleScreen } from '../../utils';
 
 /**
  * @description A view that allows the user to learn about all of the arpeggios

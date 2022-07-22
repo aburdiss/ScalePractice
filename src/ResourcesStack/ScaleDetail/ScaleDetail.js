@@ -8,7 +8,7 @@ import {
 
 import { colors, getImagePath } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { useIdleScreen } from '../../utils';
 
 /**
  * @description A component that renders a detailed image, based on the id

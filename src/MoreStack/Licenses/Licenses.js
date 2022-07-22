@@ -16,8 +16,7 @@ import LicensesList from './LicensesList';
 import { colors } from '../../Model/Model';
 
 import Data from './licenses.json';
-import { capitalize } from '../../utils/capitalize/capitalize';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { capitalize, useIdleScreen } from '../../utils';
 
 /**
  * @function extractNameFromGithubUrl

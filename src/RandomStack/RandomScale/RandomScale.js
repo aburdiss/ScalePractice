@@ -34,10 +34,7 @@ import {
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 
-import { random } from '../../utils/random/random';
-import { debounce } from '../../utils/debounce/debounce';
-import { shuffle } from '../../utils/shuffle/shuffle';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { random, debounce, shuffle, useIdleScreen } from '../../utils';
 
 /**
  * @description A View that allows the user to randomize all of the scales in

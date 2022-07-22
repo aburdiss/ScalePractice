@@ -12,12 +12,12 @@ import {
   LinkListItem,
   TextListItem,
   InternalListItem,
-} from '../../Components/ListItems/SwitchListItem/SwitchListItem';
+} from '../../Components';
 import { colors } from '../../Model/Model';
 import { RESOURCES, ABOUT, SETTINGS } from '../../Model/MoreModel';
-import { translate } from '../../Translations/TranslationModel';
 import { PreferencesContext } from '../../Model/Preferences';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { translate } from '../../Translations/TranslationModel';
+import { useIdleScreen } from '../../utils';
 
 /**
  * @description A view with links to additional resources and settings for the

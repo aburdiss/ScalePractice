@@ -1,5 +1,5 @@
 import { translate } from '../../Translations/TranslationModel';
-import { shuffle } from '../../utils/shuffle/shuffle';
+import { shuffle } from '../../utils';
 
 /**
  * @function createScaleArrayFromParts

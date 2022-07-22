@@ -17,11 +17,9 @@ import {
 
 import { colors, allNoteNames, allArpeggioNames } from '../../Model/Model';
 import { PreferencesContext } from '../../Model/Preferences';
-import { getIsSmallScreen } from '../../Model/Utilities';
 import { translate } from '../../Translations/TranslationModel';
 
-import { shuffle } from '../../utils/shuffle/shuffle';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { shuffle, useIdleScreen, getIsSmallScreen } from '../../utils';
 
 /**
  * @description A view that allows the user to randomize between a list of

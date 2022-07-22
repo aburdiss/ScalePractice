@@ -4,9 +4,10 @@ import { useDarkMode } from 'react-native-dynamic';
 
 import More from './More/More';
 import Licenses from './Licenses/Licenses';
+import Acknowledgements from './Acknowledgements/Acknowledgements';
+
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
-import Acknowledgements from './Acknowledgements/Acknowledgements';
 
 const Stack = createStackNavigator();
 

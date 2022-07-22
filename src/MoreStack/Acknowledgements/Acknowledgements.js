@@ -11,7 +11,7 @@ import { TextListItem } from '../../Components';
 import { colors } from '../../Model/Model';
 import { TRANSLATIONS } from '../../Model/AcknowledgementsModel';
 import { translate } from '../../Translations/TranslationModel';
-import { useIdleScreen } from '../../utils/useIdleScreen/useIdleScreen';
+import { useIdleScreen } from '../../utils';
 
 /**
  * @description A View that displays the people who directly assisted with
