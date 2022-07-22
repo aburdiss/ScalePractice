@@ -24,19 +24,16 @@ import { translate } from '../../Translations/TranslationModel';
  * variable props.selectedScale
  * @param {string[]} props.scaleNames All possible scale names to be shown on
  * the scale picker
- * 
- * @component
+ *
  * @example
- * ```jsx
-<ScalePickers
-  selectedNote={selectedNote}
-  setSelectedNote={setSelectedNote}
-  noteNames={noteNames}
-  selectedScale={selectedScale}
-  setSelectedScale={setSelectedScale}
-  scaleNames={scaleNames}
-/>
-```
+ * <ScalePickers
+ *   selectedNote={selectedNote}
+ *   setSelectedNote={setSelectedNote}
+ *   noteNames={noteNames}
+ *   selectedScale={selectedScale}
+ *   setSelectedScale={setSelectedScale}
+ *   scaleNames={scaleNames}
+ * />
  */
 const ScalePickers = ({
   selectedNote,

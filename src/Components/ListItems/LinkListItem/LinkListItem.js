@@ -17,7 +17,6 @@ import { translate } from '../../../Translations/TranslationModel';
  * @version 1.1.0
  * @param {Object} props.item The item to be rendered.
  *
- * @component
  * @example
  * <LinkListItem item={item} />
  */

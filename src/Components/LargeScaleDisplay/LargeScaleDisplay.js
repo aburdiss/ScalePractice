@@ -11,13 +11,10 @@ import { colors } from '../../Model/Model';
  * @author Alexander Burdiss
  * @since 6/11/21
  * @version 1.0.1
- * @param {String} props.children The text to render inside this component
+ * @param {string} props.children The text to render inside this component
  *
- * @component
  * @example
- * ```jsx
  * <LargeScaleDisplay>Hello, World!</LargeScaleDisplay>
- * ```
  */
 const LargeScaleDisplay = ({ children }) => {
   const DARKMODE = useDarkMode();

@@ -10,11 +10,8 @@ import LicensesListItem from './LicensesListItem';
  * @version 1.0.1
  * @param {Array} props.licenses The list of licenses that will be displayed.
  *
- * @component
  * @example
- * ```jsx
-<LicensesList licenses={licenses} />
-```
+ * <LicensesList licenses={licenses} />
  */
 const LicensesList = ({ licenses }) => {
   return (

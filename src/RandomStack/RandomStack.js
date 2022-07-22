@@ -18,15 +18,12 @@ const Stack = createStackNavigator();
  * @param {Object} props.navigation The navigation object provided by React
  * Navigation
  *
- * @component
  * @example
- * ```jsx
-<Tab.Screen
-  name="Random"
-  component={RandomStack}
-  options={{title: translate('Random')}}
-/>
-```
+ * <Tab.Screen
+ *   name="Random"
+ *   component={RandomStack}
+ *   options={{title: translate('Random')}}
+ * />
  */
 const RandomStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();

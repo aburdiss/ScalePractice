@@ -26,8 +26,8 @@ import { capitalize, useIdleScreen } from '../../utils';
  * @author Alexander Burdiss
  * @version 1.0.1
  * @since 12/17/20
- * @param {String} url The GitHub url of a piece of software.
- * @returns {String} The GitHub username
+ * @param {string} url The GitHub url of a piece of software.
+ * @returns {string} The GitHub username
  */
 function extractNameFromGithubUrl(url) {
   if (!url) {
@@ -52,9 +52,9 @@ function extractNameFromGithubUrl(url) {
  * @author Alexander Burdiss
  * @since 12/17/20
  * @version 1.0.1
- * @param {Array} data The list of licenses.
- * @param {String|Number} key An object key inside each member of data.
- * @returns {Array} A sorted version of the data array that is passed in.
+ * @param {Object[]} data The list of licenses.
+ * @param {string|number} key An object key inside each member of data.
+ * @returns {Object[]} A sorted version of the data array that is passed in.
  */
 function sortDataByKey(data, key) {
   data.sort(function (a, b) {
@@ -107,11 +107,8 @@ sortDataByKey(licenseData, 'username');
  * @since 12/17/20
  * @version 1.2.0
  *
- * @component
  * @example
- * ```jsx
-<Licenses />
-```
+ * <Licenses />
  */
 const Licenses = () => {
   useIdleScreen();

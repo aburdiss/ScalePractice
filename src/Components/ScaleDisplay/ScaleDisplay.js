@@ -9,15 +9,12 @@ import { colors } from '../../Model/Model';
  * @author Alexander Burdiss
  * @since 10/11/20
  * @version 1.0.2
- * @param {String} props.children The text to render inside this component
- * 
- * @component
+ * @param {string} props.children The text to render inside this component
+ *
  * @example
- * ```jsx
-<ScaleDisplay>
-  Hello, World!
-</ScaleDisplay>
-```
+ * <ScaleDisplay>
+ *   Hello, World!
+ * </ScaleDisplay>
  */
 const ScaleDisplay = ({ children }) => {
   const DARKMODE = useDarkMode();

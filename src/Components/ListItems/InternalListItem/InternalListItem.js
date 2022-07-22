@@ -21,7 +21,6 @@ import { translate } from '../../../Translations/TranslationModel';
  * @param {Object} props.item The Internal list item to be rendered containing
  * a Component name to render to, and the text to be rendered.
  *
- * @component
  * @example
  * <InternalListItem item={item} />
  */

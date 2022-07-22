@@ -18,11 +18,8 @@ import { useIdleScreen } from '../../utils';
  * @version 2.1.0
  * @param {Object} props.route The Route object provided by React Navigation
  *
- * @component
  * @example
- * ```jsx
  * <ScaleDetail route={route} />
- * ```
  */
 const ScaleDetail = ({ route }) => {
   useIdleScreen();

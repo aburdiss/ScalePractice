@@ -16,16 +16,13 @@ const Stack = createStackNavigator();
  * @author Alexander Burdiss
  * @since 10/10/20
  * @version 1.0.1
- * 
- * @component
+ *
  * @example
- * ```jsx
-<Tab.Screen
-  name="More"
-  component={MoreStack}
-  options={{title: translate('More')}}
-/>
-```
+ * <Tab.Screen
+ *   name="More"
+ *   component={MoreStack}
+ *   options={{title: translate('More')}}
+ * />
  */
 const MoreStack = () => {
   const DARKMODE = useDarkMode();

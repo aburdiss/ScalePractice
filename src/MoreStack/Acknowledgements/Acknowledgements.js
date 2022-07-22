@@ -20,7 +20,6 @@ import { useIdleScreen } from '../../utils';
  * @since 2/20/21
  * @version 1.1.0
  *
- * @component
  * @example
  * <Acknowledgements />
  */

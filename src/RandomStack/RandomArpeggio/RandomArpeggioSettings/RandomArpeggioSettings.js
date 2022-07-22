@@ -12,29 +12,28 @@ import { translate } from '../../../Translations/TranslationModel';
  * @version 1.0.0
  * @param props The JSX props passed to this React component
  * @param {Function} props.toggleMajorSwitch
- * @param {Boolean} props.majorSwitch
+ * @param {boolean} props.majorSwitch
  * @param {Function} props.toggleMinorSwitch
- * @param {Boolean} props.minorSwitch
+ * @param {boolean} props.minorSwitch
  * @param {Function} props.toggleAugmentedSwitch
- * @param {Boolean} props.augmentedSwitch
+ * @param {boolean} props.augmentedSwitch
  * @param {Function} props.toggleDiminishedSwitch
- * @param {Boolean} props.diminishedSwitch
+ * @param {boolean} props.diminishedSwitch
  * @param {Function} props.toggleDominantSeventhSwitch
- * @param {Boolean} props.dominantSeventhSwitch
+ * @param {boolean} props.dominantSeventhSwitch
  * @param {Function} props.toggleMajorSeventhSwitch
- * @param {Boolean} props.majorSeventhSwitch
+ * @param {boolean} props.majorSeventhSwitch
  * @param {Function} props.toggleMinorSeventhSwitch
- * @param {Boolean} props.minorSeventhSwitch
+ * @param {boolean} props.minorSeventhSwitch
  * @param {Function} props.toggleMinorMajorSeventhSwitch
- * @param {Boolean} props.minorMajorSeventhSwitch
+ * @param {boolean} props.minorMajorSeventhSwitch
  * @param {Function} props.toggleAugmentedSeventhSwitch
- * @param {Boolean} props.augmentedSeventhSwitch
+ * @param {boolean} props.augmentedSeventhSwitch
  * @param {Function} props.toggleHalfDiminishedSeventhSwitch
- * @param {Boolean} props.halfDiminishedSeventhSwitch
+ * @param {boolean} props.halfDiminishedSeventhSwitch
  * @param {Function} props.toggleDiminishedSeventhSwitch
- * @param {Boolean} props.diminishedSeventhSwitch
+ * @param {boolean} props.diminishedSeventhSwitch
  * @param {Function} props.selectAllArpeggios
- * @component
  */
 export default function RandomArpeggioSettings({
   toggleMajorSwitch,

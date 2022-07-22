@@ -20,7 +20,6 @@ import { translate } from '../../../Translations/TranslationModel';
  * @param {Function} props.dispatch A function to make a reducer call to update
  * state.
  *
- * @component
  * @example
  * <SwitchListItem
  *   item={item}

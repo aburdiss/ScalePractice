@@ -19,16 +19,13 @@ const Stack = createStackNavigator();
  * @version 1.0.1
  * @param {Object} props.navigation The navigation object provided by React
  * Navigation
- * 
- * @component
+ *
  * @example
- * ```jsx
-<Tab.Screen
-  name="Advanced"
-  component={AdvancedStack}
-  options={{title: translate('Advanced')}}
-/>
-```
+ * <Tab.Screen
+ *   name="Advanced"
+ *   component={AdvancedStack}
+ *   options={{title: translate('Advanced')}}
+ * />
  */
 const AdvancedStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();

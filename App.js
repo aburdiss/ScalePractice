@@ -24,7 +24,6 @@ setI18nConfig();
  * @since 10/10/20
  * @version 1.0.1
  *
- * @component
  * @example
  * <App />
  */

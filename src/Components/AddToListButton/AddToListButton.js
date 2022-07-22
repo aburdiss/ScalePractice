@@ -7,18 +7,15 @@ import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A green button that says "Add To List", and calls whatever
- * function is passed in. 
+ * function is passed in.
  * @author Alexander Burdiss
  * @since 12/7/20
  * @version 1.0.2
  * @param {Function} props.handler The function to call when this component
- * is pressed 
- * 
- * @component
+ * is pressed
+ *
  * @example
- * ```jsx
-<AddToListButton handler={handler} />
-```
+ * <AddToListButton handler={handler} />
  */
 const AddToListButton = ({ handler }) => {
   const DARKMODE = useDarkMode();

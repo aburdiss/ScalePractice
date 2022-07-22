@@ -34,7 +34,6 @@ import { random, shuffle, debounce, useIdleScreen } from '../../utils';
  * @since 10/10/20
  * @version 3.1.0
  *
- * @component
  * @example
  *   <RandomArpeggio />
  */

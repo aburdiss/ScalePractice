@@ -13,14 +13,11 @@ import { colors } from '../../Model/Model';
  * @param {string} props.children The text to render in the button
  * @param {Function} props.handler The function to call when the button is
  * pressed
- * 
- * @component
+ *
  * @example
- * ```jsx
-<AllScalesButton handler={handler}>
-  Hello, World!
-</AllScalesButton>
-```
+ * <AllScalesButton handler={handler}>
+ *   Hello, World!
+ * </AllScalesButton>
  */
 const AllScalesButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();

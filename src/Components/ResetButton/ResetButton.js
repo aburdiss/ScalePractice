@@ -13,12 +13,9 @@ import { translate } from '../../Translations/TranslationModel';
  * @version 1.0.2
  * @param {Function} props.handler The function to call when this component
  * is pressed.
- * 
- * @component
+ *
  * @example
- * ```jsx
-<ResetButton handler={handler} />
-```
+ * <ResetButton handler={handler} />
  */
 const ResetButton = ({ handler }) => {
   const DARKMODE = useDarkMode();

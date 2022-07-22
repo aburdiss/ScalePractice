@@ -16,18 +16,17 @@ import { translate } from '../../Translations/TranslationModel';
  * @author Alexander Burdiss
  * @since 1/5/21
  * @version 1.0.2
- * @param {Boolean} props.value The current value of the switch
+ * @param {boolean} props.value The current value of the switch
  * @param {Function} props.onValueChange The function to call when the value
  * changes.
- * @param {String} props.text The text to render on this switch row.
+ * @param {string} props.text The text to render on this switch row.
  *
- * @component
  * @example
- *   <SwitchRow
- *     value={value}
- *     onValueChange={onValueChange}
- *     text="Hello, World!"
- *   />
+ * <SwitchRow
+ *   value={value}
+ *   onValueChange={onValueChange}
+ *   text="Hello, World!"
+ * />
  */
 const SwitchRow = ({ value, onValueChange, text }) => {
   const styles = useDynamicValue(dynamicStyles);

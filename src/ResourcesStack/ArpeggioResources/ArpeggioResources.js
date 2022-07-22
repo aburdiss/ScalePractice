@@ -13,11 +13,8 @@ import { useIdleScreen } from '../../utils';
  * @since 10/10/20
  * @version 1.0.1
  *
- * @component
  * @example
- * ```jsx
  * <ArpeggioResources />
- * ```
  */
 const ArpeggioResources = () => {
   useIdleScreen();

@@ -15,7 +15,6 @@ import { translate } from '../../../Translations/TranslationModel';
  * @version 1.0.2
  * @param {Object} props.data The data to display in this list item.
  *
- * @component
  * @example
  * <ListItem data={data} />
  */

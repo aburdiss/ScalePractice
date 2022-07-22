@@ -13,14 +13,11 @@ import { translate } from '../../Translations/TranslationModel';
  * @version 1.1.2
  * @param {string} props.children The text to render inside this button.
  * @param {Function} props.handler The function to call when this button is pressed.
- * 
- * @component
+ *
  * @example
- * ```jsx
-<HeaderButton handler={handler}>
-  Hello, World!
-</HeaderButton>
-```
+ * <HeaderButton handler={handler}>
+ *   Hello, World!
+ * </HeaderButton>
  */
 const HeaderButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();

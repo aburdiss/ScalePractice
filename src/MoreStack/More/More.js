@@ -26,11 +26,8 @@ import { useIdleScreen } from '../../utils';
  * @since 10/10/20
  * @version 1.1.0
  *
- * @component
  * @example
- * ```jsx
-<More />
-```
+ * <More />
  */
 const More = () => {
   useIdleScreen();

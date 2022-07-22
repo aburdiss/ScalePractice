@@ -37,17 +37,16 @@ import { translate } from '../../Translations/TranslationModel';
 import { random, debounce, shuffle, useIdleScreen } from '../../utils';
 
 /**
+ * @todo Refactor this to be more functional
+ *
  * @description A View that allows the user to randomize all of the scales in
  * a particular category.
  * @author Alexander Burdiss
  * @since 10/10/20
  * @version 3.1.0
  *
- * @component
  * @example
- *   <RandomScale />
- *
- * @todo Refactor this to be more functional
+ * <RandomScale />
  */
 const RandomScale = () => {
   useIdleScreen();

@@ -28,11 +28,8 @@ import { shuffle, getIsSmallScreen, useIdleScreen } from '../../utils';
  * @since 10/10/20
  * @version 2.1.0
  *
- * @component
  * @example
- * ```jsx
  * <Advanced Scale />
- * ```
  */
 const AdvancedScale = () => {
   useIdleScreen();

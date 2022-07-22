@@ -9,9 +9,9 @@ import { shuffle } from '../../utils';
  * @since 10/12/20
  * @version 2.0.0
  *
- * @param {[String]} letterNames
- * @param {[String]} scaleNames
- * @returns {[String]} array of all transpositions of a scale
+ * @param {string[]} letterNames
+ * @param {string[]} scaleNames
+ * @returns {string[]} array of all transpositions of a scale
  */
 export function createScaleArrayFromParts(letterNames, scaleNames) {
   let allLetterNamesOfScale = [];
@@ -32,7 +32,7 @@ export function createScaleArrayFromParts(letterNames, scaleNames) {
  * @since 10/12/20
  * @version 1.0.2
  *
- * @returns {[String]} array of all transpositions of a scale
+ * @returns {string[]} array of all transpositions of a scale
  */
 export function createArpeggioArrayFromParts(scaleName) {
   const letterNames = [

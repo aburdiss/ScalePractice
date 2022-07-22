@@ -17,26 +17,23 @@ import {
  * @author Alexander Burdiss
  * @date 12/17/20
  * @version 1.0.2
- * @param {String} props.image The url of the image to display.
- * @param {String} props.userUrl The url of the author of this software.
- * @param {String} props.username The username of the author of the software
+ * @param {string} props.image The url of the image to display.
+ * @param {string} props.userUrl The url of the author of this software.
+ * @param {string} props.username The username of the author of the software
  * using this license.
- * @param {String} props.name The name of the author of the software using this
+ * @param {string} props.name The name of the author of the software using this
  * license.
- * @param {String} props.version The version number of the software using this
+ * @param {string} props.version The version number of the software using this
  * license.
- * @param {String} props.licenses The text to render inside the main section
+ * @param {string} props.licenses The text to render inside the main section
  * of this license link.
- * @param {String} props.repository The url of the Github repository to link
+ * @param {string} props.repository The url of the Github repository to link
  * to.
- * @param {String} props.licenseUrl The url to the currently referenced
+ * @param {string} props.licenseUrl The url to the currently referenced
  * license.
  *
- * @component
  * @example
- * ```jsx
-<LicensesListItem {...item} />
-```
+ * <LicensesListItem {...item} />
  */
 const LicensesListItem = ({
   image,
@@ -105,17 +102,14 @@ const LicensesListItem = ({
  * @author Alexander Burdiss
  * @since 12/17/20
  * @version 1.0.1
- * @param {String} props.url The url to open when the element is tapped.
+ * @param {string} props.url The url to open when the element is tapped.
  * @param {Object} props.style Style to be applied to the element
- * @param {String} props.children Text to be rendered inside this element.
+ * @param {string} props.children Text to be rendered inside this element.
  *
- * @component
  * @example
- * ```jsx
-<Link style={styles.text} url={licenseUrl}>
-  {licenses}
-</Link>
-```
+ * <Link style={styles.text} url={licenseUrl}>
+ *   {licenses}
+ * </Link>
  */
 const Link = ({ url, style, children }) => (
   <Text

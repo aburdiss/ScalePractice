@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  * @author Alexander Burdiss
  * @since 12/11/20
  * @version 1.0.2
- * @param {String} type Type of data to load.
+ * @param {string} type Type of data to load.
  * @returns {JSON|null} The stored value or null, depending on if the data is
  * successfully retrieved.
  */
@@ -26,7 +26,7 @@ export async function load() {
  * @author Alexander Burdiss
  * @since 12/11/20
  * @version 1.0.1
- * @param {String} type Type of data to store.
+ * @param {string} type Type of data to store.
  * @param {Object} data Data to be stored in local storage
  */
 export async function save(data) {
@@ -82,7 +82,6 @@ const initialPreferencesState = {
  * @version 1.0.0
  * @param {*} props
  *
- * @component
  * @example
  *   <PreferencesProvider>
  *     {..}

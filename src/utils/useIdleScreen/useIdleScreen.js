@@ -29,7 +29,6 @@ export function useIdleScreen() {
         IdleTimerManager.setIdleTimerDisabled(false);
       };
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [state?.disableScreenSleep],
   );
 }

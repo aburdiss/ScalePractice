@@ -17,8 +17,8 @@ const translationGetters = {
  * @author Alexander Burdiss
  * @since 12/1/20
  * @version 1.0.1
- * @param {String} key The string to be translated
- * @returns {String} The input string translated into the language the device
+ * @param {string} key The string to be translated
+ * @returns {string} The input string translated into the language the device
  * is currently in.
  */
 export const translate = memoize(

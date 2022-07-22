@@ -11,23 +11,22 @@ import { translate } from '../../../Translations/TranslationModel';
  * @version 1.0.0
  * @param props The JSX props passed to this React component
  * @param {Function} props.toggleMajorSwitch
- * @param {Boolean} props.majorSwitch
+ * @param {boolean} props.majorSwitch
  * @param {Function} props.toggleNaturalMinorSwitch
- * @param {Boolean} props.naturalMinorSwitch
+ * @param {boolean} props.naturalMinorSwitch
  * @param {Function} props.toggleHarmonicMinorSwitch
- * @param {Boolean} props.harmonicMinorSwitch
+ * @param {boolean} props.harmonicMinorSwitch
  * @param {Function} props.toggleMelodicMinorSwitch
- * @param {Boolean} props.melodicMinorSwitch
+ * @param {boolean} props.melodicMinorSwitch
  * @param {Function} props.toggleBluesSwitch
- * @param {Boolean} props.bluesSwitch
+ * @param {boolean} props.bluesSwitch
  * @param {Function} props.togglePentatonicSwitch
- * @param {Boolean} props.pentatonicSwitch
+ * @param {boolean} props.pentatonicSwitch
  * @param {Function} props.toggleOctatonicSwitch
- * @param {Boolean} props.octatonicSwtich
+ * @param {boolean} props.octatonicSwtich
  * @param {Function} props.toggleWholeToneSwitch
- * @param {Boolean} props.wholeToneSwitch
+ * @param {boolean} props.wholeToneSwitch
  * @param {Function} props.selectAllScales
- * @component
  */
 export default function RandomScaleSettings({
   toggleMajorSwitch,

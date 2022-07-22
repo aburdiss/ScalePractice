@@ -34,7 +34,6 @@ import { StyleSheet, View, Text } from 'react-native';
  * @author Alexander Burdiss
  * @since $date
  * @version 1.0.0
- * @component
  */
 export default function $component() {
   return (
