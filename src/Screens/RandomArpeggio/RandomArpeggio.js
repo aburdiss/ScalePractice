@@ -4,28 +4,33 @@ import React, {
   useContext,
   useEffect,
   useRef,
-} from 'react';
-import { Alert, View, ScrollView, Pressable, Text } from 'react-native';
-import Popover from 'react-native-popover-view';
+} from "react";
+import { Alert, View, ScrollView, Pressable, Text } from "react-native";
+import Popover from "react-native-popover-view";
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
-} from 'react-native-dynamic';
+} from "react-native-dynamic";
 
-import { createArpeggioArrayFromParts } from '../utils/RandomUtils';
 import {
   LargeScaleDisplay,
   ScaleDisplay,
   RandomizeButton,
-} from '../../Components';
-import RandomArpeggioSettings from './RandomArpeggioSettings/RandomArpeggioSettings';
+} from "../../Components";
+import RandomArpeggioSettings from "./RandomArpeggioSettings/RandomArpeggioSettings";
 
-import { colors } from '../../Model/Model';
-import { PreferencesContext } from '../../Model/Preferences';
-import { translate } from '../../Translations/TranslationModel';
+import { colors } from "../../Model/Model";
+import { PreferencesContext } from "../../Model/Preferences";
+import { translate } from "../../Translations/TranslationModel";
 
-import { random, shuffle, debounce, useIdleScreen } from '../../utils';
+import {
+  random,
+  shuffle,
+  debounce,
+  useIdleScreen,
+  createArpeggioArrayFromParts,
+} from "../../utils";
 
 /**
  * @description A view that allows the user to randomize all of the arpeggios
@@ -48,7 +53,7 @@ const RandomArpeggio = () => {
   const { state } = useContext(PreferencesContext);
 
   const [currentArpeggio, setCurrentArpeggio] = useState(
-    translate('No Arpeggio Selected'),
+    translate("No Arpeggio Selected")
   );
 
   const [arpeggioArrayIndex, setArpeggioArrayIndex] = useState(0);
@@ -205,46 +210,46 @@ const RandomArpeggio = () => {
     let possibleArpeggios = [];
 
     if (majorSwitch) {
-      possibleArpeggios.push(...createArpeggioArrayFromParts('Major'));
+      possibleArpeggios.push(...createArpeggioArrayFromParts("Major"));
     }
     if (minorSwitch) {
-      possibleArpeggios.push(...createArpeggioArrayFromParts('Minor'));
+      possibleArpeggios.push(...createArpeggioArrayFromParts("Minor"));
     }
     if (augmentedSwitch) {
-      possibleArpeggios.push(...createArpeggioArrayFromParts('Augmented'));
+      possibleArpeggios.push(...createArpeggioArrayFromParts("Augmented"));
     }
     if (diminishedSwitch) {
-      possibleArpeggios.push(...createArpeggioArrayFromParts('Diminished'));
+      possibleArpeggios.push(...createArpeggioArrayFromParts("Diminished"));
     }
     if (dominantSeventhSwitch) {
       possibleArpeggios.push(
-        ...createArpeggioArrayFromParts('Dominant Seventh'),
+        ...createArpeggioArrayFromParts("Dominant Seventh")
       );
     }
     if (majorSeventhSwitch) {
-      possibleArpeggios.push(...createArpeggioArrayFromParts('Major Seventh'));
+      possibleArpeggios.push(...createArpeggioArrayFromParts("Major Seventh"));
     }
     if (minorSeventhSwitch) {
-      possibleArpeggios.push(...createArpeggioArrayFromParts('Minor Seventh'));
+      possibleArpeggios.push(...createArpeggioArrayFromParts("Minor Seventh"));
     }
     if (minorMajorSeventhSwitch) {
       possibleArpeggios.push(
-        ...createArpeggioArrayFromParts('Minor Major Seventh'),
+        ...createArpeggioArrayFromParts("Minor Major Seventh")
       );
     }
     if (augmentedSeventhSwitch) {
       possibleArpeggios.push(
-        ...createArpeggioArrayFromParts('Augmented Minor Seventh'),
+        ...createArpeggioArrayFromParts("Augmented Minor Seventh")
       );
     }
     if (halfDiminishedSeventhSwitch) {
       possibleArpeggios.push(
-        ...createArpeggioArrayFromParts('Half Diminished Seventh'),
+        ...createArpeggioArrayFromParts("Half Diminished Seventh")
       );
     }
     if (diminishedSeventhSwitch) {
       possibleArpeggios.push(
-        ...createArpeggioArrayFromParts('Diminished Seventh'),
+        ...createArpeggioArrayFromParts("Diminished Seventh")
       );
     }
 
@@ -265,8 +270,8 @@ const RandomArpeggio = () => {
       // Ensuring that the new arpeggio is different from the old one.
       if (arpeggioArray.length === 0) {
         Alert.alert(
-          translate('No Arpeggio Selected'),
-          translate('Please select at least one category'),
+          translate("No Arpeggio Selected"),
+          translate("Please select at least one category")
         );
       } else {
         let newArpeggio;
@@ -274,12 +279,12 @@ const RandomArpeggio = () => {
           newArpeggio = arpeggioArray[random(arpeggioArray.length - 1)];
         } while (newArpeggio === currentArpeggio);
         setCurrentArpeggio(
-          newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
+          newArpeggio ? newArpeggio : translate("No Arpeggio Selected")
         );
       }
     } else {
       if (arpeggioArrayIndex >= arpeggioArray.length) {
-        Alert.alert('All arpeggios practiced!', '', [
+        Alert.alert("All arpeggios practiced!", "", [
           {
             onPress: () => {
               setArpeggioArrayIndex(1);
@@ -321,7 +326,7 @@ const RandomArpeggio = () => {
       augmentedSeventhSwitch,
       halfDiminishedSeventhSwitch,
       diminishedSeventhSwitch,
-    ],
+    ]
   );
 
   const ArpeggioSettings = () => {
@@ -366,7 +371,7 @@ const RandomArpeggio = () => {
         style={styles.selectionsButton}
       >
         <Text style={styles.selectionsText}>
-          {translate('Arpeggio Selections')}
+          {translate("Arpeggio Selections")}
         </Text>
       </Pressable>
       <Popover
@@ -394,7 +399,7 @@ const RandomArpeggio = () => {
         <RandomizeButton
           handler={debouncedGetNewArpeggio}
           accessibilityValue={{ text: `${translate(currentArpeggio)}` }}
-          accessibilityHint={translate('Randomizes a new arpeggio')}
+          accessibilityHint={translate("Randomizes a new arpeggio")}
           accessibilityRole="button"
         />
       </View>
@@ -410,32 +415,32 @@ const dynamicStyles = new DynamicStyleSheet({
   mainActionButton: {
     borderColor: new DynamicValue(
       colors.systemGray5Light,
-      colors.systemGray5Dark,
+      colors.systemGray5Dark
     ),
     borderTopWidth: 1,
   },
   popoverArrow: {
     backgroundColor: new DynamicValue(
       colors.systemGray6Light,
-      colors.systemGray6Dark,
+      colors.systemGray6Dark
     ),
   },
   popoverContainer: {
     width: 300,
     backgroundColor: new DynamicValue(
       colors.systemGray6Light,
-      colors.systemGray6Dark,
+      colors.systemGray6Dark
     ),
   },
   scaleDisplay: {
     borderBottomWidth: 1,
     borderColor: new DynamicValue(
       colors.systemGray5Light,
-      colors.systemGray5Dark,
+      colors.systemGray5Dark
     ),
   },
   selectionsButton: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 5,
     right: 5,
     height: 25,
@@ -446,8 +451,8 @@ const dynamicStyles = new DynamicStyleSheet({
   },
   switchesContainer: {
     flex: 1,
-    alignSelf: 'center',
-    width: '100%',
+    alignSelf: "center",
+    width: "100%",
     marginHorizontal: 10,
   },
 });

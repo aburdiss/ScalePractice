@@ -1,13 +1,13 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { useDarkMode } from "react-native-dynamic";
 
-import More from './More/More';
-import Licenses from './Licenses/Licenses';
-import Acknowledgements from './Acknowledgements/Acknowledgements';
+import More from "../Screens/More/More";
+import Licenses from "../Screens/Licenses/Licenses";
+import Acknowledgements from "../Screens/Acknowledgements/Acknowledgements";
 
-import { translate } from '../Translations/TranslationModel';
-import { colors } from '../Model/Model';
+import { translate } from "../Translations/TranslationModel";
+import { colors } from "../Model/Model";
 
 const Stack = createStackNavigator();
 
@@ -40,30 +40,30 @@ const MoreStack = () => {
           borderBottomColor: DARKMODE
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
-          shadowColor: 'transparent',
+          shadowColor: "transparent",
         },
-        headerBackTitle: translate('Back'),
+        headerBackTitle: translate("Back"),
       }}
     >
       <Stack.Screen
         name="More"
         component={More}
         options={{
-          title: translate('Settings'),
+          title: translate("Settings"),
         }}
       />
       <Stack.Screen
         name="Licenses"
         component={Licenses}
         options={{
-          title: translate('Licenses'),
+          title: translate("Licenses"),
         }}
       />
       <Stack.Screen
         name="Acknowledgements"
         component={Acknowledgements}
         options={{
-          title: translate('Acknowledgements'),
+          title: translate("Acknowledgements"),
         }}
       />
     </Stack.Navigator>

@@ -1,14 +1,14 @@
-import React from 'react';
-import { useDarkMode } from 'react-native-dynamic';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { useDarkMode } from "react-native-dynamic";
+import { createStackNavigator } from "@react-navigation/stack";
 
 // Screens
-import AdvancedScale from './AdvancedScale/AdvancedScale';
-import AdvancedArpeggio from './AdvancedArpeggio/AdvancedArpeggio';
+import AdvancedScale from "../Screens/AdvancedScale/AdvancedScale";
+import AdvancedArpeggio from "../Screens/AdvancedArpeggio/AdvancedArpeggio";
 
-import { HeaderButton } from '../Components';
-import { translate } from '../Translations/TranslationModel';
-import { colors } from '../Model/Model';
+import { HeaderButton } from "../Components";
+import { translate } from "../Translations/TranslationModel";
+import { colors } from "../Model/Model";
 
 const Stack = createStackNavigator();
 
@@ -43,9 +43,9 @@ const AdvancedStack = ({ navigation }) => {
           borderBottomColor: DARKMODE
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
-          shadowColor: 'transparent',
+          shadowColor: "transparent",
         },
-        headerBackTitle: translate('Back'),
+        headerBackTitle: translate("Back"),
       }}
     >
       <Stack.Screen
@@ -55,20 +55,20 @@ const AdvancedStack = ({ navigation }) => {
           headerRight: () => (
             <HeaderButton
               handler={() => {
-                navigation.navigate('Advanced Arpeggio Practice');
+                navigation.navigate("Advanced Arpeggio Practice");
               }}
             >
-              {translate('Arpeggios')}
+              {translate("Arpeggios")}
             </HeaderButton>
           ),
-          title: translate('Advanced Scale Practice'),
+          title: translate("Advanced Scale Practice"),
         }}
       />
       <Stack.Screen
         name="Advanced Arpeggio Practice"
         component={AdvancedArpeggio}
         options={{
-          title: translate('Advanced Arpeggio Practice'),
+          title: translate("Advanced Arpeggio Practice"),
         }}
       />
     </Stack.Navigator>

@@ -1,12 +1,12 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { useDarkMode } from "react-native-dynamic";
 
-import RandomScale from './RandomScale/RandomScale';
-import RandomArpeggio from './RandomArpeggio/RandomArpeggio';
-import { HeaderButton } from '../Components';
-import { translate } from '../Translations/TranslationModel';
-import { colors } from '../Model/Model';
+import RandomScale from "../Screens/RandomScale/RandomScale";
+import RandomArpeggio from "../Screens/RandomArpeggio/RandomArpeggio";
+import { HeaderButton } from "../Components";
+import { translate } from "../Translations/TranslationModel";
+import { colors } from "../Model/Model";
 
 const Stack = createStackNavigator();
 
@@ -41,9 +41,9 @@ const RandomStack = ({ navigation }) => {
           borderBottomColor: DARKMODE
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
-          shadowColor: 'transparent',
+          shadowColor: "transparent",
         },
-        headerBackTitle: translate('Back'),
+        headerBackTitle: translate("Back"),
       }}
     >
       <Stack.Screen
@@ -53,20 +53,20 @@ const RandomStack = ({ navigation }) => {
           headerRight: () => (
             <HeaderButton
               handler={() => {
-                navigation.navigate('Random Arpeggio Practice');
+                navigation.navigate("Random Arpeggio Practice");
               }}
             >
-              {translate('Arpeggios')}
+              {translate("Arpeggios")}
             </HeaderButton>
           ),
-          title: translate('Random Scale Practice'),
+          title: translate("Random Scale Practice"),
         }}
       />
       <Stack.Screen
         name="Random Arpeggio Practice"
         component={RandomArpeggio}
         options={{
-          title: translate('Random Arpeggio Practice'),
+          title: translate("Random Arpeggio Practice"),
         }}
       />
     </Stack.Navigator>

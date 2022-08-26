@@ -4,22 +4,21 @@ import React, {
   useEffect,
   useState,
   useRef,
-} from 'react';
-import { Alert, View, ScrollView, Pressable, Text } from 'react-native';
-import Popover from 'react-native-popover-view';
+} from "react";
+import { Alert, View, ScrollView, Pressable, Text } from "react-native";
+import Popover from "react-native-popover-view";
 import {
   DynamicStyleSheet,
   DynamicValue,
   useDynamicValue,
-} from 'react-native-dynamic';
+} from "react-native-dynamic";
 
 import {
   RandomizeButton,
   LargeScaleDisplay,
   ScaleDisplay,
-} from '../../Components';
-import RandomScaleSettings from './RandomScaleSettings/RandomScaleSettings';
-import { createScaleArrayFromParts } from '../utils/RandomUtils';
+} from "../../Components";
+import RandomScaleSettings from "./RandomScaleSettings/RandomScaleSettings";
 
 import {
   colors,
@@ -30,11 +29,17 @@ import {
   majorModeNames,
   melodicMinorModeNames,
   octatonicScaleNames,
-} from '../../Model/Model';
-import { PreferencesContext } from '../../Model/Preferences';
-import { translate } from '../../Translations/TranslationModel';
+} from "../../Model/Model";
+import { PreferencesContext } from "../../Model/Preferences";
+import { translate } from "../../Translations/TranslationModel";
 
-import { random, debounce, shuffle, useIdleScreen } from '../../utils';
+import {
+  random,
+  debounce,
+  shuffle,
+  useIdleScreen,
+  createScaleArrayFromParts,
+} from "../../utils";
 
 /**
  * @todo Refactor this to be more functional
@@ -59,7 +64,7 @@ const RandomScale = () => {
   const [showSelectionPopover, setShowSelectionPopover] = useState(false);
 
   const [currentScale, setCurrentScale] = useState(
-    translate('No Scale Selected'),
+    translate("No Scale Selected")
   );
 
   const [scaleArrayIndex, setScaleArrayIndex] = useState(0);
@@ -196,58 +201,58 @@ const RandomScale = () => {
 
     if (majorSwitch) {
       possibleScales.push(
-        ...createScaleArrayFromParts(majorLetterNames, ['Major']),
+        ...createScaleArrayFromParts(majorLetterNames, ["Major"])
       );
     }
     if (naturalMinorSwitch) {
       possibleScales.push(
-        ...createScaleArrayFromParts(minorLetterNames, ['Natural Minor']),
+        ...createScaleArrayFromParts(minorLetterNames, ["Natural Minor"])
       );
     }
     if (harmonicMinorSwitch) {
       possibleScales.push(
-        ...createScaleArrayFromParts(minorLetterNames, ['Harmonic Minor']),
+        ...createScaleArrayFromParts(minorLetterNames, ["Harmonic Minor"])
       );
     }
     if (melodicMinorSwitch) {
       possibleScales.push(
-        ...createScaleArrayFromParts(minorLetterNames, ['Melodic Minor']),
+        ...createScaleArrayFromParts(minorLetterNames, ["Melodic Minor"])
       );
     }
     if (majorModesSwitch) {
       possibleScales.push(
-        ...createScaleArrayFromParts(majorLetterNames, majorModeNames),
+        ...createScaleArrayFromParts(majorLetterNames, majorModeNames)
       );
     }
     if (melodicMinorModesSwitch) {
       possibleScales.push(
-        ...createScaleArrayFromParts(minorLetterNames, melodicMinorModeNames),
+        ...createScaleArrayFromParts(minorLetterNames, melodicMinorModeNames)
       );
     }
     if (bluesSwitch) {
       possibleScales.push(
-        ...createScaleArrayFromParts(indeterminantLetterNames, ['Blues']),
+        ...createScaleArrayFromParts(indeterminantLetterNames, ["Blues"])
       );
     }
     if (pentatonicSwitch) {
       possibleScales.push(
         ...createScaleArrayFromParts(
           indeterminantLetterNames,
-          pentatonicScaleNames,
-        ),
+          pentatonicScaleNames
+        )
       );
     }
     if (octatonicSwtich) {
       possibleScales.push(
         ...createScaleArrayFromParts(
           indeterminantLetterNames,
-          octatonicScaleNames,
-        ),
+          octatonicScaleNames
+        )
       );
     }
     if (wholeToneSwitch) {
       possibleScales.push(
-        ...createScaleArrayFromParts(indeterminantLetterNames, ['Whole Tone']),
+        ...createScaleArrayFromParts(indeterminantLetterNames, ["Whole Tone"])
       );
     }
     setScaleArray(shuffle(possibleScales));
@@ -267,20 +272,20 @@ const RandomScale = () => {
       // Ensuring that the new scale is at least different from the old one
       if (scaleArray.length === 0) {
         Alert.alert(
-          translate('No Scale Selected'),
-          translate('Please select at least one category'),
+          translate("No Scale Selected"),
+          translate("Please select at least one category")
         );
       } else {
         let newScale;
         do {
           newScale = scaleArray[random(scaleArray.length - 1)];
         } while (newScale == currentScale);
-        setCurrentScale(newScale ? newScale : translate('No Scale Selected'));
+        setCurrentScale(newScale ? newScale : translate("No Scale Selected"));
       }
     } else {
       // Do not repeat scales
       if (scaleArrayIndex >= scaleArray.length) {
-        Alert.alert('All scaled practiced!', '', [
+        Alert.alert("All scaled practiced!", "", [
           {
             onPress: () => {
               setScaleArrayIndex(1);
@@ -361,7 +366,7 @@ const RandomScale = () => {
         style={styles.selectionsButton}
       >
         <Text style={styles.selectionsText}>
-          {translate('Scale Selections')}
+          {translate("Scale Selections")}
         </Text>
       </Pressable>
       <Popover
@@ -389,7 +394,7 @@ const RandomScale = () => {
         <RandomizeButton
           handler={debouncedGetNewScale}
           accessibilityValue={{ text: `${translate(currentScale)}` }}
-          accessibilityHint={translate('Randomizes a new scale')}
+          accessibilityHint={translate("Randomizes a new scale")}
           accessible={true}
         />
       </View>
@@ -405,32 +410,32 @@ const dynamicStyles = new DynamicStyleSheet({
   mainActionButton: {
     borderColor: new DynamicValue(
       colors.systemGray5Light,
-      colors.systemGray5Dark,
+      colors.systemGray5Dark
     ),
     borderTopWidth: 1,
   },
   popoverArrow: {
     backgroundColor: new DynamicValue(
       colors.systemGray6Light,
-      colors.systemGray6Dark,
+      colors.systemGray6Dark
     ),
   },
   popoverContainer: {
     width: 300,
     backgroundColor: new DynamicValue(
       colors.systemGray6Light,
-      colors.systemGray6Dark,
+      colors.systemGray6Dark
     ),
   },
   scaleDisplay: {
     borderBottomWidth: 1,
     borderColor: new DynamicValue(
       colors.systemGray5Light,
-      colors.systemGray5Dark,
+      colors.systemGray5Dark
     ),
   },
   selectionsButton: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 5,
     right: 5,
     height: 25,
@@ -441,8 +446,8 @@ const dynamicStyles = new DynamicStyleSheet({
   },
   switchesContainer: {
     flex: 1,
-    alignSelf: 'center',
-    width: '100%',
+    alignSelf: "center",
+    width: "100%",
     marginHorizontal: 10,
   },
 });

@@ -1,13 +1,13 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { useDarkMode } from "react-native-dynamic";
 
-import ScaleResources from './ScaleResources/ScaleResources';
-import ArpeggioResources from './ArpeggioResources/ArpeggioResources';
-import ScaleDetail from './ScaleDetail/ScaleDetail';
-import { HeaderButton } from '../Components';
-import { translate } from '../Translations/TranslationModel';
-import { colors } from '../Model/Model';
+import ScaleResources from "../Screens/ScaleResources/ScaleResources";
+import ArpeggioResources from "../Screens/ArpeggioResources/ArpeggioResources";
+import ScaleDetail from "../Screens/ScaleDetail/ScaleDetail";
+import { HeaderButton } from "../Components";
+import { translate } from "../Translations/TranslationModel";
+import { colors } from "../Model/Model";
 
 const Stack = createStackNavigator();
 
@@ -42,9 +42,9 @@ const ResourcesStack = ({ navigation }) => {
           borderBottomColor: DARKMODE
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
-          shadowColor: 'transparent',
+          shadowColor: "transparent",
         },
-        headerBackTitle: translate('Back'),
+        headerBackTitle: translate("Back"),
       }}
     >
       <Stack.Screen
@@ -54,20 +54,20 @@ const ResourcesStack = ({ navigation }) => {
           headerRight: () => (
             <HeaderButton
               handler={() => {
-                navigation.navigate('Arpeggio Resources');
+                navigation.navigate("Arpeggio Resources");
               }}
             >
-              {translate('Arpeggios')}
+              {translate("Arpeggios")}
             </HeaderButton>
           ),
-          title: translate('Scale Resources'),
+          title: translate("Scale Resources"),
         }}
       />
       <Stack.Screen
         name="Arpeggio Resources"
         component={ArpeggioResources}
         options={{
-          title: translate('Arpeggio Resources'),
+          title: translate("Arpeggio Resources"),
         }}
       />
       <Stack.Screen
