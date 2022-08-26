@@ -1,10 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Alert, View, Text, FlatList } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
+import React, { useState, useContext, useEffect } from "react";
+import { Alert, View, Text, FlatList } from "react-native";
 
 import {
   AddToListButton,
@@ -13,13 +8,18 @@ import {
   ScaleDisplay,
   ScalePickers,
   SwipeableRow,
-} from '../../Components';
+} from "../../Components";
 
-import { colors, allNoteNames, allArpeggioNames } from '../../Model/Model';
-import { PreferencesContext } from '../../Model/Preferences';
-import { translate } from '../../Translations/TranslationModel';
+import { colors, allNoteNames, allArpeggioNames } from "../../Model/Model";
+import { PreferencesContext } from "../../Model/Preferences";
+import { translate } from "../../Translations/TranslationModel";
 
-import { shuffle, useIdleScreen, getIsSmallScreen } from '../../utils';
+import {
+  shuffle,
+  useIdleScreen,
+  getIsSmallScreen,
+  useDarkMode,
+} from "../../utils";
 
 /**
  * @description A view that allows the user to randomize between a list of
@@ -34,15 +34,72 @@ import { shuffle, useIdleScreen, getIsSmallScreen } from '../../utils';
 const AdvancedArpeggio = () => {
   useIdleScreen();
 
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    buttonContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    list: {
+      flex: 1,
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Light
+        : colors.systemGray5Dark,
+      borderTopWidth: 1,
+    },
+    listItemContainer: {
+      paddingLeft: 20,
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+    },
+    listItemText: {
+      paddingVertical: 15,
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    listItemTextContainer: {
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+
+      borderBottomWidth: 1,
+    },
+    mainActionButton: {
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    rightAction: {
+      alignItems: "center",
+      flexDirection: "row",
+      backgroundColor: DARKMODE ? colors.redDark : colors.redLight,
+      flex: 1,
+      justifyContent: "flex-end",
+    },
+    smallScreenButtonContainer: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    trashIcon: {
+      paddingRight: 10,
+    },
+  };
+
   const [possibleArpeggios, setpossibleArpeggios] = useState([]);
   const [arpeggioArrayIndex, setArpeggioArrayIndex] = useState(0);
   const [randomArpeggioArray, setRandomArpeggioArray] = useState([]);
   const [currentArpeggio, setCurrentArpeggio] = useState(
-    translate('No Arpeggio Selected'),
+    translate("No Arpeggio Selected")
   );
-  const [selectedNote, setSelectedNote] = useState('C');
-  const [selectedArpeggio, setSelectedArpeggio] = useState(translate('Major'));
+  const [selectedNote, setSelectedNote] = useState("C");
+  const [selectedArpeggio, setSelectedArpeggio] = useState(translate("Major"));
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const { state } = useContext(PreferencesContext);
 
@@ -57,7 +114,7 @@ const AdvancedArpeggio = () => {
     function setupComponent() {
       setIsSmallScreen(getIsSmallScreen());
     },
-    [],
+    []
   );
 
   /**
@@ -78,7 +135,7 @@ const AdvancedArpeggio = () => {
       setRandomArpeggioArray(shuffle([newArpeggio, ...possibleArpeggios]));
       setArpeggioArrayIndex(0);
     } else {
-      Alert.alert(translate('Arpeggio Already Selected'));
+      Alert.alert(translate("Arpeggio Already Selected"));
     }
   };
 
@@ -93,8 +150,8 @@ const AdvancedArpeggio = () => {
   const generateArpeggio = () => {
     if (possibleArpeggios.length === 0) {
       Alert.alert(
-        translate('No Arpeggio Selected'),
-        translate('Please select at least one arpeggio'),
+        translate("No Arpeggio Selected"),
+        translate("Please select at least one arpeggio")
       );
     } else {
       if (state.repeat) {
@@ -111,12 +168,12 @@ const AdvancedArpeggio = () => {
           } while (newArpeggio === currentArpeggio);
         }
         setCurrentArpeggio(
-          newArpeggio ? newArpeggio : translate('No Arpeggio Selected'),
+          newArpeggio ? newArpeggio : translate("No Arpeggio Selected")
         );
       } else {
         // Don't repeat Arpeggios
         if (arpeggioArrayIndex >= possibleArpeggios.length) {
-          Alert.alert('All arpeggios practiced!', '', [
+          Alert.alert("All arpeggios practiced!", "", [
             {
               onPress: () => {
                 setArpeggioArrayIndex(1);
@@ -216,65 +273,5 @@ const AdvancedArpeggio = () => {
     </View>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  container: {
-    flex: 1,
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  list: {
-    flex: 1,
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  listItemContainer: {
-    paddingLeft: 20,
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-  },
-  listItemText: {
-    paddingVertical: 15,
-    color: new DynamicValue(colors.black, colors.white),
-  },
-  listItemTextContainer: {
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderBottomWidth: 1,
-  },
-  mainActionButton: {
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  rightAction: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  smallScreenButtonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  trashIcon: {
-    paddingRight: 10,
-  },
-});
 
 export default AdvancedArpeggio;

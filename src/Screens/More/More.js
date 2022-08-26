@@ -1,23 +1,18 @@
-import React, { useContext } from 'react';
-import { View, Text, SectionList } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, { useContext } from "react";
+import { View, Text, SectionList } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 import {
   SwitchListItem,
   LinkListItem,
   TextListItem,
   InternalListItem,
-} from '../../Components';
-import { colors } from '../../Model/Model';
-import { RESOURCES, ABOUT, SETTINGS } from '../../Model/MoreModel';
-import { PreferencesContext } from '../../Model/Preferences';
-import { translate } from '../../Translations/TranslationModel';
-import { useIdleScreen } from '../../utils';
+} from "../../Components";
+import { colors } from "../../Model/Model";
+import { RESOURCES, ABOUT, SETTINGS } from "../../Model/MoreModel";
+import { PreferencesContext } from "../../Model/Preferences";
+import { translate } from "../../Translations/TranslationModel";
+import { useDarkMode, useIdleScreen } from "../../utils";
 
 /**
  * @description A view with links to additional resources and settings for the
@@ -32,27 +27,71 @@ import { useIdleScreen } from '../../utils';
 const More = () => {
   useIdleScreen();
 
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    javascriptBackground: {
+      backgroundColor: colors.black,
+      height: 20,
+      width: 20,
+      marginLeft: 7,
+      marginTop: 3,
+      zIndex: -1,
+      position: "absolute",
+    },
+    listItemSeparator: {
+      height: 0.5,
+      width: "100%",
+      backgroundColor: DARKMODE
+        ? colors.systemGray3Dark
+        : colors.systemGray3Light,
+    },
+    listHeader: {
+      textTransform: "uppercase",
+      paddingLeft: 20,
+      paddingTop: 30,
+      paddingBottom: 10,
+      color: colors.systemGray,
+    },
+    sectionList: {
+      height: "100%",
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    iconContainer: {
+      flexDirection: "row",
+    },
+    icon: {
+      paddingHorizontal: 5,
+    },
+    footerContainer: {
+      paddingTop: 30,
+      alignItems: "center",
+    },
+    footerText: {
+      color: colors.systemGray,
+      paddingTop: 10,
+      paddingBottom: 30,
+    },
+  };
   const { state, dispatch } = useContext(PreferencesContext);
 
   return (
     <View>
       <SectionList
         sections={[
-          { title: translate('Settings'), data: SETTINGS },
-          { title: translate('Resources'), data: RESOURCES },
-          { title: translate('About'), data: ABOUT },
+          { title: translate("Settings"), data: SETTINGS },
+          { title: translate("Resources"), data: RESOURCES },
+          { title: translate("About"), data: ABOUT },
         ]}
         keyExtractor={(item, index) => index}
         renderItem={({ item }) => {
           switch (item.type) {
-            case 'link':
+            case "link":
               return <LinkListItem item={item} />;
-            case 'text':
+            case "text":
               return <TextListItem item={item} />;
-            case 'navigate':
+            case "navigate":
               return <InternalListItem item={item} />;
-            case 'switch':
+            case "switch":
               return (
                 <SwitchListItem item={item} state={state} dispatch={dispatch} />
               );
@@ -67,7 +106,7 @@ const More = () => {
           <View style={styles.footerContainer} importantForAccessibility="no">
             <View style={styles.iconContainer}>
               <Ionicons
-                accessibilityLabel={translate('React Native Icon')}
+                accessibilityLabel={translate("React Native Icon")}
                 style={styles.icon}
                 name="logo-react"
                 size={24}
@@ -76,7 +115,7 @@ const More = () => {
               <View>
                 <View style={styles.javascriptBackground} />
                 <Ionicons
-                  accessibilityLabel={translate('JavaScript Icon')}
+                  accessibilityLabel={translate("JavaScript Icon")}
                   style={styles.icon}
                   name="logo-javascript"
                   size={24}
@@ -85,7 +124,7 @@ const More = () => {
               </View>
             </View>
             <Text style={styles.footerText}>
-              {translate('Made with ❤️ in Dayton, Ohio')}
+              {translate("Made with ❤️ in Dayton, Ohio")}
             </Text>
           </View>
         }
@@ -93,51 +132,5 @@ const More = () => {
     </View>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  javascriptBackground: {
-    backgroundColor: colors.black,
-    height: 20,
-    width: 20,
-    marginLeft: 7,
-    marginTop: 3,
-    zIndex: -1,
-    position: 'absolute',
-  },
-  listItemSeparator: {
-    height: 0.5,
-    width: '100%',
-    backgroundColor: new DynamicValue(
-      colors.systemGray3Light,
-      colors.systemGray3Dark,
-    ),
-  },
-  listHeader: {
-    textTransform: 'uppercase',
-    paddingLeft: 20,
-    paddingTop: 30,
-    paddingBottom: 10,
-    color: new DynamicValue(colors.systemGray, colors.systemGray),
-  },
-  sectionList: {
-    height: '100%',
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  iconContainer: {
-    flexDirection: 'row',
-  },
-  icon: {
-    paddingHorizontal: 5,
-  },
-  footerContainer: {
-    paddingTop: 30,
-    alignItems: 'center',
-  },
-  footerText: {
-    color: colors.systemGray,
-    paddingTop: 10,
-    paddingBottom: 30,
-  },
-});
 
 export default More;

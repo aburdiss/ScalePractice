@@ -1,13 +1,9 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
+import React from "react";
+import { View, Text } from "react-native";
 
-import { colors } from '../../../Model/Model';
-import { translate } from '../../../Translations/TranslationModel';
+import { colors } from "../../../Model/Model";
+import { translate } from "../../../Translations/TranslationModel";
+import { useDarkMode } from "../../../utils";
 
 /**
  * @description A rendered Text list item. This is currently only being
@@ -21,47 +17,45 @@ import { translate } from '../../../Translations/TranslationModel';
  * <TextListItem item={item} />
  */
 export default function TextListItem({ item }) {
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listRowContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      paddingVertical: 8,
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+    },
+    listRowText: {
+      color: DARKMODE ? colors.white : colors.black,
+      paddingVertical: 5,
+    },
+    linkImage: {
+      height: 25,
+      width: 25,
+      borderRadius: 4,
+      marginRight: 5,
+      resizeMode: "contain",
+    },
+    linkText: {
+      color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+      paddingRight: 5,
+      flex: 1,
+    },
+  };
 
   return (
     <View style={styles.listRowContainer}>
       <Text style={styles.listRowText} accessibilityRole="text">
-        {item.value.includes('Alexander Burdiss')
+        {item.value.includes("Alexander Burdiss")
           ? item.value
           : translate(item.value)}
       </Text>
     </View>
   );
 }
-
-const dynamicStyles = new DynamicStyleSheet({
-  listRowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-    paddingVertical: 8,
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-  },
-  listRowText: {
-    color: new DynamicValue(colors.black, colors.white),
-    paddingVertical: 5,
-  },
-  linkImage: {
-    height: 25,
-    width: 25,
-    borderRadius: 4,
-    marginRight: 5,
-    resizeMode: 'contain',
-  },
-  linkText: {
-    color: new DynamicValue(colors.purpleLight, colors.purpleDark),
-    paddingRight: 5,
-    flex: 1,
-  },
-});

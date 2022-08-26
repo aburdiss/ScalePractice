@@ -1,13 +1,9 @@
-import React from 'react';
-import { Text, Pressable, Switch } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
+import React from "react";
+import { Text, Pressable, Switch } from "react-native";
 
-import { colors } from '../../../Model/Model';
-import { translate } from '../../../Translations/TranslationModel';
+import { colors } from "../../../Model/Model";
+import { translate } from "../../../Translations/TranslationModel";
+import { useDarkMode } from "../../../utils";
 
 /**
  * @description A rendered Switch list item that updates saved preferences.
@@ -28,11 +24,42 @@ import { translate } from '../../../Translations/TranslationModel';
  * />
  */
 export default function SwitchListItem({ item, state, dispatch }) {
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    listRowContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      paddingVertical: 8,
+      paddingHorizontal: 20,
+      borderBottomWidth: 1,
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+    },
+    listRowText: {
+      color: DARKMODE ? colors.white : colors.black,
+      paddingVertical: 5,
+    },
+    linkImage: {
+      height: 25,
+      width: 25,
+      borderRadius: 4,
+      marginRight: 5,
+      resizeMode: "contain",
+    },
+    linkText: {
+      color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+      paddingRight: 5,
+      flex: 1,
+    },
+  };
+
   function updateValue() {
     let updatedState = !state[item.setting];
     let newSetting = { [item.setting]: updatedState };
-    dispatch({ type: 'SET_SETTING', payload: newSetting });
+    dispatch({ type: "SET_SETTING", payload: newSetting });
   }
   return (
     <Pressable
@@ -43,7 +70,7 @@ export default function SwitchListItem({ item, state, dispatch }) {
       accessibilityState={{ checked: state[item.setting] }}
       accessibilityRole="switch"
       accessibilityHint={
-        translate('Toggles setting') + ' ' + translate(item.value)
+        translate("Toggles setting") + " " + translate(item.value)
       }
     >
       <Text style={styles.listRowText}>{translate(item.value)}</Text>
@@ -51,35 +78,3 @@ export default function SwitchListItem({ item, state, dispatch }) {
     </Pressable>
   );
 }
-
-const dynamicStyles = new DynamicStyleSheet({
-  listRowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-    paddingVertical: 8,
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-  },
-  listRowText: {
-    color: new DynamicValue(colors.black, colors.white),
-    paddingVertical: 5,
-  },
-  linkImage: {
-    height: 25,
-    width: 25,
-    borderRadius: 4,
-    marginRight: 5,
-    resizeMode: 'contain',
-  },
-  linkText: {
-    color: new DynamicValue(colors.purpleLight, colors.purpleDark),
-    paddingRight: 5,
-    flex: 1,
-  },
-});

@@ -7,11 +7,6 @@ import React, {
 } from "react";
 import { Alert, View, ScrollView, Pressable, Text } from "react-native";
 import Popover from "react-native-popover-view";
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from "react-native-dynamic";
 
 import {
   RandomizeButton,
@@ -38,6 +33,7 @@ import {
   debounce,
   shuffle,
   useIdleScreen,
+  useDarkMode,
   createScaleArrayFromParts,
 } from "../../utils";
 
@@ -56,7 +52,48 @@ import {
 const RandomScale = () => {
   useIdleScreen();
 
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    mainActionButton: {
+      borderColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    popoverArrow: {
+      backgroundColor: DARKMODE
+        ? colors.systemGray6Dark
+        : colors.systemGray6Light,
+    },
+    popoverContainer: {
+      width: 300,
+      backgroundColor: DARKMODE
+        ? colors.systemGray6Dark
+        : colors.systemGray6Light,
+    },
+    scaleDisplay: {
+      borderBottomWidth: 1,
+      borderColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
+    },
+    selectionsButton: {
+      position: "absolute",
+      bottom: 5,
+      right: 5,
+      height: 25,
+      zIndex: 2,
+    },
+    selectionsText: {
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    switchesContainer: {
+      flex: 1,
+      alignSelf: "center",
+      width: "100%",
+      marginHorizontal: 10,
+    },
+  };
 
   const { state } = useContext(PreferencesContext);
 
@@ -401,55 +438,5 @@ const RandomScale = () => {
     </View>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  container: {
-    flex: 1,
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  mainActionButton: {
-    borderColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark
-    ),
-    borderTopWidth: 1,
-  },
-  popoverArrow: {
-    backgroundColor: new DynamicValue(
-      colors.systemGray6Light,
-      colors.systemGray6Dark
-    ),
-  },
-  popoverContainer: {
-    width: 300,
-    backgroundColor: new DynamicValue(
-      colors.systemGray6Light,
-      colors.systemGray6Dark
-    ),
-  },
-  scaleDisplay: {
-    borderBottomWidth: 1,
-    borderColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark
-    ),
-  },
-  selectionsButton: {
-    position: "absolute",
-    bottom: 5,
-    right: 5,
-    height: 25,
-    zIndex: 2,
-  },
-  selectionsText: {
-    color: new DynamicValue(colors.black, colors.white),
-  },
-  switchesContainer: {
-    flex: 1,
-    alignSelf: "center",
-    width: "100%",
-    marginHorizontal: 10,
-  },
-});
 
 export default RandomScale;

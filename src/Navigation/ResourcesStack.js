@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { useDarkMode } from "react-native-dynamic";
+import { useDarkMode } from "../utils";
 
 import ScaleResources from "../Screens/ScaleResources/ScaleResources";
 import ArpeggioResources from "../Screens/ArpeggioResources/ArpeggioResources";

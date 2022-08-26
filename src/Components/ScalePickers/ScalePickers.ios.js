@@ -1,10 +1,10 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { View } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { useDarkMode } from "../../utils";
 
-import { colors } from '../../Model/Model';
-import { translate } from '../../Translations/TranslationModel';
+import { colors } from "../../Model/Model";
+import { translate } from "../../Translations/TranslationModel";
 
 /**
  * @description Pickers used on iOS devices to select scales. Used on
@@ -48,12 +48,12 @@ const ScalePickers = ({
   return (
     <View
       style={{
-        flexDirection: 'row',
+        flexDirection: "row",
       }}
     >
       <View
         style={{
-          width: '25%',
+          width: "25%",
         }}
       >
         <Picker
@@ -70,7 +70,7 @@ const ScalePickers = ({
       </View>
       <View
         style={{
-          width: '75%',
+          width: "75%",
         }}
       >
         <Picker

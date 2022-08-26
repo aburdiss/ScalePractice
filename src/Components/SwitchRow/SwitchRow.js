@@ -1,13 +1,9 @@
-import React from 'react';
-import { Text, Switch, Pressable } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
+import React from "react";
+import { Text, Switch, Pressable } from "react-native";
 
-import { colors } from '../../Model/Model';
-import { translate } from '../../Translations/TranslationModel';
+import { colors } from "../../Model/Model";
+import { translate } from "../../Translations/TranslationModel";
+import { useDarkMode } from "../../utils";
 
 /**
  * @description One Switch Row that is used on the Scale and Arpeggio Display
@@ -29,7 +25,19 @@ import { translate } from '../../Translations/TranslationModel';
  * />
  */
 const SwitchRow = ({ value, onValueChange, text }) => {
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    switchRow: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      paddingVertical: 4,
+      paddingHorizontal: 40,
+    },
+    switchText: {
+      color: DARKMODE ? colors.white : colors.black,
+    },
+  };
 
   return (
     <Pressable
@@ -37,7 +45,7 @@ const SwitchRow = ({ value, onValueChange, text }) => {
       accessible={true}
       accessibilityState={{ checked: value }}
       accessibilityRole="switch"
-      accessibilityLabel={translate('Toggles Switch') + ' ' + text}
+      accessibilityLabel={translate("Toggles Switch") + " " + text}
       onPress={onValueChange}
     >
       <Text style={styles.switchText}>{text}</Text>
@@ -45,18 +53,5 @@ const SwitchRow = ({ value, onValueChange, text }) => {
     </Pressable>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  switchRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 4,
-    paddingHorizontal: 40,
-  },
-  switchText: {
-    color: new DynamicValue(colors.black, colors.white),
-  },
-});
 
 export default SwitchRow;

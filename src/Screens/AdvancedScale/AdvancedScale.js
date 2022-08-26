@@ -1,10 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Alert, View, Text, FlatList } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
+import React, { useState, useContext, useEffect } from "react";
+import { Alert, View, Text, FlatList } from "react-native";
 
 import {
   AddToListButton,
@@ -13,13 +8,18 @@ import {
   ScaleDisplay,
   ScalePickers,
   SwipeableRow,
-} from '../../Components';
+} from "../../Components";
 
-import { colors, allScaleNames, allNoteNames } from '../../Model/Model';
-import { PreferencesContext } from '../../Model/Preferences';
-import { translate } from '../../Translations/TranslationModel';
+import { colors, allScaleNames, allNoteNames } from "../../Model/Model";
+import { PreferencesContext } from "../../Model/Preferences";
+import { translate } from "../../Translations/TranslationModel";
 
-import { shuffle, getIsSmallScreen, useIdleScreen } from '../../utils';
+import {
+  shuffle,
+  getIsSmallScreen,
+  useIdleScreen,
+  useDarkMode,
+} from "../../utils";
 
 /**
  * @description A view that allows the user to randomize between a list of
@@ -34,15 +34,72 @@ import { shuffle, getIsSmallScreen, useIdleScreen } from '../../utils';
 const AdvancedScale = () => {
   useIdleScreen();
 
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    buttonContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+    container: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+    list: {
+      flex: 1,
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+
+      borderTopWidth: 1,
+    },
+    listItemContainer: {
+      paddingLeft: 20,
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+    },
+    listItemText: {
+      paddingVertical: 15,
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    listItemTextContainer: {
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderBottomWidth: 1,
+    },
+    mainActionButton: {
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+
+      borderTopWidth: 1,
+    },
+    rightAction: {
+      alignItems: "center",
+      flexDirection: "row",
+      backgroundColor: DARKMODE ? colors.redDark : colors.redLight,
+      flex: 1,
+      justifyContent: "flex-end",
+    },
+    smallScreenButtonContainer: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      borderTopColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderTopWidth: 1,
+    },
+    trashIcon: {
+      paddingRight: 10,
+    },
+  };
   const [possibleScales, setPossibleScales] = useState([]);
   const [scaleArrayIndex, setScaleArrayIndex] = useState(0);
   const [randomScaleArray, setRandomScaleArray] = useState([]);
   const [currentScale, setCurrentScale] = useState(
-    translate('No Scale Selected'),
+    translate("No Scale Selected")
   );
-  const [selectedNote, setSelectedNote] = useState('C');
-  const [selectedScale, setSelectedScale] = useState(translate('Major'));
+  const [selectedNote, setSelectedNote] = useState("C");
+  const [selectedScale, setSelectedScale] = useState(translate("Major"));
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const { state } = useContext(PreferencesContext);
 
@@ -57,7 +114,7 @@ const AdvancedScale = () => {
     function setupComponent() {
       setIsSmallScreen(getIsSmallScreen());
     },
-    [],
+    []
   );
 
   /**
@@ -79,7 +136,7 @@ const AdvancedScale = () => {
       setRandomScaleArray(shuffle([newScale, ...possibleScales]));
       setScaleArrayIndex(0);
     } else {
-      Alert.alert(translate('Scale Already Selected'));
+      Alert.alert(translate("Scale Already Selected"));
     }
   };
 
@@ -94,8 +151,8 @@ const AdvancedScale = () => {
   const generateScale = () => {
     if (possibleScales.length === 0) {
       Alert.alert(
-        translate('No Scale Selected'),
-        translate('Please select at least one scale'),
+        translate("No Scale Selected"),
+        translate("Please select at least one scale")
       );
     } else {
       if (state.repeat) {
@@ -107,11 +164,11 @@ const AdvancedScale = () => {
               possibleScales[Math.floor(Math.random() * possibleScales.length)];
           } while (newScale === currentScale);
         }
-        setCurrentScale(newScale ? newScale : 'No Scale Selected');
+        setCurrentScale(newScale ? newScale : "No Scale Selected");
       } else {
         // Don't repeat scales
         if (scaleArrayIndex >= possibleScales.length) {
-          Alert.alert('All scaled practiced!', '', [
+          Alert.alert("All scaled practiced!", "", [
             {
               onPress: () => {
                 setScaleArrayIndex(1);
@@ -211,65 +268,5 @@ const AdvancedScale = () => {
     </View>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  container: {
-    flex: 1,
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-  list: {
-    flex: 1,
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  listItemContainer: {
-    paddingLeft: 20,
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-  },
-  listItemText: {
-    paddingVertical: 15,
-    color: new DynamicValue(colors.black, colors.white),
-  },
-  listItemTextContainer: {
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderBottomWidth: 1,
-  },
-  mainActionButton: {
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  rightAction: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    backgroundColor: new DynamicValue(colors.redLight, colors.redDark),
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  smallScreenButtonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderTopColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderTopWidth: 1,
-  },
-  trashIcon: {
-    paddingRight: 10,
-  },
-});
 
 export default AdvancedScale;

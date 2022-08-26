@@ -25,7 +25,6 @@
     "react": "17.0.2",
     "react-native": "0.67.2",
     "react-native-device-info": "^8.4.8",
-    "react-native-dynamic": "^1.0.0",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-idle-timer": "^2.1.7",
     "react-native-linear-gradient": "^2.5.6",
@@ -105,7 +104,7 @@
       "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(@react-native|react-native|react-native-popover-view|react-native-linear-gradient|react-native-animatable|react-native-scalable-image|react-native-modal|react-native-dynamic|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/segmented-control|react-native-picker-select|@react-native-picker/picker)/)"
+      "node_modules/(?!(@react-native|react-native|react-native-popover-view|react-native-linear-gradient|react-native-animatable|react-native-scalable-image|react-native-modal|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/segmented-control|react-native-picker-select|@react-native-picker/picker)/)"
     ]
   }
 }

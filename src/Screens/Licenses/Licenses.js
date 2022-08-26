@@ -8,15 +8,14 @@ Run this command to get the data
 
 */
 
-import React from 'react';
-import { View } from 'react-native';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { View } from "react-native";
 
-import LicensesList from './LicensesList';
-import { colors } from '../../Model/Model';
+import LicensesList from "./LicensesList";
+import { colors } from "../../Model/Model";
 
-import Data from './licenses.json';
-import { capitalize, useIdleScreen } from '../../utils';
+import Data from "./licenses.json";
+import { capitalize, useIdleScreen, useDarkMode } from "../../utils";
 
 /**
  * @function extractNameFromGithubUrl
@@ -67,10 +66,10 @@ let licenseData = Object.keys(Data).map((key) => {
   let { licenses, ...license } = Data[key];
 
   let name, version;
-  if (key[0] == '@') {
-    [, name, version] = key.split('@');
+  if (key[0] == "@") {
+    [, name, version] = key.split("@");
   } else {
-    [name, version] = key.split('@');
+    [name, version] = key.split("@");
   }
 
   let username =
@@ -97,7 +96,7 @@ let licenseData = Object.keys(Data).map((key) => {
   };
 });
 
-sortDataByKey(licenseData, 'username');
+sortDataByKey(licenseData, "username");
 
 /**
  * @description A wrapper for the LicensesList component that processes the

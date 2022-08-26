@@ -1,10 +1,10 @@
-import React from 'react';
-import { View, Text, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { View, Text, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useDarkMode } from "../../../utils";
 
-import { colors } from '../../../Model/Model';
-import { translate } from '../../../Translations/TranslationModel';
+import { colors } from "../../../Model/Model";
+import { translate } from "../../../Translations/TranslationModel";
 
 /**
  * @namespace FlatListItem
@@ -31,7 +31,7 @@ export default function FlatListItem({ data }) {
       accessibile={true}
       accessibilityLabel={translate(data.name)}
       onPress={() => {
-        navigation.navigate('Scale Detail', data);
+        navigation.navigate("Scale Detail", data);
       }}
       style={({ pressed }) => ({
         paddingLeft: 20,

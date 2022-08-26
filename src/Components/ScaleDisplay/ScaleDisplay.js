@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { View, Text } from "react-native";
+import { useDarkMode } from "../../utils";
 
-import { colors } from '../../Model/Model';
+import { colors } from "../../Model/Model";
 
 /**
  * @description A styled text box that shows the currently selected scale
@@ -26,8 +26,8 @@ const ScaleDisplay = ({ children }) => {
       accessibilityLabel={children}
       accessibilityRole="alert"
       style={{
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+        alignItems: "center",
+        justifyContent: "flex-end",
         padding: 10,
       }}
     >
@@ -38,9 +38,9 @@ const ScaleDisplay = ({ children }) => {
             ? colors.systemGray2Dark
             : colors.systemGray2Light,
           color: DARKMODE ? colors.white : colors.black,
-          overflow: 'hidden',
-          textAlign: 'center',
-          width: '100%',
+          overflow: "hidden",
+          textAlign: "center",
+          width: "100%",
           padding: 14,
           fontSize: 18,
           borderRadius: 8,

@@ -1,10 +1,10 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { View } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { useDarkMode } from "../../utils";
 
-import { colors } from '../../Model/Model';
-import { translate } from '../../Translations/TranslationModel';
+import { colors } from "../../Model/Model";
+import { translate } from "../../Translations/TranslationModel";
 
 /**
  * @description Pickers used on android devices to select scales. Used on
@@ -61,7 +61,7 @@ const ScalePickers = ({
       >
         <Picker
           selectedValue={selectedNote}
-          dropdownIconColor={DARKMODE ? '#bf5af2' : '#af52de'}
+          dropdownIconColor={DARKMODE ? "#bf5af2" : "#af52de"}
           onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
         >
           {noteNames.map((noteName) => (
@@ -84,7 +84,7 @@ const ScalePickers = ({
       >
         <Picker
           selectedValue={selectedScale}
-          dropdownIconColor={DARKMODE ? '#bf5af2' : '#af52de'}
+          dropdownIconColor={DARKMODE ? "#bf5af2" : "#af52de"}
           onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
         >
           {scaleNames.map((scaleName) => (

@@ -1,14 +1,9 @@
-import React from 'react';
-import { ScrollView, View, Text, Image } from 'react-native';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-} from 'react-native-dynamic';
+import React from "react";
+import { ScrollView, View, Text, Image } from "react-native";
 
-import { colors, getImagePath } from '../../Model/Model';
-import { translate } from '../../Translations/TranslationModel';
-import { useIdleScreen } from '../../utils';
+import { colors, getImagePath } from "../../Model/Model";
+import { translate } from "../../Translations/TranslationModel";
+import { useDarkMode, useIdleScreen } from "../../utils";
 
 /**
  * @description A component that renders a detailed image, based on the id
@@ -24,7 +19,31 @@ import { useIdleScreen } from '../../utils';
 const ScaleDetail = ({ route }) => {
   useIdleScreen();
 
-  const styles = useDynamicValue(dynamicStyles);
+  const DARKMODE = useDarkMode();
+  const styles = {
+    construction: {
+      textAlign: "center",
+      padding: 10,
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    description: {
+      paddingTop: 10,
+      paddingHorizontal: 20,
+      color: DARKMODE ? colors.white : colors.black,
+    },
+    image: {
+      width: "100%",
+      resizeMode: "contain",
+    },
+    imageContainer: {
+      flex: 1,
+      alignItems: "center",
+    },
+    viewContainer: {
+      height: "100%",
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+    },
+  };
 
   const path = getImagePath(route.params.id);
 
@@ -42,30 +61,5 @@ const ScaleDetail = ({ route }) => {
     </ScrollView>
   );
 };
-
-const dynamicStyles = new DynamicStyleSheet({
-  construction: {
-    textAlign: 'center',
-    padding: 10,
-    color: new DynamicValue(colors.black, colors.white),
-  },
-  description: {
-    paddingTop: 10,
-    paddingHorizontal: 20,
-    color: new DynamicValue(colors.black, colors.white),
-  },
-  image: {
-    width: '100%',
-    resizeMode: 'contain',
-  },
-  imageContainer: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  viewContainer: {
-    height: '100%',
-    backgroundColor: new DynamicValue(colors.systemGray6Light, colors.black),
-  },
-});
 
 export default ScaleDetail;

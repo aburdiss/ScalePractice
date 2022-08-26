@@ -1,10 +1,9 @@
-import React from 'react';
-import { View, FlatList } from 'react-native';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { View, FlatList } from "react-native";
 
-import { FlatListItem } from '../../Components';
-import { scaleResourceData, colors } from '../../Model/Model';
-import { useIdleScreen } from '../../utils';
+import { FlatListItem } from "../../Components";
+import { scaleResourceData, colors } from "../../Model/Model";
+import { useIdleScreen, useDarkMode } from "../../utils";
 
 /**
  * @description A view that allows the user to learn more about each scale in
@@ -30,7 +29,7 @@ const ScaleResources = () => {
         keyExtractor={(item) => item.id.toString()}
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
-          height: '100%',
+          height: "100%",
           backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
         }}
       />

@@ -1,13 +1,9 @@
-import React from 'react';
-import { Text, Pressable, View, Linking, Image } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { colors } from '../../Model/Model';
-import {
-  DynamicStyleSheet,
-  DynamicValue,
-  useDynamicValue,
-  useDarkMode,
-} from 'react-native-dynamic';
+import React from "react";
+import { Text, Pressable, View, Linking, Image } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { colors } from "../../Model/Model";
+
+import { useDarkMode } from "../../utils";
 
 /**
  * @description A styled list item that contains links to the authors of the
@@ -46,7 +42,46 @@ const LicensesListItem = ({
   licenseUrl,
 }) => {
   const DARKMODE = useDarkMode();
-  const styles = useDynamicValue(dynamicStyles);
+  const styles = {
+    card: {
+      overflow: "hidden",
+      flexDirection: "row",
+      backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
+      alignItems: "center",
+      paddingLeft: 12,
+    },
+    item: {
+      paddingVertical: 12,
+      paddingRight: 12,
+      marginLeft: 12,
+      flex: 1,
+      justifyContent: "space-between",
+      flexDirection: "row",
+      maxWidth: "100%",
+      flexWrap: "wrap",
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderBottomWidth: 1,
+    },
+    name: {
+      color: DARKMODE ? colors.white : colors.black,
+      fontWeight: "bold",
+      fontSize: 16,
+    },
+    image: {
+      aspectRatio: 1,
+      width: 58,
+      borderRadius: 29,
+      backgroundColor: "white",
+    },
+
+    text: {
+      color: colors.systemGray,
+      marginTop: 3,
+    },
+  };
+
   let title = name;
   if (username) {
     if (title.toLowerCase() != username.toLowerCase()) {
@@ -74,7 +109,7 @@ const LicensesListItem = ({
             })}
           >
             {/* eslint-disable-next-line react-native/no-inline-styles */}
-            <View style={{ maxWidth: '90%' }}>
+            <View style={{ maxWidth: "90%" }}>
               <Text style={styles.name}>{title}</Text>
               <Link style={styles.text} url={licenseUrl}>
                 {licenses}
@@ -83,10 +118,10 @@ const LicensesListItem = ({
             </View>
             <Ionicons
               // eslint-disable-next-line react-native/no-inline-styles
-              style={{ alignSelf: 'center' }}
+              style={{ alignSelf: "center" }}
               color={DARKMODE ? colors.purpleDark : colors.purpleLight}
               size={24}
-              name={'chevron-forward'}
+              name={"chevron-forward"}
             />
           </Pressable>
         </View>
@@ -120,47 +155,5 @@ const Link = ({ url, style, children }) => (
     {children}
   </Text>
 );
-
-const dynamicStyles = new DynamicStyleSheet({
-  card: {
-    overflow: 'hidden',
-    flexDirection: 'row',
-    backgroundColor: new DynamicValue(colors.white, colors.systemGray6Dark),
-
-    alignItems: 'center',
-    paddingLeft: 12,
-  },
-  item: {
-    paddingVertical: 12,
-    paddingRight: 12,
-    marginLeft: 12,
-    flex: 1,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    maxWidth: '100%',
-    flexWrap: 'wrap',
-    borderBottomColor: new DynamicValue(
-      colors.systemGray5Light,
-      colors.systemGray5Dark,
-    ),
-    borderBottomWidth: 1,
-  },
-  name: {
-    color: new DynamicValue(colors.black, colors.white),
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  image: {
-    aspectRatio: 1,
-    width: 58,
-    borderRadius: 29,
-    backgroundColor: 'white',
-  },
-
-  text: {
-    color: new DynamicValue(colors.systemGray, colors.systemGray),
-    marginTop: 3,
-  },
-});
 
 export default LicensesListItem;

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { useDarkMode } from "react-native-dynamic";
+import { useDarkMode } from "./src/utils";
 import * as RNLocalize from "react-native-localize";
 
 import { setI18nConfig, translate } from "./src/Translations/TranslationModel";

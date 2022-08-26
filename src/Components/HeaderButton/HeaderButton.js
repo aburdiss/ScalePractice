@@ -1,9 +1,9 @@
-import React from 'react';
-import { Text, Pressable } from 'react-native';
-import { useDarkMode } from 'react-native-dynamic';
+import React from "react";
+import { Text, Pressable } from "react-native";
+import { useDarkMode } from "../../utils";
 
-import { colors } from '../../Model/Model';
-import { translate } from '../../Translations/TranslationModel';
+import { colors } from "../../Model/Model";
+import { translate } from "../../Translations/TranslationModel";
 
 /**
  * @description A simple button to live on the header and provide additional
@@ -30,7 +30,7 @@ const HeaderButton = ({ children, handler }) => {
       accessibilityRole="link"
       accessible={true}
       accessibilityLabel={children}
-      accessibilityHint={translate('Navigates to') + ' ' + children}
+      accessibilityHint={translate("Navigates to") + " " + children}
       onPress={handler}
       style={({ pressed }) => ({
         padding: 8,

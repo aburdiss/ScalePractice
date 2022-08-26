@@ -1,5 +1,5 @@
 import React from "react";
-import { useDarkMode } from "react-native-dynamic";
+import { useDarkMode } from "../utils";
 import { createStackNavigator } from "@react-navigation/stack";
 
 // Screens
