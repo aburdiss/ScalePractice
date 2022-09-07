@@ -47,7 +47,6 @@
     "node-fetch": "^2.6.7",
     "npm-license-crawler": "^0.2.1",
     "react-test-renderer": "17.0.2",
-    "semver": "^7.3.7",
     "ua-parser-js": "0.7.31"
   },
   "babel": {
