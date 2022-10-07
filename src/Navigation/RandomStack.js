@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useDarkMode } from "../utils";
 
-import RandomScale from "../Screens/RandomScale/RandomScale";
-import RandomArpeggio from "../Screens/RandomArpeggio/RandomArpeggio";
+import Random from "../Screens/Random";
 import { HeaderButton } from "../Components";
 import { translate } from "../Translations/TranslationModel";
 import { colors } from "../Model/Model";
+import { PreferencesContext } from "../Model/Preferences";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +28,8 @@ const Stack = createStackNavigator();
 const RandomStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
 
+  const { state, dispatch } = useContext(PreferencesContext);
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -48,25 +50,30 @@ const RandomStack = ({ navigation }) => {
     >
       <Stack.Screen
         name="Random Scale Practice"
-        component={RandomScale}
+        component={Random}
         options={{
           headerRight: () => (
             <HeaderButton
               handler={() => {
-                navigation.navigate("Random Arpeggio Practice");
+                const newType =
+                  state?.randomType == PreferencesContext.randomTypes.SCALE
+                    ? PreferencesContext.randomTypes.ARPEGGIO
+                    : PreferencesContext.randomTypes.SCALE;
+                dispatch({
+                  type: PreferencesContext.actions.SET_SETTING,
+                  payload: { randomType: newType },
+                });
               }}
             >
-              {translate("Arpeggios")}
+              {state?.randomType == PreferencesContext.randomTypes.SCALE
+                ? translate("Arpeggios")
+                : translate("Scale")}
             </HeaderButton>
           ),
-          title: translate("Random Scale Practice"),
-        }}
-      />
-      <Stack.Screen
-        name="Random Arpeggio Practice"
-        component={RandomArpeggio}
-        options={{
-          title: translate("Random Arpeggio Practice"),
+          title:
+            state?.randomType == PreferencesContext.randomTypes.SCALE
+              ? translate("Random Scale Practice")
+              : translate("Random Arpeggio Practice"),
         }}
       />
     </Stack.Navigator>

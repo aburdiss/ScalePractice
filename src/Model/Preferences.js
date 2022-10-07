@@ -1,5 +1,29 @@
-import React, { createContext, useReducer, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useReducer, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const RANDOM_TYPES = {
+  SCALE: "SCALE",
+  ARPEGGIO: "ARPEGGIO",
+};
+
+const ADVANCED_TYPES = {
+  SCALE: "SCALE",
+  ARPEGGIO: "ARPEGGIO",
+};
+
+const INITIAL_PREFERENCES_STATE = {
+  repeat: true,
+  simpleRandom: false,
+  disableScreenSleep: false,
+  randomType: RANDOM_TYPES.SCALE,
+  advancedType: ADVANCED_TYPES.SCALE,
+};
+
+const ACTIONS = {
+  SET_ALL_PREFERENCES: "SET_ALL_PREFERENCES",
+  SET_SETTING: "SET_SETTING",
+  RESET_PREFERENCES: "RESET_PREFERENCES",
+};
 
 /**
  * @function load
@@ -13,7 +37,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
  */
 export async function load() {
   try {
-    const jsonValue = await AsyncStorage.getItem('preferences');
+    const jsonValue = await AsyncStorage.getItem("preferences");
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     console.log(e);
@@ -32,13 +56,17 @@ export async function load() {
 export async function save(data) {
   try {
     const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem('preferences', jsonValue);
+    await AsyncStorage.setItem("preferences", jsonValue);
   } catch (e) {
     console.log(e);
   }
 }
 
 const PreferencesContext = createContext();
+
+PreferencesContext.advancedTypes = ADVANCED_TYPES;
+PreferencesContext.randomTypes = RANDOM_TYPES;
+PreferencesContext.actions = ACTIONS;
 
 /**
  * @function preferencesReducer
@@ -53,26 +81,20 @@ const PreferencesContext = createContext();
 const preferencesReducer = (state, action) => {
   let newState;
   switch (action.type) {
-    case 'SET_ALL_PREFERENCES':
+    case ACTIONS.SET_ALL_PREFERENCES:
       newState = { ...state, ...action.payload };
       break;
-    case 'SET_SETTING':
+    case ACTIONS.SET_SETTING:
       newState = { ...state, ...action.payload };
       break;
-    case 'RESET_PREFERENCES':
-      newState = initialPreferencesState;
+    case ACTIONS.RESET_PREFERENCES:
+      newState = INITIAL_PREFERENCES_STATE;
       break;
     default:
       throw new Error(`Unknown Action: ${action.type}`);
   }
   save(newState);
   return newState;
-};
-
-const initialPreferencesState = {
-  repeat: true,
-  simpleRandom: false,
-  disableScreenSleep: false,
 };
 
 /**
@@ -93,11 +115,21 @@ const PreferencesProvider = ({ children }) => {
   useEffect(() => {
     load().then((data) => {
       if (data !== null) {
-        dispatch({ type: 'SET_ALL_PREFERENCES', payload: data });
+        // Handle when the data doesn't have newer keys (after updating from
+        // older version)
+        if (!data.randomType) {
+          data.randomType = INITIAL_PREFERENCES_STATE.randomType;
+        }
+        if (!data.advancedType) {
+          data.advancedType = INITIAL_PREFERENCES_STATE.advancedType;
+        }
+
+        // Set loaded data to global store
+        dispatch({ type: ACTIONS.SET_ALL_PREFERENCES, payload: data });
       } else {
         dispatch({
-          type: 'SET_ALL_PREFERENCES',
-          payload: initialPreferencesState,
+          type: ACTIONS.SET_ALL_PREFERENCES,
+          payload: INITIAL_PREFERENCES_STATE,
         });
       }
     });
