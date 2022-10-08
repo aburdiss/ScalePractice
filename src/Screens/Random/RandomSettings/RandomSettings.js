@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { SwitchRow, AllScalesButton } from "../../../Components";
 import { translate } from "../../../Translations/TranslationModel";
-import { getTranslationKeyFromStateKey } from "../../../utils/getTranslationKeyFromStateKey";
+import { getTranslationKeyFromStateKey } from "../utils/getTranslationKeyFromStateKey";
 
 /**
  * @function RandomSettings

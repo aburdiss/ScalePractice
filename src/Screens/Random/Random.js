@@ -1,27 +1,21 @@
-import React, {
-  useContext,
-  useEffect,
-  useState,
-  useRef,
-  useReducer,
-} from "react";
-import { View, ScrollView, Pressable, Text } from "react-native";
-import Popover from "react-native-popover-view";
+import React, { useContext, useEffect, useRef, useReducer } from 'react';
+import { View, ScrollView, Pressable, Text } from 'react-native';
+import Popover from 'react-native-popover-view';
 
 import {
   RandomizeButton,
   LargeScaleDisplay,
   ScaleDisplay,
-} from "../../Components";
-import RandomSettings from "./RandomSettings/RandomSettings";
+} from '../../Components';
+import RandomSettings from './RandomSettings/RandomSettings';
 
-import { colors, SCALE_TYPES, ARPEGGIO_TYPES } from "../../Model/Model";
-import { PreferencesContext } from "../../Model/Preferences";
-import { translate } from "../../Translations/TranslationModel";
+import { colors, SCALE_TYPES, ARPEGGIO_TYPES } from '../../Model/Model';
+import { PreferencesContext } from '../../Model/Preferences';
+import { translate } from '../../Translations/TranslationModel';
 
-import { useIdleScreen, useDarkMode } from "../../utils";
-import { getAllScalesFromState } from "./utils/getAllScalesFromState";
-import { getRandomReducer } from "./utils/getRandomReducer";
+import { useIdleScreen, useDarkMode } from '../../utils';
+import { getAllScalesFromState } from './utils/getAllScalesFromState';
+import { getRandomReducer } from './utils/getRandomReducer';
 
 /**
  * @function Random
@@ -63,7 +57,7 @@ export default function Random() {
       borderColor: DARKMODE ? colors.systemGray5Dark : colors.systemGray5Light,
     },
     selectionsButton: {
-      position: "absolute",
+      position: 'absolute',
       bottom: 5,
       right: 5,
       height: 25,
@@ -74,8 +68,8 @@ export default function Random() {
     },
     switchesContainer: {
       flex: 1,
-      alignSelf: "center",
-      width: "100%",
+      alignSelf: 'center',
+      width: '100%',
       marginHorizontal: 10,
     },
   };
@@ -85,10 +79,11 @@ export default function Random() {
   const INITIAL_RANDOM_STATE = {
     currentScale:
       state?.randomType == PreferencesContext.randomTypes.SCALE
-        ? translate("No Scale Selected")
-        : translate("No Arpeggio Selected"),
+        ? translate('No Scale Selected')
+        : translate('No Arpeggio Selected'),
     scaleArray: getAllScalesFromState({ major: true }),
     scaleArrayIndex: 0,
+    showSelectionPopover: false,
     scaleOptions: {
       [SCALE_TYPES.major]: true,
       [SCALE_TYPES.naturalMinor]: false,
@@ -119,7 +114,7 @@ export default function Random() {
   const RANDOM_ACTIONS = randomReducer.actions;
   const [randomState, dispatchRandomState] = useReducer(
     randomReducer,
-    INITIAL_RANDOM_STATE
+    INITIAL_RANDOM_STATE,
   );
   dispatchRandomState.actions = RANDOM_ACTIONS;
 
@@ -129,20 +124,15 @@ export default function Random() {
 
   useEffect(
     function handleStateChange() {
-      dispatchRandomState({
-        type: RANDOM_ACTIONS.SET_CURRENT_SCALE,
-        payload:
-          state?.randomType == PreferencesContext.randomTypes.SCALE
-            ? translate("No Scale Selected")
-            : translate("No Arpeggio Selected"),
-      });
+      if (state) {
+        dispatchRandomState({ type: RANDOM_ACTIONS.SWITCH_DOMAIN });
+      }
     },
-    [state]
+    [state, RANDOM_ACTIONS.SWITCH_DOMAIN],
   );
 
   // Old Stuff
   const selectionRef = useRef(null);
-  const [showSelectionPopover, setShowSelectionPopover] = useState(false);
 
   return state?.simpleRandom ? (
     <View>
@@ -156,18 +146,22 @@ export default function Random() {
       <Pressable
         ref={selectionRef}
         hitSlop={1}
-        onPress={() => setShowSelectionPopover(true)}
+        onPress={() =>
+          dispatchRandomState({ type: RANDOM_ACTIONS.TOGGLE_SELECTION_POPOVER })
+        }
         style={styles.selectionsButton}
       >
         <Text style={styles.selectionsText}>
-          {translate("Scale Selections")}
+          {translate('Scale Selections')}
         </Text>
       </Pressable>
       <Popover
         arrowStyle={styles.popoverArrow}
         from={selectionRef}
-        isVisible={showSelectionPopover}
-        onRequestClose={() => setShowSelectionPopover(false)}
+        isVisible={randomState.showSelectionPopover}
+        onRequestClose={() =>
+          dispatchRandomState({ type: RANDOM_ACTIONS.TOGGLE_SELECTION_POPOVER })
+        }
       >
         <ScrollView style={styles.popoverContainer}>
           <RandomSettings
@@ -216,7 +210,7 @@ export default function Random() {
             dispatchRandomState({ type: RANDOM_ACTIONS.GET_NEW_SCALE })
           }
           accessibilityValue={{ text: randomState.currentScale }}
-          accessibilityHint={translate("Randomizes a new scale")}
+          accessibilityHint={translate('Randomizes a new scale')}
           accessible={true}
         />
       </View>

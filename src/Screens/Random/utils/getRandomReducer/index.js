@@ -1,8 +1,10 @@
 import { Alert } from "react-native";
 import { translate } from "../../../../Translations/TranslationModel";
 import { getAllScalesFromState } from "../getAllScalesFromState";
-import { shuffle, random, debounce } from "../../../../utils";
-import { SCALE_TYPES } from "../../../../Model/Model";
+import { getAllArpeggiosFromState } from "../getAllArpeggiosFromState";
+import { shuffle, random } from "../../../../utils";
+import { SCALE_TYPES, ARPEGGIO_TYPES } from "../../../../Model/Model";
+import { PreferencesContext } from "../../../../Model/Preferences";
 
 const RANDOM_ACTIONS = {
   SET_CURRENT_SCALE: "SET_CURRENT_SCALE",
@@ -12,9 +14,12 @@ const RANDOM_ACTIONS = {
   SELECT_ALL_ARPEGGIOS: "SELECT_ALL_ARPEGGIOS",
   GET_NEW_SCALE: "GET_NEW_SCALE",
   RESET_NO_REPEAT: "RESET_NO_REPEAT",
+  TOGGLE_SELECTION_POPOVER: "TOGGLE_SELECTION_POPOVER",
+  SWITCH_DOMAIN: "SWITCH_DOMAIN",
 };
 
 export function getRandomReducer(dispatchRandomState, state) {
+  const isScale = state.randomType === PreferencesContext.randomTypes.SCALE;
   function randomReducer(currentState, action) {
     switch (action.type) {
       case RANDOM_ACTIONS.SET_CURRENT_SCALE:
@@ -44,7 +49,14 @@ export function getRandomReducer(dispatchRandomState, state) {
           ...currentState.arpeggioOptions,
           [action.payload]: !currentState.arpeggioOptions[action.payload],
         };
-        return { ...currentState, arpeggioOptions: newArpeggioOptions };
+        const possibleArpeggios = getAllArpeggiosFromState(newArpeggioOptions);
+        return {
+          ...currentState,
+          currentScale: translate("No Arpeggio Selected"),
+          scaleArrayIndex: 0,
+          scaleArray: possibleArpeggios,
+          arpeggioOptions: newArpeggioOptions,
+        };
       case RANDOM_ACTIONS.SELECT_ALL_SCALES:
         const allScales = { ...currentState.scaleOptions };
         let allScalesOn = true;
@@ -142,6 +154,23 @@ export function getRandomReducer(dispatchRandomState, state) {
           scaleArray: newScaleArray,
           scaleArrayIndex: 1,
           currentScale: newScaleArray[0],
+        };
+      case RANDOM_ACTIONS.TOGGLE_SELECTION_POPOVER:
+        return {
+          ...currentState,
+          showSelectionPopover: !currentState.showSelectionPopover,
+        };
+      case RANDOM_ACTIONS.SWITCH_DOMAIN:
+        const scaleArray = isScale
+          ? getAllScalesFromState(currentState.scaleOptions)
+          : getAllArpeggiosFromState(currentState.arpeggioOptions);
+        return {
+          ...currentState,
+          scaleArrayIndex: 0,
+          scaleArray,
+          currentScale: isScale
+            ? translate("No Scale Selected")
+            : translate("No Arpeggio Selected"),
         };
       default:
         throw new Error(`Unknown Action: ${action.type}`);
