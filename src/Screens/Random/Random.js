@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useReducer } from 'react';
-import { View, ScrollView, Pressable, Text } from 'react-native';
+import { Alert, View, ScrollView, Pressable, Text } from 'react-native';
 import Popover from 'react-native-popover-view';
 
 import {
@@ -84,6 +84,7 @@ export default function Random() {
     scaleArray: getAllScalesFromState({ major: true }),
     scaleArrayIndex: 0,
     showSelectionPopover: false,
+    allScalesPracticed: false,
     scaleOptions: {
       [SCALE_TYPES.major]: true,
       [SCALE_TYPES.naturalMinor]: false,
@@ -131,16 +132,36 @@ export default function Random() {
     [state, RANDOM_ACTIONS.SWITCH_DOMAIN],
   );
 
-  // Old Stuff
+  useEffect(
+    function () {
+      if (randomState.allScalesPracticed) {
+        Alert.alert(translate('All Scales Practiced'), '', [
+          {
+            onPress: () =>
+              dispatchRandomState({ type: RANDOM_ACTIONS.RESET_NO_REPEAT }),
+          },
+        ]);
+      }
+    },
+    [RANDOM_ACTIONS.RESET_NO_REPEAT, randomState.allScalesPracticed],
+  );
+
   const selectionRef = useRef(null);
+
+  function getNewScale() {
+    if (randomState.scaleArray.length === 0) {
+      Alert.alert(
+        translate('No Scale Selected'),
+        translate('Please select at least one category'),
+      );
+      return;
+    }
+    dispatchRandomState({ type: RANDOM_ACTIONS.GET_NEW_SCALE });
+  }
 
   return state?.simpleRandom ? (
     <View>
-      <Pressable
-        onPress={() =>
-          dispatchRandomState({ type: RANDOM_ACTIONS.GET_NEW_SCALE })
-        }
-      >
+      <Pressable onPress={getNewScale}>
         <LargeScaleDisplay>{randomState.currentScale}</LargeScaleDisplay>
       </Pressable>
       <Pressable
@@ -206,9 +227,7 @@ export default function Random() {
       </View>
       <View style={styles.mainActionButton}>
         <RandomizeButton
-          handler={() =>
-            dispatchRandomState({ type: RANDOM_ACTIONS.GET_NEW_SCALE })
-          }
+          handler={getNewScale}
           accessibilityValue={{ text: randomState.currentScale }}
           accessibilityHint={translate('Randomizes a new scale')}
           accessible={true}
