@@ -68,7 +68,7 @@ const RandomStack = ({ navigation }) => {
             >
               {state?.randomType == PreferencesContext.randomTypes.SCALE
                 ? translate('Arpeggios')
-                : translate('Scale')}
+                : translate('Scales')}
             </HeaderButton>
           ),
           title:

@@ -1,14 +1,14 @@
 import 'react-native';
 import React from 'react';
-import ArpeggioResources from './ArpeggioResources';
+import Resources from './Resources';
 import MockContext from '../../../jest/MockContext';
 
 import { render } from '@testing-library/react-native';
 
-test('ArpeggioResources renders correctly', () => {
+test('Resources renders correctly', () => {
   render(
     <MockContext>
-      <ArpeggioResources />
+      <Resources />
     </MockContext>,
   );
 });

@@ -71,7 +71,7 @@ const AdvancedStack = ({ navigation }) => {
             >
               {state?.advancedType == PreferencesContext.advancedTypes.SCALE
                 ? translate('Arpeggios')
-                : translate('Scale')}
+                : translate('Scales')}
             </HeaderButton>
           ),
           title:

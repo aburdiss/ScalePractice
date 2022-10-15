@@ -24,12 +24,13 @@ import { getAdvancedReducer } from './utils/getAdvancedReducer';
 /**
  * @description A view that allows the user to randomize between a list of
  * selected scales.
+ * Created by Alexander Burdiss 10/10/20
  * @author Alexander Burdiss
- * @since 10/10/20
- * @version 2.1.0
+ * @since 10/15/22
+ * @version 3.1.0
  *
  * @example
- * <Advanced Scale />
+ * <Advanced />
  */
 const AdvancedScale = () => {
   useIdleScreen();

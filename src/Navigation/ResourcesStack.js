@@ -1,13 +1,13 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { useDarkMode } from "../utils";
+import React, { useContext } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from '../utils';
 
-import ScaleResources from "../Screens/ScaleResources/ScaleResources";
-import ArpeggioResources from "../Screens/ArpeggioResources/ArpeggioResources";
-import ScaleDetail from "../Screens/ScaleDetail/ScaleDetail";
-import { HeaderButton } from "../Components";
-import { translate } from "../Translations/TranslationModel";
-import { colors } from "../Model/Model";
+import ScaleResources from '../Screens/Resources/Resources';
+import ScaleDetail from '../Screens/ScaleDetail/ScaleDetail';
+import { HeaderButton } from '../Components';
+import { translate } from '../Translations/TranslationModel';
+import { colors } from '../Model/Model';
+import { PreferencesContext } from '../Model/Preferences';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +29,9 @@ const Stack = createStackNavigator();
 const ResourcesStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
 
+  const { state, dispatch } = useContext(PreferencesContext);
+  const isScale =
+    state?.resourcesType == PreferencesContext.resourcesTypes.SCALE;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -42,9 +45,9 @@ const ResourcesStack = ({ navigation }) => {
           borderBottomColor: DARKMODE
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
-          shadowColor: "transparent",
+          shadowColor: 'transparent',
         },
-        headerBackTitle: translate("Back"),
+        headerBackTitle: translate('Back'),
       }}
     >
       <Stack.Screen
@@ -54,20 +57,21 @@ const ResourcesStack = ({ navigation }) => {
           headerRight: () => (
             <HeaderButton
               handler={() => {
-                navigation.navigate("Arpeggio Resources");
+                const newType = isScale
+                  ? PreferencesContext.resourcesTypes.ARPEGGIO
+                  : PreferencesContext.resourcesTypes.SCALE;
+                dispatch({
+                  type: PreferencesContext.actions.SET_SETTING,
+                  payload: { resourcesType: newType },
+                });
               }}
             >
-              {translate("Arpeggios")}
+              {isScale ? translate('Arpeggios') : translate('Scales')}
             </HeaderButton>
           ),
-          title: translate("Scale Resources"),
-        }}
-      />
-      <Stack.Screen
-        name="Arpeggio Resources"
-        component={ArpeggioResources}
-        options={{
-          title: translate("Arpeggio Resources"),
+          title: isScale
+            ? translate('Scale Resources')
+            : translate('Arpeggio Resources'),
         }}
       />
       <Stack.Screen

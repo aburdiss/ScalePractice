@@ -1,14 +1,19 @@
-import React, { createContext, useReducer, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { createContext, useReducer, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const RANDOM_TYPES = {
-  SCALE: "SCALE",
-  ARPEGGIO: "ARPEGGIO",
+  SCALE: 'SCALE',
+  ARPEGGIO: 'ARPEGGIO',
 };
 
 const ADVANCED_TYPES = {
-  SCALE: "SCALE",
-  ARPEGGIO: "ARPEGGIO",
+  SCALE: 'SCALE',
+  ARPEGGIO: 'ARPEGGIO',
+};
+
+const RESOURCES_TYPES = {
+  SCALE: 'SCALE',
+  ARPEGGIO: 'ARPEGGIO',
 };
 
 const INITIAL_PREFERENCES_STATE = {
@@ -16,13 +21,14 @@ const INITIAL_PREFERENCES_STATE = {
   simpleRandom: false,
   disableScreenSleep: false,
   randomType: RANDOM_TYPES.SCALE,
+  resourcesType: RESOURCES_TYPES.SCALE,
   advancedType: ADVANCED_TYPES.SCALE,
 };
 
 const ACTIONS = {
-  SET_ALL_PREFERENCES: "SET_ALL_PREFERENCES",
-  SET_SETTING: "SET_SETTING",
-  RESET_PREFERENCES: "RESET_PREFERENCES",
+  SET_ALL_PREFERENCES: 'SET_ALL_PREFERENCES',
+  SET_SETTING: 'SET_SETTING',
+  RESET_PREFERENCES: 'RESET_PREFERENCES',
 };
 
 /**
@@ -37,7 +43,7 @@ const ACTIONS = {
  */
 export async function load() {
   try {
-    const jsonValue = await AsyncStorage.getItem("preferences");
+    const jsonValue = await AsyncStorage.getItem('preferences');
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     console.log(e);
@@ -56,7 +62,7 @@ export async function load() {
 export async function save(data) {
   try {
     const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem("preferences", jsonValue);
+    await AsyncStorage.setItem('preferences', jsonValue);
   } catch (e) {
     console.log(e);
   }
@@ -66,6 +72,7 @@ const PreferencesContext = createContext();
 
 PreferencesContext.advancedTypes = ADVANCED_TYPES;
 PreferencesContext.randomTypes = RANDOM_TYPES;
+PreferencesContext.resourcesTypes = RESOURCES_TYPES;
 PreferencesContext.actions = ACTIONS;
 
 /**
