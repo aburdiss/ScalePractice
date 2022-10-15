@@ -14,7 +14,6 @@ import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 
 import { useIdleScreen, useDarkMode } from '../../utils';
-import { getAllScalesFromState } from './utils/getAllScalesFromState';
 import { getRandomReducer } from './utils/getRandomReducer';
 
 /**
@@ -75,53 +74,15 @@ export default function Random() {
   };
 
   const { state } = useContext(PreferencesContext);
-
-  const INITIAL_RANDOM_STATE = {
-    currentScale:
-      state?.randomType == PreferencesContext.randomTypes.SCALE
-        ? translate('No Scale Selected')
-        : translate('No Arpeggio Selected'),
-    scaleArray: getAllScalesFromState({ major: true }),
-    scaleArrayIndex: 0,
-    showSelectionPopover: false,
-    allScalesPracticed: false,
-    scaleOptions: {
-      [SCALE_TYPES.major]: true,
-      [SCALE_TYPES.naturalMinor]: false,
-      [SCALE_TYPES.harmonicMinor]: false,
-      [SCALE_TYPES.melodicMinor]: false,
-      [SCALE_TYPES.majorModes]: false,
-      [SCALE_TYPES.melodicMinorModes]: false,
-      [SCALE_TYPES.blues]: false,
-      [SCALE_TYPES.pentatonic]: false,
-      [SCALE_TYPES.octatonic]: false,
-      [SCALE_TYPES.wholeTone]: false,
-    },
-    arpeggioOptions: {
-      [ARPEGGIO_TYPES.major]: true,
-      [ARPEGGIO_TYPES.minor]: false,
-      [ARPEGGIO_TYPES.augmented]: false,
-      [ARPEGGIO_TYPES.diminished]: false,
-      [ARPEGGIO_TYPES.dominantSeventh]: false,
-      [ARPEGGIO_TYPES.majorSeventh]: false,
-      [ARPEGGIO_TYPES.minorSeventh]: false,
-      [ARPEGGIO_TYPES.minorMajorSeventh]: false,
-      [ARPEGGIO_TYPES.augmentedSeventh]: false,
-      [ARPEGGIO_TYPES.halfDiminishedSeventh]: false,
-      [ARPEGGIO_TYPES.diminishedSeventh]: false,
-    },
-  };
-  const randomReducer = getRandomReducer(_dispatchRandomState, state);
+  const randomReducer = getRandomReducer(state);
   const RANDOM_ACTIONS = randomReducer.actions;
   const [randomState, dispatchRandomState] = useReducer(
     randomReducer,
-    INITIAL_RANDOM_STATE,
+    randomReducer.initialState,
   );
   dispatchRandomState.actions = RANDOM_ACTIONS;
 
-  function _dispatchRandomState(...args) {
-    return dispatchRandomState(...args);
-  }
+  const isScale = state?.randomType == PreferencesContext.randomTypes.SCALE;
 
   useEffect(
     function handleStateChange() {
@@ -133,17 +94,23 @@ export default function Random() {
   );
 
   useEffect(
-    function () {
+    function handleAllScalesPracticed() {
       if (randomState.allScalesPracticed) {
-        Alert.alert(translate('All Scales Practiced'), '', [
-          {
-            onPress: () =>
-              dispatchRandomState({ type: RANDOM_ACTIONS.RESET_NO_REPEAT }),
-          },
-        ]);
+        Alert.alert(
+          isScale
+            ? translate('All Scales Practiced')
+            : translate('All Arpeggios Practiced'),
+          '',
+          [
+            {
+              onPress: () =>
+                dispatchRandomState({ type: RANDOM_ACTIONS.RESET_NO_REPEAT }),
+            },
+          ],
+        );
       }
     },
-    [RANDOM_ACTIONS.RESET_NO_REPEAT, randomState.allScalesPracticed],
+    [RANDOM_ACTIONS.RESET_NO_REPEAT, randomState.allScalesPracticed, isScale],
   );
 
   const selectionRef = useRef(null);
@@ -151,7 +118,9 @@ export default function Random() {
   function getNewScale() {
     if (randomState.scaleArray.length === 0) {
       Alert.alert(
-        translate('No Scale Selected'),
+        isScale
+          ? translate('No Scale Selected')
+          : translate('No Arpeggio Selected'),
         translate('Please select at least one category'),
       );
       return;
@@ -173,7 +142,9 @@ export default function Random() {
         style={styles.selectionsButton}
       >
         <Text style={styles.selectionsText}>
-          {translate('Scale Selections')}
+          {isScale
+            ? translate('Scale Selections')
+            : translate('Arpeggio Selections')}
         </Text>
       </Pressable>
       <Popover
@@ -187,15 +158,11 @@ export default function Random() {
         <ScrollView style={styles.popoverContainer}>
           <RandomSettings
             action={
-              state?.randomType == PreferencesContext.randomTypes.SCALE
+              isScale
                 ? RANDOM_ACTIONS.TOGGLE_SCALE
                 : RANDOM_ACTIONS.TOGGLE_ARPEGGIO
             }
-            types={
-              state?.randomType == PreferencesContext.randomTypes.SCALE
-                ? SCALE_TYPES
-                : ARPEGGIO_TYPES
-            }
+            types={isScale ? SCALE_TYPES : ARPEGGIO_TYPES}
             randomState={randomState}
             dispatchRandomState={dispatchRandomState}
           />
@@ -211,15 +178,11 @@ export default function Random() {
         <ScrollView>
           <RandomSettings
             action={
-              state?.randomType == PreferencesContext.randomTypes.SCALE
+              isScale
                 ? RANDOM_ACTIONS.TOGGLE_SCALE
                 : RANDOM_ACTIONS.TOGGLE_ARPEGGIO
             }
-            types={
-              state?.randomType == PreferencesContext.randomTypes.SCALE
-                ? SCALE_TYPES
-                : ARPEGGIO_TYPES
-            }
+            types={isScale ? SCALE_TYPES : ARPEGGIO_TYPES}
             randomState={randomState}
             dispatchRandomState={dispatchRandomState}
           />

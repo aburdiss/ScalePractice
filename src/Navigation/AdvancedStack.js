@@ -1,22 +1,24 @@
-import React from "react";
-import { useDarkMode } from "../utils";
-import { createStackNavigator } from "@react-navigation/stack";
+import React, { useContext } from 'react';
+import { useDarkMode } from '../utils';
+import { createStackNavigator } from '@react-navigation/stack';
 
 // Screens
-import AdvancedScale from "../Screens/AdvancedScale/AdvancedScale";
-import AdvancedArpeggio from "../Screens/AdvancedArpeggio/AdvancedArpeggio";
+import AdvancedScale from '../Screens/Advanced/Advanced';
 
-import { HeaderButton } from "../Components";
-import { translate } from "../Translations/TranslationModel";
-import { colors } from "../Model/Model";
+import { HeaderButton } from '../Components';
+import { translate } from '../Translations/TranslationModel';
+import { colors } from '../Model/Model';
+import { PreferencesContext } from '../Model/Preferences';
 
 const Stack = createStackNavigator();
 
 /**
  * @description The stack of screens for the Advanced tab of the navigation.
+ * Created 10/10/20 by Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/10/20
- * @version 1.0.1
+ * @since 10/15/22
+ * @version 1.1.0
+ * @param {Object} props JSX props passed to this React Component
  * @param {Object} props.navigation The navigation object provided by React
  * Navigation
  *
@@ -29,6 +31,8 @@ const Stack = createStackNavigator();
  */
 const AdvancedStack = ({ navigation }) => {
   const DARKMODE = useDarkMode();
+
+  const { state, dispatch } = useContext(PreferencesContext);
 
   return (
     <Stack.Navigator
@@ -43,9 +47,9 @@ const AdvancedStack = ({ navigation }) => {
           borderBottomColor: DARKMODE
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
-          shadowColor: "transparent",
+          shadowColor: 'transparent',
         },
-        headerBackTitle: translate("Back"),
+        headerBackTitle: translate('Back'),
       }}
     >
       <Stack.Screen
@@ -55,20 +59,25 @@ const AdvancedStack = ({ navigation }) => {
           headerRight: () => (
             <HeaderButton
               handler={() => {
-                navigation.navigate("Advanced Arpeggio Practice");
+                const newType =
+                  state?.advancedType == PreferencesContext.advancedTypes.SCALE
+                    ? PreferencesContext.advancedTypes.ARPEGGIO
+                    : PreferencesContext.advancedTypes.SCALE;
+                dispatch({
+                  type: PreferencesContext.actions.SET_SETTING,
+                  payload: { advancedType: newType },
+                });
               }}
             >
-              {translate("Arpeggios")}
+              {state?.advancedType == PreferencesContext.advancedTypes.SCALE
+                ? translate('Arpeggios')
+                : translate('Scale')}
             </HeaderButton>
           ),
-          title: translate("Advanced Scale Practice"),
-        }}
-      />
-      <Stack.Screen
-        name="Advanced Arpeggio Practice"
-        component={AdvancedArpeggio}
-        options={{
-          title: translate("Advanced Arpeggio Practice"),
+          title:
+            state?.advancedType == PreferencesContext.advancedTypes.SCALE
+              ? translate('Advanced Scale Practice')
+              : translate('Advanced Arpeggio Practice'),
         }}
       />
     </Stack.Navigator>

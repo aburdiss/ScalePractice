@@ -1,14 +1,14 @@
 import 'react-native';
 import React from 'react';
-import AdvancedArpeggio from './AdvancedArpeggio';
+import Advanced from './Advanced';
 import MockContext from '../../../jest/MockContext';
 
 import { render } from '@testing-library/react-native';
 
-test('AdvancedArpeggio renders correctly', () => {
+test('Advanced renders correctly', () => {
   render(
     <MockContext>
-      <AdvancedArpeggio />
+      <Advanced />
     </MockContext>,
   );
 });

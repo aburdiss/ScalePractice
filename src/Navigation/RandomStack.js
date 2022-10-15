@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { useDarkMode } from "../utils";
+import React, { useContext } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useDarkMode } from '../utils';
 
-import Random from "../Screens/Random";
-import { HeaderButton } from "../Components";
-import { translate } from "../Translations/TranslationModel";
-import { colors } from "../Model/Model";
-import { PreferencesContext } from "../Model/Preferences";
+import Random from '../Screens/Random';
+import { HeaderButton } from '../Components';
+import { translate } from '../Translations/TranslationModel';
+import { colors } from '../Model/Model';
+import { PreferencesContext } from '../Model/Preferences';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +15,7 @@ const Stack = createStackNavigator();
  * @author Alexander Burdiss
  * @since 10/10/20
  * @version 1.0.1
+ * @param {Object} props JSX Props passed to this React Component
  * @param {Object} props.navigation The navigation object provided by React
  * Navigation
  *
@@ -43,9 +44,9 @@ const RandomStack = ({ navigation }) => {
           borderBottomColor: DARKMODE
             ? colors.systemGray5Dark
             : colors.systemGray5Light,
-          shadowColor: "transparent",
+          shadowColor: 'transparent',
         },
-        headerBackTitle: translate("Back"),
+        headerBackTitle: translate('Back'),
       }}
     >
       <Stack.Screen
@@ -66,14 +67,14 @@ const RandomStack = ({ navigation }) => {
               }}
             >
               {state?.randomType == PreferencesContext.randomTypes.SCALE
-                ? translate("Arpeggios")
-                : translate("Scale")}
+                ? translate('Arpeggios')
+                : translate('Scale')}
             </HeaderButton>
           ),
           title:
             state?.randomType == PreferencesContext.randomTypes.SCALE
-              ? translate("Random Scale Practice")
-              : translate("Random Arpeggio Practice"),
+              ? translate('Random Scale Practice')
+              : translate('Random Arpeggio Practice'),
         }}
       />
     </Stack.Navigator>

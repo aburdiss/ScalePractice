@@ -1,23 +1,24 @@
-import "react-native-gesture-handler";
-import React, { useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import { useDarkMode } from "./src/utils";
-import * as RNLocalize from "react-native-localize";
+import 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useDarkMode } from './src/utils';
+import * as RNLocalize from 'react-native-localize';
 
-import { setI18nConfig, translate } from "./src/Translations/TranslationModel";
-import { colors } from "./src/Model/Model";
-import { PreferencesProvider } from "./src/Model/Preferences";
+import { setI18nConfig, translate } from './src/Translations/TranslationModel';
+import { colors } from './src/Model/Model';
+import { PreferencesProvider } from './src/Model/Preferences';
 
-import RandomStack from "./src/Navigation/RandomStack";
-import ResourcesStack from "./src/Navigation/ResourcesStack";
-import AdvancedStack from "./src/Navigation/AdvancedStack";
-import MoreStack from "./src/Navigation/MoreStack";
+import RandomStack from './src/Navigation/RandomStack';
+import ResourcesStack from './src/Navigation/ResourcesStack';
+import AdvancedStack from './src/Navigation/AdvancedStack';
+import MoreStack from './src/Navigation/MoreStack';
 
 const Tab = createBottomTabNavigator();
 
 setI18nConfig();
+
 /**
  * @description The main tab navigation of the app.
  * @author Alexander Burdiss
@@ -31,9 +32,9 @@ const App = () => {
   const DARKMODE = useDarkMode();
 
   useEffect(() => {
-    RNLocalize.addEventListener("change", handleLocalizationChange);
+    RNLocalize.addEventListener('change', handleLocalizationChange);
     return () => {
-      RNLocalize.removeEventListener("change", handleLocalizationChange);
+      RNLocalize.removeEventListener('change', handleLocalizationChange);
     };
   }, []);
 
@@ -52,14 +53,14 @@ const App = () => {
           screenOptions={({ route }) => ({
             tabBarIcon: ({ color, size }) => {
               let iconName;
-              if (route.name === "RandomStack") {
-                iconName = "md-cube";
-              } else if (route.name === "ResourcesStack") {
-                iconName = "md-book";
-              } else if (route.name === "AdvancedStack") {
-                iconName = "md-create";
-              } else if (route.name === "MoreStack") {
-                iconName = "md-settings";
+              if (route.name === 'RandomStack') {
+                iconName = 'md-cube';
+              } else if (route.name === 'ResourcesStack') {
+                iconName = 'md-book';
+              } else if (route.name === 'AdvancedStack') {
+                iconName = 'md-create';
+              } else if (route.name === 'MoreStack') {
+                iconName = 'md-settings';
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
@@ -79,22 +80,22 @@ const App = () => {
           <Tab.Screen
             name="RandomStack"
             component={RandomStack}
-            options={{ title: translate("Random") }}
+            options={{ title: translate('Random') }}
           />
           <Tab.Screen
             name="ResourcesStack"
             component={ResourcesStack}
-            options={{ title: translate("Resources") }}
+            options={{ title: translate('Resources') }}
           />
           <Tab.Screen
             name="AdvancedStack"
             component={AdvancedStack}
-            options={{ title: translate("Advanced") }}
+            options={{ title: translate('Advanced') }}
           />
           <Tab.Screen
             name="MoreStack"
             component={MoreStack}
-            options={{ title: translate("Settings") }}
+            options={{ title: translate('Settings') }}
           />
         </Tab.Navigator>
       </NavigationContainer>

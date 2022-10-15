@@ -17,7 +17,39 @@ const RANDOM_ACTIONS = {
   SWITCH_DOMAIN: 'SWITCH_DOMAIN',
 };
 
-export function getRandomReducer(dispatchRandomState, state) {
+const INITIAL_RANDOM_STATE = {
+  currentScale: translate('No Scale Selected'),
+  scaleArray: getAllScalesFromState({ major: true }),
+  scaleArrayIndex: 0,
+  showSelectionPopover: false,
+  allScalesPracticed: false,
+  scaleOptions: {
+    [SCALE_TYPES.major]: true,
+    [SCALE_TYPES.naturalMinor]: false,
+    [SCALE_TYPES.harmonicMinor]: false,
+    [SCALE_TYPES.melodicMinor]: false,
+    [SCALE_TYPES.majorModes]: false,
+    [SCALE_TYPES.melodicMinorModes]: false,
+    [SCALE_TYPES.blues]: false,
+    [SCALE_TYPES.pentatonic]: false,
+    [SCALE_TYPES.octatonic]: false,
+    [SCALE_TYPES.wholeTone]: false,
+  },
+  arpeggioOptions: {
+    [ARPEGGIO_TYPES.major]: true,
+    [ARPEGGIO_TYPES.minor]: false,
+    [ARPEGGIO_TYPES.augmented]: false,
+    [ARPEGGIO_TYPES.diminished]: false,
+    [ARPEGGIO_TYPES.dominantSeventh]: false,
+    [ARPEGGIO_TYPES.majorSeventh]: false,
+    [ARPEGGIO_TYPES.minorSeventh]: false,
+    [ARPEGGIO_TYPES.minorMajorSeventh]: false,
+    [ARPEGGIO_TYPES.augmentedSeventh]: false,
+    [ARPEGGIO_TYPES.halfDiminishedSeventh]: false,
+    [ARPEGGIO_TYPES.diminishedSeventh]: false,
+  },
+};
+export function getRandomReducer(state) {
   const isScale = state?.randomType === PreferencesContext.randomTypes.SCALE;
   function randomReducer(currentState, action) {
     switch (action.type) {
@@ -170,10 +202,13 @@ export function getRandomReducer(dispatchRandomState, state) {
         };
       }
       default:
-        throw new Error(`Unknown Action: ${action.type}`);
+        throw new Error(
+          `getRandomReducer/index.js: Unknown Action: ${action.type}`,
+        );
     }
   }
 
   randomReducer.actions = RANDOM_ACTIONS;
+  randomReducer.initialState = INITIAL_RANDOM_STATE;
   return randomReducer;
 }
