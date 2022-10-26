@@ -1,9 +1,9 @@
-import React from "react";
-import { ScrollView, View, Text, Image } from "react-native";
+import React from 'react';
+import { ScrollView, View, Text, Image } from 'react-native';
 
-import { colors, getImagePath } from "../../Model/Model";
-import { translate } from "../../Translations/TranslationModel";
-import { useDarkMode, useIdleScreen } from "../../utils";
+import { colors, getImagePath } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
+import { useDarkMode, useIdleScreen } from '../../utils';
 
 /**
  * @description A component that renders a detailed image, based on the id
@@ -22,7 +22,7 @@ const ScaleDetail = ({ route }) => {
   const DARKMODE = useDarkMode();
   const styles = {
     construction: {
-      textAlign: "center",
+      textAlign: 'center',
       padding: 10,
       color: DARKMODE ? colors.white : colors.black,
     },
@@ -32,15 +32,15 @@ const ScaleDetail = ({ route }) => {
       color: DARKMODE ? colors.white : colors.black,
     },
     image: {
-      width: "100%",
-      resizeMode: "contain",
+      width: '100%',
+      resizeMode: 'contain',
     },
     imageContainer: {
       flex: 1,
-      alignItems: "center",
+      alignItems: 'center',
     },
     viewContainer: {
-      height: "100%",
+      height: '100%',
       backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
     },
   };

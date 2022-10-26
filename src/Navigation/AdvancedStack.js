@@ -16,8 +16,8 @@ const Stack = createStackNavigator();
  * @description The stack of screens for the Advanced tab of the navigation.
  * Created 10/10/20 by Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/15/22
- * @version 1.1.0
+ * @since 10/25/22
+ * @version 1.1.1
  * @param {Object} props JSX props passed to this React Component
  * @param {Object} props.navigation The navigation object provided by React
  * Navigation
@@ -29,10 +29,12 @@ const Stack = createStackNavigator();
  *   options={{title: translate('Advanced')}}
  * />
  */
-const AdvancedStack = ({ navigation }) => {
+export default function AdvancedStack({ navigation }) {
   const DARKMODE = useDarkMode();
 
   const { state, dispatch } = useContext(PreferencesContext);
+
+  const isScale = state?.advancedType == PreferencesContext.advancedTypes.SCALE;
 
   return (
     <Stack.Navigator
@@ -56,32 +58,30 @@ const AdvancedStack = ({ navigation }) => {
         name="Advanced Scale Practice"
         component={AdvancedScale}
         options={{
-          headerRight: () => (
-            <HeaderButton
-              handler={() => {
-                const newType =
-                  state?.advancedType == PreferencesContext.advancedTypes.SCALE
-                    ? PreferencesContext.advancedTypes.ARPEGGIO
-                    : PreferencesContext.advancedTypes.SCALE;
-                dispatch({
-                  type: PreferencesContext.actions.SET_SETTING,
-                  payload: { advancedType: newType },
-                });
-              }}
-            >
-              {state?.advancedType == PreferencesContext.advancedTypes.SCALE
-                ? translate('Arpeggios')
-                : translate('Scales')}
-            </HeaderButton>
-          ),
-          title:
-            state?.advancedType == PreferencesContext.advancedTypes.SCALE
-              ? translate('Advanced Scale Practice')
-              : translate('Advanced Arpeggio Practice'),
+          headerRight: getHeaderRight(isScale, dispatch),
+          title: isScale
+            ? translate('Advanced Scale Practice')
+            : translate('Advanced Arpeggio Practice'),
         }}
       />
     </Stack.Navigator>
   );
-};
+}
 
-export default AdvancedStack;
+function getHeaderRight(isScale, dispatch) {
+  return () => (
+    <HeaderButton
+      handler={() => {
+        const newType = isScale
+          ? PreferencesContext.advancedTypes.ARPEGGIO
+          : PreferencesContext.advancedTypes.SCALE;
+        dispatch({
+          type: PreferencesContext.actions.SET_SETTING,
+          payload: { advancedType: newType },
+        });
+      }}
+    >
+      {isScale ? translate('Arpeggios') : translate('Scales')}
+    </HeaderButton>
+  );
+}

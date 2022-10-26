@@ -3,15 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "prepare": "git config core.hooksPath ./scripts/hooks",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint .",
     "licenses": "npm-license-crawler --onlyDirectDependencies --json src/MoreStack/Licenses/licenses.json",
     "reset": "./scripts/reset.sh",
     "gen": "./scripts/generateComponent.sh",
-    "check-packages": "node ./scripts/checkForMaliciousPackages.js"
+    "check-packages": "node ./scripts/checkForMaliciousPackages.js",
+    "prettier": "prettier --check src",
+    "prettier:write": "prettier --write src"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.17",
@@ -69,6 +73,10 @@
       "plugin:react/recommended",
       "@react-native-community"
     ],
+    "ignorePatterns": [
+      "jest/*",
+      "*.test.js"
+    ],
     "globals": {
       "Atomics": "readonly",
       "SharedArrayBuffer": "readonly"
@@ -84,7 +92,8 @@
       "react"
     ],
     "rules": {
-      "eqeqeq": 0
+      "eqeqeq": "off",
+      "consistent-this": "off"
     }
   },
   "prettier": {
@@ -120,4 +129,3 @@
     ]
   }
 }
-

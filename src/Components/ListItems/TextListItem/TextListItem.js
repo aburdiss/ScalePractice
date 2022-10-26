@@ -1,9 +1,9 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+import { View, Text } from 'react-native';
 
-import { colors } from "../../../Model/Model";
-import { translate } from "../../../Translations/TranslationModel";
-import { useDarkMode } from "../../../utils";
+import { colors } from '../../../Model/Model';
+import { translate } from '../../../Translations/TranslationModel';
+import { useDarkMode } from '../../../utils';
 
 /**
  * @description A rendered Text list item. This is currently only being
@@ -20,9 +20,9 @@ export default function TextListItem({ item }) {
   const DARKMODE = useDarkMode();
   const styles = {
     listRowContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
       backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
       paddingVertical: 8,
       paddingHorizontal: 20,
@@ -40,7 +40,7 @@ export default function TextListItem({ item }) {
       width: 25,
       borderRadius: 4,
       marginRight: 5,
-      resizeMode: "contain",
+      resizeMode: 'contain',
     },
     linkText: {
       color: DARKMODE ? colors.purpleDark : colors.purpleLight,
@@ -52,7 +52,7 @@ export default function TextListItem({ item }) {
   return (
     <View style={styles.listRowContainer}>
       <Text style={styles.listRowText} accessibilityRole="text">
-        {item.value.includes("Alexander Burdiss")
+        {item.value.includes('Alexander Burdiss')
           ? item.value
           : translate(item.value)}
       </Text>

@@ -1,17 +1,20 @@
-import React from "react";
-import { View } from "react-native";
-import { Picker } from "@react-native-picker/picker";
-import { useDarkMode } from "../../utils";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import { useDarkMode } from '../../utils';
 
-import { colors } from "../../Model/Model";
-import { translate } from "../../Translations/TranslationModel";
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description Pickers used on iOS devices to select scales. Used on
  * AdvancedScale and AdvancedArpeggio components.
+ * Created 11/15/20
+ * @copyright Alexander Burdiss
  * @author Alexander Burdiss
- * @since 11/15/20
- * @version 1.0.1
+ * @since 10/25/22
+ * @version 1.0.2
+ * @param {Object} props JSX props passed to this React Component
  * @param {string} props.selectedNote The currently selected note to be shown
  * on the note name picker
  * @param {Function} props.setSelectedNote A function to update the state
@@ -35,27 +38,19 @@ import { translate } from "../../Translations/TranslationModel";
  *   scaleNames={scaleNames}
  * />
  */
-const ScalePickers = ({
+export default function ScalePickers({
   selectedNote,
   setSelectedNote,
   noteNames,
   selectedScale,
   setSelectedScale,
   scaleNames,
-}) => {
+}) {
   const DARKMODE = useDarkMode();
 
   return (
-    <View
-      style={{
-        flexDirection: "row",
-      }}
-    >
-      <View
-        style={{
-          width: "25%",
-        }}
-      >
+    <View style={styles.container}>
+      <View style={styles.leftPicker}>
         <Picker
           selectedValue={selectedNote}
           onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
@@ -68,11 +63,7 @@ const ScalePickers = ({
           ))}
         </Picker>
       </View>
-      <View
-        style={{
-          width: "75%",
-        }}
-      >
+      <View style={styles.rightPicker}>
         <Picker
           selectedValue={selectedScale}
           onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
@@ -91,6 +82,16 @@ const ScalePickers = ({
       </View>
     </View>
   );
-};
+}
 
-export default ScalePickers;
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+  },
+  leftPicker: {
+    width: '25%',
+  },
+  rightPicker: {
+    width: '75%',
+  },
+});

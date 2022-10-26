@@ -1,9 +1,9 @@
-import React from "react";
-import { View, Text } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import { useDarkMode } from "../../utils";
+import React from 'react';
+import { View, Text } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { useDarkMode } from '../../utils';
 
-import { colors } from "../../Model/Model";
+import { colors } from '../../Model/Model';
 
 /**
  * @function LargeScaleDisplay
@@ -21,7 +21,7 @@ const LargeScaleDisplay = ({ children }) => {
 
   return (
     <LinearGradient
-      colors={DARKMODE ? ["#ce4bf6", "#763af6"] : ["#763af6", "#ce4bf6"]}
+      colors={DARKMODE ? ['#ce4bf6', '#763af6'] : ['#763af6', '#ce4bf6']}
     >
       <View
         accessible={true}
@@ -30,9 +30,9 @@ const LargeScaleDisplay = ({ children }) => {
         accessibilityRole="alert"
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100%",
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
         }}
       >
         <Text
@@ -40,12 +40,12 @@ const LargeScaleDisplay = ({ children }) => {
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             color: DARKMODE ? colors.white : colors.white,
-            overflow: "hidden",
-            textAlign: "center",
-            width: "100%",
+            overflow: 'hidden',
+            textAlign: 'center',
+            width: '100%',
             paddingHorizontal: 14,
             fontSize: 32,
-            fontWeight: "bold",
+            fontWeight: 'bold',
           }}
         >
           {children}

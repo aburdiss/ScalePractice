@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, Switch, Pressable } from "react-native";
+import React from 'react';
+import { Text, Switch, Pressable } from 'react-native';
 
-import { colors } from "../../Model/Model";
-import { translate } from "../../Translations/TranslationModel";
-import { useDarkMode } from "../../utils";
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
+import { useDarkMode } from '../../utils';
 
 /**
  * @description One Switch Row that is used on the Scale and Arpeggio Display
@@ -28,9 +28,9 @@ const SwitchRow = ({ value, onValueChange, text }) => {
   const DARKMODE = useDarkMode();
   const styles = {
     switchRow: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       paddingVertical: 4,
       paddingHorizontal: 40,
     },
@@ -45,7 +45,7 @@ const SwitchRow = ({ value, onValueChange, text }) => {
       accessible={true}
       accessibilityState={{ checked: value }}
       accessibilityRole="switch"
-      accessibilityLabel={translate("Toggles Switch") + " " + text}
+      accessibilityLabel={translate('Toggles Switch') + ' ' + text}
       onPress={onValueChange}
     >
       <Text style={styles.switchText}>{text}</Text>

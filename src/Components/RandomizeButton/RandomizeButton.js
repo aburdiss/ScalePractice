@@ -1,9 +1,9 @@
-import React from "react";
-import { Pressable, Text } from "react-native";
-import { useDarkMode } from "../../utils";
+import React from 'react';
+import { Pressable, Text, StyleSheet } from 'react-native';
+import { useDarkMode } from '../../utils';
 
-import { colors } from "../../Model/Model";
-import { translate } from "../../Translations/TranslationModel";
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A purple button meant to trigger the randomize process of the
@@ -19,7 +19,13 @@ import { translate } from "../../Translations/TranslationModel";
  */
 const RandomizeButton = ({ handler }) => {
   const DARKMODE = useDarkMode();
-
+  const styles = StyleSheet.create({
+    text: {
+      textAlign: 'center',
+      color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+      fontSize: 24,
+    },
+  });
   return (
     <Pressable
       android_ripple={{
@@ -33,20 +39,13 @@ const RandomizeButton = ({ handler }) => {
         margin: 10,
         paddingHorizontal: 10,
         paddingVertical: 5,
-        justifyContent: "center",
+        justifyContent: 'center',
         opacity: pressed ? 0.7 : 1,
-        overflow: "hidden",
+        overflow: 'hidden',
       })}
     >
-      <Text
-        maxFontSizeMultiplier={3}
-        style={{
-          textAlign: "center",
-          color: DARKMODE ? colors.purpleDark : colors.purpleLight,
-          fontSize: 24,
-        }}
-      >
-        {translate("Randomize")}
+      <Text maxFontSizeMultiplier={3} style={styles.text}>
+        {translate('Randomize')}
       </Text>
     </Pressable>
   );

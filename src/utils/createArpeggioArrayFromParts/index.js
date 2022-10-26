@@ -1,5 +1,5 @@
-import { translate } from "../../Translations/TranslationModel";
-import { shuffle } from "../../utils";
+import { translate } from '../../Translations/TranslationModel';
+import { shuffle } from '../../utils';
 
 /**
  * @function ArpeggioPractice~createArpeggioArrayFromParts
@@ -13,18 +13,18 @@ import { shuffle } from "../../utils";
  */
 export function createArpeggioArrayFromParts(scaleName) {
   const letterNames = [
-    "C",
-    "C♯",
-    "D",
-    "E♭",
-    "E",
-    "F",
-    "F♯",
-    "G",
-    "A♭",
-    "A",
-    "B♭",
-    "B",
+    'C',
+    'C♯',
+    'D',
+    'E♭',
+    'E',
+    'F',
+    'F♯',
+    'G',
+    'A♭',
+    'A',
+    'B♭',
+    'B',
   ];
 
   let allLetterNamesOfScale = [];

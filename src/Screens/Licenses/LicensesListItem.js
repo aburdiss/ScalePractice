@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, Pressable, View, Linking, Image } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import { colors } from "../../Model/Model";
+import React from 'react';
+import { Text, Pressable, View, Linking, Image } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { colors } from '../../Model/Model';
 
-import { useDarkMode } from "../../utils";
+import { useDarkMode } from '../../utils';
 
 /**
  * @description A styled list item that contains links to the authors of the
@@ -44,10 +44,10 @@ const LicensesListItem = ({
   const DARKMODE = useDarkMode();
   const styles = {
     card: {
-      overflow: "hidden",
-      flexDirection: "row",
+      overflow: 'hidden',
+      flexDirection: 'row',
       backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-      alignItems: "center",
+      alignItems: 'center',
       paddingLeft: 12,
     },
     item: {
@@ -55,10 +55,10 @@ const LicensesListItem = ({
       paddingRight: 12,
       marginLeft: 12,
       flex: 1,
-      justifyContent: "space-between",
-      flexDirection: "row",
-      maxWidth: "100%",
-      flexWrap: "wrap",
+      justifyContent: 'space-between',
+      flexDirection: 'row',
+      maxWidth: '100%',
+      flexWrap: 'wrap',
       borderBottomColor: DARKMODE
         ? colors.systemGray5Dark
         : colors.systemGray5Light,
@@ -66,14 +66,14 @@ const LicensesListItem = ({
     },
     name: {
       color: DARKMODE ? colors.white : colors.black,
-      fontWeight: "bold",
+      fontWeight: 'bold',
       fontSize: 16,
     },
     image: {
       aspectRatio: 1,
       width: 58,
       borderRadius: 29,
-      backgroundColor: "white",
+      backgroundColor: 'white',
     },
 
     text: {
@@ -109,7 +109,7 @@ const LicensesListItem = ({
             })}
           >
             {/* eslint-disable-next-line react-native/no-inline-styles */}
-            <View style={{ maxWidth: "90%" }}>
+            <View style={{ maxWidth: '90%' }}>
               <Text style={styles.name}>{title}</Text>
               <Link style={styles.text} url={licenseUrl}>
                 {licenses}
@@ -118,10 +118,10 @@ const LicensesListItem = ({
             </View>
             <Ionicons
               // eslint-disable-next-line react-native/no-inline-styles
-              style={{ alignSelf: "center" }}
+              style={{ alignSelf: 'center' }}
               color={DARKMODE ? colors.purpleDark : colors.purpleLight}
               size={24}
-              name={"chevron-forward"}
+              name={'chevron-forward'}
             />
           </Pressable>
         </View>

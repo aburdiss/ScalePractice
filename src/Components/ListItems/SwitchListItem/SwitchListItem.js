@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, Pressable, Switch } from "react-native";
+import React from 'react';
+import { Text, Pressable, Switch } from 'react-native';
 
-import { colors } from "../../../Model/Model";
-import { translate } from "../../../Translations/TranslationModel";
-import { useDarkMode } from "../../../utils";
+import { colors } from '../../../Model/Model';
+import { translate } from '../../../Translations/TranslationModel';
+import { useDarkMode } from '../../../utils';
 
 /**
  * @description A rendered Switch list item that updates saved preferences.
@@ -27,9 +27,9 @@ export default function SwitchListItem({ item, state, dispatch }) {
   const DARKMODE = useDarkMode();
   const styles = {
     listRowContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
       backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
       paddingVertical: 8,
       paddingHorizontal: 20,
@@ -47,7 +47,7 @@ export default function SwitchListItem({ item, state, dispatch }) {
       width: 25,
       borderRadius: 4,
       marginRight: 5,
-      resizeMode: "contain",
+      resizeMode: 'contain',
     },
     linkText: {
       color: DARKMODE ? colors.purpleDark : colors.purpleLight,
@@ -59,7 +59,7 @@ export default function SwitchListItem({ item, state, dispatch }) {
   function updateValue() {
     let updatedState = !state[item.setting];
     let newSetting = { [item.setting]: updatedState };
-    dispatch({ type: "SET_SETTING", payload: newSetting });
+    dispatch({ type: 'SET_SETTING', payload: newSetting });
   }
   return (
     <Pressable
@@ -70,7 +70,7 @@ export default function SwitchListItem({ item, state, dispatch }) {
       accessibilityState={{ checked: state[item.setting] }}
       accessibilityRole="switch"
       accessibilityHint={
-        translate("Toggles setting") + " " + translate(item.value)
+        translate('Toggles setting') + ' ' + translate(item.value)
       }
     >
       <Text style={styles.listRowText}>{translate(item.value)}</Text>

@@ -1,17 +1,20 @@
-import React from "react";
-import { View } from "react-native";
-import { Picker } from "@react-native-picker/picker";
-import { useDarkMode } from "../../utils";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import { useDarkMode } from '../../utils';
 
-import { colors } from "../../Model/Model";
-import { translate } from "../../Translations/TranslationModel";
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description Pickers used on android devices to select scales. Used on
  * AdvancedScale and AdvancedArpeggio components.
+ * Created 11/15/20
+ * @copyright Alexander Burdiss
  * @author Alexander Burdiss
- * @since 11/15/20
- * @version 1.0.1
+ * @since 10/25/22
+ * @version 1.0.2
+ * @param {Object} props JSX props passed to this React Component
  * @param {string} props.selectedNote The currently selected note to be shown
  * on the note name picker
  * @param {Function} props.setSelectedNote A function to update the state
@@ -35,33 +38,39 @@ import { translate } from "../../Translations/TranslationModel";
  *   scaleNames={scaleNames}
  * />
  */
-const ScalePickers = ({
+export default function ScalePickers({
   selectedNote,
   setSelectedNote,
   noteNames,
   selectedScale,
   setSelectedScale,
   scaleNames,
-}) => {
+}) {
   const DARKMODE = useDarkMode();
+  const styles = StyleSheet.create({
+    container: {
+      paddingHorizontal: 26,
+    },
+    leftPicker: {
+      borderWidth: 1,
+      borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+      margin: 4,
+      borderRadius: 8,
+    },
+    rightPicker: {
+      borderWidth: 1,
+      borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
+      margin: 4,
+      borderRadius: 8,
+    },
+  });
 
   return (
-    <View
-      style={{
-        paddingHorizontal: 26,
-      }}
-    >
-      <View
-        style={{
-          borderWidth: 1,
-          borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
-          margin: 4,
-          borderRadius: 8,
-        }}
-      >
+    <View style={styles.container}>
+      <View style={styles.leftPicker}>
         <Picker
           selectedValue={selectedNote}
-          dropdownIconColor={DARKMODE ? "#bf5af2" : "#af52de"}
+          dropdownIconColor={DARKMODE ? '#bf5af2' : '#af52de'}
           onValueChange={(itemValue, itemIndex) => setSelectedNote(itemValue)}
         >
           {noteNames.map((noteName) => (
@@ -74,17 +83,10 @@ const ScalePickers = ({
           ))}
         </Picker>
       </View>
-      <View
-        style={{
-          borderWidth: 1,
-          borderColor: DARKMODE ? colors.purpleDark : colors.purpleLight,
-          margin: 4,
-          borderRadius: 8,
-        }}
-      >
+      <View style={styles.rightPicker}>
         <Picker
           selectedValue={selectedScale}
-          dropdownIconColor={DARKMODE ? "#bf5af2" : "#af52de"}
+          dropdownIconColor={DARKMODE ? '#bf5af2' : '#af52de'}
           onValueChange={(itemValue, itemIndex) => setSelectedScale(itemValue)}
         >
           {scaleNames.map((scaleName) => (
@@ -99,6 +101,4 @@ const ScalePickers = ({
       </View>
     </View>
   );
-};
-
-export default ScalePickers;
+}

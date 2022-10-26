@@ -1,11 +1,11 @@
-import React from "react";
-import { View, Text, Pressable } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import { View, Text, Pressable } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
-import { colors } from "../../../Model/Model";
-import { translate } from "../../../Translations/TranslationModel";
-import { useDarkMode } from "../../../utils";
+import { colors } from '../../../Model/Model';
+import { translate } from '../../../Translations/TranslationModel';
+import { useDarkMode } from '../../../utils';
 
 /**
  * @description A rendered link list item that opens a page inside the app on
@@ -24,9 +24,9 @@ export default function InternalListItem({ item }) {
   const DARKMODE = useDarkMode();
   const styles = {
     listRowContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
       backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
       paddingVertical: 8,
       paddingHorizontal: 20,
@@ -44,7 +44,7 @@ export default function InternalListItem({ item }) {
       width: 25,
       borderRadius: 4,
       marginRight: 5,
-      resizeMode: "contain",
+      resizeMode: 'contain',
     },
     linkText: {
       color: DARKMODE ? colors.purpleDark : colors.purpleLight,
@@ -69,7 +69,7 @@ export default function InternalListItem({ item }) {
       <View style={styles.listRowContainer}>
         <Text style={styles.linkText}>{translate(item.value)}</Text>
         <Ionicons
-          name={"chevron-forward-outline"}
+          name={'chevron-forward-outline'}
           size={25}
           color={styles.linkText.color}
         />

@@ -1,10 +1,10 @@
-import React from "react";
-import { View, Text, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { useDarkMode } from "../../../utils";
+import React from 'react';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useDarkMode } from '../../../utils';
 
-import { colors } from "../../../Model/Model";
-import { translate } from "../../../Translations/TranslationModel";
+import { colors } from '../../../Model/Model';
+import { translate } from '../../../Translations/TranslationModel';
 
 /**
  * @namespace FlatListItem
@@ -21,6 +21,15 @@ import { translate } from "../../../Translations/TranslationModel";
 export default function FlatListItem({ data }) {
   const navigation = useNavigation();
   const DARKMODE = useDarkMode();
+  const styles = StyleSheet.create({
+    container: {
+      borderBottomColor: DARKMODE
+        ? colors.systemGray5Dark
+        : colors.systemGray5Light,
+      borderBottomWidth: 1,
+      paddingVertical: 15,
+    },
+  });
 
   return (
     <Pressable
@@ -31,7 +40,7 @@ export default function FlatListItem({ data }) {
       accessibile={true}
       accessibilityLabel={translate(data.name)}
       onPress={() => {
-        navigation.navigate("Scale Detail", data);
+        navigation.navigate('Scale Detail', data);
       }}
       style={({ pressed }) => ({
         paddingLeft: 20,
@@ -39,15 +48,7 @@ export default function FlatListItem({ data }) {
         opacity: pressed ? 0.7 : 1,
       })}
     >
-      <View
-        style={{
-          borderBottomColor: DARKMODE
-            ? colors.systemGray5Dark
-            : colors.systemGray5Light,
-          borderBottomWidth: 1,
-          paddingVertical: 15,
-        }}
-      >
+      <View style={styles.container}>
         <Text
           style={{
             color: DARKMODE ? colors.white : colors.black,

@@ -18,11 +18,11 @@ import { translate } from '../../Translations/TranslationModel';
  */
 const SwipeableRow = ({ children, styles, deleteItem, item }) => {
   const renderRightActions = (progress, dragX) => {
-    const scale = dragX.interpolate({
-      inputRange: [-80, 0],
-      outputRange: [1, 0],
-      extrapolate: 'clamp',
-    });
+    // const scale = dragX.interpolate({
+    //   inputRange: [-80, 0],
+    //   outputRange: [1, 0],
+    //   extrapolate: 'clamp',
+    // });
 
     return (
       <RectButton

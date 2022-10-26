@@ -12,9 +12,11 @@ const Stack = createStackNavigator();
 
 /**
  * @description The stack of screens for the Random Tab of the navigation.
+ * Created 10/10/20
+ * @copyright Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/10/20
- * @version 1.0.1
+ * @since 10/25/22
+ * @version 1.0.2
  * @param {Object} props JSX Props passed to this React Component
  * @param {Object} props.navigation The navigation object provided by React
  * Navigation
@@ -26,10 +28,12 @@ const Stack = createStackNavigator();
  *   options={{title: translate('Random')}}
  * />
  */
-const RandomStack = ({ navigation }) => {
+export default function RandomStack({ navigation }) {
   const DARKMODE = useDarkMode();
 
   const { state, dispatch } = useContext(PreferencesContext);
+
+  const isScale = state?.randomType == PreferencesContext.randomTypes.SCALE;
 
   return (
     <Stack.Navigator
@@ -53,32 +57,30 @@ const RandomStack = ({ navigation }) => {
         name="Random Scale Practice"
         component={Random}
         options={{
-          headerRight: () => (
-            <HeaderButton
-              handler={() => {
-                const newType =
-                  state?.randomType == PreferencesContext.randomTypes.SCALE
-                    ? PreferencesContext.randomTypes.ARPEGGIO
-                    : PreferencesContext.randomTypes.SCALE;
-                dispatch({
-                  type: PreferencesContext.actions.SET_SETTING,
-                  payload: { randomType: newType },
-                });
-              }}
-            >
-              {state?.randomType == PreferencesContext.randomTypes.SCALE
-                ? translate('Arpeggios')
-                : translate('Scales')}
-            </HeaderButton>
-          ),
-          title:
-            state?.randomType == PreferencesContext.randomTypes.SCALE
-              ? translate('Random Scale Practice')
-              : translate('Random Arpeggio Practice'),
+          headerRight: getHeaderRight(isScale, dispatch),
+          title: isScale
+            ? translate('Random Scale Practice')
+            : translate('Random Arpeggio Practice'),
         }}
       />
     </Stack.Navigator>
   );
-};
+}
 
-export default RandomStack;
+function getHeaderRight(isScale, dispatch) {
+  return () => (
+    <HeaderButton
+      handler={() => {
+        const newType = isScale
+          ? PreferencesContext.randomTypes.ARPEGGIO
+          : PreferencesContext.randomTypes.SCALE;
+        dispatch({
+          type: PreferencesContext.actions.SET_SETTING,
+          payload: { randomType: newType },
+        });
+      }}
+    >
+      {isScale ? translate('Arpeggios') : translate('Scales')}
+    </HeaderButton>
+  );
+}

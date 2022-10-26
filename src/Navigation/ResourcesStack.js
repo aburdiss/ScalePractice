@@ -13,9 +13,12 @@ const Stack = createStackNavigator();
 
 /**
  * @description The stack of screens for the resources tab of the navigation.
+ * Created 10/10/20
+ * @copyright Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/10/20
- * @version 1.0.1
+ * @since 10/25/22
+ * @version 1.0.2
+ * @param {Object} props JSX props passed to this React Component
  * @param {Object} props.navigation The navigation object provided by React
  * Navigation
  *
@@ -26,7 +29,7 @@ const Stack = createStackNavigator();
  *   options={{title: translate('Resources')}}
  * />
  */
-const ResourcesStack = ({ navigation }) => {
+export default function ResourcesStack({ navigation }) {
   const DARKMODE = useDarkMode();
 
   const { state, dispatch } = useContext(PreferencesContext);
@@ -54,21 +57,7 @@ const ResourcesStack = ({ navigation }) => {
         name="Scale Resources"
         component={ScaleResources}
         options={{
-          headerRight: () => (
-            <HeaderButton
-              handler={() => {
-                const newType = isScale
-                  ? PreferencesContext.resourcesTypes.ARPEGGIO
-                  : PreferencesContext.resourcesTypes.SCALE;
-                dispatch({
-                  type: PreferencesContext.actions.SET_SETTING,
-                  payload: { resourcesType: newType },
-                });
-              }}
-            >
-              {isScale ? translate('Arpeggios') : translate('Scales')}
-            </HeaderButton>
-          ),
+          headerRight: getHeaderRight(isScale, dispatch),
           title: isScale
             ? translate('Scale Resources')
             : translate('Arpeggio Resources'),
@@ -83,6 +72,22 @@ const ResourcesStack = ({ navigation }) => {
       />
     </Stack.Navigator>
   );
-};
+}
 
-export default ResourcesStack;
+function getHeaderRight(isScale, dispatch) {
+  return () => (
+    <HeaderButton
+      handler={() => {
+        const newType = isScale
+          ? PreferencesContext.resourcesTypes.ARPEGGIO
+          : PreferencesContext.resourcesTypes.SCALE;
+        dispatch({
+          type: PreferencesContext.actions.SET_SETTING,
+          payload: { resourcesType: newType },
+        });
+      }}
+    >
+      {isScale ? translate('Arpeggios') : translate('Scales')}
+    </HeaderButton>
+  );
+}

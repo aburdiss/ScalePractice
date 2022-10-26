@@ -1,8 +1,8 @@
-import React from "react";
-import { Pressable, Text } from "react-native";
-import { useDarkMode } from "../../utils";
+import React from 'react';
+import { Pressable, StyleSheet, Text } from 'react-native';
+import { useDarkMode } from '../../utils';
 
-import { colors } from "../../Model/Model";
+import { colors } from '../../Model/Model';
 
 /**
  * @description A gray button that is meant to trigger all switches on a page.
@@ -21,6 +21,13 @@ import { colors } from "../../Model/Model";
  */
 const AllScalesButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();
+  const styles = StyleSheet.create({
+    text: {
+      textAlign: 'center',
+      color: DARKMODE ? colors.systemGray : colors.systemGray,
+      fontSize: 16,
+    },
+  });
 
   return (
     <Pressable
@@ -36,18 +43,10 @@ const AllScalesButton = ({ children, handler }) => {
         marginVertical: 10,
         padding: 10,
         opacity: pressed ? 0.7 : 1,
-        overflow: "hidden",
+        overflow: 'hidden',
       })}
     >
-      <Text
-        style={{
-          textAlign: "center",
-          color: DARKMODE ? colors.systemGray : colors.systemGray,
-          fontSize: 16,
-        }}
-      >
-        {children}
-      </Text>
+      <Text style={styles.text}>{children}</Text>
     </Pressable>
   );
 };

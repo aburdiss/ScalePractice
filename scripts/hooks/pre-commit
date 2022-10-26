@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# 
+# pre-commit hook for ScalePractice
+# Created by Alexander Burdiss on 10/25/22
+# Version 1.0.0
+#
+
+npm run check-packages
+
+npm run prettier
+
+npm run lint
+
+npm run test

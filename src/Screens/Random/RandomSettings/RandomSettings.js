@@ -1,8 +1,8 @@
-import React from "react";
-import { View } from "react-native";
-import { SwitchRow, AllScalesButton } from "../../../Components";
-import { translate } from "../../../Translations/TranslationModel";
-import { getTranslationKeyFromStateKey } from "../utils/getTranslationKeyFromStateKey";
+import React from 'react';
+import { View } from 'react-native';
+import { SwitchRow, AllScalesButton } from '../../../Components';
+import { translate } from '../../../Translations/TranslationModel';
+import { getTranslationKeyFromStateKey } from '../utils/getTranslationKeyFromStateKey';
 
 /**
  * @function RandomSettings
@@ -53,13 +53,13 @@ export default function RandomSettings({
           }
           accessibilityHint={
             action == dispatchRandomState.actions.TOGGLE_SCALE
-              ? translate("Toggles All Scales")
-              : translate("Toggles All Arpeggios")
+              ? translate('Toggles All Scales')
+              : translate('Toggles All Arpeggios')
           }
         >
           {action == dispatchRandomState.actions.TOGGLE_SCALE
-            ? translate("All Scales")
-            : translate("All Arpeggios")}
+            ? translate('All Scales')
+            : translate('All Arpeggios')}
         </AllScalesButton>
       </View>
     </View>

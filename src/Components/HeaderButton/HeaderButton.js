@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, Pressable } from "react-native";
-import { useDarkMode } from "../../utils";
+import React from 'react';
+import { Text, Pressable, StyleSheet } from 'react-native';
+import { useDarkMode } from '../../utils';
 
-import { colors } from "../../Model/Model";
-import { translate } from "../../Translations/TranslationModel";
+import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @description A simple button to live on the header and provide additional
@@ -21,6 +21,12 @@ import { translate } from "../../Translations/TranslationModel";
  */
 const HeaderButton = ({ children, handler }) => {
   const DARKMODE = useDarkMode();
+  const styles = StyleSheet.create({
+    text: {
+      color: DARKMODE ? colors.purpleDark : colors.purpleLight,
+      fontSize: 16,
+    },
+  });
 
   return (
     <Pressable
@@ -30,7 +36,7 @@ const HeaderButton = ({ children, handler }) => {
       accessibilityRole="link"
       accessible={true}
       accessibilityLabel={children}
-      accessibilityHint={translate("Navigates to") + " " + children}
+      accessibilityHint={translate('Navigates to') + ' ' + children}
       onPress={handler}
       style={({ pressed }) => ({
         padding: 8,
@@ -38,13 +44,7 @@ const HeaderButton = ({ children, handler }) => {
         opacity: pressed ? 0.7 : 1,
       })}
     >
-      <Text
-        maxFontSizeMultiplier={1.5}
-        style={{
-          color: DARKMODE ? colors.purpleDark : colors.purpleLight,
-          fontSize: 16,
-        }}
-      >
+      <Text maxFontSizeMultiplier={1.5} style={styles.text}>
         {children}
       </Text>
     </Pressable>

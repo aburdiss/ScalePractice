@@ -14,31 +14,31 @@
 export function getTranslationKeyFromStateKey(value, isScale) {
   if (isScale) {
     return {
-      major: "Major",
-      naturalMinor: "Natural Minor",
-      harmonicMinor: "Harmonic Minor",
-      melodicMinor: "Melodic Minor",
-      majorModes: "Major Modes",
-      melodicMinorModes: "Melodic Minor Modes",
-      blues: "Blues",
-      pentatonic: "Pentatonic",
-      octatonic: "Octatonic",
-      wholeTone: "Whole Tone",
+      major: 'Major',
+      naturalMinor: 'Natural Minor',
+      harmonicMinor: 'Harmonic Minor',
+      melodicMinor: 'Melodic Minor',
+      majorModes: 'Major Modes',
+      melodicMinorModes: 'Melodic Minor Modes',
+      blues: 'Blues',
+      pentatonic: 'Pentatonic',
+      octatonic: 'Octatonic',
+      wholeTone: 'Whole Tone',
     }[value];
   } else {
     // Arpeggio
     return {
-      major: "MajorChord",
-      minor: "Minor",
-      augmented: "Augmented",
-      diminished: "Diminished",
-      dominantSeventh: "Dominant Seventh",
-      majorSeventh: "Major Seventh",
-      minorSeventh: "Minor Seventh",
-      minorMajorSeventh: "Minor Major Seventh",
-      augmentedSeventh: "Augmented Minor Seventh",
-      halfDiminishedSeventh: "Half Diminished Seventh",
-      diminishedSeventh: "Diminished Seventh",
+      major: 'MajorChord',
+      minor: 'Minor',
+      augmented: 'Augmented',
+      diminished: 'Diminished',
+      dominantSeventh: 'Dominant Seventh',
+      majorSeventh: 'Major Seventh',
+      minorSeventh: 'Minor Seventh',
+      minorMajorSeventh: 'Minor Major Seventh',
+      augmentedSeventh: 'Augmented Minor Seventh',
+      halfDiminishedSeventh: 'Half Diminished Seventh',
+      diminishedSeventh: 'Diminished Seventh',
     }[value];
   }
 }

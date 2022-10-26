@@ -21,14 +21,16 @@ setI18nConfig();
 
 /**
  * @description The main tab navigation of the app.
+ * Created 10/10/20
+ * @copyright Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/10/20
+ * @since 10/25/22
  * @version 1.0.1
  *
  * @example
  * <App />
  */
-const App = () => {
+export default function App() {
   const DARKMODE = useDarkMode();
 
   useEffect(() => {
@@ -51,19 +53,7 @@ const App = () => {
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
-            tabBarIcon: ({ color, size }) => {
-              let iconName;
-              if (route.name === 'RandomStack') {
-                iconName = 'md-cube';
-              } else if (route.name === 'ResourcesStack') {
-                iconName = 'md-book';
-              } else if (route.name === 'AdvancedStack') {
-                iconName = 'md-create';
-              } else if (route.name === 'MoreStack') {
-                iconName = 'md-settings';
-              }
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
+            tabBarIcon: getTabBarIcon(route),
             tabBarActiveTintColor: DARKMODE
               ? colors.purpleDark
               : colors.purpleLight,
@@ -101,6 +91,20 @@ const App = () => {
       </NavigationContainer>
     </PreferencesProvider>
   );
-};
+}
 
-export default App;
+function getTabBarIcon(route) {
+  return ({ color, size }) => {
+    let iconName;
+    if (route.name === 'RandomStack') {
+      iconName = 'md-cube';
+    } else if (route.name === 'ResourcesStack') {
+      iconName = 'md-book';
+    } else if (route.name === 'AdvancedStack') {
+      iconName = 'md-create';
+    } else if (route.name === 'MoreStack') {
+      iconName = 'md-settings';
+    }
+    return <Ionicons name={iconName} size={size} color={color} />;
+  };
+}

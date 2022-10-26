@@ -1,6 +1,6 @@
-import { useColorScheme } from "react-native";
+import { useColorScheme } from 'react-native';
 
 export function useDarkMode() {
   const colorTheme = useColorScheme();
-  return colorTheme === "dark";
+  return colorTheme === 'dark';
 }
