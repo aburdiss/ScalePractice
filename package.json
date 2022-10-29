@@ -18,33 +18,34 @@
     "prettier:write": "prettier --write src"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.15.17",
-    "@react-native-masked-view/masked-view": "^0.2.6",
-    "@react-native-picker/picker": "^2.2.1",
-    "@react-navigation/bottom-tabs": "^6.2.0",
-    "@react-navigation/native": "^6.0.8",
-    "@react-navigation/stack": "^6.1.1",
+    "@react-native-async-storage/async-storage": "^1.17.10",
+    "@react-native-masked-view/masked-view": "^0.2.8",
+    "@react-native-picker/picker": "^2.4.8",
+    "@react-navigation/bottom-tabs": "^6.4.0",
+    "@react-navigation/native": "^6.0.13",
+    "@react-navigation/stack": "^6.3.3",
     "i18n-js": "^3.8.0",
     "lodash.memoize": "^4.1.2",
     "react": "18.1.0",
     "react-native": "0.70.4",
-    "react-native-device-info": "^8.4.8",
-    "react-native-gesture-handler": "^1.8.0",
+    "react-native-device-info": "^10.0.3",
+    "react-native-gesture-handler": "^2.8.0",
     "react-native-idle-timer": "^2.1.7",
-    "react-native-linear-gradient": "^2.5.6",
-    "react-native-localize": "^2.1.9",
-    "react-native-popover-view": "^4.1.0",
-    "react-native-reanimated": "^2.3.1",
-    "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "^3.10.2",
-    "react-native-vector-icons": "^9.0.0"
+    "react-native-linear-gradient": "^2.6.2",
+    "react-native-localize": "^2.2.4",
+    "react-native-popover-view": "^5.1.6",
+    "react-native-reanimated": "^2.12.0",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-screens": "^3.18.2",
+    "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.18.0",
     "@babel/runtime": "^7.17.0",
     "@react-native-community/eslint-config": "^3.1.0",
     "@testing-library/react-native": "^9.0.0",
     "babel-jest": "^27.4.6",
+    "babel-plugin-module-resolver": "^4.1.0",
     "colors": "1.1.2",
     "eslint": "^8.25.0",
     "eslint-plugin-react": "^7.31.8",
@@ -102,8 +103,7 @@
     "arrowParens": "always",
     "semi": true,
     "tabWidth": 2,
-    "singleQuote": true,
-    "bracketSameLine": true
+    "singleQuote": true
   },
   "jest": {
     "preset": "react-native",
@@ -123,10 +123,10 @@
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
     },
     "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+      "^.+\\.js$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(@react-native|react-native|react-native-popover-view|react-native-linear-gradient|react-native-animatable|react-native-scalable-image|react-native-modal|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/segmented-control|react-native-picker-select|@react-native-picker/picker)/)"
+      "<rootDir>/node_modules/(?!(@react-native|react-native|react-native-popover-view|react-native-linear-gradient|react-native-animatable|react-native-scalable-image|react-native-modal|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/segmented-control|react-native-picker-select|@react-native-picker/picker)/)"
     ]
   }
 }

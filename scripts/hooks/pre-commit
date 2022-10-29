@@ -5,6 +5,8 @@
 # Version 1.0.0
 #
 
+set -e
+
 npm run check-packages
 
 npm run prettier

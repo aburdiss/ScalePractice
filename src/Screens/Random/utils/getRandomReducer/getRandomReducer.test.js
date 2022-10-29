@@ -1,4 +1,4 @@
-import { getRandomReducer } from '.';
+import { getRandomReducer } from './index';
 import { PreferencesContext } from '../../../../Model/Preferences';
 
 const mockState = {

@@ -148,7 +148,7 @@ export default function Random() {
         </Text>
       </Pressable>
       <Popover
-        arrowStyle={styles.popoverArrow}
+        popoverStyle={styles.popoverArrow}
         from={selectionRef}
         isVisible={randomState.showSelectionPopover}
         onRequestClose={() =>

@@ -1,4 +1,4 @@
-import { getAdvancedReducer } from '.';
+import { getAdvancedReducer } from './index';
 import { PreferencesContext } from '../../../../Model/Preferences';
 
 const mockState = {
