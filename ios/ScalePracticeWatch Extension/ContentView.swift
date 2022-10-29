@@ -24,9 +24,21 @@ struct ContentView: View {
       Spacer()
     }
     .padding(.bottom)
-    .background(Color.purple)
-    .cornerRadius(20)
     
+    .background(
+      LinearGradient(
+        gradient: Gradient(
+          colors: [
+            Color(red: 0.4627450980392157, green: 0.22745098039215686, blue: 0.9647058823529412), 
+            Color(red: 0.807843137254902, green: 0.29411764705882354, blue: 0.9647058823529412)
+          ]
+        ), 
+        startPoint: .top, 
+        endPoint: .bottom
+      )
+    )
+    .cornerRadius(20)
+
     Button(action: {
       advanceCounter()
     }) {
