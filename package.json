@@ -26,8 +26,8 @@
     "@react-navigation/stack": "^6.1.1",
     "i18n-js": "^3.8.0",
     "lodash.memoize": "^4.1.2",
-    "react": "17.0.2",
-    "react-native": "0.67.2",
+    "react": "18.1.0",
+    "react-native": "0.70.4",
     "react-native-device-info": "^8.4.8",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-idle-timer": "^2.1.7",
@@ -50,11 +50,11 @@
     "eslint-plugin-react": "^7.31.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.7",
-    "metro-react-native-babel-preset": "^0.66.2",
+    "metro-react-native-babel-preset": "0.72.3",
     "node-fetch": "^2.6.7",
     "npm-license-crawler": "^0.2.1",
     "prettier": "^2.7.1",
-    "react-test-renderer": "17.0.2",
+    "react-test-renderer": "18.1.0",
     "ua-parser-js": "0.7.31"
   },
   "babel": {
@@ -102,7 +102,8 @@
     "arrowParens": "always",
     "semi": true,
     "tabWidth": 2,
-    "singleQuote": true
+    "singleQuote": true,
+    "bracketSameLine": true
   },
   "jest": {
     "preset": "react-native",
