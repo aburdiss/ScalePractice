@@ -44,8 +44,8 @@
     "@babel/runtime": "^7.17.0",
     "@react-native-community/eslint-config": "^3.1.0",
     "@testing-library/react-native": "^9.0.0",
-    "babel-jest": "^27.4.6",
     "babel-plugin-module-resolver": "^4.1.0",
+    "babel-jest": "^27.4.6",
     "colors": "1.1.2",
     "eslint": "^8.25.0",
     "eslint-plugin-react": "^7.31.8",
@@ -57,11 +57,6 @@
     "prettier": "^2.7.1",
     "react-test-renderer": "18.1.0",
     "ua-parser-js": "0.7.31"
-  },
-  "babel": {
-    "presets": [
-      "module:metro-react-native-babel-preset"
-    ]
   },
   "eslintConfig": {
     "env": {
