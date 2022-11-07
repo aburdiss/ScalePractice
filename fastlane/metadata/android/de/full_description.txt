@@ -1,0 +1,14 @@
+<i>Scale Practice</i> hilft Musikern, ihre Tonleitern zu üben, indem es die Reihenfolge der Tonleitern zufällig bestimmt und Ressourcen zum Erlernen neuer Tonleitern bereitstellt. Sie enthält drei verschiedene Funktionen:
+
+1. Zufällige Tonleiter, ausgewählt aus einer Liste von Tonleiterntypen
+2. Zufällige Tonleiter, ausgewählt aus einer Liste von vom Benutzer eingegebenen Tonleitern
+3. Skalieren Sie Ressourcen, einschließlich Bilder jeder Tonleiter und Beschreibungen
+
+<b>Features:</b>
+
+* Diverse Tonleiter-Auswahlen (Dur, natürliches Moll, harmonisches Moll, melodisches Moll, Dur-Modi, melodische Moll-Modi, Blues-Tonleiter, Pentatonische Tonleitern, Oktatonische Tonleitern, GanztonTonleitern)
+* Arpeggio Practic
+* Ressourcen zum Erlernen neuer Tonleitern
+* Zufällige Auswahl aus benutzerdefinierten Tonleitern<
+
+Diese App hört Dir nicht beim Üben zu und gibt dir in keiner Weise Feedback. Sie soll Dir nur eine neue Reihenfolge zum Üben Deiner Tonleitern geben.
