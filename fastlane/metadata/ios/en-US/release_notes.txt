@@ -1,0 +1,3 @@
+Updated Switching between Scales and Arpeggios to not use a navigation event.
+Updates All dependencies to latest version
+Minor Bug Fixes

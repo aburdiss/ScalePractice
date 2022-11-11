@@ -1,0 +1,12 @@
+This app contains three different functions:
+1. Random scale chosen from a list of scale types
+2. Random scale chosen from a list of user inputted scales
+3. Scale resources, including images of each scale and descriptions
+
+Features:
+-Diverse Scale Selection (Major, Natural Minor, Harmonic Minor, Melodic Minor, Major Modes, Melodic Minor Modes, Blues Scale, Pentatonic Scales, Octatonic Scales, Whole Tone Scales)
+-Arpeggio Practic
+-Resources to help you learn new scales
+-Random selection from user selected scales
+
+This app does not listen to you practice, or provide you feedback in any way. It is only designed to give you a new order to practice your scales in.
