@@ -138,8 +138,8 @@ android {
         applicationId "com.scalepractice"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 6
-        versionName "2.7.1"
+        versionCode 7
+        versionName "2.7.2"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
         if (isNewArchitectureEnabled()) {
             // We configure the CMake build only if you decide to opt-in for the New Architecture.
@@ -217,10 +217,10 @@ android {
         }
         release {
             if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-                storeFile file(MYAPP_UPLOAD_STORE_FILE)                
-                storePassword MYAPP_UPLOAD_STORE_PASSWORD                
-                keyAlias MYAPP_UPLOAD_KEY_ALIAS                
-                keyPassword MYAPP_UPLOAD_KEY_PASSWORD    
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
             }
         }
     }
@@ -287,7 +287,7 @@ dependencies {
 
 if (isNewArchitectureEnabled()) {
     // If new architecture is enabled, we let you build RN from source
-	
+
     // Otherwise we fallback to a prebuilt .aar bundled in the NPM package.
     // This will be applied to all the imported transtitive dependency.
     configurations.all {

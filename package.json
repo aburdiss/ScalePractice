@@ -1,6 +1,6 @@
 {
   "name": "scale-practice",
-  "version": "0.0.1",
+  "version": "2.7.2",
   "private": true,
   "scripts": {
     "prepare": "git config core.hooksPath ./scripts/hooks",
