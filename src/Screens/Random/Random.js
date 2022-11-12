@@ -17,6 +17,11 @@ import { useIdleScreen, useDarkMode } from '../../utils';
 import { getRandomReducer } from './utils/getRandomReducer';
 
 /**
+ * @namespace Random
+ * @description The main screen of the app, with a basic randomizer with
+ * scale selections
+ */
+/**
  * @function Random
  * @description A View that allows the user to randomize all of the scales in
  * a particular category.

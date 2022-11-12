@@ -49,6 +49,21 @@ const INITIAL_RANDOM_STATE = {
     [ARPEGGIO_TYPES.diminishedSeventh]: false,
   },
 };
+
+/**
+ * @function getRandomReducer
+ * @memberof Random
+ * @description Gets a reducer to use with the state on the Random Screen of
+ * the application
+ * @param {Object} state The User Preferences State to determine which scales
+ * build
+ * @returns {Function} A Reducer for the Random screen of the application
+ *
+ * @copyright Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 10/15/22
+ * @version 1.1.0
+ */
 export function getRandomReducer(state) {
   const isScale = state?.randomType === PreferencesContext.randomTypes.SCALE;
   function randomReducer(currentState, action) {
@@ -192,10 +207,11 @@ export function getRandomReducer(state) {
         const scaleArray = isScale
           ? getAllScalesFromState(currentState.scaleOptions)
           : getAllArpeggiosFromState(currentState.arpeggioOptions);
+        const shuffledScales = shuffle(scaleArray);
         return {
           ...currentState,
           scaleArrayIndex: 0,
-          scaleArray,
+          scaleArray: shuffledScales,
           currentScale: isScale
             ? translate('No Scale Selected')
             : translate('No Arpeggio Selected'),

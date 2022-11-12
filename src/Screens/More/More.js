@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text, SectionList } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import DeviceInfo from 'react-native-device-info';
 
 import {
   SwitchListItem,
@@ -65,11 +66,11 @@ const More = () => {
     footerContainer: {
       paddingTop: 30,
       alignItems: 'center',
+      paddingBottom: 30,
     },
     footerText: {
       color: colors.systemGray,
       paddingTop: 10,
-      paddingBottom: 30,
     },
   };
   const { state, dispatch } = useContext(PreferencesContext);
@@ -126,6 +127,7 @@ const More = () => {
             <Text style={styles.footerText}>
               {translate('Made with ❤️ in Dayton, Ohio')}
             </Text>
+            <Text style={styles.footerText}>{DeviceInfo.getVersion()}</Text>
           </View>
         }
       />
