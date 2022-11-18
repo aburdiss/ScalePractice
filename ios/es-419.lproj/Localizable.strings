@@ -1,0 +1,13 @@
+/*
+  Localizable.strings
+  ScalePractice
+
+  Created by Alexander Burdiss on 12/1/20.
+
+*/
+
+// Watch App Translations
+"Scale Practice" = "Escala Aleatoria";
+"Randomize" = "Aleatorizar";
+"All Scales Practiced" = "Todas las escalas practicadas";
+"Keep Practicing" = "Sigue Practicando";
