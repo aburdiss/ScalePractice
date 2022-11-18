@@ -8,6 +8,7 @@ const translationGetters = {
   fr: () => require('./fr.json'),
   ja: () => require('./ja.json'),
   ko: () => require('./ko.json'),
+  es: () => require('./es.json'),
 };
 
 /**
