@@ -25,7 +25,7 @@ import { useDarkMode, useIdleScreen } from '../../utils';
  * @example
  * <More />
  */
-const More = () => {
+export default function More() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
@@ -133,6 +133,4 @@ const More = () => {
       />
     </View>
   );
-};
-
-export default More;
+}

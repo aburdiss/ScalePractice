@@ -1,4 +1,4 @@
-<img align="right" src="img/AppIconRound.png" width="70" alt="Scale Practice">
+<img align="right" src="android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="70" alt="Scale Practice">
 
 # Scale Practice
 
