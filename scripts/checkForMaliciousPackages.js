@@ -15,6 +15,7 @@ const GREEN = '\x1b[32m';
 const NOCOLOR = '\x1b[0m';
 
 const maliciousPackages = {
+  coa: ['2.0.3', '*'],
   colors: ['1.4.1', '*'],
   'discord-lofy': ['11.5.1', '*'],
   'discord-selfbot-v14': ['12.0.3', '*'],
@@ -29,6 +30,7 @@ const maliciousPackages = {
   'octavius-public': ['1.836.609', '*'],
   peacenotwar: ['0.0.0', '*'],
   'prerequests-xcode': ['1.0.4', '*'],
+  rc: ['1.2.9', '*'],
   'styled-components': ['5.3.4', '*'],
   'ua-parser-js': ['0.7.29', '0.7.29'],
   'wafer-autocomplete': ['1.25.0', '*'],
