@@ -5,8 +5,9 @@
 <a href="https://apps.apple.com/tt/app/scale-practice-randomizer/id1496727056"><img src="img/Apple.png" width="150" alt="Apple App Store Badge"></a>
 <a href="https://play.google.com/store/apps/details?id=com.scalepractice"><img src="img/Google.png" width="150" alt="Google Play Store Badge"></a>
 <a href="https://www.amazon.com/dp/B08X6RNHRK/ref=sr_1_2"><img src="img/Amazon.png" width="150" alt="Amazon App Store Badge"></a>
+<a href="https://apt.izzysoft.de/fdroid/index/apk/com.scalepractice"><img src="img/Fdroid.png" width="150" alt="F-Droid App Store Badge"></a>
 
-A React Native app available on the <a href="https://apps.apple.com/tt/app/scale-practice-randomizer/id1496727056">Apple App Store</a>, <a href="https://play.google.com/store/apps/details?id=com.scalepractice">Google Play Store</a>, and the <a href="https://www.amazon.com/dp/B08X6RNHRK/ref=sr_1_2">Amazon App Store</a>. You can also download the app APK from <a href="https://github.com/aburdiss/ScalePractice/releases">Github</a>. This app helps musicians practice their scales, by randomizing the order of scales and providing resources to learn about new scales.
+A React Native app available on the <a href="https://apps.apple.com/tt/app/scale-practice-randomizer/id1496727056">Apple App Store</a>, <a href="https://play.google.com/store/apps/details?id=com.scalepractice">Google Play Store</a>, <a href="https://www.amazon.com/dp/B08X6RNHRK/ref=sr_1_2">Amazon App Store</a>, and <a href="https://apt.izzysoft.de/fdroid/index/apk/com.scalepractice">F-Droid</a>. You can also download the app APK directly from <a href="https://github.com/aburdiss/ScalePractice/releases">Github</a>. This app helps musicians practice their scales, by randomizing the order of scales and providing resources to learn about new scales.
 
 ## Requirements
 
