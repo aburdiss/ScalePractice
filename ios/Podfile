@@ -6,6 +6,9 @@ install! 'cocoapods', :deterministic_uuids => false
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
 target 'ScalePractice' do
   config = use_native_modules!
 
