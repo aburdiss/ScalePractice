@@ -91,7 +91,7 @@ const LicensesListItem = ({
 
   return (
     <View>
-      <View style={styles.cardShadow}>
+      <View>
         <View style={styles.card}>
           {image && (
             <Pressable
