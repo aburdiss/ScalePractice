@@ -10,7 +10,7 @@ import {
   InternalListItem,
 } from '../../Components';
 import { colors } from '../../Model/Model';
-import { RESOURCES, ABOUT, SETTINGS } from '../../Model/MoreModel';
+import { RESOURCES, ABOUT, HELP, SETTINGS } from '../../Model/MoreModel';
 import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode, useIdleScreen } from '../../utils';
@@ -79,8 +79,9 @@ export default function More() {
     <View>
       <SectionList
         sections={[
-          { title: translate('Settings'), data: SETTINGS },
+          { title: translate('Settings Group'), data: SETTINGS },
           { title: translate('Resources'), data: RESOURCES },
+          { title: translate('Help'), data: HELP },
           { title: translate('About'), data: ABOUT },
         ]}
         keyExtractor={(item, index) => index}

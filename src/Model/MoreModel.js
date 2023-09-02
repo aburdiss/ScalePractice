@@ -56,6 +56,21 @@ export const RESOURCES = [
   },
 ];
 
+export const HELP = [
+  {
+    id: '10',
+    type: 'navigate',
+    value: 'How to use this app',
+    component: 'Help',
+  },
+  {
+    id: '8',
+    type: 'link',
+    value: 'Send Feedback',
+    link: 'mailto:aburdiss@icloud.com?subject=Scale%20Practice%20Feedback',
+  },
+];
+
 export const ABOUT = [
   {
     id: '5',
@@ -73,12 +88,6 @@ export const ABOUT = [
     type: 'navigate',
     value: 'Licenses',
     component: 'Licenses',
-  },
-  {
-    id: '8',
-    type: 'link',
-    value: 'Send Feedback',
-    link: 'mailto:aburdiss@icloud.com?subject=Scale%20Practice%20Feedback',
   },
   {
     id: '9',

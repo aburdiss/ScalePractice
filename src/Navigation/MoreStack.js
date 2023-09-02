@@ -8,6 +8,7 @@ import Acknowledgements from '../Screens/Acknowledgements/Acknowledgements';
 
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
+import Help from '../Screens/Help/Help';
 
 const Stack = createStackNavigator();
 
@@ -66,6 +67,13 @@ export default function MoreStack() {
         component={Acknowledgements}
         options={{
           title: translate('Acknowledgements'),
+        }}
+      />
+      <Stack.Screen
+        name="Help"
+        component={Help}
+        options={{
+          title: translate('How to use this app'),
         }}
       />
     </Stack.Navigator>

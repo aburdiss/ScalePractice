@@ -1,9 +1,9 @@
 {
   "Random Scale Practice": "Pratique en gammes randomisé",
-  "Advanced Scale Practice": "Pratique en gammes avancé",
+  "Advanced Scale Practice": "Gammes Personnalisées",
   "Scale Resources": "Ressources de gammes",
   "Random Arpeggio Practice": "Pratique en arpèges randomisé",
-  "Advanced Arpeggio Practice": "Pratique en arpèges avancé",
+  "Advanced Arpeggio Practice": "Arpèges Personnalisées",
   "Arpeggio Resources": "Ressources d’arpèges",
 
   "All Scales": "Toutes les gammes",
@@ -36,8 +36,8 @@
 
   "Random": "Au hasard",
   "Resources": "Ressources",
-  "Advanced": "Avancé",
-  "Settings": "Paramètres",
+  "Advanced": "Personnalisé",
+  "Settings": "Plus",
 
   "No Scale Selected": "Aucune gamme sélectionnée",
   "Major": "Majeure",
@@ -82,6 +82,11 @@
   "Half Diminished Seventh": "La Septième Semi-Diminuée",
   "Diminished Seventh": "La Septième Diminuée",
 
+  "Settings Group": "Paramètres",
+  "Help": "Aide",
+  "How to use this app": "Comment utiliser cette application",
+  "Help1": "Cette application est quelque chose que j'ai construit pour moi-même lorsque j'étais à l'université pour étudier la musique, et je l'ai utilisée pour m'entraîner pour mes jurys. J'en avais vraiment marre de jouer mes gammes dans le cercle des quintes tous les jours, pendant des mois, j'ai donc créé cet outil pour me permettre de les jouer dans un ordre aléatoire. C'est essentiellement tout l'intérêt de l'application, c'est de mettre les noms d'échelle dans un ordre différent. J'ai également ajouté des « Arpèges » en cours de route, ainsi qu'une petite référence pour les différentes constructions d'échelles si vous les oubliez. La section « personnalisée » vous permet de créer des listes spécifiques d'échelles à randomiser, si vous rencontrez simplement des problèmes avec quelques-unes.",
+  "Help2": "Il n'y a rien dans cette application qui jouera les gammes pour vous, ni quoi que ce soit qui vous écoutera jouer des gammes. C'est comme un dé à écailles sophistiqué, qui peut placer toutes les écailles dans un ordre aléatoire.",
   "Licenses": "Licences",
   "Acknowledgements": "Remerciements",
   "Translations": "Traductions",

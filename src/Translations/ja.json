@@ -1,9 +1,9 @@
 {
   "Random Scale Practice": "シャッフル音階練習",
-  "Advanced Scale Practice": "アドバンスト音階練習",
+  "Advanced Scale Practice": "パーソナライズされた音階練習",
   "Scale Resources": "音阶練習の資源",
   "Random Arpeggio Practice": "シャッフルアルペジオ練習",
-  "Advanced Arpeggio Practice": "アドバンストアルペジオ練習",
+  "Advanced Arpeggio Practice": "パーソナライズされたアルペジオ練習",
   "Arpeggio Resources": "アルペジオの資源",
 
   "All Scales": "すべての音階",
@@ -36,8 +36,8 @@
 
   "Random": "シャッフル",
   "Resources": "資源",
-  "Advanced": "アドバンスト",
-  "Settings": "設定",
+  "Advanced": "パーソナライズされた",
+  "Settings": "もっと",
 
   "No Scale Selected": "音階が選択されていません",
   "Major": "長音階",
@@ -82,6 +82,11 @@
   "Half Diminished Seventh": "ハーフディミニッシュセブンス",
   "Diminished Seventh": "ディミニッシュセブンス",
 
+  "Settings Group": "設定",
+  "Help": "ヘルプ",
+  "How to use this app": "このアプリの使い方",
+  "Help1": "このアプリは、私が大学で音楽を勉強していたときに自分のために作成したもので、審査員のために練習するために使用していました。 何ヶ月もの間、毎日 5 度圏で音階を演奏するのに本当にうんざりしたので、ランダムな順序で音階を演奏できるようにするこのツールを作成しました。 基本的にこのアプリの重要な点は、スケール名を異なる順序で配置することです。 途中で「アルペジオ」も追加しました。また、忘れた場合に備えて、さまざまなスケールの構築に関する小さなリファレンスも追加しました。 いくつかの問題がある場合は、「カスタム」セクションを使用して、ランダム化するスケールの特定のリストを作成できます。",
+  "Help2": "このアプリには、あなたに代わってスケールを演奏したり、スケールの演奏を聞いたりするものは何もありません。 これは、すべての目盛りをランダムな順序で配置できる、派手な目盛りのサイコロのようなものです。",
   "Licenses": "年寄名跡",
   "Acknowledgements": "認容",
   "Translations": "翻訳",

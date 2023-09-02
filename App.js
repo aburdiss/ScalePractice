@@ -103,7 +103,7 @@ function getTabBarIcon(route) {
     } else if (route.name === 'AdvancedStack') {
       iconName = 'md-create';
     } else if (route.name === 'MoreStack') {
-      iconName = 'md-settings';
+      iconName = 'ellipsis-horizontal-circle-sharp';
     }
     return <Ionicons name={iconName} size={size} color={color} />;
   };

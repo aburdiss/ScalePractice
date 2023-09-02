@@ -1,9 +1,9 @@
 {
   "Random Scale Practice": "셔플 음계 연습",
-  "Advanced Scale Practice": "어드밴스트 음계 연습",
+  "Advanced Scale Practice": "개인화된 음계 연습",
   "Scale Resources": "음파 연습의 자원",
   "Random Arpeggio Practice": "셔플 아르페지오 연습",
-  "Advanced Arpeggio Practice": "어드밴스트 알페지오 연습",
+  "Advanced Arpeggio Practice": "개인화된 알페지오 연습",
   "Arpeggio Resources": "아르페지오의 자원",
 
   "All Scales": "모든 저울",
@@ -36,8 +36,8 @@
 
   "Random": "셔플",
   "Resources": "자원",
-  "Advanced": "어드밴스트",
-  "Settings": "설정",
+  "Advanced": "개인화된",
+  "Settings": "더",
 
   "No Scale Selected": "음계가선택되지않았습니다.",
   "Major": "장음계",
@@ -82,6 +82,11 @@
   "Half Diminished Seventh": "하프 디미니시 세븐스",
   "Diminished Seventh": "디미니시 세븐스",
 
+  "Settings Group": "설정",
+  "Help": "헬프",
+  "How to use this app": "이 앱의 사용법",
+  "Help1": "이 앱은 제가 대학에서 음악을 공부할 때 저를 위해 작성한 것으로 심사위원들을 위해 연습하기 위해 사용하고 있었습니다. 몇 달 동안 매일 5도권에서 음계를 연주하는 것이 정말 지겨웠기 때문에 랜덤한 순서로 음계를 연주할 수 있도록 하는 이 도구를 만들었습니다. 기본적으로 이 앱의 중요한 점은 스케일 이름을 다른 순서로 배치하는 것입니다. 중간에 '알페지오'도 추가했어요.또한 잊어버렸을 경우를 대비하여 다양한 스케일 구축에 관한 작은 레퍼런스도 추가했습니다. 몇 가지 문제가 있는 경우, \"사용자 지정\" 섹션을 사용하여 랜덤화할 스케일의 특정 목록을 만들 수 있습니다.",
+  "Help2": "이 앱에는 당신 대신 스케일을 연주하거나 스케일 연주를 듣는 것은 아무것도 없습니다. 이것은 모든 눈금을 랜덤한 순서로 배치할 수 있는 화려한 눈금 주사위와 같은 것입니다.",
   "Licenses": "나이든 명적",
   "Acknowledgements": "인용",
   "Translations": "번역",

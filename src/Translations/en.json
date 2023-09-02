@@ -1,9 +1,9 @@
 {
   "Random Scale Practice": "Scale Practice",
-  "Advanced Scale Practice": "Advanced Scales",
+  "Advanced Scale Practice": "Custom Scales",
   "Scale Resources": "Scale Resources",
   "Random Arpeggio Practice": "Arpeggio Practice",
-  "Advanced Arpeggio Practice": "Advanced Arpeggios",
+  "Advanced Arpeggio Practice": "Custom Arpeggios",
   "Arpeggio Resources": "Arpeggio Resources",
 
   "All Scales": "All Scales",
@@ -36,8 +36,8 @@
 
   "Random": "Random",
   "Resources": "Resources",
-  "Advanced": "Advanced",
-  "Settings": "Settings",
+  "Advanced": "Custom",
+  "Settings": "More",
 
   "No Scale Selected": "No Scale Selected",
   "Major": "Major",
@@ -82,6 +82,11 @@
   "Half Diminished Seventh": "Half-Diminished Seventh",
   "Diminished Seventh": "Diminished Seventh",
 
+  "Settings Group": "Settings",
+  "Help": "Help",
+  "How to use this app": "How to use this app",
+  "Help1": "This app is something I built for myself when I was in college studying music, and I used it to practice for my juries. I got really tired of playing my scales in the circle of fifths every day, for months, so I created this tool to allow me to play them in a random order. That's basically the whole point of the app, is to put scale names in a different order. I also added 'Arpeggios' along the way, and a small reference for the different scale constructions if you forget them. The 'custom' section allows you to create specific lists of scales to randomize, if you are just having problems with a couple.",
+  "Help2": "There's nothing in this app that will play the scales for you, or anything that will listen to you play scales. It's just like a fancy scale dice, that can put all the scales in a random order.",
   "Licenses": "Licenses",
   "Acknowledgements": "Acknowledgements",
   "Translations": "Translations",

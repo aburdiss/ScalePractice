@@ -1,9 +1,9 @@
 {
   "Random Scale Practice": "随机音阶练习",
-  "Advanced Scale Practice": "高级音阶练习",
+  "Advanced Scale Practice": "个性化音阶练习",
   "Scale Resources": "音阶资源",
   "Random Arpeggio Practice": "随机琶音练习",
-  "Advanced Arpeggio Practice": "高级琶音练习",
+  "Advanced Arpeggio Practice": "个性化琶音练习",
   "Arpeggio Resources": "琶音资源",
 
   "All Scales": "所有音阶",
@@ -36,8 +36,8 @@
 
   "Random": "随机",
   "Resources": "资源",
-  "Advanced": "高级",
-  "Settings": "设定",
+  "Advanced": "个性化",
+  "Settings": "更多",
 
   "No Scale Selected": "未选择音阶",
   "Major": "大调",
@@ -82,6 +82,11 @@
   "Half Diminished Seventh": "半减七和弦",
   "Diminished Seventh": "减七和弦",
 
+  "Settings Group": "设定",
+  "Help": "帮助",
+  "How to use this app": "如何使用这个应用程序",
+  "Help1": "这个应用程序是我在大学学习音乐时为自己开发的，我用它为陪审团练习。 几个月以来，我真的厌倦了每天演奏五度音阶，所以我创建了这个工具来让我以随机顺序演奏它们。 这基本上就是应用程序的全部要点，是以不同的顺序放置音阶名称。 我还一路添加了“琶音”，以及不同音阶结构的小参考（如果您忘记了它们）。 如果您只是遇到几个问题，“自定义”部分允许您创建特定的量表列表以进行随机化。",
+  "Help2": "此应用程序中没有任何内容可以为您演奏音阶，也没有任何可以听您演奏音阶的内容。 它就像一个精美的刻度骰子，可以将所有刻度按随机顺序排列。",
   "Licenses": "执照",
   "Acknowledgements": "致谢",
   "Translations": "翻译",

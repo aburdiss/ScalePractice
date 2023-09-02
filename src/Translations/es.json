@@ -1,9 +1,9 @@
 {
   "Random Scale Practice": "Práctica de escala aleatoria",
-  "Advanced Scale Practice": "Práctica de escala avanzada",
+  "Advanced Scale Practice": "Escalas costumbre",
   "Scale Resources": "Recursos de escala",
   "Random Arpeggio Practice": "Práctica de arpegio aleatorio",
-  "Advanced Arpeggio Practice": "Práctica avanzada de arpegios",
+  "Advanced Arpeggio Practice": "Arpegios costumbre",
   "Arpeggio Resources": "Recursos de arpegio",
 
   "All Scales": "Todas las escalas",
@@ -36,8 +36,8 @@
 
   "Random": "Aleatorio",
   "Resources": "Recursos",
-  "Advanced": "Avanzado",
-  "Settings": "Ajustes",
+  "Advanced": "Costumbre",
+  "Settings": "Más",
 
   "No Scale Selected": "Ninguna escala seleccionada",
   "Major": "Mayor",
@@ -82,6 +82,11 @@
   "Half Diminished Seventh": "Séptima Semidisminuida",
   "Diminished Seventh": "Séptima Disminuida",
 
+  "Settings Group": "Ajustes",
+  "Help": "Ayuda",
+  "How to use this app": "Cómo utilizar esta aplicación",
+  "Help1": "Esta aplicación es algo que creé yo mismo cuando estaba en la universidad estudiando música y la usé para practicar para mis jurados. Me cansé mucho de tocar mis escalas en el círculo de quintas todos los días, durante meses, así que creé esta herramienta para permitirme tocarlas en orden aleatorio. Ese es básicamente el objetivo de la aplicación: poner los nombres de las escalas en un orden diferente. También agregué 'Arpegios' a lo largo del camino, y una pequeña referencia para las diferentes construcciones a escala si las olvidas. La sección 'personalizada' te permite crear listas específicas de escalas para aleatorizar, si solo tienes problemas con una pareja.",
+  "Help2": "No hay nada en esta aplicación que toque las escalas por ti, ni nada que te escuche tocar escalas. Es como un dado de escala elegante, que puede poner todas las escalas en orden aleatorio.",
   "Licenses": "Licencias",
   "Acknowledgements": "Agradecimientos",
   "Translations": "Traducciones",
