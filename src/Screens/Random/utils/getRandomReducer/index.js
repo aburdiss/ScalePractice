@@ -1,4 +1,5 @@
 import { translate } from '../../../../Translations/TranslationModel';
+import { StatisticsDispatchContext } from '../../../../Model/Statistics';
 import { getAllScalesFromState } from '../getAllScalesFromState';
 import { getAllArpeggiosFromState } from '../getAllArpeggiosFromState';
 import { shuffle, random } from '../../../../utils';
@@ -57,6 +58,8 @@ const INITIAL_RANDOM_STATE = {
  * the application
  * @param {Object} state The User Preferences State to determine which scales
  * build
+ * @param {Function} dispatchStatistics A function to dispatch to the
+ * statistics context that a new scale was practiced.
  * @returns {Function} A Reducer for the Random screen of the application
  *
  * @copyright Alexander Burdiss
@@ -64,7 +67,7 @@ const INITIAL_RANDOM_STATE = {
  * @since 10/15/22
  * @version 1.1.0
  */
-export function getRandomReducer(state) {
+export function getRandomReducer(state, dispatchStatistics) {
   const isScale = state?.randomType === PreferencesContext.randomTypes.SCALE;
   function randomReducer(currentState, action) {
     switch (action.type) {
@@ -165,9 +168,19 @@ export function getRandomReducer(state) {
                 random(currentState.scaleArray.length - 1)
               ];
           } while (newScale == currentState.currentScale);
+          dispatchStatistics({
+            type: isScale
+              ? StatisticsDispatchContext.actions.ADD_SCALE
+              : StatisticsDispatchContext.actions.ADD_ARPEGGIO,
+            payload: newScale,
+          });
           return {
             ...currentState,
-            currentScale: newScale ? newScale : translate('No Scale Selected'),
+            currentScale: newScale
+              ? newScale
+              : isScale
+              ? translate('No Scale Selected')
+              : translate('No Arpeggio Selected'),
           };
         } else {
           // Do not repeat scales
@@ -177,6 +190,12 @@ export function getRandomReducer(state) {
               allScalesPracticed: true,
             };
           } else {
+            dispatchStatistics({
+              type: isScale
+                ? StatisticsDispatchContext.actions.ADD_SCALE
+                : StatisticsDispatchContext.actions.ADD_ARPEGGIO,
+              payload: currentState.scaleArray[currentState.scaleArrayIndex],
+            });
             return {
               ...currentState,
               currentScale:

@@ -15,6 +15,7 @@ import { translate } from '../../Translations/TranslationModel';
 
 import { useIdleScreen, useDarkMode } from '../../utils';
 import { getRandomReducer } from './utils/getRandomReducer';
+import { StatisticsDispatchContext } from '../../Model/Statistics';
 
 /**
  * @namespace Random
@@ -79,7 +80,8 @@ export default function Random() {
   };
 
   const { state } = useContext(PreferencesContext);
-  const randomReducer = getRandomReducer(state);
+  const dispatchStatistics = useContext(StatisticsDispatchContext);
+  const randomReducer = getRandomReducer(state, dispatchStatistics);
   const RANDOM_ACTIONS = randomReducer.actions;
   const [randomState, dispatchRandomState] = useReducer(
     randomReducer,

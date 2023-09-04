@@ -78,6 +78,12 @@ export const ABOUT = [
     value: `© ${new Date().getFullYear()} ` + 'Alexander Burdiss',
   },
   {
+    id: '11',
+    type: 'navigate',
+    value: 'Statistics',
+    component: 'Statistics',
+  },
+  {
     id: '6',
     type: 'navigate',
     value: 'Acknowledgements',

@@ -5,10 +5,11 @@ import { useDarkMode } from '../utils';
 import More from '../Screens/More/More';
 import Licenses from '../Screens/Licenses/Licenses';
 import Acknowledgements from '../Screens/Acknowledgements/Acknowledgements';
+import Help from '../Screens/Help/Help';
+import Statistics from '../Screens/Statistics/Statistics';
 
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
-import Help from '../Screens/Help/Help';
 
 const Stack = createStackNavigator();
 
@@ -17,8 +18,8 @@ const Stack = createStackNavigator();
  * Created 10/10/20
  * @copyright Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/25/22
- * @version 1.0.1
+ * @since 9/4/23
+ * @version 1.0.3
  *
  * @example
  * <Tab.Screen
@@ -74,6 +75,13 @@ export default function MoreStack() {
         component={Help}
         options={{
           title: translate('How to use this app'),
+        }}
+      />
+      <Stack.Screen
+        name="Statistics"
+        component={Statistics}
+        options={{
+          title: translate('Statistics'),
         }}
       />
     </Stack.Navigator>

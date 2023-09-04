@@ -9,6 +9,7 @@ import * as RNLocalize from 'react-native-localize';
 import { setI18nConfig, translate } from './src/Translations/TranslationModel';
 import { colors } from './src/Model/Model';
 import { PreferencesProvider } from './src/Model/Preferences';
+import { StatisticseProvider } from './src/Model/Statistics';
 
 import RandomStack from './src/Navigation/RandomStack';
 import ResourcesStack from './src/Navigation/ResourcesStack';
@@ -49,47 +50,51 @@ export default function App() {
   };
 
   return (
-    <PreferencesProvider>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: getTabBarIcon(route),
-            tabBarActiveTintColor: DARKMODE
-              ? colors.purpleDark
-              : colors.purpleLight,
-            tabBarInactiveTintColor: colors.systemGray,
-            tabBarStyle: {
-              backgroundColor: DARKMODE ? colors.systemGray6Dark : colors.white,
-              borderTopColor: DARKMODE
-                ? colors.systemGray5Dark
-                : colors.systemGray5Light,
-            },
-            headerShown: false,
-          })}
-        >
-          <Tab.Screen
-            name="RandomStack"
-            component={RandomStack}
-            options={{ title: translate('Random') }}
-          />
-          <Tab.Screen
-            name="ResourcesStack"
-            component={ResourcesStack}
-            options={{ title: translate('Resources') }}
-          />
-          <Tab.Screen
-            name="AdvancedStack"
-            component={AdvancedStack}
-            options={{ title: translate('Advanced') }}
-          />
-          <Tab.Screen
-            name="MoreStack"
-            component={MoreStack}
-            options={{ title: translate('Settings') }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </PreferencesProvider>
+    <StatisticseProvider>
+      <PreferencesProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: getTabBarIcon(route),
+              tabBarActiveTintColor: DARKMODE
+                ? colors.purpleDark
+                : colors.purpleLight,
+              tabBarInactiveTintColor: colors.systemGray,
+              tabBarStyle: {
+                backgroundColor: DARKMODE
+                  ? colors.systemGray6Dark
+                  : colors.white,
+                borderTopColor: DARKMODE
+                  ? colors.systemGray5Dark
+                  : colors.systemGray5Light,
+              },
+              headerShown: false,
+            })}
+          >
+            <Tab.Screen
+              name="RandomStack"
+              component={RandomStack}
+              options={{ title: translate('Random') }}
+            />
+            <Tab.Screen
+              name="ResourcesStack"
+              component={ResourcesStack}
+              options={{ title: translate('Resources') }}
+            />
+            <Tab.Screen
+              name="AdvancedStack"
+              component={AdvancedStack}
+              options={{ title: translate('Advanced') }}
+            />
+            <Tab.Screen
+              name="MoreStack"
+              component={MoreStack}
+              options={{ title: translate('Settings') }}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </PreferencesProvider>
+    </StatisticseProvider>
   );
 }
 

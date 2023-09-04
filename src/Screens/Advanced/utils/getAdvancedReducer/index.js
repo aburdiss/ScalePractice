@@ -1,6 +1,7 @@
 import { shuffle } from '../../../../utils';
 import { PreferencesContext } from '../../../../Model/Preferences';
 import { translate } from '../../../../Translations/TranslationModel';
+import { StatisticsDispatchContext } from '../../../../Model/Statistics';
 
 const ADVANCED_ACTIONS = {
   SET_CURRENT_SCALE: 'SET_CURRENT_SCALE',
@@ -30,7 +31,7 @@ const INITIAL_ADVANCED_STATE = {
   isSmallScreen: false,
 };
 
-export function getAdvancedReducer(state) {
+export function getAdvancedReducer(state, dispatchStatistics) {
   const isScale =
     state?.advancedType === PreferencesContext.advancedTypes.SCALE;
   function advancedReducer(currentState, action) {
@@ -95,6 +96,10 @@ export function getAdvancedReducer(state) {
                 ];
             } while (newScale === currentState.currentScale);
           }
+          dispatchStatistics({
+            type: StatisticsDispatchContext.actions.ADD_SCALE,
+            payload: newScale,
+          });
           return {
             ...currentState,
             currentScale: newScale ?? translate('No Scale Selected'),
@@ -104,6 +109,10 @@ export function getAdvancedReducer(state) {
           if (currentState.scaleArrayIndex >= currentState.scaleArray.length) {
             return { ...currentState, allScalesPracticed: true };
           } else {
+            dispatchStatistics({
+              type: StatisticsDispatchContext.actions.ADD_SCALE,
+              payload: currentState.scaleArray[currentState.scaleArrayIndex],
+            });
             return {
               ...currentState,
               currentScale:
@@ -129,6 +138,10 @@ export function getAdvancedReducer(state) {
                 ];
             } while (newScale === currentState.currentScale);
           }
+          dispatchStatistics({
+            type: StatisticsDispatchContext.actions.ADD_ARPEGGIO,
+            payload: newScale,
+          });
           return {
             ...currentState,
             currentScale: newScale ?? translate('No Arpeggio Selected'),
@@ -140,6 +153,11 @@ export function getAdvancedReducer(state) {
           ) {
             return { ...currentState, allScalesPracticed: true };
           } else {
+            dispatchStatistics({
+              type: StatisticsDispatchContext.actions.ADD_ARPEGGIO,
+              payload:
+                currentState.arpeggioArray[currentState.arpeggioArrayIndex],
+            });
             return {
               ...currentState,
               currentScale:

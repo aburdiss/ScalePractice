@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { useIdleScreen } from '../../utils';
+import { useDarkMode, useIdleScreen } from '../../utils';
+import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
@@ -17,10 +18,10 @@ import { translate } from '../../Translations/TranslationModel';
 export default function Help() {
   useIdleScreen();
 
+  const DARKMODE = useDarkMode();
   const { container, text } = StyleSheet.create({
     container: { paddingHorizontal: 20 },
-    heading: {},
-    text: { paddingTop: 20 },
+    text: { paddingTop: 20, color: DARKMODE ? colors.white : colors.black },
   });
 
   return (
