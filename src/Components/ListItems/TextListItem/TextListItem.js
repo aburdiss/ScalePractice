@@ -6,15 +6,21 @@ import { translate as translateFunc } from '../../../Translations/TranslationMod
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function TextListItem
+ * @component
  * @description A rendered Text list item. This is currently only being
  * used to display copyright information, so it is not being translated.
- * @author Alexander Burdiss
- * @since 11/15/20
- * @version 1.1.1
+ * Created 11/15/20
  * @param {Object} props The JSX props passed to this React component
  * @param {Object} props.item The item to be rendered.
  * @param {boolean} props.translate Whether or not this item should be
  * translated
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.1.1
  *
  * @example
  * <TextListItem item={item} />

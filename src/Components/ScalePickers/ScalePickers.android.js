@@ -7,13 +7,11 @@ import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function ScalePickersAndroid
+ * @component
  * @description Pickers used on android devices to select scales. Used on
  * AdvancedScale and AdvancedArpeggio components.
  * Created 11/15/20
- * @copyright Alexander Burdiss
- * @author Alexander Burdiss
- * @since 10/25/22
- * @version 1.0.2
  * @param {Object} props JSX props passed to this React Component
  * @param {string} props.selectedNote The currently selected note to be shown
  * on the note name picker
@@ -27,7 +25,12 @@ import { translate } from '../../Translations/TranslationModel';
  * variable props.selectedScale
  * @param {string[]} props.scaleNames All possible scale names to be shown on
  * the scale picker
+ * @returns {JSX.Element} JSX render instructions
  *
+ * @copyright Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 10/25/22
+ * @version 1.0.2
  * @example
  * <ScalePickers
  *   selectedNote={selectedNote}
@@ -38,7 +41,7 @@ import { translate } from '../../Translations/TranslationModel';
  *   scaleNames={scaleNames}
  * />
  */
-export default function ScalePickers({
+export default function ScalePickersAndroid({
   selectedNote,
   setSelectedNote,
   noteNames,

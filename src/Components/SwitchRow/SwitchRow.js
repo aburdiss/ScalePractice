@@ -6,17 +6,23 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode } from '../../utils';
 
 /**
+ * @function SwitchRow
+ * @component
  * @description One Switch Row that is used on the Scale and Arpeggio Display
  * views. This view was created to create a more accessible and reuseable
  * switch row.
- * @author Alexander Burdiss
- * @since 1/5/21
- * @version 1.0.2
+ * Created 1/5/21
+ * @param {Object} props JSX props passed to this React component
  * @param {boolean} props.value The current value of the switch
  * @param {Function} props.onValueChange The function to call when the value
  * changes.
  * @param {string} props.text The text to render on this switch row.
+ * @returns {JSX.Element} JSX render instructions.
  *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.0.2
  * @example
  * <SwitchRow
  *   value={value}

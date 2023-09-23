@@ -5,14 +5,21 @@ import { useDarkMode } from '../../utils';
 import { colors } from '../../Model/Model';
 
 /**
+ * @function AllScalesButton
+ * @component
  * @description A gray button that is meant to trigger all switches on a page.
  * Basic styles are already applied.
- * @author Alexander Burdiss
- * @since 10/12/20
- * @version 1.0.1
+ * Created 10/12/20
+ * @param {Object} props The JSX props passed to this React component
  * @param {string} props.children The text to render in the button
  * @param {Function} props.handler The function to call when the button is
  * pressed
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.0.1
  *
  * @example
  * <AllScalesButton handler={handler}>

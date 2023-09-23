@@ -6,14 +6,20 @@ import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function AddToListButton
+ * @component
  * @description A green button that says "Add To List", and calls whatever
  * function is passed in.
- * @author Alexander Burdiss
- * @since 12/7/20
- * @version 1.0.2
- * @param {Function} props.handler The function to call when this component
- * is pressed
+ * Created 12/7/20
+ * @param {Object} props JSX props passed to this React component
+ * @param {Function} props.handler The function to call when this button is
+ * pressed
+ * @returns {JSX.Element} JSX Render instructions
  *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.0.2
  * @example
  * <AddToListButton handler={handler} />
  */

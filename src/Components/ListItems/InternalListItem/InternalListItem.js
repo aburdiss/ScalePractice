@@ -8,14 +8,21 @@ import { translate } from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function InternalListItem
+ * @component
  * @description A rendered link list item that opens a page inside the app on
  * the current stack. This is rendered the same as a LinkListItem, and performs
  * a similar function.
- * @author Alexander Burdiss
- * @since 12/17/20
- * @version 1.0.2
+ * Created 12/17/20
+ * @param {Object} props JSX props passed to this React component
  * @param {Object} props.item The Internal list item to be rendered containing
  * a Component name to render to, and the text to be rendered.
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.0.2
  *
  * @example
  * <InternalListItem item={item} />

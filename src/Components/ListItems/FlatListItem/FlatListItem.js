@@ -7,13 +7,18 @@ import { colors } from '../../../Model/Model';
 import { translate } from '../../../Translations/TranslationModel';
 
 /**
- * @namespace FlatListItem
  * @function FlatListItem
+ * @component
  * @description Used as a render item in the ScaleDescription scroll view.
+ * Created: 11/15/23
+ * @param {Object} props JSX props passed to this React component
+ * @param {Object} props.data The data to display in this list item.
+ * @return {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
  * @since 11/15/20
  * @version 1.0.2
- * @param {Object} props.data The data to display in this list item.
  *
  * @example
  * <ListItem data={data} />

@@ -6,9 +6,20 @@ import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function SwipeableRow
+ * @component
  * @description A swipeable row with a right action.
+ * Created 11/7/2020
+ * @param {Object} props JSX props passed to this React component
+ * @param {*} props.children The children to render in this row
+ * @param {Object} props.styles additional styles to add to this component
+ * @param {Function} props.deleteItem A function to call to delete this item
+ * @param {Object} props.item The item data
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 11/7/2020
+ * @since 9/23/23
  * @version 2.0.0
  *
  * @example
@@ -18,12 +29,6 @@ import { translate } from '../../Translations/TranslationModel';
  */
 const SwipeableRow = ({ children, styles, deleteItem, item }) => {
   const renderRightActions = (progress, dragX) => {
-    // const scale = dragX.interpolate({
-    //   inputRange: [-80, 0],
-    //   outputRange: [1, 0],
-    //   extrapolate: 'clamp',
-    // });
-
     return (
       <RectButton
         style={styles.rightAction}

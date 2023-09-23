@@ -6,13 +6,20 @@ import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function ResetButton
+ * @component
  * @description A button that is styled to look like a reset button, with a red
  * outline and the text "Reset".
- * @author Alexander Burdiss
- * @since 11/18/20
- * @version 1.0.2
+ * Created 11/18/20
+ * @param {Object} props The JSX props passed to this React component
  * @param {Function} props.handler The function to call when this component
  * is pressed.
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.0.2
  *
  * @example
  * <ResetButton handler={handler} />

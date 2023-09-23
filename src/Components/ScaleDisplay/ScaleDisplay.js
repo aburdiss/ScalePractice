@@ -5,14 +5,18 @@ import { useDarkMode } from '../../utils';
 import { colors } from '../../Model/Model';
 
 /**
+ * @function ScaleDisplay
+ * @component
  * @description A styled text box that shows the currently selected scale
  * Created 10/11/20
- * @copyright Alexander Burdiss
- * @author Alexander Burdiss
- * @since 10/25/22
- * @version 1.0.3
  * @param {Object} props JSX props passed to this React Component
  * @param {string} props.children The text to render inside this component
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.0.3
  *
  * @example
  * <ScaleDisplay>

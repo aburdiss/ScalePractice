@@ -7,11 +7,18 @@ import { translate } from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
+ * @function LinkListItem
+ * @component
  * @description A rendered Link list item with a chevron and purple text
- * @author Alexander Burdiss
- * @since 11/15/20
- * @version 1.1.0
+ * Created 11/15/20
+ * @param {Object} props The JSX props passed to this React component
  * @param {Object} props.item The item to be rendered.
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.1.0
  *
  * @example
  * <LinkListItem item={item} />

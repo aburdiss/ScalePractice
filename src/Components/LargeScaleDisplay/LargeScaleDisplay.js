@@ -7,11 +7,17 @@ import { colors } from '../../Model/Model';
 
 /**
  * @function LargeScaleDisplay
+ * @component
  * @description A styled text box that shows the currently selected scale
- * @author Alexander Burdiss
- * @since 6/11/21
- * @version 1.0.1
+ * Created 6/11/21
+ * @param {Object} props JSX props passed to this React component
  * @param {string} props.children The text to render inside this component
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.0.1
  *
  * @example
  * <LargeScaleDisplay>Hello, World!</LargeScaleDisplay>

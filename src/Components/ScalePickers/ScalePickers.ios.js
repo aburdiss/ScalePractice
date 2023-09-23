@@ -7,13 +7,11 @@ import { colors } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 
 /**
+ * @function ScalePickersIos
+ * @component
  * @description Pickers used on iOS devices to select scales. Used on
  * AdvancedScale and AdvancedArpeggio components.
  * Created 11/15/20
- * @copyright Alexander Burdiss
- * @author Alexander Burdiss
- * @since 10/25/22
- * @version 1.0.2
  * @param {Object} props JSX props passed to this React Component
  * @param {string} props.selectedNote The currently selected note to be shown
  * on the note name picker
@@ -27,6 +25,12 @@ import { translate } from '../../Translations/TranslationModel';
  * variable props.selectedScale
  * @param {string[]} props.scaleNames All possible scale names to be shown on
  * the scale picker
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2023 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 9/23/23
+ * @version 1.0.2
  *
  * @example
  * <ScalePickers
@@ -38,7 +42,7 @@ import { translate } from '../../Translations/TranslationModel';
  *   scaleNames={scaleNames}
  * />
  */
-export default function ScalePickers({
+export default function ScalePickersIos({
   selectedNote,
   setSelectedNote,
   noteNames,
