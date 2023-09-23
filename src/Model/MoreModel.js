@@ -67,7 +67,7 @@ export const HELP = [
     id: '8',
     type: 'link',
     value: 'Send Feedback',
-    link: 'mailto:aburdiss@icloud.com?subject=Scale%20Practice%20Feedback',
+    link: 'mailto:scalepractice@alexanderburdiss.com?subject=Scale%20Practice%20Feedback',
   },
 ];
 
