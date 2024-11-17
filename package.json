@@ -13,7 +13,6 @@
     "licenses": "npm-license-crawler --onlyDirectDependencies --json src/MoreStack/Licenses/licenses.json",
     "reset": "./scripts/reset.sh",
     "gen": "./scripts/generateComponent.sh",
-    "check-packages": "node ./scripts/checkForMaliciousPackages.js",
     "prettier": "prettier --check src",
     "prettier:write": "prettier --write src"
   },
@@ -26,8 +25,8 @@
     "@react-navigation/stack": "^6.3.3",
     "i18n-js": "^3.8.0",
     "lodash.memoize": "^4.1.2",
-    "react": "18.1.0",
-    "react-native": "0.70.4",
+    "react": "18.3.1",
+    "react-native": "0.76.2",
     "react-native-device-info": "^10.0.3",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-idle-timer": "^2.1.7",
@@ -40,88 +39,35 @@
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.0",
-    "@babel/runtime": "^7.17.0",
-    "@react-native-community/eslint-config": "^3.1.0",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "15.0.1",
+    "@react-native-community/cli-platform-android": "15.0.1",
+    "@react-native-community/cli-platform-ios": "15.0.1",
+    "@react-native/babel-preset": "0.76.2",
+    "@react-native/eslint-config": "0.76.2",
+    "@react-native/metro-config": "0.76.2",
+    "@react-native/typescript-config": "0.76.2",
     "@testing-library/react-native": "^9.0.0",
+    "@types/react": "^18.2.6",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.6.3",
     "babel-plugin-module-resolver": "^5.0.0",
-    "babel-jest": "^27.4.6",
     "colors": "1.1.2",
-    "eslint": "^8.25.0",
+    "eslint": "^8.19.0",
     "eslint-plugin-react": "^7.31.8",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.4.7",
-    "metro-react-native-babel-preset": "0.72.3",
+    "jest": "^29.6.3",
     "node-fetch": "^2.6.7",
     "npm-license-crawler": "^0.2.1",
-    "prettier": "^2.7.1",
-    "react-test-renderer": "18.1.0",
+    "prettier": "2.8.8",
+    "react-test-renderer": "18.3.1",
+    "typescript": "5.0.4",
     "ua-parser-js": "0.7.33"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "@react-native-community"
-    ],
-    "ignorePatterns": [
-      "jest/*",
-      "*.test.js"
-    ],
-    "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "eqeqeq": "off",
-      "consistent-this": "off"
-    }
+  "engines": {
+    "node": ">=18"
   },
-  "prettier": {
-    "trailingComma": "all",
-    "printWidth": 80,
-    "arrowParens": "always",
-    "semi": true,
-    "tabWidth": 2,
-    "singleQuote": true
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "setupFiles": [
-      "<rootDir>/jest/setup.js",
-      "<rootDir>/node_modules/react-native-gesture-handler/jestSetup.js"
-    ],
-    "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    },
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!(@react-native|react-native|react-native-popover-view|react-native-linear-gradient|react-native-animatable|react-native-scalable-image|react-native-modal|react-native-iphone-x-helper|react-native-reanimated|react-native-vector-icons|react-native-screens|react-native-splash-screen|react-navigation-tabs|@?react-navigation|react-native-gesture-handler|@react-native-community/segmented-control|react-native-picker-select|@react-native-picker/picker)/)"
-    ]
-  }
+  "packageManager": "yarn@3.6.4"
 }

@@ -7,7 +7,7 @@ const mockState = {
 };
 
 describe('getRandomReducer functions correctly', () => {
-  const randomReducer = getRandomReducer(mockState);
+  const randomReducer = getRandomReducer(mockState, jest.fn());
   describe('All actions handled by reducer', () => {
     Object.keys(randomReducer.actions).map((action) => {
       test(action, () => {
