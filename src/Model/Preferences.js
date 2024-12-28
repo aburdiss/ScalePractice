@@ -1,49 +1,84 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const RANDOM_TYPES = {
+/**
+ * @namespace Preferences
+ * @description The namespace for all logic related to global saved
+ * preferences
+ */
+
+/**
+ * @name RANDOM_TYPES
+ * @memberof Preferences
+ */
+const RANDOM_TYPES = Object.freeze({
   SCALE: 'SCALE',
   ARPEGGIO: 'ARPEGGIO',
-};
+});
 
-const ADVANCED_TYPES = {
+/**
+ * @name ADVANCED_TYPES
+ * @memberof Preferences
+ */
+const ADVANCED_TYPES = Object.freeze({
   SCALE: 'SCALE',
   ARPEGGIO: 'ARPEGGIO',
-};
+});
 
-const RESOURCES_TYPES = {
+/**
+ * @name RESOURCES_TYPES
+ * @memberof Preferences
+ */
+const RESOURCES_TYPES = Object.freeze({
   SCALE: 'SCALE',
   ARPEGGIO: 'ARPEGGIO',
-};
+});
 
-const INITIAL_PREFERENCES_STATE = {
+/**
+ * @name INITIAL_PREFERENCES_STATE
+ * @memberof Preferences
+ */
+const INITIAL_PREFERENCES_STATE = Object.freeze({
   repeat: true,
   simpleRandom: false,
   disableScreenSleep: false,
   randomType: RANDOM_TYPES.SCALE,
   resourcesType: RESOURCES_TYPES.SCALE,
   advancedType: ADVANCED_TYPES.SCALE,
-};
+});
 
-const ACTIONS = {
+/**
+ * @name ACTIONS
+ * @memberof Preferences
+ */
+const ACTIONS = Object.freeze({
   SET_ALL_PREFERENCES: 'SET_ALL_PREFERENCES',
   SET_SETTING: 'SET_SETTING',
   RESET_PREFERENCES: 'RESET_PREFERENCES',
-};
+});
+
+/**
+ * @name STORAGE_KEY
+ * @memberof Preferences
+ */
+const STORAGE_KEY = 'preferences';
 
 /**
  * @function load
+ * @memberof Preferences
  * @description Loads Data from Local Storage
+ * Created 12/11/20
+ * @copyright 2024 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/11/20
- * @version 1.0.2
+ * @since 12/28/24
+ * @version 1.0.3
  * @param {string} type Type of data to load.
  * @returns {JSON|null} The stored value or null, depending on if the data is
  * successfully retrieved.
  */
 export async function load() {
   try {
-    const jsonValue = await AsyncStorage.getItem('preferences');
+    const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     console.log(e);
@@ -52,22 +87,29 @@ export async function load() {
 
 /**
  * @function save
+ * @memberof Preferences
  * @description Stores Data in Local Storage
+ * Created 12/11/20
+ * @copyright 2024 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/11/20
- * @version 1.0.1
+ * @since 12/28/24
+ * @version 1.0.2
  * @param {string} type Type of data to store.
  * @param {Object} data Data to be stored in local storage
  */
 export async function save(data) {
   try {
     const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem('preferences', jsonValue);
+    await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
   } catch (e) {
     console.log(e);
   }
 }
 
+/**
+ * @name PreferencesContext
+ * @memberof Preferences
+ */
 const PreferencesContext = createContext();
 
 PreferencesContext.advancedTypes = ADVANCED_TYPES;
@@ -77,6 +119,7 @@ PreferencesContext.actions = ACTIONS;
 
 /**
  * @function preferencesReducer
+ * @memberof Preferences
  * @description A reducer that handles updating the state stored in context,
  * and updates the same state in local storage on the device.
  * @author Alexander Burdiss
@@ -105,11 +148,15 @@ const preferencesReducer = (state, action) => {
 };
 
 /**
+ * @function PreferencesProvider
+ * @memberof Preferences
  * @description Provides the user preferences throughout the app.
  * @author Alexander Burdiss
  * @since 12/14/20
  * @version 1.0.0
- * @param {*} props
+ * @param {Object} props The JSX props passed to this React component
+ * @param {*} props.children React children to render inside this Provider
+ * @returns {JSX.Element} JSX render instructions
  *
  * @example
  *   <PreferencesProvider>

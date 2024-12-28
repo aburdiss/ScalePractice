@@ -3,7 +3,7 @@ import { PreferencesContext } from '../../../../Model/Preferences';
 import { translate } from '../../../../Translations/TranslationModel';
 import { StatisticsDispatchContext } from '../../../../Model/Statistics';
 
-const ADVANCED_ACTIONS = {
+const ADVANCED_ACTIONS = Object.freeze({
   SET_CURRENT_SCALE: 'SET_CURRENT_SCALE',
   ADD_TO_LIST: 'ADD_TO_LIST',
   REMOVE_FROM_LIST: 'REMOVE_FROM_LIST',
@@ -15,9 +15,10 @@ const ADVANCED_ACTIONS = {
   RESET_LIST: 'RESET_LIST',
   SWITCH_DOMAIN: 'SWITCH_DOMAIN',
   SET_IS_SMALL_SCREEN: 'SET_IS_SMALL_SCREEN',
-};
+  SET_STATE_FROM_STORAGE: 'SET_STATE_FROM_STORAGE',
+});
 
-const INITIAL_ADVANCED_STATE = {
+const INITIAL_ADVANCED_STATE = Object.freeze({
   currentScale: translate('No Scale Selected'),
   selectedNote: 'C',
   selectedScale: translate('Major'),
@@ -29,7 +30,7 @@ const INITIAL_ADVANCED_STATE = {
   scaleArray: [],
   arpeggioArray: [],
   isSmallScreen: false,
-};
+});
 
 export function getAdvancedReducer(state, dispatchStatistics) {
   const isScale =
@@ -226,6 +227,12 @@ export function getAdvancedReducer(state, dispatchStatistics) {
           ...currentState,
           isSmallScreen: action.payload,
         };
+      case ADVANCED_ACTIONS.SET_STATE_FROM_STORAGE: {
+        return {
+          ...currentState,
+          ...action.payload,
+        };
+      }
       default:
         throw new Error(
           `getAdvancedReducer/index.js Unknown Action: ${action.type}`,

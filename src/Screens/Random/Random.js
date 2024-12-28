@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useReducer } from 'react';
 import { Alert, View, ScrollView, Pressable, Text } from 'react-native';
 import Popover from 'react-native-popover-view';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   RandomizeButton,
@@ -19,16 +20,66 @@ import { StatisticsDispatchContext } from '../../Model/Statistics';
 
 /**
  * @namespace Random
- * @description The main screen of the app, with a basic randomizer with
- * scale selections
+ * The Namespace for the Random Screen and all its sub components and methods
  */
+
+/**
+ * @name STORAGE_KEY
+ * @memberof Random
+ */
+const STORAGE_KEY = 'random';
+
+/**
+ * @function load
+ * @memberof Random
+ * @description Loads Random reducer data from local storage
+ * @copyright 2024 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 12/28/24
+ * @version 1.0.0
+ * @param {string} type Type of data to load.
+ * @returns {JSON|null} The stored value or null, depending on if the data is
+ * successfully retrieved.
+ */
+async function load() {
+  try {
+    const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+/**
+ * @function save
+ * @memberof Random
+ * @description Stores Random reducer Data in Local Storage
+ * @copyright 2024 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 12/28/24
+ * @version 1.0.0
+ * @param {string} type Type of data to store.
+ * @param {Object} data Data to be stored in local storage
+ */
+async function save(data) {
+  try {
+    const jsonValue = JSON.stringify(data);
+    await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 /**
  * @function Random
+ * @memberof Random
  * @description A View that allows the user to randomize all of the scales in
  * a particular category.
+ * Created 10/10/2020
+ * @copyright 2024 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/10/20
- * @version 3.1.0
+ * @since 12/28/24
+ * @version 3.2.0
  *
  * @example
  * <Random />
@@ -92,6 +143,41 @@ export default function Random() {
   const isScale = state?.randomType == PreferencesContext.randomTypes.SCALE;
 
   useEffect(
+    function loadSavedState() {
+      load().then((data) => {
+        if (data !== null) {
+          const dataToSet = {};
+          if (data.scaleOptions) {
+            dataToSet.scaleOptions = data.scaleOptions;
+          }
+          if (data.arpeggioOptions) {
+            dataToSet.arpeggioOptions = data.arpeggioOptions;
+          }
+
+          // Set loaded data to global store
+          dispatchRandomState({
+            type: RANDOM_ACTIONS.SET_STATE_FROM_STORAGE,
+            payload: dataToSet,
+          });
+        }
+      });
+    },
+    [RANDOM_ACTIONS.SET_STATE_FROM_STORAGE],
+  );
+
+  useEffect(
+    function saveUserSelections() {
+      if (randomState) {
+        save({
+          scaleOptions: randomState.scaleOptions,
+          arpeggioOptions: randomState.arpeggioOptions,
+        });
+      }
+    },
+    [randomState, randomState?.scaleOptions, randomState?.arpeggioOptions],
+  );
+
+  useEffect(
     function handleStateChange() {
       if (state) {
         dispatchRandomState({ type: RANDOM_ACTIONS.SWITCH_DOMAIN });
@@ -142,10 +228,12 @@ export default function Random() {
       </Pressable>
       <Pressable
         ref={selectionRef}
-        hitSlop={1}
-        onPress={() =>
-          dispatchRandomState({ type: RANDOM_ACTIONS.TOGGLE_SELECTION_POPOVER })
-        }
+        hitSlop={5}
+        onPress={() => {
+          dispatchRandomState({
+            type: RANDOM_ACTIONS.TOGGLE_SELECTION_POPOVER,
+          });
+        }}
         style={styles.selectionsButton}
       >
         <Text style={styles.selectionsText}>

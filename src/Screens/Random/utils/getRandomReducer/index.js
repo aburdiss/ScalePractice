@@ -6,7 +6,7 @@ import { shuffle, random } from '../../../../utils';
 import { SCALE_TYPES, ARPEGGIO_TYPES } from '../../../../Model/Model';
 import { PreferencesContext } from '../../../../Model/Preferences';
 
-const RANDOM_ACTIONS = {
+const RANDOM_ACTIONS = Object.freeze({
   SET_CURRENT_SCALE: 'SET_CURRENT_SCALE',
   TOGGLE_SCALE: 'TOGGLE_SCALE',
   TOGGLE_ARPEGGIO: 'TOGGLE_ARPEGGIO',
@@ -16,9 +16,10 @@ const RANDOM_ACTIONS = {
   RESET_NO_REPEAT: 'RESET_NO_REPEAT',
   TOGGLE_SELECTION_POPOVER: 'TOGGLE_SELECTION_POPOVER',
   SWITCH_DOMAIN: 'SWITCH_DOMAIN',
-};
+  SET_STATE_FROM_STORAGE: 'SET_STATE_FROM_STORAGE',
+});
 
-const INITIAL_RANDOM_STATE = {
+const INITIAL_RANDOM_STATE = Object.freeze({
   currentScale: translate('No Scale Selected'),
   scaleArray: getAllScalesFromState({ major: true }),
   scaleArrayIndex: 0,
@@ -49,7 +50,7 @@ const INITIAL_RANDOM_STATE = {
     [ARPEGGIO_TYPES.halfDiminishedSeventh]: false,
     [ARPEGGIO_TYPES.diminishedSeventh]: false,
   },
-};
+});
 
 /**
  * @function getRandomReducer
@@ -234,6 +235,12 @@ export function getRandomReducer(state, dispatchStatistics) {
           currentScale: isScale
             ? translate('No Scale Selected')
             : translate('No Arpeggio Selected'),
+        };
+      }
+      case RANDOM_ACTIONS.SET_STATE_FROM_STORAGE: {
+        return {
+          ...currentState,
+          ...action.payload,
         };
       }
       default:

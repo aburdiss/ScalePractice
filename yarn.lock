@@ -8473,13 +8473,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-popover-view@npm:^5.1.6":
-  version: 5.1.9
-  resolution: "react-native-popover-view@npm:5.1.9"
+"react-native-popover-view@npm:6.0.1":
+  version: 6.0.1
+  resolution: "react-native-popover-view@npm:6.0.1"
   dependencies:
     deprecated-react-native-prop-types: ^2.3.0
     prop-types: ^15.8.1
-  checksum: 5f31c68b95c8df24608c4d578d4bf7453672fcc42af519be320c062af436ce47b6e2cf98a3fde8e0c0d2f15216cfa8e0803500ab0119e9527c07556da0081f41
+  checksum: c75b3908bdcab850718e5d22859f321af58f0450848f2aec708f3b9109f547ccb3e69233ecfcf6dad43c069950f9287f99ae947fa5239d51e01cc29ec2149302
   languageName: node
   linkType: hard
 
@@ -9076,7 +9076,7 @@ __metadata:
     react-native-idle-timer: ^2.1.7
     react-native-linear-gradient: ^2.6.2
     react-native-localize: ^2.2.4
-    react-native-popover-view: ^5.1.6
+    react-native-popover-view: 6.0.1
     react-native-reanimated: 3.16.1
     react-native-safe-area-context: ^4.4.1
     react-native-screens: ^3.18.2

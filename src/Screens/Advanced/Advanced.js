@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import { Alert, View, Text, FlatList } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   AddToListButton,
@@ -21,18 +22,75 @@ import { translate } from '../../Translations/TranslationModel';
 
 import { getIsSmallScreen, useIdleScreen, useDarkMode } from '../../utils';
 import { getAdvancedReducer } from './utils/getAdvancedReducer';
+import { StatisticsDispatchContext } from '../../Model/Statistics';
+
 /**
+ * @namespace Advanced
+ * The namespace for the Advance screen and all its sub components and methods
+ */
+
+/**
+ * @name STORAGE_KEY
+ * @memberof Advanced
+ */
+const STORAGE_KEY = 'advanced';
+
+/**
+ * @function load
+ * @memberof Advanced
+ * @description Loads Advanced reducer data from local storage
+ * @copyright 2024 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 12/28/24
+ * @version 1.0.0
+ * @param {string} type Type of data to load.
+ * @returns {JSON|null} The stored value or null, depending on if the data is
+ * successfully retrieved.
+ */
+async function load() {
+  try {
+    const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+/**
+ * @function save
+ * @memberof Advanced
+ * @description Stores Advanced reducer Data in Local Storage
+ * @copyright 2024 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 12/28/24
+ * @version 1.0.0
+ * @param {string} type Type of data to store.
+ * @param {Object} data Data to be stored in local storage
+ */
+async function save(data) {
+  try {
+    const jsonValue = JSON.stringify(data);
+    await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+/**
+ * @function Advanced
+ * @memberof Advanced
  * @description A view that allows the user to randomize between a list of
  * selected scales.
  * Created by Alexander Burdiss 10/10/20
+ * @copyright 2024 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/15/22
- * @version 3.1.0
+ * @since 12/28/24
+ * @version 3.2.0
  *
  * @example
  * <Advanced />
  */
-const AdvancedScale = () => {
+export default function AdvancedScale() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
@@ -94,8 +152,9 @@ const AdvancedScale = () => {
     },
   };
   const { state } = useContext(PreferencesContext);
+  const dispatchStatistics = useContext(StatisticsDispatchContext);
 
-  const advancedReducer = getAdvancedReducer(state);
+  const advancedReducer = getAdvancedReducer(state, dispatchStatistics);
   const ADVANCED_ACTIONS = advancedReducer.actions;
   const [advancedState, dispatchAdvancedState] = useReducer(advancedReducer, {
     ...advancedReducer.initialState,
@@ -103,6 +162,45 @@ const AdvancedScale = () => {
   });
 
   const isScale = state?.advancedType == PreferencesContext.advancedTypes.SCALE;
+
+  useEffect(
+    function loadSavedState() {
+      load().then((data) => {
+        if (data !== null) {
+          const dataToSet = {};
+          if (data.possibleScales) {
+            dataToSet.possibleScales = data.possibleScales;
+          }
+          if (data.possibleArpeggios) {
+            dataToSet.possibleArpeggios = data.possibleArpeggios;
+          }
+
+          // Set loaded data to global store
+          dispatchAdvancedState({
+            type: ADVANCED_ACTIONS.SET_STATE_FROM_STORAGE,
+            payload: dataToSet,
+          });
+        }
+      });
+    },
+    [ADVANCED_ACTIONS.SET_STATE_FROM_STORAGE],
+  );
+
+  useEffect(
+    function saveUserSelections() {
+      if (advancedState) {
+        save({
+          possibleScales: advancedState.possibleScales,
+          possibleArpeggios: advancedState.possibleArpeggios,
+        });
+      }
+    },
+    [
+      advancedState,
+      advancedState?.possibleScales,
+      advancedState?.possibleArpeggios,
+    ],
+  );
 
   useEffect(
     function handleStateChange() {
@@ -276,6 +374,4 @@ const AdvancedScale = () => {
       )}
     </View>
   );
-};
-
-export default AdvancedScale;
+}
