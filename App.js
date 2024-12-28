@@ -102,11 +102,11 @@ function getTabBarIcon(route) {
   return ({ color, size }) => {
     let iconName;
     if (route.name === 'RandomStack') {
-      iconName = 'md-cube';
+      iconName = 'cube';
     } else if (route.name === 'ResourcesStack') {
-      iconName = 'md-book';
+      iconName = 'book';
     } else if (route.name === 'AdvancedStack') {
-      iconName = 'md-create';
+      iconName = 'create';
     } else if (route.name === 'MoreStack') {
       iconName = 'ellipsis-horizontal-circle-sharp';
     }

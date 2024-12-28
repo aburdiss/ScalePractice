@@ -2,7 +2,7 @@
 
 - Update the version number in android/app/build.gradle
 - Test the version on a simulator
-  - `npx react-native run-android --no-jetifier --variant=release`
+  - `npx react-native run-android --mode release`
 - Create the Google Play Build
   - `./gradlew bundleRelease`
   - outputs to android/app/build/outputs/bundle/release/app-release.aab
