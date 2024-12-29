@@ -7,12 +7,15 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode, useIdleScreen } from '../../utils';
 
 /**
+ * @function ScaleDetail
  * @description A component that renders a detailed image, based on the id
  * given when calling navigation.navigate().
+ * @param {Object} props JSX props passed to this React component
+ * @param {Object} props.route The Route object provided by React Navigation
+ * @returns {JSX.Element} JSX render instructions
  * @author Alexander Burdiss
  * @since 12/15/20
- * @version 2.1.0
- * @param {Object} props.route The Route object provided by React Navigation
+ * @version 2.1.1
  *
  * @example
  * <ScaleDetail route={route} />
@@ -57,6 +60,16 @@ export default function ScaleDetail({ route }) {
       <Text style={styles.construction}>
         {translate(route.params.construction)}
       </Text>
+      {route.params.solfege && (
+        <Text style={styles.construction}>{route.params.solfege}</Text>
+      )}
+      {route.params.numerals && (
+        <Text style={styles.construction}>
+          {translate('Relation to Major Scale:')}
+          {'\n'}
+          {route.params.numerals}
+        </Text>
+      )}
       <Text style={styles.description}>
         {translate(route.params.description)}
       </Text>

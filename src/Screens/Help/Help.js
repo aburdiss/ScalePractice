@@ -20,7 +20,11 @@ export default function Help() {
 
   const DARKMODE = useDarkMode();
   const { container, text } = StyleSheet.create({
-    container: { paddingHorizontal: 20 },
+    container: {
+      paddingHorizontal: 20,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray6Light,
+      height: '100%',
+    },
     text: { paddingTop: 20, color: DARKMODE ? colors.white : colors.black },
   });
 

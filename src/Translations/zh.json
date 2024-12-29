@@ -90,7 +90,7 @@
   "Licenses": "执照",
   "Acknowledgements": "致谢",
   "Translations": "翻译",
-  "Courtney Carmack": "Courtney Carmack 的日文，韩文",
+  "Courtney Carmack": "Courtney Burdiss 的日文，韩文",
   "Mishi Laplante": "Mishi Laplante 的法语",
   "Qian Yu": "Qian Yu 的中文",
   "More Apps by Alexander Burdiss": "Alexander Burdiss 的更多应用",
@@ -108,6 +108,7 @@
   "JavaScript Icon": "JavaScript 图标",
   "Made with ❤️ in Dayton, Ohio": "在俄亥俄州代顿用❤️制成",
 
+  "Relation to Major Scale:": "与大调音阶的关系：",
   "MajorScaleConstruction": "W W H W W W H",
   "NaturalMinorScaleConstruction": "W H W W H W W",
   "HarmonicMinorScaleConstruction": "W H W W H W+H H",

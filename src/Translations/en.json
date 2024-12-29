@@ -90,7 +90,7 @@
   "Licenses": "Licenses",
   "Acknowledgements": "Acknowledgements",
   "Translations": "Translations",
-  "Courtney Carmack": "Japanese, Korean by Courtney Carmack",
+  "Courtney Carmack": "Japanese, Korean by Courtney Burdiss",
   "Mishi Laplante": "French by Mishi Laplante",
   "Qian Yu": "Chinese by Qian Yu",
   "More Apps by Alexander Burdiss": "More Apps by Alexander Burdiss",
@@ -108,6 +108,7 @@
   "JavaScript Icon": "JavaScript Icon",
   "Made with ❤️ in Dayton, Ohio": "Made with ❤️ in Dayton, Ohio",
 
+  "Relation to Major Scale:": "Relation to Major Scale:",
   "MajorScaleConstruction": "W W H W W W H",
   "NaturalMinorScaleConstruction": "W H W W H W W",
   "HarmonicMinorScaleConstruction": "W H W W H W+H H",

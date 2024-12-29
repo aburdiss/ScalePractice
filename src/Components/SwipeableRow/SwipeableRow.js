@@ -15,7 +15,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @param {*} props.children The children to render in this row
  * @param {Object} props.styles additional styles to add to this component
  * @param {Function} props.deleteItem A function to call to delete this item
- * @param {Object} props.item The item data
+ * @param {string} props.item The item data
  * @returns {JSX.Element} JSX render instructions
  *
  * @copyright 2023 Alexander Burdiss
@@ -63,5 +63,5 @@ SwipeableRow.propTypes = {
   children: PropTypes.node,
   styles: PropTypes.object,
   deleteItem: PropTypes.func,
-  item: PropTypes.object,
+  item: PropTypes.string,
 };
