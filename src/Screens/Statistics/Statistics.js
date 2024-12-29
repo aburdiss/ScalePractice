@@ -61,33 +61,37 @@ export default function Statistics() {
   };
 
   return (
-    <SectionList
-      ListHeaderComponent={
-        <View style={styles.disclaimerContainer}>
-          <Text style={styles.disclaimer}>
-            {translate('Statistics Disclaimer 1')}
-          </Text>
-          <Text style={styles.disclaimer}>
-            {translate('Statistics Disclaimer 2')}
-          </Text>
-        </View>
-      }
-      sections={[
-        {
-          title: translate('Scales'),
-          data: formatStatisticsDataForList(statistics.scales),
-        },
-        {
-          title: translate('Arpeggios'),
-          data: formatStatisticsDataForList(statistics.arpeggios),
-        },
-      ]}
-      keyExtractor={(item, index) => item.id}
-      renderItem={({ item }) => <TextListItem item={item} translate={false} />}
-      renderSectionHeader={({ section: { title } }) => (
-        <Text style={styles.listHeader}>{title}</Text>
-      )}
-      stickySectionHeadersEnabled={false}
-    />
+    <View style={styles.sectionList}>
+      <SectionList
+        ListHeaderComponent={
+          <View style={styles.disclaimerContainer}>
+            <Text style={styles.disclaimer}>
+              {translate('Statistics Disclaimer 1')}
+            </Text>
+            <Text style={styles.disclaimer}>
+              {translate('Statistics Disclaimer 2')}
+            </Text>
+          </View>
+        }
+        sections={[
+          {
+            title: translate('Scales'),
+            data: formatStatisticsDataForList(statistics.scales),
+          },
+          {
+            title: translate('Arpeggios'),
+            data: formatStatisticsDataForList(statistics.arpeggios),
+          },
+        ]}
+        keyExtractor={(item, index) => item.id}
+        renderItem={({ item }) => (
+          <TextListItem item={item} translate={false} />
+        )}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text style={styles.listHeader}>{title}</Text>
+        )}
+        stickySectionHeadersEnabled={false}
+      />
+    </View>
   );
 }
