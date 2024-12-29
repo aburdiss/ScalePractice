@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import { useDarkMode } from '../../utils';
 
 import { colors } from '../../Model/Model';
+import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @function ScaleDisplay
@@ -26,6 +29,7 @@ import { colors } from '../../Model/Model';
  */
 export default function ScaleDisplay({ children }) {
   const DARKMODE = useDarkMode();
+  const navigation = useNavigation();
   const styles = StyleSheet.create({
     container: {
       alignItems: 'center',
@@ -42,22 +46,35 @@ export default function ScaleDisplay({ children }) {
       width: '100%',
       padding: 14,
       fontSize: 18,
-      borderRadius: 8,
     },
   });
 
   return (
-    <View
-      accessible={true}
-      accessibilityLiveRegion="assertive"
-      accessibilityLabel={children}
-      accessibilityRole="alert"
-      style={styles.container}
+    <Pressable
+      onPress={function () {
+        Alert.alert(translate('Short App Description'), '', [
+          { text: translate('Dismiss'), style: 'cancel' },
+          {
+            text: translate('Learn More'),
+            onPress: function () {
+              navigation.navigate('MoreStack', { screen: 'Help' });
+            },
+          },
+        ]);
+      }}
     >
-      <Text maxFontSizeMultiplier={2} style={styles.text}>
-        {children}
-      </Text>
-    </View>
+      <View
+        accessible={true}
+        accessibilityLiveRegion="assertive"
+        accessibilityLabel={children}
+        accessibilityRole="alert"
+        style={styles.container}
+      >
+        <Text maxFontSizeMultiplier={2} style={styles.text}>
+          {children}
+        </Text>
+      </View>
+    </Pressable>
   );
 }
 
