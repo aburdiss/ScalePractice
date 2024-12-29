@@ -9071,6 +9071,7 @@ __metadata:
     node-fetch: ^2.6.7
     npm-license-crawler: ^0.2.1
     prettier: 2.8.8
+    prop-types: ^15.8.1
     react: 18.3.1
     react-native: 0.76.2
     react-native-device-info: ^10.0.3

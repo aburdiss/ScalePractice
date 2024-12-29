@@ -1,4 +1,4 @@
-export const TRANSLATIONS = [
+export const TRANSLATIONS = Object.freeze([
   {
     id: '1',
     value: 'Courtney Carmack',
@@ -11,4 +11,4 @@ export const TRANSLATIONS = [
     id: '3',
     value: 'Qian Yu',
   },
-];
+]);

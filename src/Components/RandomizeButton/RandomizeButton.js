@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Pressable, Text, StyleSheet } from 'react-native';
 import { useDarkMode } from '../../utils';
 
@@ -24,7 +25,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @example
  * <RandomizeButton handler={handler} />
  */
-const RandomizeButton = ({ handler }) => {
+export default function RandomizeButton({ handler }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     text: {
@@ -56,6 +57,8 @@ const RandomizeButton = ({ handler }) => {
       </Text>
     </Pressable>
   );
-};
+}
 
-export default RandomizeButton;
+RandomizeButton.propTypes = {
+  handler: PropTypes.func,
+};

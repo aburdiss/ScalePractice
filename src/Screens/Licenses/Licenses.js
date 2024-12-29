@@ -109,7 +109,7 @@ sortDataByKey(licenseData, 'username');
  * @example
  * <Licenses />
  */
-const Licenses = () => {
+export default function Licenses() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
@@ -125,6 +125,4 @@ const Licenses = () => {
       <LicensesList licenses={licenseData} />
     </View>
   );
-};
-
-export default Licenses;
+}

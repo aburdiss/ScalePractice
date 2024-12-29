@@ -23,5 +23,6 @@ module.exports = {
   rules: {
     eqeqeq: 'off',
     'consistent-this': 'off',
+    'react/prop-types': 'error',
   },
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import { useDarkMode } from '../../utils';
 
@@ -59,3 +60,7 @@ export default function ScaleDisplay({ children }) {
     </View>
   );
 }
+
+ScaleDisplay.propTypes = {
+  children: PropTypes.node,
+};

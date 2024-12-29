@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { useDarkMode } from '../../utils';
 
@@ -26,7 +27,7 @@ import { colors } from '../../Model/Model';
  *   Hello, World!
  * </AllScalesButton>
  */
-const AllScalesButton = ({ children, handler }) => {
+export default function AllScalesButton({ children, handler }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     text: {
@@ -56,6 +57,9 @@ const AllScalesButton = ({ children, handler }) => {
       <Text style={styles.text}>{children}</Text>
     </Pressable>
   );
-};
+}
 
-export default AllScalesButton;
+AllScalesButton.propTypes = {
+  handler: PropTypes.func,
+  children: PropTypes.node,
+};

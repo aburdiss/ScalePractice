@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { SwitchRow, AllScalesButton } from '../../../Components';
 import { translate } from '../../../Translations/TranslationModel';
@@ -65,6 +66,13 @@ export default function RandomSettings({
     </View>
   );
 }
+
+RandomSettings.propTypes = {
+  action: PropTypes.string,
+  types: PropTypes.object,
+  randomState: PropTypes.object,
+  dispatchRandomState: PropTypes.func,
+};
 
 const styles = {
   allScaleButton: {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, Pressable, View, Linking, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../Model/Model';
@@ -31,7 +32,7 @@ import { useDarkMode } from '../../utils';
  * @example
  * <LicensesListItem {...item} />
  */
-const LicensesListItem = ({
+export default function LicensesListItem({
   image,
   userUrl,
   username,
@@ -40,7 +41,7 @@ const LicensesListItem = ({
   licenses,
   repository,
   licenseUrl,
-}) => {
+}) {
   const DARKMODE = useDarkMode();
   const styles = {
     card: {
@@ -128,6 +129,17 @@ const LicensesListItem = ({
       </View>
     </View>
   );
+}
+
+LicensesListItem.propTypes = {
+  image: PropTypes.string,
+  userUrl: PropTypes.string,
+  username: PropTypes.string,
+  name: PropTypes.string,
+  version: PropTypes.string,
+  licenses: PropTypes.string,
+  repository: PropTypes.string,
+  licenseUrl: PropTypes.string,
 };
 
 /**
@@ -146,14 +158,20 @@ const LicensesListItem = ({
  *   {licenses}
  * </Link>
  */
-const Link = ({ url, style, children }) => (
-  <Text
-    style={style}
-    numberOfLines={1}
-    onPress={() => url && Linking.openURL(url)}
-  >
-    {children}
-  </Text>
-);
+function Link({ url, style, children }) {
+  return (
+    <Text
+      style={style}
+      numberOfLines={1}
+      onPress={() => url && Linking.openURL(url)}
+    >
+      {children}
+    </Text>
+  );
+}
 
-export default LicensesListItem;
+Link.propTypes = {
+  url: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.node,
+};

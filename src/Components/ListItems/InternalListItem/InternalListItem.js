@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
@@ -84,3 +85,7 @@ export default function InternalListItem({ item }) {
     </Pressable>
   );
 }
+
+InternalListItem.propTypes = {
+  item: PropTypes.object,
+};

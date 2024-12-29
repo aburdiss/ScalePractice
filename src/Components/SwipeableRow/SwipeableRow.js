@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { RectButton, Swipeable } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -27,7 +28,7 @@ import { translate } from '../../Translations/TranslationModel';
  *   {..}
  * </SwipeableRow>
  */
-const SwipeableRow = ({ children, styles, deleteItem, item }) => {
+export default function SwipeableRow({ children, styles, deleteItem, item }) {
   const renderRightActions = (progress, dragX) => {
     return (
       <RectButton
@@ -56,6 +57,11 @@ const SwipeableRow = ({ children, styles, deleteItem, item }) => {
       {children}
     </Swipeable>
   );
-};
+}
 
-export default SwipeableRow;
+SwipeableRow.propTypes = {
+  children: PropTypes.node,
+  styles: PropTypes.object,
+  deleteItem: PropTypes.func,
+  item: PropTypes.object,
+};

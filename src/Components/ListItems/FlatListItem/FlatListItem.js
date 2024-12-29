@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDarkMode } from '../../../utils';
@@ -65,3 +66,7 @@ export default function FlatListItem({ data }) {
     </Pressable>
   );
 }
+
+FlatListItem.propTypes = {
+  data: PropTypes.object,
+};

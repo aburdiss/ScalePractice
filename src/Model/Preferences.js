@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
@@ -194,6 +195,10 @@ const PreferencesProvider = ({ children }) => {
       {children}
     </PreferencesContext.Provider>
   );
+};
+
+PreferencesProvider.propTypes = {
+  children: PropTypes.node,
 };
 
 export { PreferencesContext, PreferencesProvider };

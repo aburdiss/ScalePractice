@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Pressable, Text, StyleSheet } from 'react-native';
 import { useDarkMode } from '../../utils';
 
@@ -24,7 +25,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @example
  * <ResetButton handler={handler} />
  */
-const ResetButton = ({ handler }) => {
+export default function ResetButton({ handler }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     text: {
@@ -57,6 +58,8 @@ const ResetButton = ({ handler }) => {
       </Pressable>
     </View>
   );
-};
+}
 
-export default ResetButton;
+ResetButton.propTypes = {
+  handler: PropTypes.func,
+};

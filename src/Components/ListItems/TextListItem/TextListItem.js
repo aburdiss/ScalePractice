@@ -1,8 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 
 import { colors } from '../../../Model/Model';
-import { translate as translateFunc } from '../../../Translations/TranslationModel';
+import {
+  translate,
+  translate as translateFunc,
+} from '../../../Translations/TranslationModel';
 import { useDarkMode } from '../../../utils';
 
 /**
@@ -68,3 +72,8 @@ export default function TextListItem({ item, translate = true }) {
     </View>
   );
 }
+
+TextListItem.propTypes = {
+  item: PropTypes.object,
+  translate: PropTypes.bool,
+};

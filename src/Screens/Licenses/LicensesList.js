@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FlatList, StyleSheet } from 'react-native';
 import LicensesListItem from './LicensesListItem';
 
@@ -13,7 +14,7 @@ import LicensesListItem from './LicensesListItem';
  * @example
  * <LicensesList licenses={licenses} />
  */
-const LicensesList = ({ licenses }) => {
+export default function LicensesList({ licenses }) {
   return (
     <FlatList
       style={styles.list}
@@ -22,6 +23,10 @@ const LicensesList = ({ licenses }) => {
       renderItem={({ item }) => <LicensesListItem {...item} />}
     />
   );
+}
+
+LicensesList.propTypes = {
+  licenses: PropTypes.arrayOf(PropTypes.object),
 };
 
 const styles = StyleSheet.create({
@@ -29,5 +34,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-export default LicensesList;

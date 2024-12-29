@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -99,7 +100,7 @@ export default function App() {
 }
 
 function getTabBarIcon(route) {
-  return ({ color, size }) => {
+  function Icon({ color, size }) {
     let iconName;
     if (route.name === 'RandomStack') {
       iconName = 'cube';
@@ -111,5 +112,10 @@ function getTabBarIcon(route) {
       iconName = 'ellipsis-horizontal-circle-sharp';
     }
     return <Ionicons name={iconName} size={size} color={color} />;
+  }
+  Icon.propTypes = {
+    color: PropTypes.string,
+    size: PropTypes.string,
   };
+  return Icon;
 }

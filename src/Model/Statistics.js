@@ -1,4 +1,5 @@
 import React, { useEffect, createContext, useReducer } from 'react';
+import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const StatisticsContext = createContext();
@@ -108,6 +109,10 @@ function StatisticseProvider({ children }) {
     </StatisticsDispatchContext.Provider>
   );
 }
+
+StatisticseProvider.propTypes = {
+  children: PropTypes.node,
+};
 
 StatisticsDispatchContext.actions = ACTIONS;
 

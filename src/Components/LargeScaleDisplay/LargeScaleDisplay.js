@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useDarkMode } from '../../utils';
@@ -22,7 +23,7 @@ import { colors } from '../../Model/Model';
  * @example
  * <LargeScaleDisplay>Hello, World!</LargeScaleDisplay>
  */
-const LargeScaleDisplay = ({ children }) => {
+export default function LargeScaleDisplay({ children }) {
   const DARKMODE = useDarkMode();
 
   return (
@@ -59,6 +60,8 @@ const LargeScaleDisplay = ({ children }) => {
       </View>
     </LinearGradient>
   );
-};
+}
 
-export default LargeScaleDisplay;
+LargeScaleDisplay.propTypes = {
+  children: PropTypes.node,
+};

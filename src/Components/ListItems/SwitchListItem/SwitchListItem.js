@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, Pressable, Switch } from 'react-native';
 
 import { colors } from '../../../Model/Model';
@@ -85,3 +86,9 @@ export default function SwitchListItem({ item, state, dispatch }) {
     </Pressable>
   );
 }
+
+SwitchListItem.propTypes = {
+  item: PropTypes.object,
+  state: PropTypes.object,
+  dispatch: PropTypes.func,
+};

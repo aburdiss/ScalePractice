@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, Switch, Pressable } from 'react-native';
 
 import { colors } from '../../Model/Model';
@@ -30,7 +31,7 @@ import { useDarkMode } from '../../utils';
  *   text="Hello, World!"
  * />
  */
-const SwitchRow = ({ value, onValueChange, text }) => {
+export default function SwitchRow({ value, onValueChange, text }) {
   const DARKMODE = useDarkMode();
   const styles = {
     switchRow: {
@@ -58,6 +59,10 @@ const SwitchRow = ({ value, onValueChange, text }) => {
       <Switch onValueChange={onValueChange} value={value} />
     </Pressable>
   );
-};
+}
 
-export default SwitchRow;
+SwitchRow.propTypes = {
+  value: PropTypes.bool,
+  onValueChange: PropTypes.func,
+  text: PropTypes.string,
+};

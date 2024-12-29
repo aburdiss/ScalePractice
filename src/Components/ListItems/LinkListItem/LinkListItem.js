@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, Linking, Pressable, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -82,3 +83,7 @@ export default function LinkListItem({ item }) {
     </Pressable>
   );
 }
+
+LinkListItem.propTypes = {
+  item: PropTypes.object,
+};

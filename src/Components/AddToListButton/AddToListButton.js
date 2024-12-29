@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Pressable, Text, StyleSheet } from 'react-native';
 
 import { useDarkMode } from '../../utils';
@@ -23,7 +24,7 @@ import { translate } from '../../Translations/TranslationModel';
  * @example
  * <AddToListButton handler={handler} />
  */
-const AddToListButton = ({ handler }) => {
+export default function AddToListButton({ handler }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     text: {
@@ -55,6 +56,8 @@ const AddToListButton = ({ handler }) => {
       </Pressable>
     </View>
   );
-};
+}
 
-export default AddToListButton;
+AddToListButton.propTypes = {
+  handler: PropTypes.func,
+};

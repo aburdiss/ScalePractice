@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useDarkMode } from '../../utils';
@@ -105,3 +106,12 @@ export default function ScalePickersAndroid({
     </View>
   );
 }
+
+ScalePickersAndroid.propTypes = {
+  selectedNote: PropTypes.string,
+  setSelectedNote: PropTypes.func,
+  noteNames: PropTypes.arrayOf(PropTypes.string),
+  selectedScale: PropTypes.string,
+  setSelectedScale: PropTypes.func,
+  scaleNames: PropTypes.arrayOf(PropTypes.string),
+};

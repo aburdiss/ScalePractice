@@ -90,7 +90,7 @@ async function save(data) {
  * @example
  * <Advanced />
  */
-export default function AdvancedScale() {
+export default function Advanced() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();

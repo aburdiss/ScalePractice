@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView, View, Text, Image } from 'react-native';
 
 import { colors, getImagePath } from '../../Model/Model';
@@ -8,7 +9,7 @@ import { useDarkMode, useIdleScreen } from '../../utils';
 /**
  * @description A component that renders a detailed image, based on the id
  * given when calling navigation.navigate().
- * @author Alexandder Burdiss
+ * @author Alexander Burdiss
  * @since 12/15/20
  * @version 2.1.0
  * @param {Object} props.route The Route object provided by React Navigation
@@ -16,7 +17,7 @@ import { useDarkMode, useIdleScreen } from '../../utils';
  * @example
  * <ScaleDetail route={route} />
  */
-const ScaleDetail = ({ route }) => {
+export default function ScaleDetail({ route }) {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
@@ -61,6 +62,8 @@ const ScaleDetail = ({ route }) => {
       </Text>
     </ScrollView>
   );
-};
+}
 
-export default ScaleDetail;
+ScaleDetail.propTypes = {
+  route: PropTypes.object,
+};

@@ -17,9 +17,6 @@ const Stack = createStackNavigator();
  * @author Alexander Burdiss
  * @since 10/25/22
  * @version 1.0.2
- * @param {Object} props JSX Props passed to this React Component
- * @param {Object} props.navigation The navigation object provided by React
- * Navigation
  *
  * @example
  * <Tab.Screen
@@ -28,7 +25,7 @@ const Stack = createStackNavigator();
  *   options={{title: translate('Random')}}
  * />
  */
-export default function RandomStack({ navigation }) {
+export default function RandomStack() {
   const DARKMODE = useDarkMode();
 
   const { state, dispatch } = useContext(PreferencesContext);
