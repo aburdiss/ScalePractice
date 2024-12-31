@@ -1,5 +1,5 @@
 import { translate } from '../../Translations/TranslationModel';
-import { shuffle } from '../../utils';
+import { shuffle } from '..';
 
 /**
  * @function createScaleArrayFromParts
@@ -13,7 +13,10 @@ import { shuffle } from '../../utils';
  * @param {string[]} scaleNames
  * @returns {string[]} array of all transpositions of a scale
  */
-export function createScaleArrayFromParts(letterNames, scaleNames) {
+export function createScaleArrayFromParts(
+  letterNames: string[],
+  scaleNames: string[],
+): string[] {
   let allLetterNamesOfScale = [];
   for (let letter of letterNames) {
     for (let scaleName of scaleNames) {

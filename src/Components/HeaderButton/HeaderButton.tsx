@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, Pressable, StyleSheet } from 'react-native';
+import {
+  Text,
+  Pressable,
+  StyleSheet,
+  GestureResponderEvent,
+} from 'react-native';
 import { useDarkMode } from '../../utils';
 
 import { colors } from '../../Model/Model';
@@ -27,7 +32,13 @@ import { translate } from '../../Translations/TranslationModel';
  *   Hello, World!
  * </HeaderButton>
  */
-export default function HeaderButton({ children, handler }) {
+export default function HeaderButton({
+  children,
+  handler,
+}: {
+  children: string;
+  handler: (event: GestureResponderEvent) => void;
+}) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     text: {

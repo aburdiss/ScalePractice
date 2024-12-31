@@ -1,5 +1,5 @@
 import { translate } from '../../Translations/TranslationModel';
-import { shuffle } from '../../utils';
+import { shuffle } from '..';
 
 /**
  * @function ArpeggioPractice~createArpeggioArrayFromParts
@@ -11,7 +11,7 @@ import { shuffle } from '../../utils';
  *
  * @returns {string[]} array of all transpositions of a scale
  */
-export function createArpeggioArrayFromParts(scaleName) {
+export function createArpeggioArrayFromParts(scaleName: string): string[] {
   const letterNames = [
     'C',
     'C♯',

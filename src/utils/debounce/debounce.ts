@@ -2,13 +2,13 @@
 // be triggered. The function will be called after it stops being called for
 // N milliseconds. If `immediate` is passed, trigger the function on the
 // leading edge, instead of the trailing.
-export function debounce(func, wait, immediate) {
-  var timeout;
+export function debounce(func: Function, wait: number, immediate: boolean) {
+  let timeout: NodeJS.Timeout | undefined;
   return function () {
     var context = this,
       args = arguments;
     var later = function () {
-      timeout = null;
+      timeout = undefined;
       if (!immediate) {
         func.apply(context, args);
       }

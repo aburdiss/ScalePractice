@@ -32,6 +32,7 @@ export const translate = memoize(
  * @description Finds the current language the device is in, updates the
  * language in state, and clears the translation cache. This should be called
  * once before the content in App.js loads.
+ * @returns {Promise}
  * @author Alexander Burdiss
  * @since 12/1/20
  * @version 1.0.1

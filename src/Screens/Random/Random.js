@@ -17,17 +17,12 @@ import { translate } from '../../Translations/TranslationModel';
 import { useIdleScreen, useDarkMode } from '../../utils';
 import { getRandomReducer } from './utils/getRandomReducer';
 import { StatisticsDispatchContext } from '../../Model/Statistics';
+import { STORAGE_KEYS } from '../../enums/storageKeys';
 
 /**
  * @namespace Random
  * The Namespace for the Random Screen and all its sub components and methods
  */
-
-/**
- * @name STORAGE_KEY
- * @memberof Random
- */
-const STORAGE_KEY = 'random';
 
 /**
  * @function load
@@ -43,7 +38,7 @@ const STORAGE_KEY = 'random';
  */
 async function load() {
   try {
-    const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
+    const jsonValue = await AsyncStorage.getItem(STORAGE_KEYS.random);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     console.log(e);
@@ -64,7 +59,7 @@ async function load() {
 async function save(data) {
   try {
     const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
+    await AsyncStorage.setItem(STORAGE_KEYS.random, jsonValue);
   } catch (e) {
     console.log(e);
   }

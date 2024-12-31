@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Pressable, Text, StyleSheet } from 'react-native';
+import {
+  View,
+  Pressable,
+  Text,
+  StyleSheet,
+  GestureResponderEvent,
+} from 'react-native';
 
 import { useDarkMode } from '../../utils';
 import { colors } from '../../Model/Model';
@@ -24,7 +30,11 @@ import { translate } from '../../Translations/TranslationModel';
  * @example
  * <AddToListButton handler={handler} />
  */
-export default function AddToListButton({ handler }) {
+export default function AddToListButton({
+  handler,
+}: {
+  handler: (event: GestureResponderEvent) => void;
+}) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     text: {

@@ -7,10 +7,7 @@
  * @since 9/11/21
  * @version 1.0.0
  */
-export function capitalize(inputString) {
-  if (typeof inputString !== 'string') {
-    return undefined;
-  }
+export function capitalize(inputString: string): string {
   const firstLetter = inputString[0];
   const restOfString = inputString.slice(1);
   return `${firstLetter.toUpperCase()}${restOfString}`;

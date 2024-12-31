@@ -23,17 +23,12 @@ import { translate } from '../../Translations/TranslationModel';
 import { getIsSmallScreen, useIdleScreen, useDarkMode } from '../../utils';
 import { getAdvancedReducer } from './utils/getAdvancedReducer';
 import { StatisticsDispatchContext } from '../../Model/Statistics';
+import { STORAGE_KEYS } from '../../enums/storageKeys';
 
 /**
  * @namespace Advanced
  * The namespace for the Advance screen and all its sub components and methods
  */
-
-/**
- * @name STORAGE_KEY
- * @memberof Advanced
- */
-const STORAGE_KEY = 'advanced';
 
 /**
  * @function load
@@ -49,7 +44,7 @@ const STORAGE_KEY = 'advanced';
  */
 async function load() {
   try {
-    const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
+    const jsonValue = await AsyncStorage.getItem(STORAGE_KEYS.advanced);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     console.log(e);
@@ -70,7 +65,7 @@ async function load() {
 async function save(data) {
   try {
     const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
+    await AsyncStorage.setItem(STORAGE_KEYS.advanced, jsonValue);
   } catch (e) {
     console.log(e);
   }

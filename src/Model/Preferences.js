@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { STORAGE_KEYS } from '../enums/storageKeys';
 
 /**
  * @namespace Preferences
@@ -59,12 +60,6 @@ const ACTIONS = Object.freeze({
 });
 
 /**
- * @name STORAGE_KEY
- * @memberof Preferences
- */
-const STORAGE_KEY = 'preferences';
-
-/**
  * @function load
  * @memberof Preferences
  * @description Loads Data from Local Storage
@@ -79,7 +74,7 @@ const STORAGE_KEY = 'preferences';
  */
 export async function load() {
   try {
-    const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
+    const jsonValue = await AsyncStorage.getItem(STORAGE_KEYS.preferences);
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     console.log(e);
@@ -101,7 +96,7 @@ export async function load() {
 export async function save(data) {
   try {
     const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
+    await AsyncStorage.setItem(STORAGE_KEYS.preferences, jsonValue);
   } catch (e) {
     console.log(e);
   }

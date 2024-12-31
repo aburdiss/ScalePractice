@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  GestureResponderEvent,
+} from 'react-native';
 import { useDarkMode } from '../../utils';
 
 import { colors } from '../../Model/Model';
@@ -27,7 +32,13 @@ import { colors } from '../../Model/Model';
  *   Hello, World!
  * </AllScalesButton>
  */
-export default function AllScalesButton({ children, handler }) {
+export default function AllScalesButton({
+  children,
+  handler,
+}: {
+  children: React.ReactNode;
+  handler: (event: GestureResponderEvent) => void;
+}) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     text: {

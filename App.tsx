@@ -45,7 +45,7 @@ export default function App() {
   const handleLocalizationChange = () => {
     setI18nConfig()
       .then(() => this.forceUpdate())
-      .catch((error) => {
+      .catch((error: Error) => {
         console.error(error);
       });
   };
@@ -99,9 +99,9 @@ export default function App() {
   );
 }
 
-function getTabBarIcon(route) {
-  function Icon({ color, size }) {
-    let iconName;
+function getTabBarIcon(route: { name: string }) {
+  function Icon({ color, size }: { color: string; size: number }) {
+    let iconName: string = '';
     if (route.name === 'RandomStack') {
       iconName = 'cube';
     } else if (route.name === 'ResourcesStack') {

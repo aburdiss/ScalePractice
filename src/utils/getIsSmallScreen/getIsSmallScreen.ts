@@ -9,7 +9,7 @@ import { Dimensions } from 'react-native';
  * @version 1.0.0
  * @returns {boolean} A boolean of whether or not the screen is small.
  */
-export function getIsSmallScreen() {
+export function getIsSmallScreen(): boolean {
   const SMALL_SCREEN_HEIGHT = 675;
   return Dimensions.get('screen').height < SMALL_SCREEN_HEIGHT;
 }
