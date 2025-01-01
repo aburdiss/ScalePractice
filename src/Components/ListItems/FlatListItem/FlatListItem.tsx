@@ -2,10 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { useDarkMode } from '../../../utils';
 
 import { colors } from '../../../Model/Model';
 import { translate } from '../../../Translations/TranslationModel';
+
+import { ResourcesStackParamList } from '../../../Navigation/ResourcesStack';
+
+type scaleDetailProp = StackNavigationProp<
+  ResourcesStackParamList,
+  'Scale Detail'
+>;
 
 /**
  * @function FlatListItem
@@ -24,8 +32,8 @@ import { translate } from '../../../Translations/TranslationModel';
  * @example
  * <ListItem data={data} />
  */
-export default function FlatListItem({ data }) {
-  const navigation = useNavigation();
+export default function FlatListItem({ data }: { data?: { name: string } }) {
+  const navigation = useNavigation<scaleDetailProp>();
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     container: {
@@ -42,9 +50,9 @@ export default function FlatListItem({ data }) {
       android_ripple={{
         color: DARKMODE ? colors.purpleDark : colors.purpleLight,
       }}
+      accessible
       accessibilityRole="button"
-      accessibile={true}
-      accessibilityLabel={translate(data.name)}
+      accessibilityLabel={translate(data?.name)}
       onPress={() => {
         navigation.navigate('Scale Detail', data);
       }}
@@ -60,7 +68,7 @@ export default function FlatListItem({ data }) {
             color: DARKMODE ? colors.white : colors.black,
           }}
         >
-          {translate(data.name)}
+          {translate(data?.name)}
         </Text>
       </View>
     </Pressable>

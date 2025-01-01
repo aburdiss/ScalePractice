@@ -9,7 +9,12 @@ import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 import { PreferencesContext } from '../Model/Preferences';
 
-const Stack = createStackNavigator();
+export type ResourcesStackParamList = {
+  'Scale Resources': undefined;
+  'Scale Detail': { name: string } | undefined;
+};
+
+const Stack = createStackNavigator<ResourcesStackParamList>();
 
 /**
  * @description The stack of screens for the resources tab of the navigation.
@@ -64,14 +69,14 @@ export default function ResourcesStack() {
         name="Scale Detail"
         component={ScaleDetail}
         options={({ route }) => ({
-          title: translate(route.params.name),
+          title: translate(route.params?.name),
         })}
       />
     </Stack.Navigator>
   );
 }
 
-function getHeaderRight(isScale, dispatch) {
+function getHeaderRight(isScale: boolean, dispatch: Function) {
   return () => (
     <HeaderButton
       handler={() => {

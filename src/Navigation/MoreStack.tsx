@@ -11,7 +11,15 @@ import Statistics from '../Screens/Statistics/Statistics';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 
-const Stack = createStackNavigator();
+export type MoreStackParamList = {
+  More: undefined;
+  Licenses: undefined;
+  Acknowledgements: undefined;
+  Help: undefined;
+  Statistics: undefined;
+};
+
+const Stack = createStackNavigator<MoreStackParamList>();
 
 /**
  * @description The stack of screens for the More tab of the navigation.

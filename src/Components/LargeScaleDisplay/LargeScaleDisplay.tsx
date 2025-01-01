@@ -23,7 +23,7 @@ import { colors } from '../../Model/Model';
  * @example
  * <LargeScaleDisplay>Hello, World!</LargeScaleDisplay>
  */
-export default function LargeScaleDisplay({ children }) {
+export default function LargeScaleDisplay({ children }: { children?: string }) {
   const DARKMODE = useDarkMode();
 
   return (
