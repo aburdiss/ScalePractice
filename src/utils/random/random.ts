@@ -1,4 +1,4 @@
-export function random(min: number, max: number) {
+export function random(min: number, max?: number) {
   if (max == null) {
     max = min;
     min = 0;

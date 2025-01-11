@@ -2,18 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useDarkMode } from '../../../utils';
 
 import { colors } from '../../../Model/Model';
 import { translate } from '../../../Translations/TranslationModel';
-
-import { ResourcesStackParamList } from '../../../Navigation/ResourcesStack';
-
-type scaleDetailProp = StackNavigationProp<
-  ResourcesStackParamList,
-  'Scale Detail'
->;
 
 /**
  * @function FlatListItem
@@ -33,7 +25,7 @@ type scaleDetailProp = StackNavigationProp<
  * <ListItem data={data} />
  */
 export default function FlatListItem({ data }: { data?: { name: string } }) {
-  const navigation = useNavigation<scaleDetailProp>();
+  const navigation = useNavigation<{ navigate: Function }>();
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
     container: {

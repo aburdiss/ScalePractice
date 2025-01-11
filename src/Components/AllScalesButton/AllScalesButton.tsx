@@ -35,9 +35,11 @@ import { colors } from '../../Model/Model';
 export default function AllScalesButton({
   children,
   handler,
+  accessibilityHint,
 }: {
   children: React.ReactNode;
   handler: (event: GestureResponderEvent) => void;
+  accessibilityHint?: string;
 }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
@@ -54,6 +56,7 @@ export default function AllScalesButton({
         color: DARKMODE ? colors.systemGray : colors.systemGray,
       }}
       accessibilityRole="button"
+      accessibilityHint={accessibilityHint}
       onPress={handler}
       style={({ pressed }) => ({
         borderRadius: 8,

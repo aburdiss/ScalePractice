@@ -2,37 +2,20 @@ import React, { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDarkMode } from '../utils';
 
-import ScaleResources from '../Screens/Resources/Resources';
-import ScaleDetail from '../Screens/ScaleDetail/ScaleDetail';
+import Random from '../Screens/Random';
 import { HeaderButton } from '../Components';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 import {
   PreferencesContext,
-  preferencesResourceTypes,
   preferencesActions,
+  preferencesRandomTypes,
 } from '../Model/Preferences';
 
-export type ResourcesStackParamList = {
-  'Scale Resources': undefined;
-  'Scale Detail': {
-    route: {
-      params: {
-        name: string;
-        id: number;
-        construction: string;
-        solfege: string;
-        numerals: string;
-        description: string;
-      };
-    };
-  };
-};
-
-const Stack = createStackNavigator<ResourcesStackParamList>();
+const Stack = createStackNavigator();
 
 /**
- * @description The stack of screens for the resources tab of the navigation.
+ * @description The stack of screens for the Random Tab of the navigation.
  * Created 10/10/20
  * @copyright Alexander Burdiss
  * @author Alexander Burdiss
@@ -41,16 +24,18 @@ const Stack = createStackNavigator<ResourcesStackParamList>();
  *
  * @example
  * <Tab.Screen
- *   name="Resources"
- *   component={ResourcesStack}
- *   options={{title: translate('Resources')}}
+ *   name="Random"
+ *   component={RandomStack}
+ *   options={{title: translate('Random')}}
  * />
  */
-export default function ResourcesStack() {
+export default function RandomStack() {
   const DARKMODE = useDarkMode();
 
   const { state, dispatch } = useContext(PreferencesContext);
-  const isScale = state?.resourcesType == preferencesResourceTypes.SCALE;
+
+  const isScale = state?.randomType == preferencesRandomTypes.SCALE;
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -70,25 +55,14 @@ export default function ResourcesStack() {
       }}
     >
       <Stack.Screen
-        name="Scale Resources"
-        component={ScaleResources}
+        name="Random Scale Practice"
+        component={Random}
         options={{
           headerRight: getHeaderRight(isScale, dispatch),
           title: isScale
-            ? translate('Scale Resources')
-            : translate('Arpeggio Resources'),
+            ? translate('Random Scale Practice')
+            : translate('Random Arpeggio Practice'),
         }}
-      />
-      <Stack.Screen
-        name="Scale Detail"
-        // TODO: Figure this out
-        // @ts-ignore
-        component={ScaleDetail}
-        options={({ route }) => ({
-          // TODO: Figure this out
-          // @ts-ignore
-          title: translate(route.params?.name),
-        })}
       />
     </Stack.Navigator>
   );
@@ -99,11 +73,11 @@ function getHeaderRight(isScale: boolean, dispatch: Function) {
     <HeaderButton
       handler={() => {
         const newType = isScale
-          ? preferencesResourceTypes.ARPEGGIO
-          : preferencesResourceTypes.SCALE;
+          ? preferencesRandomTypes.ARPEGGIO
+          : preferencesRandomTypes.SCALE;
         dispatch({
           type: preferencesActions.SET_SETTING,
-          payload: { resourcesType: newType },
+          payload: { randomType: newType },
         });
       }}
     >

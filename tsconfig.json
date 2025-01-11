@@ -3,5 +3,6 @@
   "compilerOptions": {
     "allowJs": true,
     "noImplicitThis": false,
+    "moduleSuffixes": [".ios", ".android", ".native", ""]
   }
 }

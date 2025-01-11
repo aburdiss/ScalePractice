@@ -1,56 +1,42 @@
 import React, { useContext } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import { useDarkMode } from '../utils';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import ScaleResources from '../Screens/Resources/Resources';
-import ScaleDetail from '../Screens/ScaleDetail/ScaleDetail';
+// Screens
+import AdvancedScale from '../Screens/Advanced/Advanced';
+
 import { HeaderButton } from '../Components';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 import {
   PreferencesContext,
-  preferencesResourceTypes,
+  preferencesAdvancedTypes,
   preferencesActions,
 } from '../Model/Preferences';
 
-export type ResourcesStackParamList = {
-  'Scale Resources': undefined;
-  'Scale Detail': {
-    route: {
-      params: {
-        name: string;
-        id: number;
-        construction: string;
-        solfege: string;
-        numerals: string;
-        description: string;
-      };
-    };
-  };
-};
-
-const Stack = createStackNavigator<ResourcesStackParamList>();
+const Stack = createStackNavigator();
 
 /**
- * @description The stack of screens for the resources tab of the navigation.
- * Created 10/10/20
- * @copyright Alexander Burdiss
+ * @description The stack of screens for the Advanced tab of the navigation.
+ * Created 10/10/20 by Alexander Burdiss
  * @author Alexander Burdiss
  * @since 10/25/22
- * @version 1.0.2
+ * @version 1.1.1
  *
  * @example
  * <Tab.Screen
- *   name="Resources"
- *   component={ResourcesStack}
- *   options={{title: translate('Resources')}}
+ *   name="Advanced"
+ *   component={AdvancedStack}
+ *   options={{title: translate('Advanced')}}
  * />
  */
-export default function ResourcesStack() {
+export default function AdvancedStack() {
   const DARKMODE = useDarkMode();
 
   const { state, dispatch } = useContext(PreferencesContext);
-  const isScale = state?.resourcesType == preferencesResourceTypes.SCALE;
+
+  const isScale = state?.advancedType == preferencesAdvancedTypes.SCALE;
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -70,25 +56,14 @@ export default function ResourcesStack() {
       }}
     >
       <Stack.Screen
-        name="Scale Resources"
-        component={ScaleResources}
+        name="Advanced Scale Practice"
+        component={AdvancedScale}
         options={{
           headerRight: getHeaderRight(isScale, dispatch),
           title: isScale
-            ? translate('Scale Resources')
-            : translate('Arpeggio Resources'),
+            ? translate('Advanced Scale Practice')
+            : translate('Advanced Arpeggio Practice'),
         }}
-      />
-      <Stack.Screen
-        name="Scale Detail"
-        // TODO: Figure this out
-        // @ts-ignore
-        component={ScaleDetail}
-        options={({ route }) => ({
-          // TODO: Figure this out
-          // @ts-ignore
-          title: translate(route.params?.name),
-        })}
       />
     </Stack.Navigator>
   );
@@ -99,11 +74,11 @@ function getHeaderRight(isScale: boolean, dispatch: Function) {
     <HeaderButton
       handler={() => {
         const newType = isScale
-          ? preferencesResourceTypes.ARPEGGIO
-          : preferencesResourceTypes.SCALE;
+          ? preferencesAdvancedTypes.ARPEGGIO
+          : preferencesAdvancedTypes.SCALE;
         dispatch({
           type: preferencesActions.SET_SETTING,
-          payload: { resourcesType: newType },
+          payload: { advancedType: newType },
         });
       }}
     >
