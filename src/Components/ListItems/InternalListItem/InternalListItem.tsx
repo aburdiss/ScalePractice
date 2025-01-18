@@ -31,7 +31,7 @@ import { useDarkMode } from '../../../utils';
 export default function InternalListItem({
   item,
 }: {
-  item: { value: string; component: string };
+  item: { value: string; component?: string };
 }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({

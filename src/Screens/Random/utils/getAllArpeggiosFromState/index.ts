@@ -1,6 +1,8 @@
 import { createArpeggioArrayFromParts } from '../../../../utils';
 
-export function getAllArpeggiosFromState(arpeggioOptions) {
+export function getAllArpeggiosFromState(arpeggioOptions: {
+  [key: string]: boolean;
+}) {
   let possibleArpeggios = [];
 
   if (arpeggioOptions.major) {

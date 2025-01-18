@@ -7,7 +7,10 @@ import {
   arpeggioResourceData,
   colors,
 } from '../../Model/Model';
-import { PreferencesContext } from '../../Model/Preferences';
+import {
+  PreferencesContext,
+  preferencesResourceTypes,
+} from '../../Model/Preferences';
 import { useIdleScreen, useDarkMode } from '../../utils';
 
 /**
@@ -27,8 +30,7 @@ export default function Resources() {
   const DARKMODE = useDarkMode();
 
   const { state } = useContext(PreferencesContext);
-  const isScale =
-    state.resourcesType == PreferencesContext.resourcesTypes.SCALE;
+  const isScale = state.resourcesType == preferencesResourceTypes.SCALE;
 
   return (
     <View>

@@ -37,7 +37,8 @@ export default function SwitchListItem({
   dispatch,
 }: {
   item: { setting: string; value: string };
-  state: { [key: string]: boolean };
+  // TODO: Make this more strict
+  state: any;
   dispatch: Function;
 }) {
   const DARKMODE = useDarkMode();

@@ -74,7 +74,7 @@ export default function RandomSettings({
 }
 
 RandomSettings.propTypes = {
-  action: PropTypes.string,
+  action: PropTypes.number,
   types: PropTypes.object,
   randomState: PropTypes.object,
   dispatchRandomState: PropTypes.func,

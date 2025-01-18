@@ -1,8 +1,7 @@
 import * as RNLocalize from 'react-native-localize';
 import i18n from 'i18n-js';
-import memoize from 'lodash.memoize';
 
-const translationGetters = {
+const translationGetters: { [key: string]: Function } = {
   en: () => require('./en.json'),
   zh: () => require('./zh.json'),
   fr: () => require('./fr.json'),
@@ -11,21 +10,31 @@ const translationGetters = {
   es: () => require('./es.json'),
 };
 
+const translationMemo: { [key: string]: string } = {};
+
 /**
  * @function translate
  * @description Takes a string, and returns the translated version of that
  * string, if it exists in the configuration file for the language provided.
  * @author Alexander Burdiss
- * @since 12/1/20
- * @version 1.0.1
+ * @since 1/18/25
+ * @version 2.0.0
  * @param {string} key The string to be translated
  * @returns {string} The input string translated into the language the device
  * is currently in.
  */
-export const translate = memoize(
-  (key, config) => i18n.t(key, config),
-  (key, config) => (config ? key + JSON.stringify(config) : key),
-);
+export function translate(key?: string): string {
+  if (!key) {
+    return '';
+  }
+  const savedTranslation = translationMemo[key];
+  if (savedTranslation) {
+    return savedTranslation;
+  }
+  const translation = i18n.t(key);
+  translationMemo[key] = translation;
+  return translation;
+}
 
 /**
  * @function setI18nConfig
@@ -43,7 +52,12 @@ export const setI18nConfig = () => {
     RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
     fallback;
 
-  translate.cache.clear();
+  // Clear out memoized translations
+  for (var variableKey in translationMemo) {
+    if (Object.prototype.hasOwnProperty.call(translationMemo, variableKey)) {
+      delete translationMemo[variableKey];
+    }
+  }
 
   i18n.translations = { [languageTag]: translationGetters[languageTag]() };
   i18n.locale = languageTag;

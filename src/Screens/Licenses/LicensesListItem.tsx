@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, Pressable, View, Linking, Image } from 'react-native';
+import {
+  Text,
+  Pressable,
+  View,
+  Linking,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../Model/Model';
 
@@ -41,9 +48,18 @@ export default function LicensesListItem({
   licenses,
   repository,
   licenseUrl,
+}: {
+  image: string;
+  userUrl: string;
+  username: string;
+  name: string;
+  version: string;
+  licenses: string;
+  repository: string;
+  licenseUrl: string;
 }) {
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     card: {
       overflow: 'hidden',
       flexDirection: 'row',
@@ -81,7 +97,7 @@ export default function LicensesListItem({
       color: colors.systemGray,
       marginTop: 3,
     },
-  };
+  });
 
   let title = name;
   if (username) {
@@ -115,7 +131,7 @@ export default function LicensesListItem({
               <Link style={styles.text} url={licenseUrl}>
                 {licenses}
               </Link>
-              <Link style={styles.text}>{version}</Link>
+              <Text style={styles.text}>{version}</Text>
             </View>
             <Ionicons
               // eslint-disable-next-line react-native/no-inline-styles
@@ -158,7 +174,15 @@ LicensesListItem.propTypes = {
  *   {licenses}
  * </Link>
  */
-function Link({ url, style, children }) {
+function Link({
+  url,
+  style,
+  children,
+}: {
+  url: string;
+  style: Object;
+  children: React.ReactNode;
+}) {
   return (
     <Text
       style={style}

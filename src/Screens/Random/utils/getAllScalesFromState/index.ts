@@ -10,7 +10,9 @@ import {
   SCALE_TYPES,
 } from '../../../../Model/Model';
 
-export function getAllScalesFromState(scaleOptions) {
+export function getAllScalesFromState(scaleOptions: {
+  [key: string]: boolean;
+}) {
   let possibleScales = [];
 
   if (scaleOptions[SCALE_TYPES.major]) {

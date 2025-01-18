@@ -14,7 +14,7 @@ import { View } from 'react-native';
 import LicensesList from './LicensesList';
 import { colors } from '../../Model/Model';
 
-import Data from './licenses.json';
+import rawLicenseData from './licenses.json';
 import { capitalize, useIdleScreen, useDarkMode } from '../../utils';
 
 /**
@@ -28,7 +28,7 @@ import { capitalize, useIdleScreen, useDarkMode } from '../../utils';
  * @param {string} url The GitHub url of a piece of software.
  * @returns {string} The GitHub username
  */
-function extractNameFromGithubUrl(url) {
+function extractNameFromGithubUrl(url?: string) {
   if (!url) {
     return null;
   }
@@ -55,15 +55,16 @@ function extractNameFromGithubUrl(url) {
  * @param {string|number} key An object key inside each member of data.
  * @returns {Object[]} A sorted version of the data array that is passed in.
  */
-function sortDataByKey(data, key) {
+function sortDataByKey(data: { [key: string]: any }[], key: string) {
   data.sort(function (a, b) {
     return a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0;
   });
   return data;
 }
 
-let licenseData = Object.keys(Data).map((key) => {
-  let { licenses, ...license } = Data[key];
+let licenseData = Object.keys(rawLicenseData).map((key) => {
+  // @ts-ignore
+  let { licenses, ...license } = rawLicenseData[key];
 
   let name, version;
   if (key[0] == '@') {

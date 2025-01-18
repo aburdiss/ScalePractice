@@ -35,7 +35,7 @@ import { useDarkMode } from '../../../utils';
 export default function LinkListItem({
   item,
 }: {
-  item: { link: string; value: string; image?: ImageSourcePropType };
+  item: { link?: string; value: string; image?: ImageSourcePropType };
 }) {
   const DARKMODE = useDarkMode();
   const styles = StyleSheet.create({
@@ -78,7 +78,7 @@ export default function LinkListItem({
       accessibilityLabel={translate(item.value)}
       accessibilityRole="link"
       onPress={() => {
-        Linking.openURL(item.link);
+        Linking.openURL(item.link ? item.link : '');
       }}
     >
       <View style={styles.listRowContainer}>

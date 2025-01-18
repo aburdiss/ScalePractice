@@ -14,7 +14,21 @@ import LicensesListItem from './LicensesListItem';
  * @example
  * <LicensesList licenses={licenses} />
  */
-export default function LicensesList({ licenses }) {
+export default function LicensesList({
+  licenses,
+}: {
+  licenses: {
+    key: any;
+    image: string;
+    userUrl: string;
+    username: string;
+    name: string;
+    version: string;
+    licenses: string;
+    repository: string;
+    licenseUrl: string;
+  }[];
+}) {
   return (
     <FlatList
       style={styles.list}

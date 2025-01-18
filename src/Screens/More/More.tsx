@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, SectionList } from 'react-native';
+import { View, Text, SectionList, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DeviceInfo from 'react-native-device-info';
 
@@ -29,7 +29,7 @@ export default function More() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
-  const styles = {
+  const styles = StyleSheet.create({
     javascriptBackground: {
       backgroundColor: colors.black,
       height: 20,
@@ -72,7 +72,7 @@ export default function More() {
       color: colors.systemGray,
       paddingTop: 10,
     },
-  };
+  });
   const { state, dispatch } = useContext(PreferencesContext);
 
   return (
