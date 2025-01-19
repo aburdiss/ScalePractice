@@ -3,6 +3,9 @@
   "compilerOptions": {
     "allowJs": true,
     "noImplicitThis": false,
-    "moduleSuffixes": [".ios", ".android", ".native", ""]
+    "moduleSuffixes": [".ios", ".android", ".native", ""],
+    "paths": {
+      "react": ["./node_modules/@types/react"]
+    }
   }
 }
