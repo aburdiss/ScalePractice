@@ -9,16 +9,22 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode, useIdleScreen } from '../../utils';
 
 /**
+ * @function Acknowledgements
+ * @component
  * @description A View that displays the people who directly assisted with
  * this project
+ * Created 10/25/2022
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 2/20/21
+ * @since 1/30/25
  * @version 1.1.0
  *
  * @example
  * <Acknowledgements />
  */
-const Acknowledgements = () => {
+export default function Acknowledgements() {
   useIdleScreen();
 
   const DARKMODE = useDarkMode();
@@ -64,6 +70,4 @@ const Acknowledgements = () => {
       />
     </View>
   );
-};
-
-export default Acknowledgements;
+}

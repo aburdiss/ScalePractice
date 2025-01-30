@@ -9,18 +9,21 @@ import {
   StyleSheet,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { colors } from '../../Model/Model';
 
-import { useDarkMode } from '../../utils';
+import LicensesLink from '../LicensesLink';
+import { colors } from '../../../../Model/Model';
+
+import { useDarkMode } from '../../../../utils';
 
 /**
+ * @function LicensesListItem
+ * @component
+ * @memberof Licenses
  * @description A styled list item that contains links to the authors of the
  * various softwares used throughout the app, and the users who contributed
  * to them.
  * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
- * @author Alexander Burdiss
- * @date 12/17/20
- * @version 1.0.2
+ * Created 12/17/20
  * @param {string} props.image The url of the image to display.
  * @param {string} props.userUrl The url of the author of this software.
  * @param {string} props.username The username of the author of the software
@@ -35,6 +38,12 @@ import { useDarkMode } from '../../utils';
  * to.
  * @param {string} props.licenseUrl The url to the currently referenced
  * license.
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2025 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @date 1/30/25
+ * @version 1.0.3
  *
  * @example
  * <LicensesListItem {...item} />
@@ -128,9 +137,9 @@ export default function LicensesListItem({
             {/* eslint-disable-next-line react-native/no-inline-styles */}
             <View style={{ maxWidth: '90%' }}>
               <Text style={styles.name}>{title}</Text>
-              <Link style={styles.text} url={licenseUrl}>
+              <LicensesLink style={styles.text} url={licenseUrl}>
                 {licenses}
-              </Link>
+              </LicensesLink>
               <Text style={styles.text}>{version}</Text>
             </View>
             <Ionicons
@@ -156,46 +165,4 @@ LicensesListItem.propTypes = {
   licenses: PropTypes.string,
   repository: PropTypes.string,
   licenseUrl: PropTypes.string,
-};
-
-/**
- * @description One link item that opens the main software link in the
- * LicensesListItem component. Text is limited to one line.
- * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
- * @author Alexander Burdiss
- * @since 12/17/20
- * @version 1.0.1
- * @param {string} props.url The url to open when the element is tapped.
- * @param {Object} props.style Style to be applied to the element
- * @param {string} props.children Text to be rendered inside this element.
- *
- * @example
- * <Link style={styles.text} url={licenseUrl}>
- *   {licenses}
- * </Link>
- */
-function Link({
-  url,
-  style,
-  children,
-}: {
-  url: string;
-  style: Object;
-  children: React.ReactNode;
-}) {
-  return (
-    <Text
-      style={style}
-      numberOfLines={1}
-      onPress={() => url && Linking.openURL(url)}
-    >
-      {children}
-    </Text>
-  );
-}
-
-Link.propTypes = {
-  url: PropTypes.string,
-  style: PropTypes.object,
-  children: PropTypes.node,
 };

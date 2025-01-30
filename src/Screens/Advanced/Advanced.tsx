@@ -78,13 +78,16 @@ async function save(data: Object) {
 
 /**
  * @function Advanced
+ * @component
  * @memberof Advanced
  * @description A view that allows the user to randomize between a list of
  * selected scales.
  * Created by Alexander Burdiss 10/10/20
- * @copyright 2024 Alexander Burdiss
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/28/24
+ * @since 1/30/25
  * @version 3.2.0
  *
  * @example

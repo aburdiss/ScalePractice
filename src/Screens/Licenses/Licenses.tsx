@@ -1,111 +1,32 @@
-/*
-
-Download this lib: https://www.npmjs.com/package/npm-license-crawler
-I did it globally: `npm i npm-license-crawler -g`
-
-Run this command to get the data
-`npm-license-crawler --onlyDirectDependencies --json src/MoreStack/Licenses/licenses.json`
-
-*/
-
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import LicensesList from './LicensesList';
+import LicensesList from './Components/LicensesList';
 import { colors } from '../../Model/Model';
+import { licenseData } from './licenseData';
 
-import rawLicenseData from './licenses.json';
-import { capitalize, useIdleScreen, useDarkMode } from '../../utils';
+import { useIdleScreen, useDarkMode } from '../../utils';
 
 /**
- * @function extractNameFromGithubUrl
- * @description Takes a url to a gitHub repository and returns the username of
- * the author of the software.
- * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
- * @author Alexander Burdiss
- * @version 1.0.1
- * @since 12/17/20
- * @param {string} url The GitHub url of a piece of software.
- * @returns {string} The GitHub username
+ * @namespace Licenses
+ * @description A group of Components and Functions used to show Licenses for
+ * all the packages I use in this application.
  */
-function extractNameFromGithubUrl(url?: string) {
-  if (!url) {
-    return null;
-  }
-
-  const reg =
-    /((https?:\/\/)?(www\.)?github\.com\/)?(@|#!\/)?([A-Za-z0-9_-]{1,30})(\/([-a-z]{1,40}))?/i;
-
-  const components = reg.exec(url);
-
-  if (components && components.length > 5) {
-    return components[5];
-  }
-  return null;
-}
 
 /**
- * @function sortDataByKey
- * @description Sorts the licenses data by key.
- * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
- * @author Alexander Burdiss
- * @since 12/17/20
- * @version 1.0.1
- * @param {Object[]} data The list of licenses.
- * @param {string|number} key An object key inside each member of data.
- * @returns {Object[]} A sorted version of the data array that is passed in.
- */
-function sortDataByKey(data: { [key: string]: any }[], key: string) {
-  data.sort(function (a, b) {
-    return a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0;
-  });
-  return data;
-}
-
-let licenseData = Object.keys(rawLicenseData).map((key) => {
-  // @ts-ignore
-  let { licenses, ...license } = rawLicenseData[key];
-
-  let name, version;
-  if (key[0] == '@') {
-    [, name, version] = key.split('@');
-  } else {
-    [name, version] = key.split('@');
-  }
-
-  let username =
-    extractNameFromGithubUrl(license.repository) ||
-    extractNameFromGithubUrl(license.licenseUrl);
-
-  let userUrl;
-  let image;
-  if (username) {
-    username = capitalize(username);
-    image = `http://github.com/${username}.png`;
-    userUrl = `http://github.com/${username}`;
-  }
-
-  return {
-    key,
-    name,
-    image,
-    userUrl,
-    username,
-    licenses: licenses.slice(0, 405),
-    version,
-    ...license,
-  };
-});
-
-sortDataByKey(licenseData, 'username');
-
-/**
+ * @function Licenses
+ * @component
+ * @memberof Licenses
  * @description A wrapper for the LicensesList component that processes the
  * data and passes it in.
+ * Created 2/1/2021
  * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/17/20
- * @version 1.2.0
+ * @since 1/30/25
+ * @version 1.2.1
  *
  * @example
  * <Licenses />
@@ -115,14 +36,15 @@ export default function Licenses() {
 
   const DARKMODE = useDarkMode();
 
+  const styles = StyleSheet.create({
+    wrapper: {
+      flex: 1,
+      backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
+    },
+  });
+
   return (
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        flex: 1,
-        backgroundColor: DARKMODE ? colors.black : colors.systemGray2Light,
-      }}
-    >
+    <View style={styles.wrapper}>
       <LicensesList licenses={licenseData} />
     </View>
   );

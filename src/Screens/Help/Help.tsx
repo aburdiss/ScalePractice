@@ -6,12 +6,14 @@ import { translate } from '../../Translations/TranslationModel';
 
 /**
  * @function Help
+ * @component
  * @description The Help Page component for the Scale Practice App
+ * Created 8/25/23
  * @returns {JSX.Element} JSX render instructions
  *
- * @copyright 2023 Alexander Burdiss
- * @since 8/25/23
- * @version 1.0.0
+ * @copyright 2025 Alexander Burdiss
+ * @since 1/30/25
+ * @version 1.0.1
  * @example
  * <Help />
  */

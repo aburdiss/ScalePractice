@@ -10,6 +10,22 @@ import {
   SCALE_TYPES,
 } from '../../../../Model/Model';
 
+/**
+ * @function getAllScalesFromState
+ * @memberof Random
+ * @description This function will create an array of all the possible scales
+ * based on the selected scales from state.
+ * Created 10/8/2022
+ * @param {Object} scaleOptions The options stored in state.
+ * @returns {string[]} An array of all the possible scales based on the passed
+ * in state
+ *
+ * @copyright 2025 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/30/25
+ * @version 1.0.0
+ * @example const scales = getAllScalesFromState(state.scaleOptions)
+ */
 export function getAllScalesFromState(scaleOptions: {
   [key: string]: boolean;
 }) {

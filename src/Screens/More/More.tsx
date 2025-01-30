@@ -14,11 +14,17 @@ import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode, useIdleScreen } from '../../utils';
 
 /**
+ * @function More
+ * @component
  * @description A view with links to additional resources and settings for the
  * app.
+ * Created 10/10/25
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/10/20
- * @version 1.1.0
+ * @since 1/30/25
+ * @version 1.1.1
  *
  * @example
  * <More />

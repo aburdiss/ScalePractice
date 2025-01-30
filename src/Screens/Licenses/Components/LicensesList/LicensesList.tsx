@@ -1,15 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, StyleSheet } from 'react-native';
-import LicensesListItem from './LicensesListItem';
+import LicensesListItem from '../LicensesListItem';
+
+const styles = StyleSheet.create({
+  list: {
+    flex: 1,
+  },
+});
 
 /**
+ * @function LicensesList
+ * @component
+ * @memberof Licenses
  * @description The list of licenses of dependencies used in this app.
  * [Created with help from an online article]{@link https://blog.expo.io/licenses-the-best-part-of-your-app-29e7285b544f}
+ * Created 12/17/2020
+ * @param {Object[]} props.licenses The list of licenses that will be displayed.
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/17/2020
+ * @since 1/30/25
  * @version 1.0.1
- * @param {Array} props.licenses The list of licenses that will be displayed.
  *
  * @example
  * <LicensesList licenses={licenses} />
@@ -42,9 +55,3 @@ export default function LicensesList({
 LicensesList.propTypes = {
   licenses: PropTypes.arrayOf(PropTypes.object),
 };
-
-const styles = StyleSheet.create({
-  list: {
-    flex: 1,
-  },
-});

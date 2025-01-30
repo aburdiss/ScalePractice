@@ -51,13 +51,33 @@ const INITIAL_ADVANCED_STATE: AdvancedStateType = Object.freeze({
   isSmallScreen: false,
 });
 
+/**
+ * @function getAdvancedReducer
+ * @memberof Advanced
+ * @description This function takes in the Preferences state and a function to
+ * dispatch to the global statistics, and returns a reducer function to use in
+ * the Advanced Screen.
+ * Created October 15, 2022
+ * @param {PreferencesStateType} state The current app state stored in the
+ * Preferences Reducer
+ * @param {Function} dispatchStatistics A function that is used to dispatch a
+ * call to the statistics screen, to keep track of how many scales have been
+ * practiced.
+ * @returns {Reducer<AdvancedStateType, Object>} The reducer function to use in
+ * the React State for this component
+ *
+ * @copyright 2025 Alexander Burdiss
+ * @since 1/30/25
+ * @version 2.0.0
+ * @example const advancedReducer = getAdvancedReducer(state, dispatch);
+ */
 function getAdvancedReducer(
   state: PreferencesStateType,
   dispatchStatistics: Function,
 ) {
   const isScale = state?.advancedType === preferencesAdvancedTypes.SCALE;
 
-  function advancedReducer(
+  return function advancedReducer(
     currentState: AdvancedStateType,
     action: { type: ADVANCED_ACTIONS; payload?: any },
   ) {
@@ -263,8 +283,7 @@ function getAdvancedReducer(
           `getAdvancedReducer/index.js Unknown Action: ${action.type}`,
         );
     }
-  }
-  return advancedReducer;
+  };
 }
 
 export { ADVANCED_ACTIONS, INITIAL_ADVANCED_STATE, getAdvancedReducer };
