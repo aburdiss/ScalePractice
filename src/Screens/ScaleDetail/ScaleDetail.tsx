@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, View, Text, Image, StyleSheet } from 'react-native';
-// import { StackScreenProps } from '@react-navigation/stack';
 
 import { colors, getImagePath } from '../../Model/Model';
 import { translate } from '../../Translations/TranslationModel';
 import { useDarkMode, useIdleScreen } from '../../utils';
-// import { ResourcesStackParamList } from '../../Navigation/ResourcesStack';
-
-// type Props = StackScreenProps<ResourcesStackParamList, 'Scale Detail'>;
 
 /**
  * @function ScaleDetail

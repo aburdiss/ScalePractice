@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Text, View, SectionList, StyleSheet } from 'react-native';
 import { StatisticsContext } from '../../Model/Statistics';
 import { translate } from '../../Translations/TranslationModel';
-import { TextListItem } from '../../Components';
+import TextListItem from '../../Components/ListItems/TextListItem';
 import { colors } from '../../Model/Model';
 import { useDarkMode, useIdleScreen } from '../../utils';
 import { formatStatisticsDataForList } from './utils/formatStatisticsDataForList';

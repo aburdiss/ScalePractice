@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { View, FlatList } from 'react-native';
 
-import { FlatListItem } from '../../Components';
+import FlatListItem from '../../Components/ListItems/FlatListItem';
 import {
   scaleResourceData,
   arpeggioResourceData,

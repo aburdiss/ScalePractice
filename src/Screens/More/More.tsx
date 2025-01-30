@@ -3,12 +3,10 @@ import { View, Text, SectionList, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DeviceInfo from 'react-native-device-info';
 
-import {
-  SwitchListItem,
-  LinkListItem,
-  TextListItem,
-  InternalListItem,
-} from '../../Components';
+import SwitchListItem from '../../Components/ListItems/SwitchListItem';
+import LinkListItem from '../../Components/ListItems/LinkListItem';
+import TextListItem from '../../Components/ListItems/TextListItem';
+import InternalListItem from '../../Components/ListItems/InternalListItem';
 import { colors } from '../../Model/Model';
 import { RESOURCES, ABOUT, HELP, SETTINGS } from '../../Model/MoreModel';
 import { PreferencesContext } from '../../Model/Preferences';

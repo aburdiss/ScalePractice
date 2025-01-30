@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { useDarkMode } from '../utils';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// Screens
 import AdvancedScale from '../Screens/Advanced/Advanced';
 
-import { HeaderButton } from '../Components';
+import HeaderButton from '../Components/HeaderButton';
+
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 import {

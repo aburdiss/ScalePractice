@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useDarkMode } from '../utils';
 
 import Random from '../Screens/Random';
-import { HeaderButton } from '../Components';
+import HeaderButton from '../Components/HeaderButton';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 import {

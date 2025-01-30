@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useReducer } from 'react';
 import { Alert, View, Text, FlatList, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {
-  AddToListButton,
-  RandomizeButton,
-  ResetButton,
-  ScaleDisplay,
-  ScalePickers,
-  SwipeableRow,
-} from '../../Components';
+import AddToListButton from '../../Components/AddToListButton';
+import RandomizeButton from '../../Components/RandomizeButton';
+import ResetButton from '../../Components/ResetButton';
+import ScaleDisplay from '../../Components/ScaleDisplay';
+import ScalePickers from '../../Components/ScalePickers';
+import SwipeableRow from '../../Components/SwipeableRow';
 
 import {
   colors,

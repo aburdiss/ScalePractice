@@ -10,11 +10,9 @@ import {
 import Popover from 'react-native-popover-view';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {
-  RandomizeButton,
-  LargeScaleDisplay,
-  ScaleDisplay,
-} from '../../Components';
+import RandomizeButton from '../../Components/RandomizeButton';
+import LargeScaleDisplay from '../../Components/LargeScaleDisplay';
+import ScaleDisplay from '../../Components/ScaleDisplay';
 import RandomSettings from './RandomSettings/RandomSettings';
 
 import { colors, SCALE_TYPES, ARPEGGIO_TYPES } from '../../Model/Model';

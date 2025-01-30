@@ -1,7 +1,7 @@
 import React from 'react';
 import { SectionList, Text, View, StyleSheet } from 'react-native';
 
-import { TextListItem } from '../../Components';
+import TextListItem from '../../Components/ListItems/TextListItem';
 
 import { colors } from '../../Model/Model';
 import { TRANSLATIONS } from '../../Model/AcknowledgementsModel';

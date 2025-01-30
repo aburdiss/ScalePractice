@@ -4,7 +4,7 @@ import { useDarkMode } from '../utils';
 
 import ScaleResources from '../Screens/Resources/Resources';
 import ScaleDetail from '../Screens/ScaleDetail/ScaleDetail';
-import { HeaderButton } from '../Components';
+import HeaderButton from '../Components/HeaderButton';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
 import {
