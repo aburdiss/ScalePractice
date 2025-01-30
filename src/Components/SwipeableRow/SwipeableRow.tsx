@@ -73,5 +73,5 @@ SwipeableRow.propTypes = {
   children: PropTypes.node,
   styles: PropTypes.object,
   deleteItem: PropTypes.func,
-  item: PropTypes.string,
+  item: PropTypes.object,
 };

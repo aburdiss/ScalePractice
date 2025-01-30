@@ -8,7 +8,16 @@ import { render } from '@testing-library/react-native';
 test('LicensesListItem renders correctly', () => {
   render(
     <MockContext>
-      <LicensesListItem />
+      <LicensesListItem
+        image=""
+        userUrl=""
+        username=""
+        name=""
+        version=""
+        licenses=""
+        repository=""
+        licenseUrl=""
+      />
     </MockContext>,
   );
 });

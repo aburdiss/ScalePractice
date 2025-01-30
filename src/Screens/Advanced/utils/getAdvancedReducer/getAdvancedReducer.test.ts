@@ -21,15 +21,13 @@ const mockState = {
 describe('getAdvancedReducer functions correctly', () => {
   const advancedReducer = getAdvancedReducer(mockState, jest.fn());
   describe('All actions handled by reducer', () => {
-    (Object.keys(ADVANCED_ACTIONS) as unknown as Array<ADVANCED_ACTIONS>).map(
-      (action) => {
-        test(String(action), () => {
-          advancedReducer(INITIAL_ADVANCED_STATE, {
-            type: action,
-            payload: 'major',
-          });
+    (Object.keys(ADVANCED_ACTIONS) as Array<ADVANCED_ACTIONS>).map((action) => {
+      test(action, () => {
+        advancedReducer(INITIAL_ADVANCED_STATE, {
+          type: action,
+          payload: 'major',
         });
-      },
-    );
+      });
+    });
   });
 });

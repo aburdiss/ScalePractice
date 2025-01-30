@@ -17,7 +17,7 @@ import LicensesListItem from './LicensesListItem';
 export default function LicensesList({
   licenses,
 }: {
-  licenses: {
+  licenses?: {
     key: any;
     image: string;
     userUrl: string;

@@ -77,6 +77,7 @@ export default function More() {
 
   return (
     <View>
+      {/* @ts-ignore */}
       <SectionList
         sections={[
           { title: translate('Settings Group'), data: SETTINGS },

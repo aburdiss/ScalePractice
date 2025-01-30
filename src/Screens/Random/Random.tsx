@@ -25,7 +25,11 @@ import {
 import { translate } from '../../Translations/TranslationModel';
 
 import { useIdleScreen, useDarkMode } from '../../utils';
-import { getRandomReducer, RANDOM_ACTIONS } from './utils/getRandomReducer';
+import {
+  getRandomReducer,
+  INITIAL_RANDOM_STATE,
+  RANDOM_ACTIONS,
+} from './utils/getRandomReducer';
 import { StatisticsDispatchContext } from '../../Model/Statistics';
 import { STORAGE_KEYS } from '../../enums/storageKeys';
 
@@ -140,7 +144,7 @@ export default function Random() {
   const randomReducer = getRandomReducer(state, dispatchStatistics);
   const [randomState, dispatchRandomState] = useReducer(
     randomReducer,
-    randomReducer.initialState,
+    INITIAL_RANDOM_STATE,
   );
 
   const isScale = state?.randomType == preferencesRandomTypes.SCALE;
