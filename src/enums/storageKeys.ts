@@ -12,4 +12,5 @@ export enum STORAGE_KEYS {
   preferences = 'preferences',
   random = 'random',
   advanced = 'advanced',
+  statistics = 'statistics',
 }

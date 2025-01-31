@@ -7,11 +7,8 @@ import ScaleDetail from '../Screens/ScaleDetail/ScaleDetail';
 import HeaderButton from '../Components/HeaderButton';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
-import {
-  PreferencesContext,
-  preferencesResourceTypes,
-  preferencesActions,
-} from '../Model/Preferences';
+import { PreferencesContext, preferencesActions } from '../Model/Preferences';
+import { APP_DATA_TYPES } from '../enums/appDataTypes';
 
 export type ResourcesStackParamList = {
   'Scale Resources': undefined;
@@ -50,7 +47,7 @@ export default function ResourcesStack() {
   const DARKMODE = useDarkMode();
 
   const { state, dispatch } = useContext(PreferencesContext);
-  const isScale = state?.resourcesType == preferencesResourceTypes.SCALE;
+  const isScale = state?.resourcesType == APP_DATA_TYPES.SCALE;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -99,8 +96,8 @@ function getHeaderRight(isScale: boolean, dispatch: Function) {
     <HeaderButton
       handler={() => {
         const newType = isScale
-          ? preferencesResourceTypes.ARPEGGIO
-          : preferencesResourceTypes.SCALE;
+          ? APP_DATA_TYPES.ARPEGGIO
+          : APP_DATA_TYPES.SCALE;
         dispatch({
           type: preferencesActions.SET_SETTING,
           payload: { resourcesType: newType },

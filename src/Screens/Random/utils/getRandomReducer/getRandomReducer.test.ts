@@ -1,21 +1,14 @@
-import {
-  getRandomReducer,
-  INITIAL_RANDOM_STATE,
-  RANDOM_ACTIONS,
-} from './index';
-import {
-  preferencesAdvancedTypes,
-  preferencesRandomTypes,
-  preferencesResourceTypes,
-} from '../../../../Model/Preferences';
+import { getRandomReducer, INITIAL_RANDOM_STATE } from './index';
+import { RANDOM_ACTIONS } from '../../enums/randomActions';
+import { APP_DATA_TYPES } from '../../../../enums/appDataTypes';
 
 const mockState = {
-  randomType: preferencesRandomTypes.SCALE,
+  randomType: APP_DATA_TYPES.SCALE,
   repeat: false,
   simpleRandom: false,
   disableScreenSleep: false,
-  resourcesType: preferencesResourceTypes.SCALE,
-  advancedType: preferencesAdvancedTypes.SCALE,
+  resourcesType: APP_DATA_TYPES.SCALE,
+  advancedType: APP_DATA_TYPES.SCALE,
 };
 
 describe('getRandomReducer functions correctly', () => {

@@ -1,21 +1,17 @@
+import { APP_DATA_TYPES } from '../../../../enums/appDataTypes';
 import {
   getAdvancedReducer,
   ADVANCED_ACTIONS,
   INITIAL_ADVANCED_STATE,
 } from './index';
-import {
-  preferencesAdvancedTypes,
-  preferencesRandomTypes,
-  preferencesResourceTypes,
-} from '../../../../Model/Preferences';
 
 const mockState = {
-  randomType: preferencesRandomTypes.SCALE,
+  randomType: APP_DATA_TYPES.SCALE,
   repeat: false,
   simpleRandom: false,
   disableScreenSleep: false,
-  resourcesType: preferencesResourceTypes.SCALE,
-  advancedType: preferencesAdvancedTypes.SCALE,
+  resourcesType: APP_DATA_TYPES.SCALE,
+  advancedType: APP_DATA_TYPES.SCALE,
 };
 
 describe('getAdvancedReducer functions correctly', () => {

@@ -1,6 +1,8 @@
 import React, { useEffect, createContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { saveToStorage } from '../utils/saveToStorage';
+import { STORAGE_KEYS } from '../enums/storageKeys';
+import { loadFromStorage } from '../utils/loadFromStorage';
 
 export type StatisticsStateType = {
   scales: { [key: string]: number };
@@ -27,43 +29,6 @@ enum ACTIONS {
   SET_DATA,
 }
 
-/**
- * @function load
- * @description Loads Data from Local Storage
- * @author Alexander Burdiss
- * @since 9/4/23
- * @version 1.0.2
- * @param {string} type Type of data to load.
- * @returns {JSON|null} The stored value or null, depending on if the data is
- * successfully retrieved.
- */
-export async function load() {
-  try {
-    const jsonValue = await AsyncStorage.getItem('statistics');
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-/**
- * @function save
- * @description Stores Data in Local Storage
- * @author Alexander Burdiss
- * @since 9/4/23
- * @version 1.0.1
- * @param {string} type Type of data to store.
- * @param {Object} data Data to be stored in local storage
- */
-export async function save(data: Object) {
-  try {
-    const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem('statistics', jsonValue);
-  } catch (e) {
-    console.log(e);
-  }
-}
-
 function statisticsReducer(
   state: StatisticsStateType,
   action: { type: ACTIONS; payload: any },
@@ -75,17 +40,17 @@ function statisticsReducer(
         tempState.scales[action.payload] = 0;
       }
       tempState.scales[action.payload]++;
-      save(tempState);
+      saveToStorage(STORAGE_KEYS.statistics, tempState);
       return tempState;
     case ACTIONS.ADD_ARPEGGIO:
       if (!tempState.arpeggios[action.payload]) {
         tempState.arpeggios[action.payload] = 0;
       }
       tempState.arpeggios[action.payload]++;
-      save(tempState);
+      saveToStorage(STORAGE_KEYS.statistics, tempState);
       return tempState;
     case ACTIONS.RESET:
-      save(INITIAL_STATISTICS_STATE);
+      saveToStorage(STORAGE_KEYS.statistics, INITIAL_STATISTICS_STATE);
       return INITIAL_STATISTICS_STATE;
     case ACTIONS.SET_DATA:
       return action.payload;
@@ -101,7 +66,7 @@ function StatisticseProvider({ children }: { children: React.ReactNode }) {
   );
 
   useEffect(() => {
-    load().then((data) => {
+    loadFromStorage(STORAGE_KEYS.statistics).then((data) => {
       if (data !== null) {
         // Set loaded data to global store
         dispatch({ type: ACTIONS.SET_DATA, payload: data });

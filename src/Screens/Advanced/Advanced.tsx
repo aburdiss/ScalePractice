@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import { Alert, View, Text, FlatList, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import AddToListButton from '../../Components/AddToListButton';
 import RandomizeButton from '../../Components/RandomizeButton';
@@ -15,10 +14,7 @@ import {
   allNoteNames,
   allArpeggioNames,
 } from '../../Model/Model';
-import {
-  preferencesAdvancedTypes,
-  PreferencesContext,
-} from '../../Model/Preferences';
+import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 
 import { getIsSmallScreen, useIdleScreen, useDarkMode } from '../../utils';
@@ -29,52 +25,14 @@ import {
 } from './utils/getAdvancedReducer';
 import { StatisticsDispatchContext } from '../../Model/Statistics';
 import { STORAGE_KEYS } from '../../enums/storageKeys';
+import { loadFromStorage } from '../../utils/loadFromStorage';
+import { saveToStorage } from '../../utils/saveToStorage';
+import { APP_DATA_TYPES } from '../../enums/appDataTypes';
 
 /**
  * @namespace Advanced
  * The namespace for the Advance screen and all its sub components and methods
  */
-
-/**
- * @function load
- * @memberof Advanced
- * @description Loads Advanced reducer data from local storage
- * @copyright 2024 Alexander Burdiss
- * @author Alexander Burdiss
- * @since 12/28/24
- * @version 1.0.0
- * @param {string} type Type of data to load.
- * @returns {JSON|null} The stored value or null, depending on if the data is
- * successfully retrieved.
- */
-async function load() {
-  try {
-    const jsonValue = await AsyncStorage.getItem(STORAGE_KEYS.advanced);
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-/**
- * @function save
- * @memberof Advanced
- * @description Stores Advanced reducer Data in Local Storage
- * @copyright 2024 Alexander Burdiss
- * @author Alexander Burdiss
- * @since 12/28/24
- * @version 1.0.0
- * @param {string} type Type of data to store.
- * @param {Object} data Data to be stored in local storage
- */
-async function save(data: Object) {
-  try {
-    const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem(STORAGE_KEYS.advanced, jsonValue);
-  } catch (e) {
-    console.log(e);
-  }
-}
 
 /**
  * @function Advanced
@@ -164,10 +122,10 @@ export default function Advanced() {
     isSmallScreen: getIsSmallScreen(),
   });
 
-  const isScale = state?.advancedType == preferencesAdvancedTypes.SCALE;
+  const isScale = state?.advancedType == APP_DATA_TYPES.SCALE;
 
   useEffect(function loadSavedState() {
-    load().then((data) => {
+    loadFromStorage(STORAGE_KEYS.advanced).then((data) => {
       if (data !== null) {
         const dataToSet = {
           possibleScales: undefined,
@@ -192,7 +150,7 @@ export default function Advanced() {
   useEffect(
     function saveUserSelections() {
       if (advancedState) {
-        save({
+        saveToStorage(STORAGE_KEYS.advanced, {
           possibleScales: advancedState.possibleScales,
           possibleArpeggios: advancedState.possibleArpeggios,
         });

@@ -8,74 +8,32 @@ import {
   StyleSheet,
 } from 'react-native';
 import Popover from 'react-native-popover-view';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import RandomizeButton from '../../Components/RandomizeButton';
 import LargeScaleDisplay from '../../Components/LargeScaleDisplay';
 import ScaleDisplay from '../../Components/ScaleDisplay';
-import RandomSettings from './RandomSettings/RandomSettings';
+import RandomSettings from './Components/RandomSettings';
 
 import { colors, SCALE_TYPES, ARPEGGIO_TYPES } from '../../Model/Model';
-import {
-  PreferencesContext,
-  preferencesRandomTypes,
-} from '../../Model/Preferences';
+import { PreferencesContext } from '../../Model/Preferences';
 import { translate } from '../../Translations/TranslationModel';
 
 import { useIdleScreen, useDarkMode } from '../../utils';
 import {
   getRandomReducer,
   INITIAL_RANDOM_STATE,
-  RANDOM_ACTIONS,
 } from './utils/getRandomReducer';
+import { RANDOM_ACTIONS } from './enums/randomActions';
 import { StatisticsDispatchContext } from '../../Model/Statistics';
 import { STORAGE_KEYS } from '../../enums/storageKeys';
+import { loadFromStorage } from '../../utils/loadFromStorage';
+import { saveToStorage } from '../../utils/saveToStorage';
+import { APP_DATA_TYPES } from '../../enums/appDataTypes';
 
 /**
  * @namespace Random
  * The Namespace for the Random Screen and all its sub components and methods
  */
-
-/**
- * @function load
- * @memberof Random
- * @description Loads Random reducer data from local storage
- * @copyright 2024 Alexander Burdiss
- * @author Alexander Burdiss
- * @since 12/28/24
- * @version 1.0.0
- * @param {string} type Type of data to load.
- * @returns {JSON|null} The stored value or null, depending on if the data is
- * successfully retrieved.
- */
-async function load() {
-  try {
-    const jsonValue = await AsyncStorage.getItem(STORAGE_KEYS.random);
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-/**
- * @function save
- * @memberof Random
- * @description Stores Random reducer Data in Local Storage
- * @copyright 2024 Alexander Burdiss
- * @author Alexander Burdiss
- * @since 12/28/24
- * @version 1.0.0
- * @param {string} type Type of data to store.
- * @param {Object} data Data to be stored in local storage
- */
-async function save(data: Object) {
-  try {
-    const jsonValue = JSON.stringify(data);
-    await AsyncStorage.setItem(STORAGE_KEYS.random, jsonValue);
-  } catch (e) {
-    console.log(e);
-  }
-}
 
 /**
  * @function Random
@@ -145,10 +103,10 @@ export default function Random() {
     INITIAL_RANDOM_STATE,
   );
 
-  const isScale = state?.randomType == preferencesRandomTypes.SCALE;
+  const isScale = state?.randomType == APP_DATA_TYPES.SCALE;
 
   useEffect(function loadSavedState() {
-    load().then((data) => {
+    loadFromStorage(STORAGE_KEYS.random).then((data) => {
       if (data !== null) {
         const dataToSet = {
           scaleOptions: undefined,
@@ -173,7 +131,7 @@ export default function Random() {
   useEffect(
     function saveUserSelections() {
       if (randomState) {
-        save({
+        saveToStorage(STORAGE_KEYS.random, {
           scaleOptions: randomState.scaleOptions,
           arpeggioOptions: randomState.arpeggioOptions,
         });

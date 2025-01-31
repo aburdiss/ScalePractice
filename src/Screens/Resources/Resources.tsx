@@ -7,11 +7,9 @@ import {
   arpeggioResourceData,
   colors,
 } from '../../Model/Model';
-import {
-  PreferencesContext,
-  preferencesResourceTypes,
-} from '../../Model/Preferences';
+import { PreferencesContext } from '../../Model/Preferences';
 import { useIdleScreen, useDarkMode } from '../../utils';
+import { APP_DATA_TYPES } from '../../enums/appDataTypes';
 
 /**
  * @description A view that allows the user to learn more about each scale in
@@ -30,7 +28,7 @@ export default function Resources() {
   const DARKMODE = useDarkMode();
 
   const { state } = useContext(PreferencesContext);
-  const isScale = state.resourcesType == preferencesResourceTypes.SCALE;
+  const isScale = state.resourcesType == APP_DATA_TYPES.SCALE;
 
   return (
     <View>

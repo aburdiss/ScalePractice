@@ -6,11 +6,8 @@ import Random from '../Screens/Random';
 import HeaderButton from '../Components/HeaderButton';
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
-import {
-  PreferencesContext,
-  preferencesActions,
-  preferencesRandomTypes,
-} from '../Model/Preferences';
+import { PreferencesContext, preferencesActions } from '../Model/Preferences';
+import { APP_DATA_TYPES } from '../enums/appDataTypes';
 
 const Stack = createStackNavigator();
 
@@ -34,7 +31,7 @@ export default function RandomStack() {
 
   const { state, dispatch } = useContext(PreferencesContext);
 
-  const isScale = state?.randomType == preferencesRandomTypes.SCALE;
+  const isScale = state?.randomType == APP_DATA_TYPES.SCALE;
 
   return (
     <Stack.Navigator
@@ -73,8 +70,8 @@ function getHeaderRight(isScale: boolean, dispatch: Function) {
     <HeaderButton
       handler={() => {
         const newType = isScale
-          ? preferencesRandomTypes.ARPEGGIO
-          : preferencesRandomTypes.SCALE;
+          ? APP_DATA_TYPES.ARPEGGIO
+          : APP_DATA_TYPES.SCALE;
         dispatch({
           type: preferencesActions.SET_SETTING,
           payload: { randomType: newType },

@@ -1,10 +1,8 @@
 import { shuffle } from '../../../../utils';
-import {
-  preferencesAdvancedTypes,
-  PreferencesStateType,
-} from '../../../../Model/Preferences';
+import { PreferencesStateType } from '../../../../Model/Model.d';
 import { translate } from '../../../../Translations/TranslationModel';
 import { statisticsActions } from '../../../../Model/Statistics';
+import { APP_DATA_TYPES } from '../../../../enums/appDataTypes';
 
 enum ADVANCED_ACTIONS {
   SET_CURRENT_SCALE = 'SET_CURRENT_SCALE',
@@ -22,7 +20,7 @@ enum ADVANCED_ACTIONS {
 }
 
 type AdvancedStateType = {
-  advancedType?: preferencesAdvancedTypes;
+  advancedType?: APP_DATA_TYPES;
   repeat?: boolean;
   currentScale: string;
   selectedNote: string;
@@ -75,7 +73,7 @@ function getAdvancedReducer(
   state: PreferencesStateType,
   dispatchStatistics: Function,
 ) {
-  const isScale = state?.advancedType === preferencesAdvancedTypes.SCALE;
+  const isScale = state?.advancedType === APP_DATA_TYPES.SCALE;
 
   return function advancedReducer(
     currentState: AdvancedStateType,

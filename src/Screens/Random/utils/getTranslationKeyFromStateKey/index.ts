@@ -1,14 +1,16 @@
 /**
  * @function getTranslationKeyFromStateKey
+ * @memberof Random
  * @description Transforms a key that is used in the global state reducer to a
  * key that is used in the translation files.
+ * Created 10/7/2022 by Alexander Burdiss
  * @param {string} value The key for the value in state
  * @param {boolean} isScale Whether or not the inputted key is a scale.
  * @returns {string} A key that you can pass to the "translate" function
  *
- * @copyright 2022 Alexander Burdiss
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/7/22
+ * @since 1/31/25
  * @version 1.0.0
  */
 export function getTranslationKeyFromStateKey(

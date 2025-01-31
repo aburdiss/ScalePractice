@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import SwitchRow from '../../../Components/SwitchRow';
-import AllScalesButton from '../../../Components/AllScalesButton';
-import { translate } from '../../../Translations/TranslationModel';
-import { getTranslationKeyFromStateKey } from '../utils/getTranslationKeyFromStateKey';
-import { RANDOM_ACTIONS, RandomStateType } from '../utils/getRandomReducer';
+import SwitchRow from '../../../../Components/SwitchRow';
+import AllScalesButton from '../../../../Components/AllScalesButton';
+import { translate } from '../../../../Translations/TranslationModel';
+import { getTranslationKeyFromStateKey } from '../../utils/getTranslationKeyFromStateKey';
+import type { RandomStateType } from '../../Random.d';
+import { RANDOM_ACTIONS } from '../../enums/randomActions';
 
 /**
  * @function RandomSettings

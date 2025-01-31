@@ -2,40 +2,26 @@ import { translate } from '../../../../Translations/TranslationModel';
 import { statisticsActions } from '../../../../Model/Statistics';
 import { getAllScalesFromState } from '../getAllScalesFromState';
 import { getAllArpeggiosFromState } from '../getAllArpeggiosFromState';
+import { RANDOM_ACTIONS } from '../../enums/randomActions';
 import { shuffle, random } from '../../../../utils';
 import { SCALE_TYPES, ARPEGGIO_TYPES } from '../../../../Model/Model';
-import {
-  preferencesRandomTypes,
-  PreferencesStateType,
-} from '../../../../Model/Preferences';
+import { PreferencesStateType } from '../../../../Model/Model.d';
+import type { RandomStateType } from '../../Random.d';
+import { APP_DATA_TYPES } from '../../../../enums/appDataTypes';
 
-export enum RANDOM_ACTIONS {
-  SET_CURRENT_SCALE = 'SET_CURRENT_SCALE',
-  TOGGLE_SCALE = 'TOGGLE_SCALE',
-  TOGGLE_ARPEGGIO = 'TOGGLE_ARPEGGIO',
-  SELECT_ALL_SCALES = 'SELECT_ALL_SCALES',
-  SELECT_ALL_ARPEGGIOS = 'SELECT_ALL_ARPEGGIOS',
-  GET_NEW_SCALE = 'GET_NEW_SCALE',
-  RESET_NO_REPEAT = 'RESET_NO_REPEAT',
-  TOGGLE_SELECTION_POPOVER = 'TOGGLE_SELECTION_POPOVER',
-  SWITCH_DOMAIN = 'SWITCH_DOMAIN',
-  SET_STATE_FROM_STORAGE = 'SET_STATE_FROM_STORAGE',
-}
-
-export type RandomStateType = {
-  currentScale: string;
-  scaleArray: string[];
-  scaleArrayIndex: number;
-  showSelectionPopover: boolean;
-  allScalesPracticed: boolean;
-  scaleOptions: {
-    [key: string]: boolean;
-  };
-  arpeggioOptions: {
-    [key: string]: boolean;
-  };
-};
-
+/**
+ * @name INITIAL_RANDOM_STATE
+ * @const
+ * @memberof Random
+ * @description This Object contains all the initial values for the Random
+ * Reducer state.
+ * Created 10/15/2022 by Alexander Burdiss
+ *
+ * @copyright 2025 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/31/25
+ * @version 1.0.0
+ */
 export const INITIAL_RANDOM_STATE: RandomStateType = Object.freeze({
   currentScale: translate('No Scale Selected'),
   scaleArray: getAllScalesFromState({ major: true }),
@@ -89,7 +75,7 @@ export function getRandomReducer(
   state: PreferencesStateType,
   dispatchStatistics: Function,
 ) {
-  const isScale = state?.randomType === preferencesRandomTypes.SCALE;
+  const isScale = state?.randomType === APP_DATA_TYPES.SCALE;
   function randomReducer(
     currentState: RandomStateType,
     action: { type: RANDOM_ACTIONS; payload?: any },

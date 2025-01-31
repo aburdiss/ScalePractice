@@ -8,11 +8,8 @@ import HeaderButton from '../Components/HeaderButton';
 
 import { translate } from '../Translations/TranslationModel';
 import { colors } from '../Model/Model';
-import {
-  PreferencesContext,
-  preferencesAdvancedTypes,
-  preferencesActions,
-} from '../Model/Preferences';
+import { PreferencesContext, preferencesActions } from '../Model/Preferences';
+import { APP_DATA_TYPES } from '../enums/appDataTypes';
 
 const Stack = createStackNavigator();
 
@@ -35,7 +32,7 @@ export default function AdvancedStack() {
 
   const { state, dispatch } = useContext(PreferencesContext);
 
-  const isScale = state?.advancedType == preferencesAdvancedTypes.SCALE;
+  const isScale = state?.advancedType == APP_DATA_TYPES.SCALE;
 
   return (
     <Stack.Navigator
@@ -74,8 +71,8 @@ function getHeaderRight(isScale: boolean, dispatch: Function) {
     <HeaderButton
       handler={() => {
         const newType = isScale
-          ? preferencesAdvancedTypes.ARPEGGIO
-          : preferencesAdvancedTypes.SCALE;
+          ? APP_DATA_TYPES.ARPEGGIO
+          : APP_DATA_TYPES.SCALE;
         dispatch({
           type: preferencesActions.SET_SETTING,
           payload: { advancedType: newType },
