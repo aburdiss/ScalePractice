@@ -1,4 +1,4 @@
-import { shuffle } from '../../../../utils';
+import { random, shuffle } from '../../../../utils';
 import { PreferencesStateType } from '../../../../Model/Model.d';
 import { translate } from '../../../../Translations/TranslationModel';
 import { statisticsActions } from '../../../../Model/Statistics';
@@ -130,13 +130,13 @@ function getAdvancedReducer(
         if (state.repeat) {
           let newScale =
             currentState.possibleScales[
-              Math.floor(Math.random() * currentState.possibleScales.length)
+              random(0, currentState.possibleScales.length)
             ];
           if (currentState.possibleScales.length > 1) {
             do {
               newScale =
                 currentState.possibleScales[
-                  Math.floor(Math.random() * currentState.possibleScales.length)
+                  random(0, currentState.possibleScales.length)
                 ];
             } while (newScale === currentState.currentScale);
           }
@@ -170,15 +170,13 @@ function getAdvancedReducer(
         if (state.repeat) {
           let newScale =
             currentState.possibleArpeggios[
-              Math.floor(Math.random() * currentState.possibleArpeggios.length)
+              random(0, currentState.possibleArpeggios.length)
             ];
           if (currentState.possibleArpeggios.length > 1) {
             do {
               newScale =
                 currentState.possibleArpeggios[
-                  Math.floor(
-                    Math.random() * currentState.possibleArpeggios.length,
-                  )
+                  random(0, currentState.possibleArpeggios.length)
                 ];
             } while (newScale === currentState.currentScale);
           }

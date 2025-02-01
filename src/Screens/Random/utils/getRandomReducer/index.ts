@@ -179,7 +179,7 @@ export function getRandomReducer(
           do {
             newScale =
               currentState.scaleArray[
-                random(currentState.scaleArray.length - 1)
+                random(0, currentState.scaleArray.length - 1)
               ];
           } while (newScale == currentState.currentScale);
           dispatchStatistics({

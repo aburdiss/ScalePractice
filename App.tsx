@@ -1,10 +1,8 @@
 import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useDarkMode } from './src/utils';
+import { useDarkMode, getTabBarIcon } from './src/utils';
 import * as RNLocalize from 'react-native-localize';
 
 import { setI18nConfig, translate } from './src/Translations/TranslationModel';
@@ -22,12 +20,15 @@ const Tab = createBottomTabNavigator();
 setI18nConfig();
 
 /**
- * @description The main tab navigation of the app.
+ * @function App
+ * @description The main component for the App.
  * Created 10/10/20
- * @copyright Alexander Burdiss
+ * @returns {JSX.Element} JSX render instructions.
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/25/22
- * @version 1.0.1
+ * @since 2/1/25
+ * @version 1.0.2
  *
  * @example
  * <App />
@@ -43,11 +44,8 @@ export default function App() {
   }, []);
 
   const handleLocalizationChange = () => {
-    setI18nConfig()
-      .then(() => this.forceUpdate())
-      .catch((error: Error) => {
-        console.error(error);
-      });
+    setI18nConfig();
+    this.forceUpdate();
   };
 
   return (
@@ -97,25 +95,4 @@ export default function App() {
       </PreferencesProvider>
     </StatisticseProvider>
   );
-}
-
-function getTabBarIcon(route: { name: string }) {
-  function Icon({ color, size }: { color: string; size: number }) {
-    let iconName: string = '';
-    if (route.name === 'RandomStack') {
-      iconName = 'cube';
-    } else if (route.name === 'ResourcesStack') {
-      iconName = 'book';
-    } else if (route.name === 'AdvancedStack') {
-      iconName = 'create';
-    } else if (route.name === 'MoreStack') {
-      iconName = 'ellipsis-horizontal-circle-sharp';
-    }
-    return <Ionicons name={iconName} size={size} color={color} />;
-  }
-  Icon.propTypes = {
-    color: PropTypes.string,
-    size: PropTypes.string,
-  };
-  return Icon;
 }

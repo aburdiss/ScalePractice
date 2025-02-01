@@ -8,13 +8,17 @@ import { useDarkMode, useIdleScreen } from '../../utils';
 
 /**
  * @function ScaleDetail
+ * @component
  * @description A component that renders a detailed image, based on the id
  * given when calling navigation.navigate().
+ * Created November 8, 2020 by Alexander Burdiss
  * @param {Object} props JSX props passed to this React component
  * @param {Object} props.route The Route object provided by React Navigation
  * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/15/20
+ * @since 2/1/25
  * @version 2.1.1
  *
  * @example

@@ -16,12 +16,14 @@ const translationMemo: { [key: string]: string } = {};
  * @function translate
  * @description Takes a string, and returns the translated version of that
  * string, if it exists in the configuration file for the language provided.
- * @author Alexander Burdiss
- * @since 1/18/25
- * @version 2.0.0
  * @param {string} key The string to be translated
  * @returns {string} The input string translated into the language the device
  * is currently in.
+ *
+ * @copyright 2025 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 1/18/25
+ * @version 2.0.0
  */
 export function translate(key?: string): string {
   if (!key) {
@@ -41,12 +43,14 @@ export function translate(key?: string): string {
  * @description Finds the current language the device is in, updates the
  * language in state, and clears the translation cache. This should be called
  * once before the content in App.js loads.
- * @returns {Promise}
+ * Created 12/1/2020 by Alexander Burdiss
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 12/1/20
+ * @since 2/1/25
  * @version 1.0.1
  */
-export const setI18nConfig = () => {
+export function setI18nConfig() {
   const fallback = { languageTag: 'en' };
   const { languageTag } =
     RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) ||
@@ -61,4 +65,4 @@ export const setI18nConfig = () => {
 
   i18n.translations = { [languageTag]: translationGetters[languageTag]() };
   i18n.locale = languageTag;
-};
+}

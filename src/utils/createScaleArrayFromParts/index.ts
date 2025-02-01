@@ -5,13 +5,15 @@ import { shuffle } from '..';
  * @function createScaleArrayFromParts
  * @description Constructs the scale name and scale note together to form one
  * string to display on the screen.
- * @author Alexander Burdiss
- * @since 10/12/20
- * @version 2.0.0
- *
- * @param {string[]} letterNames
- * @param {string[]} scaleNames
+ * Created 10/12/20 by Alexander Burdiss
+ * @param {string[]} letterNames All possible note letter names
+ * @param {string[]} scaleNames All possible scale names
  * @returns {string[]} array of all transpositions of a scale
+ *
+ * @copyright 2025 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 2/1/25
+ * @version 2.0.1
  */
 export function createScaleArrayFromParts(
   letterNames: string[],

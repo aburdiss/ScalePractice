@@ -12,12 +12,17 @@ import { useIdleScreen, useDarkMode } from '../../utils';
 import { APP_DATA_TYPES } from '../../enums/appDataTypes';
 
 /**
+ * @function Resources
+ * @component
  * @description A view that allows the user to learn more about each scale in
  * the app.
  * Created By Alexander Burdiss 10/10/202
+ * @returns {JSX.Element} JSX render instructions
+ *
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 10/15/22
- * @version 2.1.0
+ * @since 2/1/25
+ * @version 2.1.1
  *
  * @example
  * <Resources />

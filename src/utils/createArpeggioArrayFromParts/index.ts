@@ -6,17 +6,21 @@ import { indeterminantLetterNames } from '../../Model/Model';
  * @function createArpeggioArrayFromParts
  * @description Constructs the arpeggio name and arpeggio note together to
  * form one string to display on the screen.
- * @author Alexander Burdiss
- * @since 10/12/20
- * @version 1.0.2
+ * Created 10/12/20 by Alexander Burdiss
+ * @param {string} arpeggioName The name of the arpeggio to create an array of
+ * all possible arpeggios for.
+ * @returns {string[]} An array with all 12 keys of arpeggio that was passed in.
  *
- * @returns {string[]} array of all transpositions of a scale
+ * @copyright 2025 Alexander Burdiss
+ * @author Alexander Burdiss
+ * @since 2/1/25
+ * @version 1.0.3
  */
-export function createArpeggioArrayFromParts(scaleName: string): string[] {
-  let allLetterNamesOfScale = [];
+export function createArpeggioArrayFromParts(arpeggioName: string): string[] {
+  let allLetterNamesOfArpeggio = [];
   for (let letter of indeterminantLetterNames) {
-    allLetterNamesOfScale.push(`${letter} ${translate(scaleName)}`);
+    allLetterNamesOfArpeggio.push(`${letter} ${translate(arpeggioName)}`);
   }
-  allLetterNamesOfScale = shuffle(allLetterNamesOfScale);
-  return allLetterNamesOfScale;
+  allLetterNamesOfArpeggio = shuffle(allLetterNamesOfArpeggio);
+  return allLetterNamesOfArpeggio;
 }

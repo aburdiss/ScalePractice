@@ -8,15 +8,23 @@ import { useDarkMode, useIdleScreen } from '../../utils';
 import { formatStatisticsDataForList } from './utils/formatStatisticsDataForList';
 
 /**
+ * @namespace Statistics
+ * @description A collection of Components and Functions that keep track of
+ * how many scales and arpeggios you practice while using the app.
+ */
+
+/**
  * @function Statistics
+ * @memberof Statistics
  * @component
  * @description The Statistics page in the app. This page displays statistics
  * about practice sessions to the user
+ * Created 9/4/23 by Alexander Burdiss
  * @returns {JSX.Element} JSX render instructions
  *
- * @copyright 2023 Alexander Burdiss
+ * @copyright 2025 Alexander Burdiss
  * @author Alexander Burdiss
- * @since 9/4/23
+ * @since 2/1/25
  * @version 1.0.0
  * @example
  * <Statistics />
